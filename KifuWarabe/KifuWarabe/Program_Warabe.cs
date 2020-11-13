@@ -434,6 +434,15 @@ namespace Xenon.KifuWarabe
                             // 対局が始まったときに送られてくる文字が usinewgame です。
                             #endregion
 
+                            // (2020-11-14) ここから
+                            // どうも、２０２０年のわたしだぜ☆　ログ・ファイルが増え続けるのは流石にダメだろ……☆（＾～＾）
+                            // TODO usinewgame のときに ログ・ファイルを強制的に消すようにしとけばいいだろうか☆（＾～＾）
+                            // TODO ハードコーディングでいいか……☆（＾～＾）
+                            File.Delete("#log_default(System.Diagnostics.Process (Xenon.KifuWarabe)).txt");
+                            File.Delete("#log_エラー.txt");
+                            File.Delete("#log_指し手生成ルーチン.txt");
+                            File.Delete("#log_将棋エンジン_棋譜読取.txt");
+                            // (2020-11-14) ここまで
 
                             // 無限ループ（１つ目）を抜けます。無限ループ（２つ目）に進みます。
                             break;
