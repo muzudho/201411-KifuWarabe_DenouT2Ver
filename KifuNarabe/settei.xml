@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kifunarabe setteiFileVer="0.00.0">
+  <!--v(^-^)vｲｪｰｲ☆ 『将棋ＧＵＩ きふならべ』の設定ファイルなんだぜ☆！ 今は一番上に書いてある ＜shogiEngine＞ を見に行くぜ☆-->
+  <shogiEngine file="shogiEngine.exe" />
+</kifunarabe>

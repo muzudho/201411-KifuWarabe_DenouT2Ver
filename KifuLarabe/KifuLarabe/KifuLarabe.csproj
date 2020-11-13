@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18FB9B6E-95B2-47FE-A2F6-4FD865ABD804}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xenon.KifuLarabe</RootNamespace>
+    <AssemblyName>Xenon.KifuLarabe</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CSharp_Impl\01_Log\CsvLineParserImpl.cs" />
+    <Compile Include="CSharp_Impl\01_Log\LarabeFileOutput.cs" />
+    <Compile Include="CSharp_Impl\01_Log\LarabeLogger.cs" />
+    <Compile Include="CSharp_Impl\01_Log\LarabeRandom.cs" />
+    <Compile Include="CSharp_Impl\01_Log\LarabeShuffle.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\J符号用\AgaruHiku.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\J符号用\DaHyoji.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\J符号用\MigiHidari.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\J符号用\NariFunari.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\Muki.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\Okiba.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\Sengo.cs" />
+    <Compile Include="CSharp_Impl\03_Communication\Sengo2Array.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Fp_強制転成\ForcePromotionArray.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Fp_強制転成\ForcePromotionUtil.cs" />
+    <Compile Include="CSharp_Impl\04_Common\H_配役転換表\Data_HaiyakuTransition.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kf_棋譜_局面\Kifu_Document.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kf_棋譜_局面\Kifu_Node6.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kf_棋譜_局面\Kifu_Root6.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kf_棋譜_局面\KomaHouse.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kh_駒配役\Haiyaku184Util.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Ks_駒種類\JFugoCreator15Array.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Ks_駒種類\Ks14.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kk_駒軌道\Rule01_PotentialMove_15Array.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Ks_駒種類\Ks14Converter.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\RO_Star.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\RO_StarManual.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\RO_TeProcess_Syokihaichi.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きふわらべ\KomaAndMasu.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\Util_KyokumenReader.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\MasusWriter.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス番号\Mh201Util.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\RO_KomaPos.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス番号\M201Util.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\Masus_Conic.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\Masus_DirectedSegment.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\Masus_Set.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\RO_TeProcess.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス類\Masus_Ordered.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kh_駒配役\Kh185.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きふわらべ\K40.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Kh_駒配役\Haiyaku184Array.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きふわらべ\K40Util.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きふわらべ\KomaAndMasusDictionary.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きふわらべ\Kuukan24.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Ks_駒種類\KomaSyurui14Array.cs" />
+    <Compile Include="CSharp_Impl\04_Common\Mi_道\Michi187Array.cs" />
+    <Compile Include="CSharp_Impl\05_Thought思想\Thought_KomaAndMove.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\きほん\KifuIO.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_StateA1_SfenPosition.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_StateA1a_SfenStartpos.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_StateA2_SfenMoves.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_StateA0_Document.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\きほん\KirokuGakari.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\きほん\TuginoItte_JapanFugo.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\きほん\TuginoItte_Sfen.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\きほん\Util_LegalMove.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
+    <Compile Include="CSharp_Impl\06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
+    <Compile Include="CSharp_Impl\05_Thought思想\Thought.cs" />
+    <Compile Include="CSharp_Interface\KifuParserA.cs" />
+    <Compile Include="CSharp_Interface\KifuParserA_State.cs" />
+    <Compile Include="CSharp_Interface\Kifu_Element.cs" />
+    <Compile Include="CSharp_Impl\01_Log\LoggerTag_Larabe.cs" />
+    <Compile Include="CSharp_Interface\KomaPos.cs" />
+    <Compile Include="CSharp_Interface\LarabeLoggerTag.cs" />
+    <Compile Include="CSharp_Interface\TeProcess.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\Converter04.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\FugoJ.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\KomanoKidou.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\MukiUtil.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\SfenStartpos.cs" />
+    <Compile Include="CSharp_Impl\04_Common\きほん\SyokiHaichi.cs" />
+    <Compile Include="CSharp_Impl\04_Common\M_マス番号\M201.cs" />
+    <Compile Include="CSharp_Interface\Masus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
