@@ -10,6 +10,8 @@ using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
+using System.Configuration;
+using Nett;
 
 namespace Grayscale.KifuwaraneEngine
 {
@@ -98,8 +100,12 @@ namespace Grayscale.KifuwaraneEngine
                 string seihinName;
                 string versionStr;
                 {
+                    var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+                    var toml = Toml.ReadFile(Path.Combine(profilePath,"Engine.toml"));
+                    seihinName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+
                     // 製品名
-                    seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
+                    // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 
                     // バージョン番号
                     Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;

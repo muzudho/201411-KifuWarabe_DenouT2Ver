@@ -2,9 +2,17 @@
 
 2020年11月の 電竜戦から きふわらね(Kifuwarane)にリネームして開発再開だぜ☆（＾～＾）  
 
-|        | ファイル                                          |
-| ------ | ------------------------------------------------- |
-| ソース | `Kifuwarabe_DenouT2/KifuNarabe/KifuwaraneGui.sln` |
+## Dev and Config
+
+|               | ファイル                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| ソース        | `Kifuwarabe_DenouT2/KifuNarabe/KifuwaraneGui.sln`                                            |
+| 設定ファイル1 | `Kifuwarabe_DenouT2\KifuNarabe\KifuNarabe\bin\Release\Grayscale.KifuwaraneEngine.exe.config` |
+| 設定ファイル2 | `Kifuwarabe_DenouT2\Profile\Engine.toml`                                                     |
+
+設定ファイル1 の `Grayscale.KifuwaraneEngine.exe.config` の中にある `Profile` のパスを、 設定ファイル2 の親ディレクトリー `Profile` に合わせてください。  
+
+## Manual
 
 `第２回 将棋電王トーナメント 出場版` の復刻版。  
 (2020-11-14) usinewgame 時に ログファイルを強制削除するコードをハードコーディングした。  
