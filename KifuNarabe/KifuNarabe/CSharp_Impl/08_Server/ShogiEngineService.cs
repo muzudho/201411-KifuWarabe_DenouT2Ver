@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Diagnostics;
-using System.IO;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 using Xenon.KifuNarabe.L09_Ui;
 
 namespace Xenon.KifuNarabe.L08_Server
@@ -143,7 +136,7 @@ namespace Xenon.KifuNarabe.L08_Server
         /// 手番が替わったときの挙動を、ここに書きます。
         /// ************************************************************************************************************************
         /// </summary>
-        public static void Message_ChangeTurn(Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static void Message_ChangeTurn(Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
 
 

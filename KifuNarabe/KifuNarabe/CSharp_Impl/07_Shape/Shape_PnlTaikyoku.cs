@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Drawing;
 using System.Runtime.CompilerServices;
-using System.Diagnostics;
-
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using System.Windows.Forms;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Xenon.KifuNarabe.L07_Shape
 {
@@ -171,9 +163,9 @@ namespace Xenon.KifuNarabe.L07_Shape
         /// 棋譜再生中は使いません。
         /// 
         /// </summary>
-        public KomaPos MousePosOrNull2 { get { return this.mousePosOrNull2; } }
-        public void SetMousePosOrNull2(KomaPos mousePos) { this.mousePosOrNull2 = mousePos; }
-        private KomaPos mousePosOrNull2;
+        public IKomaPos MousePosOrNull2 { get { return this.mousePosOrNull2; } }
+        public void SetMousePosOrNull2(IKomaPos mousePos) { this.mousePosOrNull2 = mousePos; }
+        private IKomaPos mousePosOrNull2;
 
         public Ks14 MousePos_TottaKomaSyurui { get; set; }
 
@@ -1151,7 +1143,7 @@ namespace Xenon.KifuNarabe.L07_Shape
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void Paint(
-            object sender, PaintEventArgs e, Kifu_Document kifuD, LarabeLoggerTag logTag
+            object sender, PaintEventArgs e, Kifu_Document kifuD, ILarabeLoggerTag logTag
             )
         {
             if (!this.Visible)

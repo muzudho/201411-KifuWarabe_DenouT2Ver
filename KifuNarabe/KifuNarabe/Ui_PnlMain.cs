@@ -1,30 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
-using System.Threading;
-
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
+using System.Windows.Forms;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 using Xenon.KifuNarabe.L01_Log;
 using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
 using Xenon.KifuNarabe.L07_Shape;
-using Xenon.KifuNarabe.L08_Server;
-using Xenon.KifuNarabe.L09_Ui;
-
-//using Xenon.AspectOriented;
 
 namespace Xenon.KifuNarabe.L09_Ui
 {
@@ -82,7 +67,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             }
         }
 
-        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             this.flowB = flowB;
             this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
@@ -142,7 +127,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public string ReadLine2(LarabeLoggerTag logTag)
+        public string ReadLine2(ILarabeLoggerTag logTag)
         {
             int lastTeme = this.Kifu_Document.CountTeme(this.Kifu_Document.Current8);
 
@@ -195,7 +180,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 IKifuElement dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode4.KomaHouse;
 
-                KomaPos komaP = house5.KomaPosAt(koma);
+                IKomaPos komaP = house5.KomaPosAt(koma);
 
                 int suji = Mh201Util.MasuToSuji(komaP.Star.Masu);
                 int dan = Mh201Util.MasuToDan(komaP.Star.Masu);
@@ -222,7 +207,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode5.KomaHouse;
 
-                KomaPos komaP = house5.KomaPosAt(koma);
+                IKomaPos komaP = house5.KomaPosAt(koma);
 
                 int suji = Mh201Util.MasuToSuji(komaP.Star.Masu);
                 int dan = Mh201Util.MasuToDan(komaP.Star.Masu);
@@ -246,7 +231,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house6 = dammyNode5.KomaHouse;
 
-                KomaPos komaP = house6.KomaPosAt(koma);
+                IKomaPos komaP = house6.KomaPosAt(koma);
 
                 RO_TeProcess tuginoItteData;
                 switch (this.kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)))
@@ -370,7 +355,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
@@ -419,7 +404,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
 
             this.setteiFile = new SetteiFile();
@@ -543,7 +528,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -571,7 +556,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -621,7 +606,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -686,7 +671,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// </summary>
         /// <param name="requestForMain"></param>
         public void Response(
-            RequestForMain requestForMain, LarabeLoggerTag logTag)
+            RequestForMain requestForMain, ILarabeLoggerTag logTag)
         {
             //------------------------------
             // 入力欄の表示

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -18,7 +18,7 @@ namespace Xenon.KifuLarabe.L04_Common
     ///         飛車の移動などを表せます。
     ///         
     /// </summary>
-    public class Masus_DirectedSegment : Masus
+    public class Masus_DirectedSegment : IMasus
     {
 
 
@@ -41,11 +41,11 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <summary>
         /// 親集合はありません。
         /// </summary>
-        public IEnumerable<Masus> Supersets
+        public IEnumerable<IMasus> Supersets
         {
             get
             {
-                List<Masus> supersets = new List<Masus>();
+                List<IMasus> supersets = new List<IMasus>();
 
                 // 親集合はありません。
 
@@ -89,10 +89,10 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public Masus Clone()
+        public IMasus Clone()
         {
             // クローンを作成します。
-            Masus clone = new Masus_DirectedSegment(
+            IMasus clone = new Masus_DirectedSegment(
                 this.masuOrigin,
                 this.sengo,
                 this.muki,
@@ -266,7 +266,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="handle"></param>
         /// <returns></returns>
-        public bool ContainsAll(Masus masus2)
+        public bool ContainsAll(IMasus masus2)
         {
             bool matched = true;
 
@@ -300,7 +300,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
 
             // 親集合はありませんが、一応コードを書いておきます。
-            foreach (Masus superset in this.Supersets)
+            foreach (IMasus superset in this.Supersets)
             {
                 if (!superset.IsEmptySet())
                 {
@@ -328,7 +328,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public void AddSupersets(Masus masus)
+        public void AddSupersets(IMasus masus)
         {
             foreach (M201 masuHandle in masus.Elements)
             {
@@ -343,10 +343,10 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public Masus Minus(Masus b)
+        public IMasus Minus(IMasus b)
         {
             // クローンを作成します。
-            Masus c = this.Clone();
+            IMasus c = this.Clone();
 
             // 指定の要素が含まれているかどうか１つ１つ調べます。
             foreach (M201 bMasu in b.Elements)
@@ -363,10 +363,10 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="bMasus"></param>
         /// <returns></returns>
-        public Masus Minus_OverThere(Masus bMasus)
+        public IMasus Minus_OverThere(IMasus bMasus)
         {
             // クローンを作成します。
-            Masus c = this.Clone();
+            IMasus c = this.Clone();
 
             // 指定の要素が含まれているかどうか１つ１つ調べます。
             foreach (M201 b in bMasus.Elements)

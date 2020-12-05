@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
     public abstract class SyokiHaichi
     {
@@ -19,7 +19,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 駒を、平手の初期配置に並べます。
         /// ************************************************************************************************************************
         /// </summary>
-        public static void ToHirate(Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static void ToHirate(Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
 
 
@@ -151,7 +151,7 @@ namespace Xenon.KifuLarabe.L04_Common
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             //------------------------------

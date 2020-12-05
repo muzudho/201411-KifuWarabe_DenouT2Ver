@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L01_Log;
+using Grayscale.KifuwaraneLib.L01_Log;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -106,7 +106,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 goto gt_EndMethod;
             }
 
-            Masus michi187 = Haiyaku184Array.KukanMasus[haiyaku][LarabeRandom.Random.Next(Haiyaku184Array.KukanMasus[haiyaku].Count)];
+            IMasus michi187 = Haiyaku184Array.KukanMasus[haiyaku][LarabeRandom.Random.Next(Haiyaku184Array.KukanMasus[haiyaku].Count)];
 
             List<int> elements = new List<int>();
             foreach (int element in michi187.Elements)

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -137,8 +137,8 @@ namespace Xenon.KifuLarabe.L04_Common
             IKifuElement node
             )
         {
-            TeProcess process = node.TeProcess;
-            TeProcess previousKomaP = node.Previous.TeProcess;
+            ITeProcess process = node.TeProcess;
+            ITeProcess previousKomaP = node.Previous.TeProcess;
 
             StringBuilder sb = new StringBuilder();
 

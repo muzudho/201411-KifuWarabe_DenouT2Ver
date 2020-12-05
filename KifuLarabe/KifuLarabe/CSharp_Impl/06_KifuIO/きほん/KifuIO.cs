@@ -8,11 +8,11 @@ using System.Windows.Forms;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
 
@@ -30,12 +30,12 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="tottaKoma"></param>
         /// <param name="underKoma"></param>
         public static void Ittesasi3(
-            TeProcess teProcess,
+            ITeProcess teProcess,
             Kifu_Document kifuD,
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -63,7 +63,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             Ks14 syurui2 = KifuIO.Kifusasi30(teProcess, isBack);
 
 
-            KomaPos dst = KifuIO.Kifusasi35(syurui2, teProcess, kifuD, isBack);
+            IKomaPos dst = KifuIO.Kifusasi35(syurui2, teProcess, kifuD, isBack);
 
 
 
@@ -102,10 +102,10 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="isBack"></param>
         private static void Kifusasi25(
             out K40 movedKoma,
-            TeProcess teProcess,
+            ITeProcess teProcess,
             Kifu_Document kifuD,
             bool isBack,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -187,7 +187,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="back"></param>
         /// <returns></returns>
         private static Ks14 Kifusasi30(
-            TeProcess te,
+            ITeProcess te,
             bool back)
         {
             //------------------------------------------------------------
@@ -228,12 +228,12 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="kifuD"></param>
         /// <param name="back"></param>
         /// <returns></returns>
-        private static KomaPos Kifusasi35(
+        private static IKomaPos Kifusasi35(
             Ks14 syurui2,
-            TeProcess te,
+            ITeProcess te,
             Kifu_Document kifuD, bool back)
         {
-            KomaPos dst;
+            IKomaPos dst;
             if (back)
             {
                 M201 masu;
@@ -294,14 +294,14 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="kifuD"></param>
         /// <param name="back"></param>
         private static void Kifusasi52_WhenKifuRead(
-            KomaPos dst,
+            IKomaPos dst,
             Ks14 syurui2,
             ref K40 movedKoma,
             out K40 underKoma,
-            TeProcess teProcess,
+            ITeProcess teProcess,
             Kifu_Document kifuD,
             bool back,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             underKoma = K40.Error;
@@ -333,7 +333,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                     IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode2.KomaHouse;
 
-                    KomaPos tottaKomaP = house1.KomaPosAt(underKoma);
+                    IKomaPos tottaKomaP = house1.KomaPosAt(underKoma);
                     tottaKomaSyurui = Haiyaku184Array.Syurui(tottaKomaP.Star.Haiyaku);
                     System.Console.WriteLine("☆tottaKoma=" + tottaKomaSyurui);
 

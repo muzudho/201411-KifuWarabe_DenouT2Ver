@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -24,14 +24,14 @@ namespace Xenon.KifuLarabe.L04_Common
 
         public IKifuElement Previous { get; set; }
 
-        public TeProcess TeProcess
+        public ITeProcess TeProcess
         {
             get
             {
                 return this.teProcess;
             }
         }
-        private TeProcess teProcess;
+        private ITeProcess teProcess;
 
         /// <summary>
         /// キー：SFEN ※この仕様は暫定
@@ -42,7 +42,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
 
 
-        public Kifu_Node6(TeProcess teProcess, KomaHouse house)
+        public Kifu_Node6(ITeProcess teProcess, KomaHouse house)
         {
             this.Previous = null;
             this.teProcess = teProcess;

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
-using Xenon.KifuLarabe.L01_Log;
+using Grayscale.KifuwaraneLib.L01_Log;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -21,14 +21,14 @@ namespace Xenon.KifuLarabe.L04_Common
                 
         #region 静的プロパティー類
 
-        public static List<Masus> Items
+        public static List<IMasus> Items
         {
             get
             {
                 return Michi187Array.items;
             }
         }
-        private static List<Masus> items;
+        private static List<IMasus> items;
 
         static Michi187Array()
         {
@@ -36,7 +36,7 @@ namespace Xenon.KifuLarabe.L04_Common
             //----------
             // 筋１８７
             //----------
-            Michi187Array.items = new List<Masus>();
+            Michi187Array.items = new List<IMasus>();
         }
         #endregion
 
@@ -76,7 +76,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach (List<string> row in rows)
             {
-                Masus michi187 = new Masus_Ordered();
+                IMasus michi187 = new Masus_Ordered();
 
                 foreach (string field in row)
                 {

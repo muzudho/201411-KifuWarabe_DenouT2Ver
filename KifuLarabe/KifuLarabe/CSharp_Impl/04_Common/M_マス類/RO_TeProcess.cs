@@ -5,10 +5,10 @@ using System.Text;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -33,10 +33,10 @@ namespace Xenon.KifuLarabe.L04_Common
     /// ・駒種類：「歩」「と金」など。補助で容易。
     /// </summary>
     [Serializable]
-    public class RO_TeProcess : RO_KomaPos, TeProcess
+    public class RO_TeProcess : RO_KomaPos, ITeProcess
     {
 
-        public static readonly TeProcess NULL_OBJECT = new RO_TeProcess_Syokihaichi();
+        public static readonly ITeProcess NULL_OBJECT = new RO_TeProcess_Syokihaichi();
 
 
 
@@ -180,7 +180,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public TeProcess Src()
+        public ITeProcess Src()
         {
             RO_TeProcess src = new RO_TeProcess(
 

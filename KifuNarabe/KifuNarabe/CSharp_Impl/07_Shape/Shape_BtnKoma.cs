@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Drawing;
-
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Xenon.KifuNarabe.L07_Shape
 {
@@ -63,7 +57,7 @@ namespace Xenon.KifuNarabe.L07_Shape
         }
 
 
-        private void PaintText(Graphics g, KomaPos komaP, Point location)
+        private void PaintText(Graphics g, IKomaPos komaP, Point location)
         {
             if (null == komaP)
             {
@@ -125,7 +119,7 @@ namespace Xenon.KifuNarabe.L07_Shape
         /// </summary>
         /// <param name="g1"></param>
         /// <param name="kyokumen"></param>
-        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,LarabeLoggerTag logTag)
+        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILarabeLoggerTag logTag)
         {
             if (!this.Visible)
             {
@@ -184,7 +178,7 @@ namespace Xenon.KifuNarabe.L07_Shape
             IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
             KomaHouse house5 = dammyNode4.KomaHouse;
 
-            KomaPos komaP = house5.KomaPosAt(this.Koma);
+            IKomaPos komaP = house5.KomaPosAt(this.Koma);
             if (komaP.Star.Sengo == Sengo.Sente)
             {
                 //----------

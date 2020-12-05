@@ -6,49 +6,49 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L04_Common;
 
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
-    public delegate void DELEGATE_RefreshHirate(
-        Kifu_Document kifuD,LarabeLoggerTag logTag
+    public delegate void RefreshHirateDelegate(
+        Kifu_Document kifuD,ILarabeLoggerTag logTag
     );
-    public delegate void DELEGATE_RefreshShiteiKyokumen(
+    public delegate void RefreshShiteiKyokumenDelegate(
         Kifu_Document kifuD,
         ref string restText,
         SfenStartpos sfenStartpos,
-        LarabeLoggerTag logTag
+        ILarabeLoggerTag logTag
     );
-    public delegate void DELEGATE_IttesasiPaint(
+    public delegate void IttesasiPaintDelegate(
         Kifu_Document kifuD,
         string restText,
         K40 movedKoma,
         //K40 tottaKoma,
         K40 underKoma,
         IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
-        LarabeLoggerTag logTag
+        ILarabeLoggerTag logTag
     );
 
     /// <summary>
     /// 変化なし
     /// </summary>
-    public class KifuParserA_Impl : KifuParserA
+    public class KifuParserA_Impl : IKifuParserA
     {
 
-        public KifuParserA_State State { get; set; }
+        public IKifuParserAState State { get; set; }
 
 
-        public DELEGATE_RefreshHirate Delegate_RefreshHirate { get; set; }
+        public RefreshHirateDelegate OnRefreshHirate { get; set; }
 
 
-        public DELEGATE_RefreshShiteiKyokumen Delegate_RefreshShiteiKyokumen { get; set; }
+        public RefreshShiteiKyokumenDelegate OnRefreshShiteiKyokumen { get; set; }
 
 
-        public DELEGATE_IttesasiPaint Delegate_IttesasiPaint { get; set; }
+        public IttesasiPaintDelegate OnIttesasiPaint { get; set; }
 
 
 
@@ -57,15 +57,15 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             // 初期状態＝ドキュメント
             this.State = KifuParserA_StateA0_Document.GetInstance();
 
-            this.Delegate_RefreshHirate = this.Dammy_RefreshHirate;
-            this.Delegate_RefreshShiteiKyokumen = this.Dammy_RefreshShiteiKyokumen;
-            this.Delegate_IttesasiPaint = this.Dammy_IttesasiPaint;
+            this.OnRefreshHirate = this.Dammy_RefreshHirate;
+            this.OnRefreshShiteiKyokumen = this.Dammy_RefreshShiteiKyokumen;
+            this.OnIttesasiPaint = this.Dammy_IttesasiPaint;
         }
 
 
         private void Dammy_RefreshHirate(
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag)
+            ILarabeLoggerTag logTag)
         {
         }
 
@@ -73,7 +73,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
         }
@@ -85,7 +85,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             //K40 tottaKoma,
             K40 underKoma,
             IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
         }
@@ -103,7 +103,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -115,7 +115,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━━━━━┓");
                 LarabeLogger.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
-                KifuParserA_State nextState;
+                IKifuParserAState nextState;
                 inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
                     hint + ":KifuParserA_Impl#Execute_Step", logTag);
                 this.State = nextState;
@@ -144,7 +144,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -156,7 +156,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━━━━━━━━━━┓");
                 LarabeLogger.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
-                KifuParserA_State nextState = this.State;
+                IKifuParserAState nextState = this.State;
 
                 bool toBreak = false;
 

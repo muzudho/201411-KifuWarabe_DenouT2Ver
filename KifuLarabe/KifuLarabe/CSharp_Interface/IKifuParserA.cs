@@ -1,20 +1,20 @@
 ﻿using System.Runtime.CompilerServices;
 
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
-    public interface KifuParserA
+    public interface IKifuParserA
     {
 
-        DELEGATE_RefreshHirate Delegate_RefreshHirate { get; set; }
+        RefreshHirateDelegate OnRefreshHirate { get; set; }
 
 
-        DELEGATE_RefreshShiteiKyokumen Delegate_RefreshShiteiKyokumen { get; set; }
+        RefreshShiteiKyokumenDelegate OnRefreshShiteiKyokumen { get; set; }
 
 
-        DELEGATE_IttesasiPaint Delegate_IttesasiPaint { get; set; }
+        IttesasiPaintDelegate OnIttesasiPaint { get; set; }
 
 
                 /// <summary>
@@ -29,7 +29,7 @@ namespace Xenon.KifuLarabe
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -46,7 +46,7 @@ namespace Xenon.KifuLarabe
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

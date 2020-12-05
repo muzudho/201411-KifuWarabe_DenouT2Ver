@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_上(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_上(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し上(sengo, masu_ji);
         }
@@ -39,7 +39,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_昇(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_昇(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し昇(sengo, masu_ji);
         }
@@ -52,7 +52,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_射(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_射(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し射(sengo, masu_ji);
         }
@@ -65,7 +65,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_沈(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_沈(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し沈(sengo, masu_ji);
         }
@@ -78,7 +78,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_引(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_引(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し引(sengo, masu_ji);
         }
@@ -91,7 +91,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_降(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_降(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し降(sengo, masu_ji);
         }
@@ -104,7 +104,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_滑(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_滑(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し滑(sengo, masu_ji);
         }
@@ -117,7 +117,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstKantu_浮(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKantu_浮(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKantu_巻戻し浮(sengo, masu_ji);
         }
@@ -130,7 +130,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_上(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_上(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppoA_巻戻し上(sengo, masu_ji);
         }
@@ -143,7 +143,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_昇(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_昇(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し昇(sengo, masu_ji);
         }
@@ -156,7 +156,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_射(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_射(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し射(sengo, masu_ji);
         }
@@ -169,7 +169,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_沈(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_沈(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し沈(sengo, masu_ji);
         }
@@ -182,7 +182,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_引(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_引(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し引(sengo, masu_ji);
         }
@@ -195,7 +195,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_降(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_降(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し降(sengo, masu_ji);
         }
@@ -208,7 +208,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_滑(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_滑(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し滑(sengo, masu_ji);
         }
@@ -221,7 +221,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_ji">(自)</param>
         /// <returns></returns>
-        public static Masus DstIppo_浮(Sengo sengo, M201 masu_ji)
+        public static IMasus DstIppo_浮(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcIppo_巻戻し浮(sengo, masu_ji);
         }
@@ -234,7 +234,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="itaru"></param>
         /// <returns></returns>
-        public static Masus DstKeimatobi_駆(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKeimatobi_駆(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKeimatobi_巻戻し跳(Converter04.AlternateSengo( sengo), masu_ji);
         }
@@ -248,7 +248,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="itaru"></param>
         /// <returns></returns>
-        public static Masus DstKeimatobi_跳(Sengo sengo, M201 masu_ji)
+        public static IMasus DstKeimatobi_跳(Sengo sengo, M201 masu_ji)
         {
             return KomanoKidou.SrcKeimatobi_巻戻し駆(Converter04.AlternateSengo( sengo), masu_ji);
         }
@@ -263,7 +263,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus Dst_歩打面(Sengo sengo)
+        public static IMasus Dst_歩打面(Sengo sengo)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -349,7 +349,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus Dst_桂打面(Sengo sengo)
+        public static IMasus Dst_桂打面(Sengo sengo)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -433,7 +433,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus Dst_全打面(Sengo sengo)
+        public static IMasus Dst_全打面(Sengo sengo)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -506,9 +506,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し上(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し上(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcA;
+            IMasus srcA;
 
             //******************************
             // △後手
@@ -585,9 +585,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し昇(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し昇(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcB;
+            IMasus srcB;
 
             //******************************
             // △後手
@@ -660,9 +660,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し射(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し射(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcC;
+            IMasus srcC;
 
             //******************************
             // △後手
@@ -734,9 +734,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し沈(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し沈(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcD;
+            IMasus srcD;
 
             //******************************
             // △後手
@@ -808,9 +808,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し引(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し引(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcE;
+            IMasus srcE;
 
             //******************************
             // △後手
@@ -884,9 +884,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し降(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し降(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcF;
+            IMasus srcF;
 
             //******************************
             // △後手
@@ -958,9 +958,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し滑(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し滑(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcG;
+            IMasus srcG;
 
             //******************************
             // △後手
@@ -1032,9 +1032,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKantu_巻戻し浮(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKantu_巻戻し浮(Sengo sengo, M201 masu_itaru)
         {
-            Masus srcH;
+            IMasus srcH;
 
             //******************************
             // △後手
@@ -1104,7 +1104,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppoA_巻戻し上(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppoA_巻戻し上(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcA = new Masus_Set();
 
@@ -1159,7 +1159,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し昇(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し昇(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcB = new Masus_Set();
 
@@ -1214,7 +1214,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し射(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し射(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcC = new Masus_Set();
 
@@ -1269,7 +1269,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し沈(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し沈(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcD = new Masus_Set();
 
@@ -1324,7 +1324,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し引(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し引(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcE = new Masus_Set();
 
@@ -1381,7 +1381,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し降(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し降(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcF = new Masus_Set();
 
@@ -1436,7 +1436,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し滑(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し滑(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcG = new Masus_Set();
 
@@ -1491,7 +1491,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcIppo_巻戻し浮(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcIppo_巻戻し浮(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcH = new Masus_Set();
 
@@ -1546,7 +1546,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKeimatobi_巻戻し跳(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKeimatobi_巻戻し跳(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcI = new Masus_Set();
 
@@ -1609,7 +1609,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="sengo"></param>
         /// <param name="masu_itaru"></param>
         /// <returns></returns>
-        public static Masus SrcKeimatobi_巻戻し駆(Sengo sengo, M201 masu_itaru)
+        public static IMasus SrcKeimatobi_巻戻し駆(Sengo sengo, M201 masu_itaru)
         {
             Masus_Set srcJ = new Masus_Set();
 

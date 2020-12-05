@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
     /// <summary>
     /// 平手の初期配置です。
     /// </summary>
-    public class KifuParserA_StateA1a_SfenStartpos : KifuParserA_State
+    public class KifuParserA_StateA1a_SfenStartpos : IKifuParserAState
     {
 
 
@@ -39,11 +39,11 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         public string Execute(
             string inputLine,
             Kifu_Document kifuD,
-            out KifuParserA_State nextState,
-            KifuParserA owner,
+            out IKifuParserAState nextState,
+            IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             nextState = this;

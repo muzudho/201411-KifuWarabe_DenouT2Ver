@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
-
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 using Xenon.KifuNarabe.L07_Shape;
 
 namespace Xenon.KifuNarabe.L09_Ui
@@ -34,7 +27,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             Shape_BtnMasu btnMasu,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -64,7 +57,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
             KomaHouse house1 = dammyNode1.KomaHouse;
 
-            KomaPos dst = house1.KomaPosAt(btnKoma_Selected.Koma).Next(
+            IKomaPos dst = house1.KomaPosAt(btnKoma_Selected.Koma).Next(
                     house1.KomaPosAt(btnKoma_Selected.Koma).Star.Sengo,
                     btnMasu.Zahyo,
                     syurui,
@@ -279,7 +272,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             SfenStartpos sfenStartpos,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
         )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -590,7 +583,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             K40 koma,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             int curHou = kifuD.CountTeme(kifuD.Current8);
@@ -598,7 +591,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             IKifuElement dammyNode1 = kifuD.ElementAt8(curHou);
             KomaHouse house10 = dammyNode1.KomaHouse;
 
-            KomaPos komaP = house10.KomaPosAt(koma);
+            IKomaPos komaP = house10.KomaPosAt(koma);
             Shape_BtnKoma btnKoma = Converter09.KomaToBtn(koma, shape_PnlTaikyoku);
 
             switch (M201Util.GetOkiba(komaP.Star.Masu))

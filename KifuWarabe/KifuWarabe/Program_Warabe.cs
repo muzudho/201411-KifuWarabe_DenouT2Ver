@@ -11,11 +11,11 @@ using System.Text.RegularExpressions;
 using Xenon.KifuWarabe.L01_Log;
 using Xenon.KifuWarabe.L10_Think;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
 using System.Windows.Forms;
 
@@ -32,7 +32,7 @@ namespace Xenon.KifuWarabe
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            LarabeLoggerTag logTag = LoggerTag_Warabe.ENGINE;
+            ILarabeLoggerTag logTag = LoggerTag_Warabe.ENGINE;
 
             try
             {
@@ -1025,7 +1025,7 @@ namespace Xenon.KifuWarabe
                                         //------------------------------------------------------------
                                         // 指し手のチョイス
                                         //------------------------------------------------------------
-                                        TeProcess bestSasite = SasiteRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
+                                        ITeProcess bestSasite = SasiteRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
                                         if (bestSasite.isEnableSfen())
                                         {
                                             string sfenText = bestSasite.ToSfenText();

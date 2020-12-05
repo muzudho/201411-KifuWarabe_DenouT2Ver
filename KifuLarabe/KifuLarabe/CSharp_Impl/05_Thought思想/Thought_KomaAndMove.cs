@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L05_Thought;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L05_Thought;
 
-namespace Xenon.KifuLarabe.L05_Thought
+namespace Grayscale.KifuwaraneLib.L05_Thought
 {
 
 
@@ -29,8 +29,8 @@ namespace Xenon.KifuLarabe.L05_Thought
         /// <param name="logTag"></param>
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
-            Masus b,
-            LarabeLoggerTag logTag
+            IMasus b,
+            ILarabeLoggerTag logTag
             )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -40,9 +40,9 @@ namespace Xenon.KifuLarabe.L05_Thought
 
             foreach (K40 selfKoma in list_koma)
             {
-                Masus srcMasus = c.ElementAt(selfKoma);
+                IMasus srcMasus = c.ElementAt(selfKoma);
 
-                Masus minusedMasus = srcMasus.Minus(b);
+                IMasus minusedMasus = srcMasus.Minus(b);
 
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
@@ -60,8 +60,8 @@ namespace Xenon.KifuLarabe.L05_Thought
         /// <param name="logTag"></param>
         public static KomaAndMasusDictionary Minus_OverThereMasus(
             KomaAndMasusDictionary a1,
-            Masus b,
-            LarabeLoggerTag logTag
+            IMasus b,
+            ILarabeLoggerTag logTag
         )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -72,9 +72,9 @@ namespace Xenon.KifuLarabe.L05_Thought
                 LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "差し替える前");
                 LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
 
-                Masus srcMasus = c.ElementAt(selfKoma);
+                IMasus srcMasus = c.ElementAt(selfKoma);
 
-                Masus minusedMasus = srcMasus.Minus_OverThere(b);
+                IMasus minusedMasus = srcMasus.Minus_OverThere(b);
 
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
-using Xenon.KifuLarabe.L01_Log;
+using Grayscale.KifuwaraneLib.L01_Log;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -45,13 +45,13 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <summary>
         /// 空間フィールド。（１～２４個）
         /// </summary>
-        public static Dictionary<Kh185, List<Masus>> KukanMasus { get { return Haiyaku184Array.kukanMasus; } }
-        private static Dictionary<Kh185, List<Masus>> kukanMasus;
+        public static Dictionary<Kh185, List<IMasus>> KukanMasus { get { return Haiyaku184Array.kukanMasus; } }
+        private static Dictionary<Kh185, List<IMasus>> kukanMasus;
 
 
         static Haiyaku184Array()
         {
-            Haiyaku184Array.kukanMasus = new Dictionary<Kh185, List<Masus>>();
+            Haiyaku184Array.kukanMasus = new Dictionary<Kh185, List<IMasus>>();
             Haiyaku184Array.syurui = new List<Ks14>();
             Haiyaku184Array.name = new List<string>();
         }
@@ -96,7 +96,7 @@ namespace Xenon.KifuLarabe.L04_Common
                         case 0://名前
                             {
                                 Haiyaku184Array.Name.Add(field);
-                                Haiyaku184Array.KukanMasus.Add( Kh185Array.Items[haiyaku], new List<Masus>());
+                                Haiyaku184Array.KukanMasus.Add( Kh185Array.Items[haiyaku], new List<IMasus>());
                             }
                             break;
 

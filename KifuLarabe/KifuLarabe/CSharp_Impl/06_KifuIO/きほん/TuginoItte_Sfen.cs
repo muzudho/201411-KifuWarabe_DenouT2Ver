@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
     /// <summary>
@@ -136,9 +136,9 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         public static bool GetData_FromText(
             string text,
             out string restText,
-            out TeProcess process,
+            out ITeProcess process,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             bool successful = false;
@@ -239,9 +239,9 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             string str3, //123456789
             string str4, //abcdefghi
             string strNari, //+
-            out TeProcess process,
+            out ITeProcess process,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             process = RO_TeProcess.NULL_OBJECT;

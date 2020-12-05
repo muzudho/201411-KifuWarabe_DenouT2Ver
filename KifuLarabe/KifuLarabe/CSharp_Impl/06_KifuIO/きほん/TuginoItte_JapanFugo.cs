@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+            string text, out string restText, out ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             process = null;
             bool successful = false;
@@ -118,9 +118,9 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             string strAgaruHiku, // 上|引
             string strNariFunari, //成|不成
             string strDaHyoji, //打
-            out TeProcess process,
+            out ITeProcess process,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -212,7 +212,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 //└─┴─┴─┘
                 bool isE = true;
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し引(sengo, dst1)); }
 
                 if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
@@ -308,7 +308,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isA) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し上(sengo, dst1)); }
                 if (isC) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し射(sengo, dst1)); }
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し引(sengo, dst1)); }
@@ -450,7 +450,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 //  └─┴─┴─┘
                 bool isE = true;
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し引(sengo, dst1)); }
 
                 if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
@@ -511,7 +511,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isI) { srcAll.AddSupersets(KomanoKidou.SrcKeimatobi_巻戻し跳(sengo, dst1)); }
                 if (isJ) { srcAll.AddSupersets(KomanoKidou.SrcKeimatobi_巻戻し駆(sengo, dst1)); }
 
@@ -584,7 +584,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isB) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し昇(sengo, dst1)); }
                 if (isD) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し沈(sengo, dst1)); }
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し引(sengo, dst1)); }
@@ -672,7 +672,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isA) { srcAll.AddSupersets(KomanoKidou.SrcIppoA_巻戻し上(sengo, dst1)); }
                 if (isC) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し射(sengo, dst1)); }
                 if (isD) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し沈(sengo, dst1)); }
@@ -713,7 +713,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 bool isG = true;
                 bool isH = true;
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isA) { srcAll.AddSupersets(KomanoKidou.SrcIppoA_巻戻し上(sengo, dst1)); }
                 if (isB) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し昇(sengo, dst1)); }
                 if (isC) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し射(sengo, dst1)); }
@@ -838,7 +838,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isA) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し上(sengo, dst1)); }
                 if (isB) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し昇(sengo, dst1)); }
                 if (isC) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し射(sengo, dst1)); }
@@ -961,7 +961,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                         break;
                 }
 
-                Masus srcAll = new Masus_Set();
+                IMasus srcAll = new Masus_Set();
                 if (isA) { srcAll.AddSupersets(KomanoKidou.SrcIppoA_巻戻し上(sengo, dst1)); }
                 if (isB) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し昇(sengo, dst1)); }
                 if (isC) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し射(sengo, dst1)); }
@@ -1106,7 +1106,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, Masus srcAll, Kifu_Document kifuD, out K40 foundKoma, LarabeLoggerTag logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILarabeLoggerTag logTag)
         {
             bool hit = false;
             foundKoma = K40.Error;
@@ -1120,7 +1120,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                     IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house4 = dammyNode6.KomaHouse;
 
-                    KomaPos komaP2 = house4.KomaPosAt(koma);
+                    IKomaPos komaP2 = house4.KomaPosAt(koma);
 
                     if (sengo == komaP2.Star.Sengo
                         && Okiba.ShogiBan == M201Util.GetOkiba(komaP2.Star.Masu)

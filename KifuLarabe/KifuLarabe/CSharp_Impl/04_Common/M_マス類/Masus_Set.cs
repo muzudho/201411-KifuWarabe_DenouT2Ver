@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Drawing;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -42,7 +42,7 @@ namespace Xenon.KifuLarabe.L04_Common
     /// 
     /// 順序を持たない集合です。
     /// </summary>
-    public class Masus_Set : Masus
+    public class Masus_Set : IMasus
     {
 
         #region プロパティ
@@ -71,7 +71,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 }
 
                 // 自分が示している集合が示している要素
-                foreach (Masus masus in this.supersets_)
+                foreach (IMasus masus in this.supersets_)
                 {
                     foreach (M201 masu2 in masus.Elements)
                     {
@@ -87,7 +87,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
         private HashSet<M201> elements_;
 
-        public IEnumerable<Masus> Supersets
+        public IEnumerable<IMasus> Supersets
         {
             get
             {
@@ -95,10 +95,10 @@ namespace Xenon.KifuLarabe.L04_Common
                 
 
                 // 全要素
-                HashSet<Masus> supersets2 = new HashSet<Masus>();
+                HashSet<IMasus> supersets2 = new HashSet<IMasus>();
 
                 // 自分が直接示している要素をコピー
-                Masus myElements = new Masus_Set();
+                IMasus myElements = new Masus_Set();
                 {
                     foreach (M201 masu1 in this.elements_)
                     {
@@ -107,7 +107,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 }
 
                 // 自分が示している集合が示している要素
-                foreach (Masus masus in this.supersets_)
+                foreach (IMasus masus in this.supersets_)
                 {
                     if (!supersets2.Contains(masus))//マス番号の重複は除外
                     {
@@ -119,7 +119,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
         }
 
-        private List<Masus> supersets_;
+        private List<IMasus> supersets_;
 
         #endregion
 
@@ -127,13 +127,13 @@ namespace Xenon.KifuLarabe.L04_Common
         public Masus_Set()
         {
             this.elements_ = new HashSet<M201>();
-            this.supersets_ = new List<Masus>();
+            this.supersets_ = new List<IMasus>();
         }
 
 
-        public Masus Clone()
+        public IMasus Clone()
         {
-            Masus clone = new Masus_Set();
+            IMasus clone = new Masus_Set();
 
             // 要素をコピーします。
             foreach (M201 masuHandle in this.elements_)
@@ -142,7 +142,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
 
             // 親集合のクローンをコピーします。
-            foreach(Masus masus in this.supersets_)
+            foreach(IMasus masus in this.supersets_)
             {
                 clone.AddSupersets(masus.Clone());
             }
@@ -159,7 +159,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
                 count += this.elements_.Count;
 
-                foreach (Masus masus in this.supersets_)
+                foreach (IMasus masus in this.supersets_)
                 {
                     count += masus.Count;
                 }
@@ -195,7 +195,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="handle"></param>
         /// <returns></returns>
-        public bool ContainsAll(Masus masus2)
+        public bool ContainsAll(IMasus masus2)
         {
             bool matched = true;
 
@@ -229,7 +229,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
 
             // 親集合
-            foreach (Masus superset in this.supersets_)
+            foreach (IMasus superset in this.supersets_)
             {
                 if (!superset.IsEmptySet())
                 {
@@ -267,7 +267,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 親集合の仲間を加えます。
         /// </summary>
         /// <param name="masus"></param>
-        public void AddSupersets(Masus masus)
+        public void AddSupersets(IMasus masus)
         {
             this.supersets_.Add(masus);
         }
@@ -284,7 +284,7 @@ namespace Xenon.KifuLarabe.L04_Common
             this.elements_.Remove(bMasu);
 
             // 親集合から削除
-            foreach( Masus thisSupers in this.supersets_)
+            foreach( IMasus thisSupers in this.supersets_)
             {
                 thisSupers.RemoveElement(bMasu);
             }
@@ -314,10 +314,10 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public Masus Minus(Masus b)
+        public IMasus Minus(IMasus b)
         {
             // クローンを作ります。
-            Masus c = this.Clone();
+            IMasus c = this.Clone();
 
             // 要素の削除
             {
@@ -330,10 +330,10 @@ namespace Xenon.KifuLarabe.L04_Common
             return c;
         }
 
-        public Masus Minus_OverThere(Masus targetMasus)
+        public IMasus Minus_OverThere(IMasus targetMasus)
         {
             // 順序がないので、Minus無印と同じです。
-            Masus c = this.Minus(targetMasus);
+            IMasus c = this.Minus(targetMasus);
             //System.Console.WriteLine(this.GetType().Name + "#Minus_OverThere：　★c＝" + c.DebugString_Set());
 
             return c;
@@ -375,7 +375,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
 
             // 次に親集合
-            foreach (Masus superset in this.Supersets)
+            foreach (IMasus superset in this.Supersets)
             {
                 sb.Append(superset.LogString_Concrete());
             }
@@ -395,7 +395,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
 
             // 次に親集合
-            foreach (Masus superset in this.Supersets)
+            foreach (IMasus superset in this.Supersets)
             {
                 foreach (M201 hMasu2 in superset.Elements)
                 {

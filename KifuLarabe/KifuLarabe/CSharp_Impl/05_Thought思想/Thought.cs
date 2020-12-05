@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L05_Thought
+namespace Grayscale.KifuwaraneLib.L05_Thought
 {
 
 
@@ -21,14 +21,14 @@ namespace Xenon.KifuLarabe.L05_Thought
 
         public static KomaAndMasusDictionary GetPotentialMovesByKoma(
             IKifuElement siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            List<K40> komas, LarabeLoggerTag logTag)
+            List<K40> komas, ILarabeLoggerTag logTag)
         {
             KomaAndMasusDictionary komaAndMove = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
 
             foreach (K40 koma in komas)
             {
                 // ポテンシャル・ムーブを調べます。
-                Masus masus_PotentialMove = Rule01_PotentialMove_15Array.ItemMethods[
+                IMasus masus_PotentialMove = Rule01_PotentialMove_15Array.ItemMethods[
                     (int)Haiyaku184Array.Syurui(siteiNode.KomaHouse.KomaPosAt(koma).Star.Haiyaku)
                     ]//←ポテンシャル・ムーブ取得関数を選択。歩とか。
                     (
@@ -55,18 +55,18 @@ namespace Xenon.KifuLarabe.L05_Thought
         /// <param name="selfSengo"></param>
         /// <param name="sbGohosyu"></param>
         /// <returns></returns>
-        public static Masus Masus_BySengoOkiba(
+        public static IMasus Masus_BySengoOkiba(
             IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             Sengo selfSengo,
             Okiba okiba,
             StringBuilder sbGohosyu,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             //------------------------------------------------------------
             // 自分の駒がある枡。
             //------------------------------------------------------------
-            Masus hMasus_Self = new Masus_Set();
+            IMasus hMasus_Self = new Masus_Set();
             {
                 foreach (K40 koma in Util_KyokumenReader.Komas_BySengo(siteiNode, selfSengo, logTag))// 自分の駒だけを抽出。
                 {

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -154,7 +154,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 
         /// 駒袋には、不成にして入れておきます。
         /// </summary>
-        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             this.ClearA();//this.Clear8();
 
@@ -164,7 +164,7 @@ namespace Xenon.KifuLarabe.L04_Common
             {
                 KomaHouse house1 = kifuD.ElementAt8(lastTeme).KomaHouse;
 
-                KomaPos komaP = house1.KomaPosAt(koma);
+                IKomaPos komaP = house1.KomaPosAt(koma);
 
                 M201 akiMasu = KifuIO.GetKomadaiKomabukuroSpace(Okiba.KomaBukuro, kifuD);
 
@@ -183,7 +183,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// [ここから採譜]機能
         /// ************************************************************************************************************************
         /// </summary>
-        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, LarabeLoggerTag logTag)
+        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILarabeLoggerTag logTag)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -627,7 +627,7 @@ namespace Xenon.KifuLarabe.L04_Common
             //KomaHouse newHouse,
             Kifu_Node6 newNode,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
 
@@ -708,7 +708,7 @@ namespace Xenon.KifuLarabe.L04_Common
             //Ks14 tottaSyurui,
             Kifu_Node6 newNode,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
 
             ,
             [CallerMemberName] string memberName = "",
@@ -731,7 +731,7 @@ namespace Xenon.KifuLarabe.L04_Common
             Ks14 tottaSyurui,
             KomaHouse newHouse,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
 
             ,
             [CallerMemberName] string memberName = "",
@@ -745,7 +745,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 goto gt_EndMethod;
             }
 
-            TeProcess oldLastTe = this.PopCurrent1().TeProcess;
+            ITeProcess oldLastTe = this.PopCurrent1().TeProcess;
 
             RO_TeProcess item = RO_TeProcess.New(
                 oldLastTe.SrcStar,

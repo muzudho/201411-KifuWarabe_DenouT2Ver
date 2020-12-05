@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
     /// リードオンリー駒位置
     /// </summary>
-    public class RO_KomaPos : KomaPos
+    public class RO_KomaPos : IKomaPos
     {
 
 
@@ -80,7 +80,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="dstHaiyaku"></param>
         /// <param name="hint"></param>
         /// <returns></returns>
-        public KomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint)
+        public IKomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint)
         {
             Kh185 dstHaiyaku = Data_HaiyakuTransition.ToHaiyaku( currentSyurui, (int)M201Util.BothSenteView(dstMasu, sengo) );
 
@@ -115,7 +115,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        public bool NeverOnaji(Kifu_Document kifuD, LarabeLoggerTag logTag, params List<K40>[] komaGroupArgs)
+        public bool NeverOnaji(Kifu_Document kifuD, ILarabeLoggerTag logTag, params List<K40>[] komaGroupArgs)
         {
             bool unmatched = true;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -127,7 +127,7 @@ namespace Xenon.KifuLarabe.L04_Common
                     IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode2.KomaHouse;
 
-                    KomaPos komaP = house1.KomaPosAt(koma);
+                    IKomaPos komaP = house1.KomaPosAt(koma);
 
                     if (
                             this.Star.Sengo == komaP.Star.Sengo
@@ -276,7 +276,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        public bool ExistsIn(Masus masu2Arr, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             bool matched = false;
 

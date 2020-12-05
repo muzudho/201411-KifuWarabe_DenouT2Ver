@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
-    public class RO_TeProcess_Syokihaichi : RO_TeProcess, TeProcess
+    public class RO_TeProcess_Syokihaichi : RO_TeProcess, ITeProcess
     {
 
         public RO_TeProcess_Syokihaichi()

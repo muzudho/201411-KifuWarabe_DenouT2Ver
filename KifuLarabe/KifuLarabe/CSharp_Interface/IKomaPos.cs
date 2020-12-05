@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
-    public interface KomaPos
+    public interface IKomaPos
     {
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -28,7 +24,7 @@ namespace Xenon.KifuLarabe
         /// <param name="dstHaiyaku"></param>
         /// <param name="hint"></param>
         /// <returns></returns>
-        KomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint);
+        IKomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint);
 
 
         /// <summary>
@@ -43,7 +39,7 @@ namespace Xenon.KifuLarabe
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        bool NeverOnaji(Kifu_Document kifuD, LarabeLoggerTag logTag, params List<K40>[] komaGroupArgs);
+        bool NeverOnaji(Kifu_Document kifuD, ILarabeLoggerTag logTag, params List<K40>[] komaGroupArgs);
 
 
         /// <summary>
@@ -71,7 +67,7 @@ namespace Xenon.KifuLarabe
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        bool ExistsIn(Masus masu2Arr, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
 
         

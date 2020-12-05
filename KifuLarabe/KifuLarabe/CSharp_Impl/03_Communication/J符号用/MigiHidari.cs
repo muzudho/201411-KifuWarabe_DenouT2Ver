@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xenon.KifuLarabe.L03_Communication
+namespace Grayscale.KifuwaraneLib.L03_Communication
 {
 
     /// <summary>

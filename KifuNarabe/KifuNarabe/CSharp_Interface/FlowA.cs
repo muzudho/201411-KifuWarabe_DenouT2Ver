@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L04_Common;
 using Xenon.KifuNarabe.L07_Shape;
 using Xenon.KifuNarabe.L09_Ui;
 
@@ -26,7 +21,7 @@ namespace Xenon.KifuNarabe
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        FlowA MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        FlowA MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
         /// <summary>
         /// ************************************************************************************************************************
@@ -39,7 +34,7 @@ namespace Xenon.KifuNarabe
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        FlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        FlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
         /// <summary>
         /// ************************************************************************************************************************
@@ -52,7 +47,7 @@ namespace Xenon.KifuNarabe
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        FlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        FlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
         /// <summary>
         /// ************************************************************************************************************************
@@ -65,7 +60,7 @@ namespace Xenon.KifuNarabe
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        FlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        FlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
     }
 }

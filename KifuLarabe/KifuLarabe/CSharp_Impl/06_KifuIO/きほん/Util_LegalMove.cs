@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L05_Thought;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L05_Thought;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
     public abstract class Util_LegalMove
     {
@@ -26,7 +26,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
 
@@ -55,7 +55,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
             // 相手の利きに、自分の王がいるかどうか確認します。
             bool mate = false;
-            komaAndMove_Enemy.Foreach_Entry((KeyValuePair<K40, Masus> entry, ref bool toBreak) =>
+            komaAndMove_Enemy.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
                 foreach (int masuHandle in entry.Value.Elements)
                 {
@@ -88,7 +88,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         public static void GetLegalMove(
             Kifu_Document kifuD,
             out KomaAndMasusDictionary kmDic_Self,
-            LarabeLoggerTag logTag)
+            ILarabeLoggerTag logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -124,11 +124,11 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 //------------------------------------------------------------
 
                 // 変換「自駒が動ける升」→「自駒が動ける手」
-                Dictionary<K40, List<TeProcess>> teMap_All = Converter04.KmDic_ToKtDic(
+                Dictionary<K40, List<ITeProcess>> teMap_All = Converter04.KmDic_ToKtDic(
                     kmDic_Self,
                     siteiNode_genzai
                     );
-                Dictionary<TeProcess, KomaHouse> kyokumenList = new Dictionary<TeProcess, KomaHouse>();
+                Dictionary<ITeProcess, KomaHouse> kyokumenList = new Dictionary<ITeProcess, KomaHouse>();
 
 
 
@@ -141,13 +141,13 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 sbOhteDebug.AppendLine("■(a)ひとまず全ての手を、局面に変換します。");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                foreach (KeyValuePair<K40, List<TeProcess>> entry1 in teMap_All)
+                foreach (KeyValuePair<K40, List<ITeProcess>> entry1 in teMap_All)
                 {
 
                     K40 koma = entry1.Key;// 駒
                     Ks14 syurui = Ks14Converter.FromKoma(koma);// Haiyaku184Array.Syurui(kyokumen.Stars[(int)koma].Star.Haiyaku);//駒の種類
                     // 駒の動ける升全て
-                    foreach (TeProcess teProcess in entry1.Value)
+                    foreach (ITeProcess teProcess in entry1.Value)
                     {
                         M201 masu = teProcess.Star.Masu;
 
@@ -168,14 +168,14 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
 
                 // compの移動先リスト
-                Dictionary<K40, TeProcess> enable_teMap = new Dictionary<K40, TeProcess>();
+                Dictionary<K40, ITeProcess> enable_teMap = new Dictionary<K40, ITeProcess>();
                 List<Kifu_Node6> enable_nextNodes = new List<Kifu_Node6>();
-                foreach (KeyValuePair<K40, List<TeProcess>> teEntry in teMap_All)
+                foreach (KeyValuePair<K40, List<ITeProcess>> teEntry in teMap_All)
                 {
                     K40 koma = teEntry.Key;
-                    List<TeProcess> teList = teEntry.Value;
+                    List<ITeProcess> teList = teEntry.Value;
 
-                    foreach (TeProcess te in teList)
+                    foreach (ITeProcess te in teList)
                     {
                         Kifu_Node6 nextNode = kifuD.CreateNodeA(
                             te.SrcStar,
@@ -216,7 +216,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 sbOhteDebug.AppendLine("■デバッグ出力(b)enable_teMap");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(b)
-                foreach (KeyValuePair<K40, TeProcess> entry1 in enable_teMap)
+                foreach (KeyValuePair<K40, ITeProcess> entry1 in enable_teMap)
                 {
                     sbOhteDebug.AppendLine("(b)" + entry1.Key + "=" + entry1.Value);
                 }
@@ -238,13 +238,13 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                 // 作り直し
                 kmDic_Self = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
-                foreach (KeyValuePair<K40, TeProcess> entry in enable_teMap)
+                foreach (KeyValuePair<K40, ITeProcess> entry in enable_teMap)
                 {
                     K40 koma = entry.Key;
-                    TeProcess te = entry.Value;
+                    ITeProcess te = entry.Value;
 
                     // ポテンシャル・ムーブを調べます。
-                    Masus masus_PotentialMove = new Masus_Set();
+                    IMasus masus_PotentialMove = new Masus_Set();
                     masus_PotentialMove.AddElement(te.Star.Masu);
 
                     if (!masus_PotentialMove.IsEmptySet())
@@ -258,7 +258,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 sbOhteDebug.AppendLine("■デバッグ出力(c)作り直しkomaAndMove_Self");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(c)
-                kmDic_Self.Foreach_Entry((KeyValuePair<K40, Masus> entry2, ref bool toBreak) =>
+                kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry2, ref bool toBreak) =>
                 {
                     sbOhteDebug.AppendLine("(c)" + entry2.Key + "=" + entry2.Value);
                 }
@@ -310,7 +310,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
             StringBuilder sbGohosyu,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             // 自駒（将棋盤上）
@@ -319,10 +319,10 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             List<K40> jiKomas_OnDai = null;
 
             // 自駒（将棋盤上）
-            Masus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu, logTag);
 
             // 敵駒（将棋盤上）
-            Masus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, Converter04.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, Converter04.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
 
 
             // 自駒の移動候補（将棋盤上）

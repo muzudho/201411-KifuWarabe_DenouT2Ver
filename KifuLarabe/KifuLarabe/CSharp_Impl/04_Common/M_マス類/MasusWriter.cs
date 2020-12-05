@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
     public abstract class MasusWriter
     {
@@ -17,7 +17,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="masus"></param>
         /// <param name="memo"></param>
         /// <returns></returns>
-        public static string DebugString(Masus masus, string memo)
+        public static string DebugString(IMasus masus, string memo)
         {
             StringBuilder sb = new StringBuilder();
 

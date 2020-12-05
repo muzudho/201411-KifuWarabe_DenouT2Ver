@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 using Xenon.KifuNarabe.L07_Shape;
 using Xenon.KifuNarabe.L08_Server;
 
@@ -27,20 +21,20 @@ namespace Xenon.KifuNarabe.L09_Ui
     public class FlowB_1TumamitaiKoma : FlowB
     {
 
-        public static void Check_MouseoverKomaKiki(KomaPos koma, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static void Check_MouseoverKomaKiki(IKomaPos koma, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             shape_PnlTaikyoku.Shogiban.KikiBan = new Masus_Set();// .Clear();
 
             // 駒の利き
-            Masus kikiZukei = Util_KyokumenReader.KomanoKiki(koma);
+            IMasus kikiZukei = Util_KyokumenReader.KomanoKiki(koma);
             //kikiZukei.DebugWrite("駒の利きLv1");
 
             // 味方の駒
-            Masus mikataZukei = Util_KyokumenReader.KomaHaichi(kifuD, kifuD.CountSengo(kifuD.CountTeme( kifuD.Current8)));
+            IMasus mikataZukei = Util_KyokumenReader.KomaHaichi(kifuD, kifuD.CountSengo(kifuD.CountTeme( kifuD.Current8)));
             //mikataZukei.DebugWrite("味方の駒");
 
             // 駒の利き上に駒がないか。
-            Masus ban2 = kikiZukei.Minus(mikataZukei);
+            IMasus ban2 = kikiZukei.Minus(mikataZukei);
             //kikiZukei.DebugWrite("駒の利きLv2");
 
             shape_PnlTaikyoku.Shogiban.KikiBan = ban2;
@@ -50,7 +44,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <summary>
         /// v(^▽^)v超能力『メナス』だぜ☆ 未来の脅威を予測し、可視化するぜ☆ｗｗｗ
         /// </summary>
-        public static void Menace(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static void Menace(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             if (0 < kifuD.CountTeme(kifuD.Current8))
             {
@@ -72,7 +66,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode1.KomaHouse;
 
-                    KomaPos komaP = house1.KomaPosAt(koma);
+                    IKomaPos komaP = house1.KomaPosAt(koma);
 
                     if (
                         komaP.OnShogiban
@@ -82,7 +76,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                         )
                     {
                         // 駒の利き
-                        Masus kikiZukei = Util_KyokumenReader.KomanoKiki(komaP);
+                        IMasus kikiZukei = Util_KyokumenReader.KomanoKiki(komaP);
 
                         IEnumerable<M201> kikiMasuList = kikiZukei.Elements;
                         foreach (M201 masu in kikiMasuList)
@@ -99,7 +93,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         }
 
 
-        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //------------------------------
             // メナス
@@ -118,7 +112,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -165,7 +159,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house3 = dammyNode3.KomaHouse;
 
-                    KomaPos koma = house3.KomaPosAt(btnKoma.Koma);
+                    IKomaPos koma = house3.KomaPosAt(btnKoma.Koma);
                     if(koma.OnShogiban)
                     {
                         // マウスオーバーした駒の利き
@@ -335,7 +329,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
-        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
             int curHou = kifuD.CountTeme(kifuD.Current8);
@@ -440,7 +434,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -730,7 +724,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
 
@@ -748,7 +742,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
 

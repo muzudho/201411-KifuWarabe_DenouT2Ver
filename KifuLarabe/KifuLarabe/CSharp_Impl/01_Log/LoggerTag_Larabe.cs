@@ -1,14 +1,14 @@
-﻿namespace Xenon.KifuLarabe
+﻿namespace Grayscale.KifuwaraneLib
 {
 
 
     /// <summary>
     /// 継承できる列挙型として利用☆
     /// </summary>
-    public class LoggerTag_Larabe : LarabeLoggerTag
+    public class LoggerTag_Larabe : ILarabeLoggerTag
     {
 
-        public static readonly LarabeLoggerTag DEFAULT = new LoggerTag_Larabe("#log_デフォルト",".txt",true);
+        public static readonly ILarabeLoggerTag DEFAULT = new LoggerTag_Larabe("#log_デフォルト",".txt",true);
 
         public string FileName { get { return this.FileNameWoe + this.Extension; } }
 
@@ -40,7 +40,7 @@
             }
 
             // If parameter cannot be cast to Point return false.
-            LarabeLoggerTag p = obj as LarabeLoggerTag;
+            ILarabeLoggerTag p = obj as ILarabeLoggerTag;
             if ((System.Object)p == null)
             {
                 return false;

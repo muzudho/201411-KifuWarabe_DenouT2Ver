@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using System.Diagnostics;
-
-using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
+﻿using System.Runtime.CompilerServices;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
 using Xenon.KifuNarabe.L07_Shape;
-using Xenon.KifuNarabe.L08_Server;
 
 namespace Xenon.KifuNarabe.L09_Ui
 {
@@ -57,9 +47,9 @@ namespace Xenon.KifuNarabe.L09_Ui
             string inputLine = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
 
             KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-            kifuParserA_Impl.Delegate_RefreshHirate = this.RefreshHirate;
-            kifuParserA_Impl.Delegate_RefreshShiteiKyokumen = this.RefreshShiteiKyokumen;
-            kifuParserA_Impl.Delegate_IttesasiPaint = this.IttesasiPaint;
+            kifuParserA_Impl.OnRefreshHirate = this.RefreshHirate;
+            kifuParserA_Impl.OnRefreshShiteiKyokumen = this.RefreshShiteiKyokumen;
+            kifuParserA_Impl.OnIttesasiPaint = this.IttesasiPaint;
 
 
             if (kifuParserA_Impl.State is KifuParserA_StateA0_Document)
@@ -137,7 +127,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         }
 
 
-        public void RefreshHirate(Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public void RefreshHirate(Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
@@ -154,7 +144,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             SyokiHaichi.ByStartpos(sfenStartpos, kifuD, logTag);
@@ -182,7 +172,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             //K40 tottaKoma2,
             K40 underKoma,
             IKifuElement node6,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             if (K40Util.OnKoma((int)movedKoma))

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xenon.KifuLarabe.L01_Log
+namespace Grayscale.KifuwaraneLib.L01_Log
 {
     public class LarabeRandom
     {

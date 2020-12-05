@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using System.Diagnostics;
-
-using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
 using Xenon.KifuNarabe.L07_Shape;
 using Xenon.KifuNarabe.L08_Server;
 
@@ -37,7 +30,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, LarabeLoggerTag logTag)
+            Kifu_Document kifuD, out string backedInputText, ILarabeLoggerTag logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -138,7 +131,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
 
         /// <summary>
@@ -153,7 +146,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

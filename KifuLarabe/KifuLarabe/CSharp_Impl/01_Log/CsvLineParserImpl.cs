@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xenon.KifuLarabe.L01_Log
+namespace Grayscale.KifuwaraneLib.L01_Log
 {
     /// <summary>
     /// CSVの１行分のパーサー。

@@ -7,11 +7,11 @@ using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -25,7 +25,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="kifuD"></param>
         /// <param name="starIndex"></param>
         /// <param name="komaP"></param>
-        public void SetStarPos(Kifu_Document kifuD, int starIndex, KomaPos komaP)
+        public void SetStarPos(Kifu_Document kifuD, int starIndex, IKomaPos komaP)
         {
             if(this.stars.Count==starIndex)
             {
@@ -47,7 +47,7 @@ namespace Xenon.KifuLarabe.L04_Common
         public void SetKomaPos(
             Kifu_Document kifuD,
             K40 koma,
-            KomaPos komaP
+            IKomaPos komaP
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -65,7 +65,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public KomaPos KomaPosAt(
+        public IKomaPos KomaPosAt(
             K40 koma
             ,
             [CallerMemberName] string memberName = "",
@@ -83,9 +83,9 @@ namespace Xenon.KifuLarabe.L04_Common
             return this.StarAt((int)koma);// this.Stars[(int)koma];
         }
 
-        public KomaPos StarAt(int starIndex)
+        public IKomaPos StarAt(int starIndex)
         {
-            KomaPos found;
+            IKomaPos found;
 
             if (starIndex < this.stars.Count)
             {
@@ -105,37 +105,37 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <summary>
         /// 置き場に置けるもののリストです。駒だけとは限りませんので、４０個以上になることもあります。
         /// </summary>
-        public List<KomaPos> Stars
+        public List<IKomaPos> Stars
         {
             get
             {
                 return this.stars;
             }
         }
-        private List<KomaPos> stars;
+        private List<IKomaPos> stars;
 
 
         public KomaHouse()
         {
-            this.stars = new List<KomaPos>();
+            this.stars = new List<IKomaPos>();
             this.startpos = "未設定";
         }
 
-        public KomaHouse(List<KomaPos> stars)
+        public KomaHouse(List<IKomaPos> stars)
         {
             this.stars = stars;
             this.startpos = "未設定";
         }
 
-        public KomaHouse(KomaPos[] items)
+        public KomaHouse(IKomaPos[] items)
         {
-            this.stars = items.OfType<KomaPos>().ToList();
+            this.stars = items.OfType<IKomaPos>().ToList();
             this.startpos = "未設定";
         }
 
         public void Reset_ToDammy1()
         {
-            this.stars = new List<KomaPos>()
+            this.stars = new List<IKomaPos>()
             {
                 RO_KomaPos.Reset( new RO_Star( Sengo.Sente, M201.fukuro01, Kh185.n051_底奇王)),
             };
@@ -143,7 +143,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
         public void Reset_ToDammy40()
         {
-            this.stars = new List<KomaPos>()
+            this.stars = new List<IKomaPos>()
             {
                 RO_KomaPos.Reset( new RO_Star( Sengo.Sente, M201.fukuro01, Kh185.n051_底奇王)),
                 RO_KomaPos.Reset( new RO_Star( Sengo.Sente, M201.fukuro01, Kh185.n051_底奇王)),
@@ -193,7 +193,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         public void Reset_ToHirateSyokihaichi()
         {
-            this.stars = new List<KomaPos>(){
+            this.stars = new List<IKomaPos>(){
 
                 RO_KomaPos.Reset( new RO_Star( Sengo.Sente, M201.fukuro01, Kh185.n051_底奇王)),//[0]
                 RO_KomaPos.Reset(new RO_Star(Sengo.Gote,M201.fukuro02, Kh185.n051_底奇王)),

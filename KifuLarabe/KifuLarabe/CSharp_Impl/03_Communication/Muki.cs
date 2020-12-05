@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xenon.KifuLarabe.L03_Communication
+namespace Grayscale.KifuwaraneLib.L03_Communication
 {
 
 

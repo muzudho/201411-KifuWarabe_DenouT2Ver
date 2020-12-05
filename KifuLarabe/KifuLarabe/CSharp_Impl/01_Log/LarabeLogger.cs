@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
-namespace Xenon.KifuLarabe.L01_Log
+namespace Grayscale.KifuwaraneLib.L01_Log
 {
 
     /// <summary>
@@ -38,24 +38,24 @@ namespace Xenon.KifuLarabe.L01_Log
         /// <summary>
         /// デフォルト・ログ・ファイル
         /// </summary>
-        private LarabeLoggerTag defaultFile;
+        private ILarabeLoggerTag defaultFile;
 
 
         /// <summary>
         /// タグの登録。リムーブに使用。
         /// </summary>
-        private List<LarabeLoggerTag> tagList;
+        private List<ILarabeLoggerTag> tagList;
 
 
         private LarabeLogger(string defaultLogFileNameWoe,string extension,bool enable)
         {
             this.defaultFile = new LoggerTag_Larabe(defaultLogFileNameWoe, extension, enable);
 
-            this.tagList = new List<LarabeLoggerTag>();
+            this.tagList = new List<ILarabeLoggerTag>();
         }
 
 
-        public void AddLogFile(LarabeLoggerTag tag)
+        public void AddLogFile(ILarabeLoggerTag tag)
         {
             this.tagList.Add(tag);
         }
@@ -72,7 +72,7 @@ namespace Xenon.KifuLarabe.L01_Log
             {
                 System.IO.File.Delete(this.defaultFile.FileName);
 
-                foreach (LarabeLoggerTag tag in this.tagList)
+                foreach (ILarabeLoggerTag tag in this.tagList)
                 {
                     System.IO.File.Delete(tag.FileNameWoe+tag.Extension);
                 }
@@ -95,7 +95,7 @@ namespace Xenon.KifuLarabe.L01_Log
         /// ************************************************************************************************************************
         /// </summary>
         /// <param name="line"></param>
-        public void WriteLineError(LarabeLoggerTag tag, string line)
+        public void WriteLineError(ILarabeLoggerTag tag, string line)
         {
             if (null == tag)
             {
@@ -148,7 +148,7 @@ namespace Xenon.KifuLarabe.L01_Log
         /// ************************************************************************************************************************
         /// </summary>
         /// <param name="line"></param>
-        public void WriteLineMemo(LarabeLoggerTag tag, string line)
+        public void WriteLineMemo(ILarabeLoggerTag tag, string line)
         {
             if (null == tag)
             {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -16,7 +16,7 @@ namespace Xenon.KifuLarabe.L04_Common
     public abstract class Rule01_PotentialMove_15Array
     {
 
-        public delegate Masus DELEGATE_CreateLegalMoveLv1(Sengo sengo, M201 masu_ji);
+        public delegate IMasus DELEGATE_CreateLegalMoveLv1(Sengo sengo, M201 masu_ji);
 
         public static DELEGATE_CreateLegalMoveLv1[] ItemMethods
         {
@@ -54,7 +54,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_01Fu(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_01Fu(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -74,7 +74,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_02Kyo(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_02Kyo(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -104,7 +104,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_03Kei(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_03Kei(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -126,7 +126,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_04Gin(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_04Gin(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -151,9 +151,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_05Kin(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_05Kin(Sengo sengo, M201 masu_ji)
         {
-            Masus dst = new Masus_Set();
+            IMasus dst = new Masus_Set();
 
             if (Okiba.ShogiBan == Converter04.Masu_ToOkiba(masu_ji))
             {
@@ -167,7 +167,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return dst;
         }
 
-        public static Masus CreateKin_static(Sengo sengo, M201 masu_ji)
+        public static IMasus CreateKin_static(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -189,7 +189,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_06Oh(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_06Oh(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -217,7 +217,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_07Hisya(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_07Hisya(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -252,7 +252,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_08Kaku(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_08Kaku(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -289,7 +289,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_09Ryu(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_09Ryu(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -333,7 +333,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_10Uma(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_10Uma(Sengo sengo, M201 masu_ji)
         {
             Masus_Set dst = new Masus_Set();
 
@@ -375,7 +375,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 合法手レベル１
         /// </summary>
         /// <returns></returns>
-        public static Masus Create_15ErrorKoma(Sengo sengo, M201 masu_ji)
+        public static IMasus Create_15ErrorKoma(Sengo sengo, M201 masu_ji)
         {
             return new Masus_Set();
         }

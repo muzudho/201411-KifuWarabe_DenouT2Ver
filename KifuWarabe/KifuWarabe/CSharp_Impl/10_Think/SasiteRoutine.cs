@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
 namespace Xenon.KifuWarabe.L10_Think
 {
@@ -27,7 +27,7 @@ namespace Xenon.KifuWarabe.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static TeProcess Sasu_Main(Kifu_Document kifu, LarabeLoggerTag logTag)
+        public static ITeProcess Sasu_Main(Kifu_Document kifu, ILarabeLoggerTag logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -48,7 +48,7 @@ namespace Xenon.KifuWarabe.L10_Think
             LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
-            TeProcess bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
+            ITeProcess bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
 
             // TODO:    できれば、合法手のリストから　さらに相手番の合法手のリストを伸ばして、
             //          １手先、２手先……の局面を　ツリー構造（Kifu_Document）に蓄えたあと、
@@ -66,7 +66,7 @@ namespace Xenon.KifuWarabe.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static RO_TeProcess Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, LarabeLoggerTag logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILarabeLoggerTag logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 

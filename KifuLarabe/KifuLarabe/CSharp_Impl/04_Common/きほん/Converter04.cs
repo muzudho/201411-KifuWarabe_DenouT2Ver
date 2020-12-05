@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -1024,7 +1024,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach (K40 koma in kmDic.ToKeyList())
             {
-                Masus masus = kmDic.ElementAt(koma);
+                IMasus masus = kmDic.ElementAt(koma);
 
                 foreach (M201 masu in masus.Elements)
                 {
@@ -1042,16 +1042,16 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="kmDic_Self"></param>
         /// <returns></returns>
-        public static Dictionary<K40, List<TeProcess>> KmDic_ToKtDic(
+        public static Dictionary<K40, List<ITeProcess>> KmDic_ToKtDic(
             KomaAndMasusDictionary kmDic_Self,
             Kifu_Node6 siteiNode_genzai
             )
         {
-            Dictionary<K40, List<TeProcess>> teMap_All = new Dictionary<K40, List<TeProcess>>();
+            Dictionary<K40, List<ITeProcess>> teMap_All = new Dictionary<K40, List<ITeProcess>>();
 
             //
             //
-            kmDic_Self.Foreach_Entry((KeyValuePair<K40, Masus> entry, ref bool toBreak) =>
+            kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
                 K40 koma = entry.Key;
 
@@ -1060,7 +1060,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 {
                     RO_Star star = siteiNode_genzai.KomaHouse.KomaPosAt(koma).Star;
 
-                    TeProcess teProcess = RO_TeProcess.Next3(
+                    ITeProcess teProcess = RO_TeProcess.Next3(
                         // 元
                         star,
                         // 先
@@ -1082,7 +1082,7 @@ namespace Xenon.KifuLarabe.L04_Common
                     else
                     {
                         // まだ登録されていない駒
-                        List<TeProcess> teList = new List<TeProcess>();
+                        List<ITeProcess> teList = new List<ITeProcess>();
                         teList.Add(teProcess);
                         teMap_All.Add(koma, teList);
                     }

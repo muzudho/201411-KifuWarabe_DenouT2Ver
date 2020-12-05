@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xenon.KifuLarabe
+﻿namespace Grayscale.KifuwaraneLib
 {
-    public interface LarabeLoggerTag
+    public interface ILarabeLoggerTag
     {
         string FileName { get; }
         string FileNameWoe { get; }

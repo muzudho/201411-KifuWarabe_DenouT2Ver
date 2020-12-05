@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using System.Text;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L04_Common;
+using System.Windows.Forms;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L04_Common;
 using Xenon.KifuNarabe.L09_Ui;
-using System.IO;
 
 namespace Xenon.KifuNarabe
 {
@@ -18,7 +14,7 @@ namespace Xenon.KifuNarabe
     /// </summary>
     public class LoggerTag_Narabe : LoggerTag_Larabe
     {
-        public static readonly LarabeLoggerTag PAINT;
+        public static readonly ILarabeLoggerTag PAINT;
 
         static LoggerTag_Narabe()
         {
@@ -42,7 +38,7 @@ namespace Xenon.KifuNarabe
         [STAThread]
         static void Main()
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
             LarabeLogger.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
 
             //----------

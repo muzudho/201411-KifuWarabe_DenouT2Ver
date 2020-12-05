@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -17,7 +17,7 @@ namespace Xenon.KifuLarabe.L04_Common
     /// </summary>
     public abstract class JFugoCreator15Array
     {
-        public delegate FugoJ DELEGATE_CreateJFugo(TeProcess teProcess, Kifu_Document kifuD, LarabeLoggerTag logTag);
+        public delegate FugoJ DELEGATE_CreateJFugo(ITeProcess teProcess, Kifu_Document kifuD, ILarabeLoggerTag logTag);
 
         public static DELEGATE_CreateJFugo[] ItemMethods
         {
@@ -52,7 +52,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public static FugoJ CreateNullKoma(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateNullKoma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // エラー
@@ -97,7 +97,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="process">移動先、移動元、両方のマス番号</param>
         /// <param name="kyokumen"></param>
         /// <returns></returns>
-        public static FugoJ CreateFu(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateFu(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 歩
@@ -117,8 +117,8 @@ namespace Xenon.KifuLarabe.L04_Common
             //├─┼─┼─┤
             //│  │Ｅ│  │
             //└─┴─┴─┘
-            Masus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 棋譜の現局面：競合駒
@@ -183,7 +183,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKyo(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateKyo(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 香
@@ -212,8 +212,8 @@ namespace Xenon.KifuLarabe.L04_Common
             //  ├─┼─┼─┤
             //  │  │E7│  │
             //  └─┴─┴─┘
-            Masus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -282,7 +282,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKei(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateKei(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 桂
@@ -306,9 +306,9 @@ namespace Xenon.KifuLarabe.L04_Common
             //├─┼─┼─┤
             //│Ｊ│　│Ｉ│
             //└─┘　└─┘
-            Masus srcI = KomanoKidou.SrcKeimatobi_巻戻し跳(process.Star.Sengo, process.Star.Masu);
-            Masus srcJ = KomanoKidou.SrcKeimatobi_巻戻し駆(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcI = KomanoKidou.SrcKeimatobi_巻戻し跳(process.Star.Sengo, process.Star.Masu);
+            IMasus srcJ = KomanoKidou.SrcKeimatobi_巻戻し駆(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -386,7 +386,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateGin(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateGin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 銀
@@ -406,12 +406,12 @@ namespace Xenon.KifuLarabe.L04_Common
             //├─┼─┼─┤
             //│Ｆ│Ｅ│Ｄ│
             //└─┴─┴─┘
-            Masus srcB = KomanoKidou.SrcIppo_巻戻し昇(process.Star.Sengo, process.Star.Masu);
-            Masus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
-            Masus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            Masus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
-            Masus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcB = KomanoKidou.SrcIppo_巻戻し昇(process.Star.Sengo, process.Star.Masu);
+            IMasus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
+            IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
+            IMasus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -548,7 +548,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKin(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateKin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -568,10 +568,10 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
         public static void CreateKin_static(
-            TeProcess process,//移動先、移動元、両方のマス番号
+            ITeProcess process,//移動先、移動元、両方のマス番号
             Kifu_Document kifuD,
             out MigiHidari migiHidari, out AgaruHiku agaruHiku, out NariFunari nari, out DaHyoji daHyoji,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             //************************************************************
@@ -589,13 +589,13 @@ namespace Xenon.KifuLarabe.L04_Common
             //├─┼─┼─┤
             //│Ｆ│Ｅ│Ｄ│
             //└─┴─┴─┘
-            Masus srcA = KomanoKidou.SrcIppoA_巻戻し上(process.Star.Sengo, process.Star.Masu);
-            Masus srcC = KomanoKidou.SrcIppo_巻戻し射(process.Star.Sengo, process.Star.Masu);
-            Masus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
-            Masus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            Masus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
-            Masus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcA = KomanoKidou.SrcIppoA_巻戻し上(process.Star.Sengo, process.Star.Masu);
+            IMasus srcC = KomanoKidou.SrcIppo_巻戻し射(process.Star.Sengo, process.Star.Masu);
+            IMasus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
+            IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
+            IMasus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -736,7 +736,7 @@ namespace Xenon.KifuLarabe.L04_Common
             nari = NariFunari.CTRL_SONOMAMA;
         }
 
-        public static FugoJ CreateOh(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateOh(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 王
@@ -775,7 +775,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateHisya(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateHisya(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 飛
@@ -823,11 +823,11 @@ namespace Xenon.KifuLarabe.L04_Common
             //  ├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤
             //  │  │  │  │  │  │  │  │  │E7│  │  │  │  │  │  │  │  │
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘
-            Masus srcA = KomanoKidou.SrcKantu_巻戻し上(process.Star.Sengo, process.Star.Masu);
-            Masus srcC = KomanoKidou.SrcKantu_巻戻し射(process.Star.Sengo, process.Star.Masu);
-            Masus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            Masus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcA = KomanoKidou.SrcKantu_巻戻し上(process.Star.Sengo, process.Star.Masu);
+            IMasus srcC = KomanoKidou.SrcKantu_巻戻し射(process.Star.Sengo, process.Star.Masu);
+            IMasus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            IMasus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 棋譜の現局面：競合駒
@@ -934,7 +934,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKaku(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateKaku(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 角
@@ -982,11 +982,11 @@ namespace Xenon.KifuLarabe.L04_Common
             //  ├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤
             //  │F7│  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │D7│
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘
-            Masus srcB = KomanoKidou.SrcKantu_巻戻し昇(process.Star.Sengo, process.Star.Masu);
-            Masus srcD = KomanoKidou.SrcKantu_巻戻し沈(process.Star.Sengo, process.Star.Masu);
-            Masus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
-            Masus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcB = KomanoKidou.SrcKantu_巻戻し昇(process.Star.Sengo, process.Star.Masu);
+            IMasus srcD = KomanoKidou.SrcKantu_巻戻し沈(process.Star.Sengo, process.Star.Masu);
+            IMasus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
+            IMasus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -1091,7 +1091,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateRyu(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateRyu(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 竜
@@ -1139,15 +1139,15 @@ namespace Xenon.KifuLarabe.L04_Common
             //  ├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤
             //  │  │  │  │  │  │  │  │  │E7│  │  │  │  │  │  │  │  │
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘
-            Masus srcA = KomanoKidou.SrcKantu_巻戻し上(process.Star.Sengo, process.Star.Masu);
-            Masus srcB = KomanoKidou.SrcIppo_巻戻し昇(process.Star.Sengo, process.Star.Masu);
-            Masus srcC = KomanoKidou.SrcKantu_巻戻し射(process.Star.Sengo, process.Star.Masu);
-            Masus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
-            Masus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            Masus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
-            Masus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            Masus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcA = KomanoKidou.SrcKantu_巻戻し上(process.Star.Sengo, process.Star.Masu);
+            IMasus srcB = KomanoKidou.SrcIppo_巻戻し昇(process.Star.Sengo, process.Star.Masu);
+            IMasus srcC = KomanoKidou.SrcKantu_巻戻し射(process.Star.Sengo, process.Star.Masu);
+            IMasus srcD = KomanoKidou.SrcIppo_巻戻し沈(process.Star.Sengo, process.Star.Masu);
+            IMasus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
+            IMasus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
+            IMasus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -1277,7 +1277,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateUma(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateUma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // 馬
@@ -1325,15 +1325,15 @@ namespace Xenon.KifuLarabe.L04_Common
             //  ├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤
             //  │F7│  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │D7│
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘
-            Masus srcA = KomanoKidou.SrcIppoA_巻戻し上(process.Star.Sengo, process.Star.Masu);
-            Masus srcB = KomanoKidou.SrcKantu_巻戻し昇(process.Star.Sengo, process.Star.Masu);
-            Masus srcC = KomanoKidou.SrcIppo_巻戻し射(process.Star.Sengo, process.Star.Masu);
-            Masus srcD = KomanoKidou.SrcKantu_巻戻し沈(process.Star.Sengo, process.Star.Masu);
-            Masus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            Masus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
-            Masus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            Masus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            TeProcess src = process.Src();
+            IMasus srcA = KomanoKidou.SrcIppoA_巻戻し上(process.Star.Sengo, process.Star.Masu);
+            IMasus srcB = KomanoKidou.SrcKantu_巻戻し昇(process.Star.Sengo, process.Star.Masu);
+            IMasus srcC = KomanoKidou.SrcIppo_巻戻し射(process.Star.Sengo, process.Star.Masu);
+            IMasus srcD = KomanoKidou.SrcKantu_巻戻し沈(process.Star.Sengo, process.Star.Masu);
+            IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
+            IMasus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
+            IMasus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
+            IMasus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
+            ITeProcess src = process.Src();
 
             //----------
             // 競合駒
@@ -1462,7 +1462,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateTokin(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateTokin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1481,7 +1481,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKyo(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateNariKyo(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1500,7 +1500,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKei(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateNariKei(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1520,7 +1520,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariGin(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateNariGin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1539,7 +1539,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateErrorKoma(TeProcess process, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public static FugoJ CreateErrorKoma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             //************************************************************
             // エラー

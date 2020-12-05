@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
     /// <summary>
@@ -28,7 +28,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         /// <param name="fugoList"></param>
         public static string ToJapaneseKifuText(
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             StringBuilder sb = new StringBuilder();

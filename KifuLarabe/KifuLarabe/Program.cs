@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneLib.L06_KifuIO;
 
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
     public partial class LarabeLoggerTag_Impl
     {
-        public static readonly LarabeLoggerTag SASITE_SEISEI_ROUTINE = new LoggerTag_Larabe("#log_指し手生成ルーチン",".txt",true);
-        public static readonly LarabeLoggerTag LOGGING_BY_GUI = new LoggerTag_Larabe("#log_将棋GUI_棋譜読取",".txt",true);
-        public static readonly LarabeLoggerTag LOGGING_BY_LARABE_STANDALONE = new LoggerTag_Larabe("#log_ララベProgram",".txt",true);
-        public static readonly LarabeLoggerTag LINKED_LIST = new LoggerTag_Larabe("#log_リンクトリスト",".txt",false);
+        public static readonly ILarabeLoggerTag SASITE_SEISEI_ROUTINE = new LoggerTag_Larabe("#log_指し手生成ルーチン",".txt",true);
+        public static readonly ILarabeLoggerTag LOGGING_BY_GUI = new LoggerTag_Larabe("#log_将棋GUI_棋譜読取",".txt",true);
+        public static readonly ILarabeLoggerTag LOGGING_BY_LARABE_STANDALONE = new LoggerTag_Larabe("#log_ララベProgram",".txt",true);
+        public static readonly ILarabeLoggerTag LINKED_LIST = new LoggerTag_Larabe("#log_リンクトリスト",".txt",false);
 
-        public static readonly LarabeLoggerTag ERROR = new LoggerTag_Larabe("#log_エラー", ".txt", true);
+        public static readonly ILarabeLoggerTag ERROR = new LoggerTag_Larabe("#log_エラー", ".txt", true);
     }
 }
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
     public class Program
     {
@@ -43,7 +43,7 @@ namespace Xenon.KifuLarabe
 
         public static int Main(string[] args)
         {
-            LarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
+            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
 
             {
                 //System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
@@ -352,7 +352,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -379,7 +379,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -406,7 +406,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d 2f2e";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -433,7 +433,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d 2f2e 2d2e";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -460,7 +460,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d 2f2e 2d2e 2h2e";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -487,7 +487,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d 2f2e 2d2e 2h2e 3a3b";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -514,7 +514,7 @@ namespace Xenon.KifuLarabe
                     string sfenText = "position startpos moves 2g2f 2c2d 2f2e 2d2e 2h2e 3a3b 2e2b";
                     System.Console.WriteLine("─────(" + sfenText + ")─────");
 
-                    KifuParserA kifuParserA = new KifuParserA_Impl();
+                    IKifuParserA kifuParserA = new KifuParserA_Impl();
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
@@ -878,30 +878,30 @@ namespace Xenon.KifuLarabe
             if(false)
             {
                 // 「８二、７二、６二、５二、４二」
-                Masus _M1 = new Masus_DirectedSegment(M201.n82_８二, Sengo.Gote, Muki.滑, 5);
+                IMasus _M1 = new Masus_DirectedSegment(M201.n82_８二, Sengo.Gote, Muki.滑, 5);
 
                 System.Console.WriteLine("①_M1＝" + _M1.LogString_Set());
 
                 // 「５二」
-                Masus _M2 = new Masus_Set();
+                IMasus _M2 = new Masus_Set();
                 _M2.AddElement(M201.n52_５二);
 
                 System.Console.WriteLine("②_M2＝" + _M2.LogString_Set());
 
                 // 「８二、７二、６二、５二」
-                Masus _M3 = _M1.Minus_OverThere(_M2);
+                IMasus _M3 = _M1.Minus_OverThere(_M2);
 
                 System.Console.WriteLine("③_M3＝" + _M3.LogString_Set());
 
                 // マイナスの効果が無視されているかもしれない☆　試してみよう☆
 
                 // 「８二」
-                Masus _M4 = new Masus_Set();
+                IMasus _M4 = new Masus_Set();
                 _M4.AddElement(M201.n82_８二);
                 System.Console.WriteLine("④_M4＝" + _M4.LogString_Set());
 
                 // 「７二、６二、５二」を期待するんだぜ……☆
-                Masus _M5 = _M3.Minus(_M4);
+                IMasus _M5 = _M3.Minus(_M4);
                 System.Console.WriteLine("⑤_M5＝" + _M5.LogString_Set());
             }
             #endregion
@@ -910,25 +910,25 @@ namespace Xenon.KifuLarabe
             if (false)
             {
                 // 「７二、６二、５二、４二、３二、２二、１二」
-                Masus _M1 = new Masus_DirectedSegment(M201.n72_７二, Sengo.Gote, Muki.滑, 7);
+                IMasus _M1 = new Masus_DirectedSegment(M201.n72_７二, Sengo.Gote, Muki.滑, 7);
                 System.Console.WriteLine("①_M1＝" + _M1.LogString_Set());
 
                 // 「２二」に自軍の角がいるとするぜ☆
-                Masus _M2 = new Masus_Set();
+                IMasus _M2 = new Masus_Set();
                 _M2.AddElement(M201.n22_２二);
                 System.Console.WriteLine("②_M2＝" + _M2.LogString_Set());
 
                 // 角が邪魔なので「７二、６二、５二、４二、３二」になるはず☆
-                Masus _M3 = _M1.Minus(_M2);
+                IMasus _M3 = _M1.Minus(_M2);
                 System.Console.WriteLine("③_M3＝" + _M3.LogString_Set());
 
                 // 「５二」で相手の駒が道を塞いでいるとするぜ☆
-                Masus _M4 = new Masus_Set();
+                IMasus _M4 = new Masus_Set();
                 _M4.AddElement(M201.n52_５二);
                 System.Console.WriteLine("④_M4＝" + _M4.LogString_Set());
 
                 // 「７二、６二、５二」を期待するんだぜ……☆
-                Masus _M5 = _M3.Minus_OverThere(_M4);
+                IMasus _M5 = _M3.Minus_OverThere(_M4);
                 System.Console.WriteLine("⑤_M5＝" + _M5.LogString_Set());
             }
             #endregion
@@ -938,7 +938,7 @@ namespace Xenon.KifuLarabe
             if (true)
             {
                 // １三の歩の動き「１四」
-                Masus _M1 = new Masus_Set();
+                IMasus _M1 = new Masus_Set();
                 _M1.AddElement(M201.n14_１四);
                 System.Console.WriteLine("①_M1＝" + _M1.LogString_Set());
                 KomaAndMasusDictionary dic1 = new KomaAndMasusDictionary();
@@ -946,7 +946,7 @@ namespace Xenon.KifuLarabe
                 System.Console.WriteLine("②dic1＝" + dic1.LogString_Set());
 
                 // ２三の歩の動き「２四」
-                Masus _M2 = new Masus_Set();
+                IMasus _M2 = new Masus_Set();
                 _M2.AddElement(M201.n24_２四);
                 System.Console.WriteLine("③_M2＝" + _M2.LogString_Set());
                 KomaAndMasusDictionary dic2 = new KomaAndMasusDictionary();

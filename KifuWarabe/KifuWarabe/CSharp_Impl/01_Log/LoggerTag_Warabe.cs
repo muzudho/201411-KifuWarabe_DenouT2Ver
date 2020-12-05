@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
 
 namespace Xenon.KifuWarabe
 {
@@ -14,7 +14,7 @@ namespace Xenon.KifuWarabe
     /// </summary>
     public class LoggerTag_Warabe : LoggerTag_Larabe
     {
-        public static readonly LarabeLoggerTag ENGINE;
+        public static readonly ILarabeLoggerTag ENGINE;
 
         static LoggerTag_Warabe()
         {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
     public interface IKifuElement
     {
@@ -15,7 +15,7 @@ namespace Xenon.KifuLarabe
 
         IKifuElement Previous { get; set; }
 
-        TeProcess TeProcess { get; }
+        ITeProcess TeProcess { get; }
 
         /// <summary>
         /// キー：SFEN ※この仕様は暫定

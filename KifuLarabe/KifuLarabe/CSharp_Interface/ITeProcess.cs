@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using System.Diagnostics;
+﻿using System.Runtime.CompilerServices;
 
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
-    public interface TeProcess : KomaPos
+    public interface ITeProcess : IKomaPos
     {
 
         /// <summary>
@@ -55,7 +49,7 @@ namespace Xenon.KifuLarabe
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        TeProcess Src();
+        ITeProcess Src();
 
         /// <summary>
         /// “打” ＜アクション時＞

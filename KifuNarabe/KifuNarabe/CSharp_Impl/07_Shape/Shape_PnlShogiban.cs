@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using System.Drawing;
-
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Xenon.KifuNarabe.L07_Shape
 {
@@ -59,7 +53,7 @@ namespace Xenon.KifuNarabe.L07_Shape
         /// <summary>
         /// 光らせる利き升ハンドル。
         /// </summary>
-        public Masus KikiBan
+        public IMasus KikiBan
         {
             get;
             set;
@@ -222,7 +216,7 @@ namespace Xenon.KifuNarabe.L07_Shape
             {
                 Shape_BtnMasu cell = this.MasuList[masuHandle];
 
-                Masus masus2 = new Masus_Set();
+                IMasus masus2 = new Masus_Set();
                 masus2.AddElement(M201Array.Items_All[ masuHandle]);
                 bool isKiki = this.KikiBan.ContainsAll(masus2);
 

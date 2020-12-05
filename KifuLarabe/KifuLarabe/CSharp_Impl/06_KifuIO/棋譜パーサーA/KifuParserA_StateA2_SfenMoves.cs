@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L01_Log;
-using Xenon.KifuLarabe.L04_Common;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuLarabe.L06_KifuIO
+namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
 
     /// <summary>
     /// 「moves」を読込みました。
     /// </summary>
-    public class KifuParserA_StateA2_SfenMoves : KifuParserA_State
+    public class KifuParserA_StateA2_SfenMoves : IKifuParserAState
     {
 
         public static KifuParserA_StateA2_SfenMoves GetInstance()
@@ -37,11 +37,11 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         public string Execute(
             string inputLine,
             Kifu_Document kifuD,
-            out KifuParserA_State nextState,
-            KifuParserA owner,
+            out IKifuParserAState nextState,
+            IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             nextState = this;
@@ -52,7 +52,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 {
                     //MessageBox.Show("一手指し開始　：　今回の符号つ「" + inputLine + "」\n"+kifuD.Old_KomaHouses.DebugText_Kyokumen(kifuD,"一手指し前"), "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    TeProcess teProcess = RO_TeProcess.NULL_OBJECT;
+                    ITeProcess teProcess = RO_TeProcess.NULL_OBJECT;
                     string restText;
 
                     try
@@ -142,7 +142,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                         try
                         {
-                            owner.Delegate_IttesasiPaint(
+                            owner.OnIttesasiPaint(
                                 kifuD,
                                 inputLine,
                                 movedKoma,

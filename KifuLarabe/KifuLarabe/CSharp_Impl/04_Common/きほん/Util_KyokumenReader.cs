@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
@@ -25,9 +25,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="koma"></param>
         /// <param name="kifu"></param>
         /// <returns></returns>
-        public static Masus KomanoKiki(KomaPos koma)
+        public static IMasus KomanoKiki(IKomaPos koma)
         {
-            Masus dotZukei;
+            IMasus dotZukei;
 
             {
                 dotZukei = Rule01_PotentialMove_15Array.ItemMethods[(int)Haiyaku184Array.Syurui(koma.Star.Haiyaku)](koma.Star.Sengo, koma.Star.Masu);
@@ -57,7 +57,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="km"></param>
         /// <returns></returns>
-        public static List<K40> KomaHandles_EachSrc(Kifu_Document kifuD, Sengo sengo, KomaPos itaru, Masus srcList,LarabeLoggerTag logTag)
+        public static List<K40> KomaHandles_EachSrc(Kifu_Document kifuD, Sengo sengo, IKomaPos itaru, IMasus srcList,ILarabeLoggerTag logTag)
         {
             List<K40> komaHandleList = new List<K40>();
 
@@ -75,7 +75,7 @@ namespace Xenon.KifuLarabe.L04_Common
             return komaHandleList;
         }
 
-        public static Masus KomaHaichi(Kifu_Document kifuD1, Sengo sengo)
+        public static IMasus KomaHaichi(Kifu_Document kifuD1, Sengo sengo)
         {
             Masus_Set ban = new Masus_Set();
 
@@ -104,7 +104,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="syurui"></param>
         /// <param name="uc_Main"></param>
         /// <returns>無ければ -1</returns>
-        public static K40 Koma_BySyuruiIgnoreCase(Kifu_Document kifuD, Okiba okiba, Ks14 syurui,LarabeLoggerTag logTag)
+        public static K40 Koma_BySyuruiIgnoreCase(Kifu_Document kifuD, Okiba okiba, Ks14 syurui,ILarabeLoggerTag logTag)
         {
             K40 found = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -116,7 +116,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement node2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = node2.KomaHouse;
 
-                KomaPos komaP = house1.KomaPosAt(koma);
+                IKomaPos komaP = house1.KomaPosAt(koma);
 
                 if (M201Util.GetOkiba(komaP.Star.Masu) == okiba
                     && KomaSyurui14Array.Matches(komaP.ToFunariCase(), syuruiFunariCase))
@@ -154,7 +154,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="masu">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu(Kifu_Document kifuD, M201 masu, LarabeLoggerTag logTag)
+        public static K40 Koma_AtMasu(Kifu_Document kifuD, M201 masu, ILarabeLoggerTag logTag)
         {
             K40 komaFound = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -164,7 +164,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement node2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = node2.KomaHouse;
 
-                KomaPos komaP = house1.KomaPosAt(koma);
+                IKomaPos komaP = house1.KomaPosAt(koma);
 
                 if (komaP.Star.Masu == masu)
                 {
@@ -199,7 +199,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="masu1">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu_Shogiban(Kifu_Document kifuD, Sengo sengo, M201 masu1, LarabeLoggerTag logTag)
+        public static K40 Koma_AtMasu_Shogiban(Kifu_Document kifuD, Sengo sengo, M201 masu1, ILarabeLoggerTag logTag)
         {
             K40 foundKoma = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -209,7 +209,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode2.KomaHouse;
 
-                KomaPos komaP2 = house1.KomaPosAt(koma);
+                IKomaPos komaP2 = house1.KomaPosAt(koma);
 
                 // 先後は見ますが、将棋盤限定です。
                 if (
@@ -257,7 +257,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="syurui"></param>
         /// <param name="hKomas"></param>
         /// <returns></returns>
-        public List<K40> Komas_BySyurui(Kifu_Document kifuD, Ks14 syurui, LarabeLoggerTag logTag)
+        public List<K40> Komas_BySyurui(Kifu_Document kifuD, Ks14 syurui, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -267,7 +267,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode2.KomaHouse;
 
-                KomaPos komaP = house1.KomaPosAt(koma);
+                IKomaPos komaP = house1.KomaPosAt(koma);
 
                 if (
                     KomaSyurui14Array.Matches(syurui, Haiyaku184Array.Syurui(komaP.Star.Haiyaku))
@@ -304,13 +304,13 @@ namespace Xenon.KifuLarabe.L04_Common
         public static List<K40> Komas_BySengo(
             //Kifu_Document kifuD,
             IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Sengo sengo, LarabeLoggerTag logTag)
+            Sengo sengo, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                KomaPos komaP = siteiNode.KomaHouse.KomaPosAt(koma);
+                IKomaPos komaP = siteiNode.KomaHouse.KomaPosAt(koma);
 
                 if (sengo == komaP.Star.Sengo)
                 {
@@ -332,7 +332,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSyurui(Kifu_Document kifuD, Okiba okiba, Ks14 syurui, LarabeLoggerTag logTag)
+        public static List<K40> Komas_ByOkibaSyurui(Kifu_Document kifuD, Okiba okiba, Ks14 syurui, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -342,7 +342,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode3.KomaHouse;
 
-                KomaPos komaP = house1.KomaPosAt(koma);
+                IKomaPos komaP = house1.KomaPosAt(koma);
 
                 if (
                     okiba == M201Util.GetOkiba(komaP.Star.Masu)
@@ -381,7 +381,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSengoSyurui(Kifu_Document kifuD, Okiba okiba, Sengo sengo, Ks14 syurui, LarabeLoggerTag logTag)
+        public static List<K40> Komas_ByOkibaSengoSyurui(Kifu_Document kifuD, Okiba okiba, Sengo sengo, Ks14 syurui, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -391,7 +391,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house2 = dammyNode3.KomaHouse;
 
-                KomaPos komaP = house2.KomaPosAt(koma);
+                IKomaPos komaP = house2.KomaPosAt(koma);
 
                 if (
                     okiba == M201Util.GetOkiba(komaP.Star.Masu)
@@ -430,7 +430,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="kifuD"></param>
         /// <param name="okiba"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkiba(Kifu_Document kifuD, Okiba okiba, LarabeLoggerTag logTag)
+        public static List<K40> Komas_ByOkiba(Kifu_Document kifuD, Okiba okiba, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -439,7 +439,7 @@ namespace Xenon.KifuLarabe.L04_Common
             {
                 IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house3 = dammyNode4.KomaHouse;
-                KomaPos komaP = house3.KomaPosAt(koma);
+                IKomaPos komaP = house3.KomaPosAt(koma);
 
                 if (okiba == M201Util.GetOkiba(komaP.Star.Masu))
                 {
@@ -472,7 +472,7 @@ namespace Xenon.KifuLarabe.L04_Common
         public static List<K40> Komas_ByOkibaSengo(
             //Kifu_Document kifuD,
             Kifu_Node6 siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Okiba okiba, Sengo sengo, LarabeLoggerTag logTag)
+            Okiba okiba, Sengo sengo, ILarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
 
@@ -480,7 +480,7 @@ namespace Xenon.KifuLarabe.L04_Common
             {
                 KomaHouse house3 = siteiNode.KomaHouse;
 
-                KomaPos komaP = house3.KomaPosAt(koma);
+                IKomaPos komaP = house3.KomaPosAt(koma);
 
                 if (
                     M201Util.GetOkiba(komaP.Star.Masu).HasFlag(okiba)

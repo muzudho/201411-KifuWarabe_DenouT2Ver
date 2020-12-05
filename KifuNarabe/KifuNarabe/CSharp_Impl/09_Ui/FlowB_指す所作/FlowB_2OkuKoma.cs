@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuLarabe.L03_Communication;
-using Xenon.KifuLarabe.L04_Common;
-using Xenon.KifuLarabe.L06_KifuIO;
+﻿using System.Windows.Forms;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 using Xenon.KifuNarabe.L07_Shape;
 using Xenon.KifuNarabe.L08_Server;
-using Xenon.KifuNarabe.L09_Ui;
 
 namespace Xenon.KifuNarabe.L09_Ui
 {
@@ -27,7 +19,7 @@ namespace Xenon.KifuNarabe.L09_Ui
     public class FlowB_2OkuKoma : FlowB
     {
 
-        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
         }
 
@@ -42,7 +34,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
 
@@ -58,7 +50,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="e"></param>
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD1"></param>
-        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD1, LarabeLoggerTag logTag)
+        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD1, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD1.CountTeme(kifuD1.Current8);
@@ -79,7 +71,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             IKifuElement dammyNode1 = kifuD1.ElementAt8(lastTeme);
             KomaHouse house1 = dammyNode1.KomaHouse;
 
-            KomaPos tumandeiruKoma = house1.KomaPosAt(btnTumandeiruKoma.Koma);
+            IKomaPos tumandeiruKoma = house1.KomaPosAt(btnTumandeiruKoma.Koma);
 
 
             //----------
@@ -231,7 +223,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -293,14 +285,14 @@ namespace Xenon.KifuNarabe.L09_Ui
                                 shape_PnlTaikyoku.MousePos_TottaKomaSyurui//×Ks14.H00_Null
                                 );// 選択している駒の元の場所と、移動先
 
-                            TeProcess last;
+                            ITeProcess last;
                             {
                                 IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                                 KomaHouse dammyHouse = kifuElement.KomaHouse;
 
                                 last = kifuElement.TeProcess;
                             }
-                            TeProcess previousProcess = last; //符号の追加が行われる前に退避
+                            ITeProcess previousProcess = last; //符号の追加が行われる前に退避
                             Kifu_Node6 newNode = kifuD.CreateNodeA(
                                 process.SrcStar,
                                 process.Star,
@@ -358,7 +350,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
 
@@ -386,7 +378,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, LarabeLoggerTag logTag)
+        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILarabeLoggerTag logTag)
         {
             FlowB nextPhase = null;
 

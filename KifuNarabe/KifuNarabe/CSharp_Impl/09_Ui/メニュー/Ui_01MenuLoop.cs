@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
-using Xenon.KifuLarabe;
-using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuLarabe.L04_Common;
+﻿using System.Windows.Forms;
+using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.L04_Common;
 using Xenon.KifuNarabe.L07_Shape;
 using Xenon.KifuNarabe.L08_Server;
 
@@ -30,7 +23,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             Ui_PnlMain ui_PnlMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            LarabeLoggerTag logTag
+            ILarabeLoggerTag logTag
             )
         {
             RequestForMain requestForMain = new RequestForMain();

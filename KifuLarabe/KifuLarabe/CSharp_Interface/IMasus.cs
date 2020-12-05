@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-using System.Drawing;
-using Xenon.KifuLarabe.L04_Common;
-
-namespace Xenon.KifuLarabe
+namespace Grayscale.KifuwaraneLib
 {
 
     /// <summary>
@@ -48,10 +42,10 @@ namespace Xenon.KifuLarabe
     /// ・Clearメソッドは持たせません。インスタンスを作り直して親要素にセットし直してください。
     ///   空にすることができないオブジェクト（線分など）があることが理由です。
     /// </summary>
-    public interface Masus
+    public interface IMasus
     {
 
-        Masus Clone();
+        IMasus Clone();
 
         /// <summary>
         /// 将棋盤上の枡番号。
@@ -79,7 +73,7 @@ namespace Xenon.KifuLarabe
         /// 例えばＡが、「１→２」と、「３」を持っているとき、
         /// Ｂとは「１→２」「３」といった子要素のことです。
         /// </summary>
-        IEnumerable<Masus> Supersets
+        IEnumerable<IMasus> Supersets
         {
             get;
         }
@@ -100,7 +94,7 @@ namespace Xenon.KifuLarabe
         /// </summary>
         /// <param name="handle"></param>
         /// <returns></returns>
-        bool ContainsAll(Masus masus);
+        bool ContainsAll(IMasus masus);
 
         /// <summary>
         /// ************************************************************************************************************************
@@ -139,7 +133,7 @@ namespace Xenon.KifuLarabe
         /// この集合Ａと、引数に指定する集合Ｂの関係が「Ａ⊆Ｂ」になるようにする操作です。
         /// </summary>
         /// <param name="supersetB"></param>
-        void AddSupersets(Masus supersetB);
+        void AddSupersets(IMasus supersetB);
 
         /// <summary>
         /// この集合Ａと、その要素ａが「ａ∈Ａ」の関係のとき、ａを１つ仲間から外す操作です。
@@ -172,7 +166,7 @@ namespace Xenon.KifuLarabe
         /// </summary>
         /// <param name="masus"></param>
         /// <returns></returns>
-        Masus Minus(Masus b);
+        IMasus Minus(IMasus b);
 
         /// <summary>
         /// this - b以降 = c
@@ -181,7 +175,7 @@ namespace Xenon.KifuLarabe
         /// </summary>
         /// <param name="masus"></param>
         /// <returns></returns>
-        Masus Minus_OverThere(Masus b);
+        IMasus Minus_OverThere(IMasus b);
 
         #endregion
 

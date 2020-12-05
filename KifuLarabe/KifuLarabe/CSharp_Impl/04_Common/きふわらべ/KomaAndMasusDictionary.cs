@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Xenon.KifuLarabe.L03_Communication;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
-namespace Xenon.KifuLarabe.L04_Common
+namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
 
@@ -27,7 +27,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="key"></param>
         /// <param name="masus"></param>
         /// <param name="addIfNothing">無ければ追加します。</param>
-        public void AddReplace(K40 key, Masus masus, bool addIfNothing)
+        public void AddReplace(K40 key, IMasus masus, bool addIfNothing)
         {
             if (this.entries.ContainsKey(key))
             {
@@ -46,7 +46,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// </summary>
         /// <param name="key"></param>
         /// <param name="masus"></param>
-        public void AddOverwrite(K40 key, Masus masus)
+        public void AddOverwrite(K40 key, IMasus masus)
         {
             if (this.entries.ContainsKey(key))
             {
@@ -59,7 +59,7 @@ namespace Xenon.KifuLarabe.L04_Common
             }
         }
 
-        public Masus ElementAt(K40 key)
+        public IMasus ElementAt(K40 key)
         {
             return this.entries[key];
         }
@@ -71,19 +71,19 @@ namespace Xenon.KifuLarabe.L04_Common
             }
         }
 
-        public void SetEntries(Dictionary<K40, Masus> entries)
+        public void SetEntries(Dictionary<K40, IMasus> entries)
         {
             this.entries = entries;
         }
 
-        private Dictionary<K40, Masus> entries;
+        private Dictionary<K40, IMasus> entries;
 
         #endregion
 
 
         public KomaAndMasusDictionary()
         {
-            this.entries = new Dictionary<K40, Masus>();
+            this.entries = new Dictionary<K40, IMasus>();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public delegate void DELEGATE_Foreach_Entry(KeyValuePair<K40, Masus> entry, ref bool toBreak);
+        public delegate void DELEGATE_Foreach_Entry(KeyValuePair<K40, IMasus> entry, ref bool toBreak);
         /// <summary>
         /// 
         /// </summary>
@@ -105,7 +105,7 @@ namespace Xenon.KifuLarabe.L04_Common
         {
             bool toBreak = false;
 
-            foreach (KeyValuePair<K40, Masus> entry in this.entries)
+            foreach (KeyValuePair<K40, IMasus> entry in this.entries)
             {
                 delegate_Foreach_Entry(entry, ref toBreak);
 
@@ -138,7 +138,7 @@ namespace Xenon.KifuLarabe.L04_Common
         }
 
 
-        public delegate void DELEGATE_Foreach_Values(Masus values, ref bool toBreak);
+        public delegate void DELEGATE_Foreach_Values(IMasus values, ref bool toBreak);
         /// <summary>
         /// 
         /// </summary>
@@ -147,7 +147,7 @@ namespace Xenon.KifuLarabe.L04_Common
         {
             bool toBreak = false;
 
-            foreach (Masus value in this.entries.Values)
+            foreach (IMasus value in this.entries.Values)
             {
                 delegate_Foreach_Values(value, ref toBreak);
 
@@ -165,7 +165,7 @@ namespace Xenon.KifuLarabe.L04_Common
             StringBuilder sb = new StringBuilder();
 
 
-            this.Foreach_Entry((KeyValuePair<K40, Masus> entry, ref bool toBreak) =>
+            this.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
                 sb.Append("[駒");
                 sb.Append(entry.Key);
@@ -188,10 +188,10 @@ namespace Xenon.KifuLarabe.L04_Common
             StringBuilder sb = new StringBuilder();
 
             // 全要素
-            this.Foreach_Entry((KeyValuePair<K40, Masus> entry, ref bool toBreak) =>
+            this.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
                 K40 koma = entry.Key;
-                Masus masus = entry.Value;
+                IMasus masus = entry.Value;
 
                 sb.AppendLine("駒＝["+koma+"]");
                 sb.AppendLine(masus.LogString_Concrete());
@@ -210,7 +210,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             int teme = kifu.CountTeme(kifu.Current8);// 手目
             Sengo sengo = kifu.CountSengo(teme);// 先後
-            this.Foreach_Entry((KeyValuePair<K40, Masus> entry, ref bool toBreak) =>
+            this.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
                 KomaHouse kyokumen = new KomaHouse();// 局面（デフォルトで、平手初期局面）
 
@@ -249,7 +249,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="right"></param>
         public void Merge(KomaAndMasusDictionary right)
         {
-            right.Foreach_Entry((KeyValuePair<K40,Masus> entry, ref bool toBreak) =>
+            right.Foreach_Entry((KeyValuePair<K40,IMasus> entry, ref bool toBreak) =>
             {
                 if (this.entries.ContainsKey(entry.Key))
                 {

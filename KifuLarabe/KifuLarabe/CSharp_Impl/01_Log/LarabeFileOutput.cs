@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.IO;
 
-namespace Xenon.KifuLarabe.L01_Log
+namespace Grayscale.KifuwaraneLib.L01_Log
 {
 
     public abstract class LarabeFileOutput
