@@ -52,31 +52,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspectOriented_TextBox.cs" />
-    <Compile Include="CSharp_Impl\01_Log\SetteiFile.cs" />
-    <Compile Include="CSharp_Impl\02_DammyConsole\DammyConsole.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_Abstract.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\SyuturyokuKirikae.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowA\FlowA_1Taikyoku.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_1TumamitaiKoma.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_2OkuKoma.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_3ErabuNaruNaranai.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01MenuB.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_02Action.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_BtnBox.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Converter09.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_BtnMasu.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_BtnKoma.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_PnlTaikyoku.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_PnlShogiban.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_PnlKomadai.cs" />
-    <Compile Include="CSharp_Impl\07_Shape\Shape_LblBox.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\RequestForMain.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01Menu.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01MenuLoop.cs" />
-    <Compile Include="CSharp_Impl\08_Server\ShogiEngineService.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\Menu\Util_MenuDrawer.cs" />
-    <Compile Include="CSharp_Interface\FlowA.cs" />
-    <Compile Include="CSharp_Interface\FlowB.cs" />
+    <Compile Include="01_Log\SetteiFile.cs" />
+    <Compile Include="02_DammyConsole\DammyConsole.cs" />
+    <Compile Include="07_Shape\Shape_Abstract.cs" />
+    <Compile Include="07_Shape\SyuturyokuKirikae.cs" />
+    <Compile Include="09_Ui\FlowA\FlowA_1Taikyoku.cs" />
+    <Compile Include="09_Ui\FlowB\FlowB_1TumamitaiKoma.cs" />
+    <Compile Include="09_Ui\FlowB\FlowB_2OkuKoma.cs" />
+    <Compile Include="09_Ui\FlowB\FlowB_3ErabuNaruNaranai.cs" />
+    <Compile Include="09_Ui\Menu\Ui_01MenuB.cs" />
+    <Compile Include="09_Ui\Menu\Ui_02Action.cs" />
+    <Compile Include="07_Shape\Shape_BtnBox.cs" />
+    <Compile Include="09_Ui\Converter09.cs" />
+    <Compile Include="07_Shape\Shape_BtnMasu.cs" />
+    <Compile Include="07_Shape\Shape_BtnKoma.cs" />
+    <Compile Include="07_Shape\Shape_PnlTaikyoku.cs" />
+    <Compile Include="07_Shape\Shape_PnlShogiban.cs" />
+    <Compile Include="07_Shape\Shape_PnlKomadai.cs" />
+    <Compile Include="07_Shape\Shape_LblBox.cs" />
+    <Compile Include="09_Ui\RequestForMain.cs" />
+    <Compile Include="09_Ui\Menu\Ui_01Menu.cs" />
+    <Compile Include="09_Ui\Menu\Ui_01MenuLoop.cs" />
+    <Compile Include="08_Server\ShogiEngineService.cs" />
+    <Compile Include="09_Ui\Menu\Util_MenuDrawer.cs" />
+    <Compile Include="IFlowA.cs" />
+    <Compile Include="IFlowB.cs" />
     <Compile Include="Ui_Form1.cs">
       <SubType>Form</SubType>
     </Compile>

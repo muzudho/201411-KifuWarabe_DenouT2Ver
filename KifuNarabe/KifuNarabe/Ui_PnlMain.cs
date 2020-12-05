@@ -39,7 +39,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// ゲームの流れの状態遷移図はこれです。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public FlowA FlowA
+        public IFlowA FlowA
         {
             get
             {
@@ -47,12 +47,12 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             }
         }
 
-        public void SetFlowA(FlowA flowA)
+        public void SetFlowA(IFlowA flowA)
         {
             this.flowA = flowA;
         }
 
-        private FlowA flowA;
+        private IFlowA flowA;
 
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -569,7 +569,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     //------------------------------------------------------------
                     // 左ボタン
                     //------------------------------------------------------------
-                    FlowA nextPhase = this.FlowA.MouseLeftButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                    IFlowA nextPhase = this.FlowA.MouseLeftButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
 
                     if (null != nextPhase)
                     {
@@ -581,7 +581,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     //------------------------------------------------------------
                     // 右ボタン
                     //------------------------------------------------------------
-                    FlowA nextPhase = this.FlowA.MouseRightButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                    IFlowA nextPhase = this.FlowA.MouseRightButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
 
                     if (null != nextPhase)
                     {
@@ -619,7 +619,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //------------------------------------------------------------
                 // 左ボタン
                 //------------------------------------------------------------
-                FlowA nextPhaseA = this.FlowA.MouseLeftButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                IFlowA nextPhaseA = this.FlowA.MouseLeftButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
 
                 if (null != nextPhaseA)
                 {
@@ -632,7 +632,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //------------------------------------------------------------
                 // 右ボタン
                 //------------------------------------------------------------
-                FlowA nextPhaseA = this.FlowA.MouseRightButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                IFlowA nextPhaseA = this.FlowA.MouseRightButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
 
                 if (null != nextPhaseA)
                 {

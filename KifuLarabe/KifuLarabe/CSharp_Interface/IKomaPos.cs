@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 

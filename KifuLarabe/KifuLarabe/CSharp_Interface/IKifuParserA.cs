@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
 
