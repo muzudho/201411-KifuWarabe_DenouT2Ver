@@ -62,7 +62,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
                     // TODO:棋譜に反映させたい。
 
-                    Ks14 tottaKomaSyurui;
+                    // Ks14 tottaKomaSyurui;
                     IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode1.KomaHouse;
 

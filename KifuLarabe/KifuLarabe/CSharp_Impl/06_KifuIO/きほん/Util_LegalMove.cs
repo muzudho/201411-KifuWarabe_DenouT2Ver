@@ -354,7 +354,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 LarabeLogger.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
-                throw ex;
+                throw;
             }
 
 
@@ -390,7 +390,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 LarabeLogger.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
-                throw ex;
+                throw;
             }
         }
 
