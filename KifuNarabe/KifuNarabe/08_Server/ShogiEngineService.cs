@@ -136,7 +136,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         /// 手番が替わったときの挙動を、ここに書きます。
         /// ************************************************************************************************************************
         /// </summary>
-        public static void Message_ChangeTurn(Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static void Message_ChangeTurn(Kifu_Document kifuD, ILoggerFileConf logTag)
         {
 
 

@@ -12,12 +12,12 @@ namespace Grayscale.KifuwaraneLib
     /// </summary>
     public partial class LarabeLoggerTag_Impl
     {
-        public static readonly ILarabeLoggerTag SASITE_SEISEI_ROUTINE = new LoggerTag_Larabe("#log_指し手生成ルーチン",".txt",true);
-        public static readonly ILarabeLoggerTag LOGGING_BY_GUI = new LoggerTag_Larabe("#log_将棋GUI_棋譜読取",".txt",true);
-        public static readonly ILarabeLoggerTag LOGGING_BY_LARABE_STANDALONE = new LoggerTag_Larabe("#log_ララベProgram",".txt",true);
-        public static readonly ILarabeLoggerTag LINKED_LIST = new LoggerTag_Larabe("#log_リンクトリスト",".txt",false);
+        public static readonly ILoggerFileConf SASITE_SEISEI_ROUTINE = new LibLoggerFileConf("#log_指し手生成ルーチン",".txt",true);
+        public static readonly ILoggerFileConf LOGGING_BY_GUI = new LibLoggerFileConf("#log_将棋GUI_棋譜読取",".txt",true);
+        public static readonly ILoggerFileConf LOGGING_BY_LARABE_STANDALONE = new LibLoggerFileConf("#log_ララベProgram",".txt",true);
+        public static readonly ILoggerFileConf LINKED_LIST = new LibLoggerFileConf("#log_リンクトリスト",".txt",false);
 
-        public static readonly ILarabeLoggerTag ERROR = new LoggerTag_Larabe("#log_エラー", ".txt", true);
+        public static readonly ILoggerFileConf ERROR = new LibLoggerFileConf("#log_エラー", ".txt", true);
     }
 }
 
@@ -34,7 +34,7 @@ namespace Grayscale.KifuwaraneLib
 
         public static int Main(string[] args)
         {
-            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
+            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
 
             {
                 //System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");

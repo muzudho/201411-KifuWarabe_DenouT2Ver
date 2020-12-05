@@ -37,14 +37,30 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Xml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Log\CsvLineParserImpl.cs" />
@@ -107,13 +123,13 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
-    <Compile Include="CSharp_Interface\IKifuParserA.cs" />
-    <Compile Include="CSharp_Interface\IKifuParserAState.cs" />
-    <Compile Include="CSharp_Interface\IKifuElement.cs" />
-    <Compile Include="01_Log\LoggerTag_Larabe.cs" />
-    <Compile Include="CSharp_Interface\IKomaPos.cs" />
-    <Compile Include="CSharp_Interface\ILarabeLoggerTag.cs" />
-    <Compile Include="CSharp_Interface\ITeProcess.cs" />
+    <Compile Include="IKifuParserA.cs" />
+    <Compile Include="IKifuParserAState.cs" />
+    <Compile Include="IKifuElement.cs" />
+    <Compile Include="01_Log\LibLoggerFileConf.cs" />
+    <Compile Include="IKomaPos.cs" />
+    <Compile Include="ILoggerFileConf.cs" />
+    <Compile Include="ITeProcess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="04_Common\きほん\Converter04.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />
@@ -122,7 +138,7 @@
     <Compile Include="04_Common\きほん\SfenStartpos.cs" />
     <Compile Include="04_Common\きほん\SyokiHaichi.cs" />
     <Compile Include="04_Common\M_マス番号\M201.cs" />
-    <Compile Include="CSharp_Interface\IMasus.cs" />
+    <Compile Include="IMasus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

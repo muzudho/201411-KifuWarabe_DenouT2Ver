@@ -5,17 +5,11 @@ using System.Xml;
 
 namespace Grayscale.KifuwaraneGui.L01_Log
 {
-
     /// <summary>
-    /// ************************************************************************************************************************
     /// 設定ファイル
-    /// ************************************************************************************************************************
     /// </summary>
     public class SetteiFile
     {
-
-        #region プロパティ類
-
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
         /// 設定ファイル名です。
@@ -71,10 +65,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
             }
         }
         private string shogiEngineFileName;
-
-        #endregion
-
-
 
         /// <summary>
         /// コンストラクターです。
@@ -185,9 +175,5 @@ namespace Grayscale.KifuwaraneGui.L01_Log
 
             return successfule;
         }
-
-
-
-
     }
 }

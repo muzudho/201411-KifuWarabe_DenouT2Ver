@@ -10,7 +10,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
     /// </summary>
     public abstract class JFugoCreator15Array
     {
-        public delegate FugoJ DELEGATE_CreateJFugo(ITeProcess teProcess, Kifu_Document kifuD, ILarabeLoggerTag logTag);
+        public delegate FugoJ DELEGATE_CreateJFugo(ITeProcess teProcess, Kifu_Document kifuD, ILoggerFileConf logTag);
 
         public static DELEGATE_CreateJFugo[] ItemMethods
         {
@@ -45,7 +45,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
 
-        public static FugoJ CreateNullKoma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateNullKoma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // エラー
@@ -90,7 +90,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="process">移動先、移動元、両方のマス番号</param>
         /// <param name="kyokumen"></param>
         /// <returns></returns>
-        public static FugoJ CreateFu(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateFu(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 歩
@@ -176,7 +176,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKyo(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateKyo(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 香
@@ -275,7 +275,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKei(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateKei(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 桂
@@ -379,7 +379,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateGin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateGin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 銀
@@ -541,7 +541,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateKin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -564,7 +564,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             ITeProcess process,//移動先、移動元、両方のマス番号
             Kifu_Document kifuD,
             out MigiHidari migiHidari, out AgaruHiku agaruHiku, out NariFunari nari, out DaHyoji daHyoji,
-            ILarabeLoggerTag logTag
+            ILoggerFileConf logTag
             )
         {
             //************************************************************
@@ -729,7 +729,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             nari = NariFunari.CTRL_SONOMAMA;
         }
 
-        public static FugoJ CreateOh(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateOh(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 王
@@ -768,7 +768,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateHisya(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateHisya(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 飛
@@ -927,7 +927,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKaku(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateKaku(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 角
@@ -1084,7 +1084,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateRyu(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateRyu(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 竜
@@ -1270,7 +1270,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateUma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateUma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 馬
@@ -1455,7 +1455,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateTokin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateTokin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1474,7 +1474,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKyo(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateNariKyo(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1493,7 +1493,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKei(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateNariKei(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1513,7 +1513,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariGin(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateNariGin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1532,7 +1532,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateErrorKoma(ITeProcess process, Kifu_Document kifuD, ILarabeLoggerTag logTag)
+        public static FugoJ CreateErrorKoma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // エラー

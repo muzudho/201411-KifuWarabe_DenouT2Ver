@@ -35,7 +35,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            ILarabeLoggerTag logTag
+            ILoggerFileConf logTag
             )
         {
             nextState = this;

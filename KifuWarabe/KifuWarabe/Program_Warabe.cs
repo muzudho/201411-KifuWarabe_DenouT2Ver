@@ -24,7 +24,7 @@ namespace Grayscale.KifuwaraneEngine
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            ILarabeLoggerTag logTag = LoggerTag_Warabe.ENGINE;
+            ILoggerFileConf logTag = EngineLoggerFileConf.ENGINE;
 
             try
             {

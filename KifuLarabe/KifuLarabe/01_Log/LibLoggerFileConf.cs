@@ -3,9 +3,9 @@
     /// <summary>
     /// 継承できる列挙型として利用☆
     /// </summary>
-    public class LoggerTag_Larabe : ILarabeLoggerTag
+    public class LibLoggerFileConf : ILoggerFileConf
     {
-        public static readonly ILarabeLoggerTag DEFAULT = new LoggerTag_Larabe("#log_デフォルト",".txt",true);
+        public static readonly ILoggerFileConf DEFAULT = new LibLoggerFileConf("#log_デフォルト",".txt",true);
 
         public string FileName { get { return this.FileNameWoe + this.Extension; } }
 
@@ -21,7 +21,7 @@
         public bool Enable { get { return this.enable; } }
         private bool enable;
 
-        public LoggerTag_Larabe(string fileNameWoe, string extension, bool enable)
+        public LibLoggerFileConf(string fileNameWoe, string extension, bool enable)
         {
             this.fileNameWoe = fileNameWoe;
             this.extension = extension;
@@ -37,7 +37,7 @@
             }
 
             // If parameter cannot be cast to Point return false.
-            ILarabeLoggerTag p = obj as ILarabeLoggerTag;
+            ILoggerFileConf p = obj as ILoggerFileConf;
             if ((System.Object)p == null)
             {
                 return false;

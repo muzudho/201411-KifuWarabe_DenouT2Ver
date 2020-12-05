@@ -30,24 +30,24 @@ namespace Grayscale.KifuwaraneLib.L01_Log
         /// <summary>
         /// デフォルト・ログ・ファイル
         /// </summary>
-        private ILarabeLoggerTag defaultFile;
+        private ILoggerFileConf defaultFile;
 
 
         /// <summary>
         /// タグの登録。リムーブに使用。
         /// </summary>
-        private List<ILarabeLoggerTag> tagList;
+        private List<ILoggerFileConf> tagList;
 
 
         private LarabeLogger(string defaultLogFileNameWoe,string extension,bool enable)
         {
-            this.defaultFile = new LoggerTag_Larabe(defaultLogFileNameWoe, extension, enable);
+            this.defaultFile = new LibLoggerFileConf(defaultLogFileNameWoe, extension, enable);
 
-            this.tagList = new List<ILarabeLoggerTag>();
+            this.tagList = new List<ILoggerFileConf>();
         }
 
 
-        public void AddLogFile(ILarabeLoggerTag tag)
+        public void AddLogFile(ILoggerFileConf tag)
         {
             this.tagList.Add(tag);
         }
@@ -62,7 +62,7 @@ namespace Grayscale.KifuwaraneLib.L01_Log
             {
                 System.IO.File.Delete(this.defaultFile.FileName);
 
-                foreach (ILarabeLoggerTag tag in this.tagList)
+                foreach (ILoggerFileConf tag in this.tagList)
                 {
                     System.IO.File.Delete(tag.FileNameWoe+tag.Extension);
                 }
@@ -83,7 +83,7 @@ namespace Grayscale.KifuwaraneLib.L01_Log
         /// エラーを、ログ・ファイルに記録します。
         /// </summary>
         /// <param name="line"></param>
-        public void WriteLineError(ILarabeLoggerTag tag, string line)
+        public void WriteLineError(ILoggerFileConf tag, string line)
         {
             if (null == tag)
             {
@@ -134,7 +134,7 @@ namespace Grayscale.KifuwaraneLib.L01_Log
         /// メモを、ログ・ファイルに記録します。
         /// </summary>
         /// <param name="line"></param>
-        public void WriteLineMemo(ILarabeLoggerTag tag, string line)
+        public void WriteLineMemo(ILoggerFileConf tag, string line)
         {
             if (null == tag)
             {

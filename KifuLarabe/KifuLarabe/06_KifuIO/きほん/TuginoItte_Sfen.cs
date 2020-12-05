@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             out string restText,
             out ITeProcess process,
             Kifu_Document kifuD,
-            ILarabeLoggerTag logTag
+            ILoggerFileConf logTag
             )
         {
             bool successful = false;
@@ -231,7 +231,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string strNari, //+
             out ITeProcess process,
             Kifu_Document kifuD,
-            ILarabeLoggerTag logTag
+            ILoggerFileConf logTag
             )
         {
             process = RO_TeProcess.NULL_OBJECT;

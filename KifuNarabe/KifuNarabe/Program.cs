@@ -12,9 +12,9 @@ namespace Grayscale.KifuwaraneGui
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class LoggerTag_Narabe : LoggerTag_Larabe
+    public class LoggerTag_Narabe : LibLoggerFileConf
     {
-        public static readonly ILarabeLoggerTag PAINT;
+        public static readonly ILoggerFileConf PAINT;
 
         static LoggerTag_Narabe()
         {
@@ -38,7 +38,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILarabeLoggerTag logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
             LarabeLogger.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
 
             //----------

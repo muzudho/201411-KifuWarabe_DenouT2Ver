@@ -1,6 +1,6 @@
 ﻿namespace Grayscale.KifuwaraneLib
 {
-    public interface ILarabeLoggerTag
+    public interface ILoggerFileConf
     {
         string FileName { get; }
         string FileNameWoe { get; }

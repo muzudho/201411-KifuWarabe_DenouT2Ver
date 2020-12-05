@@ -21,7 +21,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static ITeProcess Sasu_Main(Kifu_Document kifu, ILarabeLoggerTag logTag)
+        public static ITeProcess Sasu_Main(Kifu_Document kifu, ILoggerFileConf logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -60,7 +60,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static RO_TeProcess Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILarabeLoggerTag logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILoggerFileConf logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
