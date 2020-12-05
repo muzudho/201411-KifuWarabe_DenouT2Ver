@@ -97,12 +97,14 @@ namespace Grayscale.KifuwaraneEngine
                 // バージョン番号を「1.00.0」形式（メジャー番号.マイナー番号.ビルド番号)で書くのは作者の趣味です。
                 //
                 #endregion
-                string seihinName;
+                string engineName;
+                string engineAuthor;
                 string versionStr;
                 {
                     var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
                     var toml = Toml.ReadFile(Path.Combine(profilePath,"Engine.toml"));
-                    seihinName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+                    engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+                    engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
 
                     // 製品名
                     // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
@@ -113,7 +115,7 @@ namespace Grayscale.KifuwaraneEngine
 
                     //seihinName += " " + versionStr;
                 }
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + seihinName + " " + versionStr);
+                LarabeLogger.GetInstance().WriteLineMemo(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
 
 
                 //-----------+------------------------------------------------------------------------------------------------------------
@@ -260,8 +262,8 @@ namespace Grayscale.KifuwaraneEngine
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
                             #endregion
-                            Program_Warabe.Send("id name " + seihinName);
-                            Program_Warabe.Send("id author " + Program.authorName);
+                            Program_Warabe.Send("id name " + engineName);
+                            Program_Warabe.Send("id author " + engineAuthor);
                             Program_Warabe.Send("usiok");
 
                         }
