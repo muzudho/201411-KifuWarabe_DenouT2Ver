@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xenon.KifuNarabe.L02_DammyConsole
+﻿namespace Grayscale.KifuwaraneGui.L02_DammyConsole
 {
 
     /// <summary>

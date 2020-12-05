@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using Grayscale.KifuwaraneGui.L09_Ui;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
-using Xenon.KifuNarabe.L09_Ui;
 
-namespace Xenon.KifuNarabe.L08_Server
+namespace Grayscale.KifuwaraneGui.L08_Server
 {
 
 

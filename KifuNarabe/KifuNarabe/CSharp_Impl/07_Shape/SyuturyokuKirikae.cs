@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xenon.KifuNarabe.L07_Shape
+﻿namespace Grayscale.KifuwaraneGui.L07_Shape
 {
     public enum SyuturyokuKirikae
     {

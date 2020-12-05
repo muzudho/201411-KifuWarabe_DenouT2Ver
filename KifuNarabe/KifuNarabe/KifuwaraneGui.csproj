@@ -8,8 +8,8 @@
     <ProjectGuid>{9593ACC7-348B-4868-892C-7BAFBF925B9D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xenon.KifuNarabe</RootNamespace>
-    <AssemblyName>Xenon.KifuNarabe</AssemblyName>
+    <RootNamespace>Grayscale.KifuwaraneGui</RootNamespace>
+    <AssemblyName>Grayscale.KifuwaraneGui</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -57,11 +57,11 @@
     <Compile Include="CSharp_Impl\07_Shape\Shape_Abstract.cs" />
     <Compile Include="CSharp_Impl\07_Shape\SyuturyokuKirikae.cs" />
     <Compile Include="CSharp_Impl\09_Ui\FlowA\FlowA_1Taikyoku.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB_指す所作\FlowB_1TumamitaiKoma.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB_指す所作\FlowB_2OkuKoma.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\FlowB_指す所作\FlowB_3ErabuNaruNaranai.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\メニュー\Ui_01MenuB.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\メニュー\Ui_02Action.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_1TumamitaiKoma.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_2OkuKoma.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\FlowB\FlowB_3ErabuNaruNaranai.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01MenuB.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_02Action.cs" />
     <Compile Include="CSharp_Impl\07_Shape\Shape_BtnBox.cs" />
     <Compile Include="CSharp_Impl\09_Ui\Converter09.cs" />
     <Compile Include="CSharp_Impl\07_Shape\Shape_BtnMasu.cs" />
@@ -71,10 +71,10 @@
     <Compile Include="CSharp_Impl\07_Shape\Shape_PnlKomadai.cs" />
     <Compile Include="CSharp_Impl\07_Shape\Shape_LblBox.cs" />
     <Compile Include="CSharp_Impl\09_Ui\RequestForMain.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\メニュー\Ui_01Menu.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\メニュー\Ui_01MenuLoop.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01Menu.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\Menu\Ui_01MenuLoop.cs" />
     <Compile Include="CSharp_Impl\08_Server\ShogiEngineService.cs" />
-    <Compile Include="CSharp_Impl\09_Ui\メニュー\Util_MenuDrawer.cs" />
+    <Compile Include="CSharp_Impl\09_Ui\Menu\Util_MenuDrawer.cs" />
     <Compile Include="CSharp_Interface\FlowA.cs" />
     <Compile Include="CSharp_Interface\FlowB.cs" />
     <Compile Include="Ui_Form1.cs">

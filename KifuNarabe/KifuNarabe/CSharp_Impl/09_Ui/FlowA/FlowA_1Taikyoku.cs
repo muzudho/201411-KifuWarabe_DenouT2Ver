@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
+using Grayscale.KifuwaraneGui.L07_Shape;
+using Grayscale.KifuwaraneGui.L08_Server;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
-using Xenon.KifuNarabe.L07_Shape;
-using Xenon.KifuNarabe.L08_Server;
 
-namespace Xenon.KifuNarabe.L09_Ui
+namespace Grayscale.KifuwaraneGui.L09_Ui
 {
     public class FlowA_1Taikyoku : FlowA
     {

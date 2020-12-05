@@ -1,4 +1,4 @@
-﻿namespace Xenon.KifuNarabe.L09_Ui
+﻿namespace Grayscale.KifuwaraneGui.L09_Ui
 {
     partial class Ui_PnlMain
     {

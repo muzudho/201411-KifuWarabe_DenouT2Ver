@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Grayscale.KifuwaraneGui.L01_Log;
+using Grayscale.KifuwaraneGui.L02_DammyConsole;
+using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
-using Xenon.KifuNarabe.L01_Log;
-using Xenon.KifuNarabe.L02_DammyConsole;
-using Xenon.KifuNarabe.L07_Shape;
 
-namespace Xenon.KifuNarabe.L09_Ui
+namespace Grayscale.KifuwaraneGui.L09_Ui
 {
 
     /// <summary>

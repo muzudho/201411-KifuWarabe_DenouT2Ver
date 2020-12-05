@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneLib.L04_Common;
-using Xenon.KifuNarabe.L07_Shape;
 
-namespace Xenon.KifuNarabe.L09_Ui
+namespace Grayscale.KifuwaraneGui.L09_Ui
 {
 
     /// <summary>

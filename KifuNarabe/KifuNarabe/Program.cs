@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Grayscale.KifuwaraneGui.L09_Ui;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
-using Xenon.KifuNarabe.L09_Ui;
 
-namespace Xenon.KifuNarabe
+namespace Grayscale.KifuwaraneGui
 {
     /// <summary>
     /// 拡張できる列挙型として利用。
@@ -28,7 +28,7 @@ namespace Xenon.KifuNarabe
     }
 }
 
-namespace Xenon.KifuNarabe
+namespace Grayscale.KifuwaraneGui
 {
     static class Program
     {

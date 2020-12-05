@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
-//using Xenon.KifuNarabe.L02_DammyConsole;
+//using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
-//using Xenon.KifuNarabe.L07_Shape;
-//using Xenon.KifuNarabe.L08_Server;
+//using Grayscale.KifuwaraneGui.L07_Shape;
+//using Grayscale.KifuwaraneGui.L08_Server;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {

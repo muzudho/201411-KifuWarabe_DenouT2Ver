@@ -1,9 +1,8 @@
-﻿
+﻿using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L04_Common;
-using Xenon.KifuNarabe.L07_Shape;
 
-namespace Xenon.KifuNarabe.L09_Ui
+namespace Grayscale.KifuwaraneGui.L09_Ui
 {
     public abstract class Util_MenuDrawer
     {

@@ -3,7 +3,7 @@ using System.Drawing;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuNarabe.L07_Shape
+namespace Grayscale.KifuwaraneGui.L07_Shape
 {
 
     /// <summary>

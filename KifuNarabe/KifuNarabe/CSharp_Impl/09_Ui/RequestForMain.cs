@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Xenon.KifuNarabe.L09_Ui
+namespace Grayscale.KifuwaraneGui.L09_Ui
 {
 
     /// <summary>
