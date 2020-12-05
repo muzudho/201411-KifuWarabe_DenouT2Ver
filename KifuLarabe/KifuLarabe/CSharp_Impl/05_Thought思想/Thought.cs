@@ -20,7 +20,7 @@ namespace Xenon.KifuLarabe.L05_Thought
 
 
         public static KomaAndMasusDictionary GetPotentialMovesByKoma(
-            Kifu_Element siteiNode,//Kifu_Element siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+            IKifuElement siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             List<K40> komas, LarabeLoggerTag logTag)
         {
             KomaAndMasusDictionary komaAndMove = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
@@ -56,7 +56,7 @@ namespace Xenon.KifuLarabe.L05_Thought
         /// <param name="sbGohosyu"></param>
         /// <returns></returns>
         public static Masus Masus_BySengoOkiba(
-            Kifu_Element siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+            IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             Sengo selfSengo,
             Okiba okiba,
             StringBuilder sbGohosyu,

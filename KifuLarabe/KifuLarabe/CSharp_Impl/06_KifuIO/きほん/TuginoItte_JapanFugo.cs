@@ -1028,7 +1028,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 // 将棋盤の上に駒がありました。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                Kifu_Element dammyNode6 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house4 = dammyNode6.KomaHouse;
 
                 srcMasuHandle1 = (int)house4.KomaPosAt(foundKoma).Star.Masu;
@@ -1058,7 +1058,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 // 1個はヒットするはず
                 K40 hitKoma = komaHandles[0];//▲！コマ送りボタンを連打すると、エラーになります。
 
-                Kifu_Element dammyNode6 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house4 = dammyNode6.KomaHouse;
                 srcMasuHandle1 = (int)house4.KomaPosAt(hitKoma).Star.Masu;
             }
@@ -1117,7 +1117,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             {
                 foreach(K40 koma in K40Array.Items_KomaOnly)
                 {
-                    Kifu_Element dammyNode6 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house4 = dammyNode6.KomaHouse;
 
                     KomaPos komaP2 = house4.KomaPosAt(koma);

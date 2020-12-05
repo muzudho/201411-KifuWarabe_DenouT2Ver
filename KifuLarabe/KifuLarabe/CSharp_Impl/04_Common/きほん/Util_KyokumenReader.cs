@@ -79,7 +79,7 @@ namespace Xenon.KifuLarabe.L04_Common
         {
             Masus_Set ban = new Masus_Set();
 
-            Kifu_Element node2 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+            IKifuElement node2 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
             KomaHouse house1 = node2.KomaHouse;
 
             house1.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
@@ -113,7 +113,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element node2 = kifuD.ElementAt8(lastTeme);
+                IKifuElement node2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = node2.KomaHouse;
 
                 KomaPos komaP = house1.KomaPosAt(koma);
@@ -161,7 +161,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach (K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element node2 = kifuD.ElementAt8(lastTeme);
+                IKifuElement node2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = node2.KomaHouse;
 
                 KomaPos komaP = house1.KomaPosAt(koma);
@@ -206,7 +206,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element dammyNode2 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode2.KomaHouse;
 
                 KomaPos komaP2 = house1.KomaPosAt(koma);
@@ -264,7 +264,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element dammyNode2 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode2.KomaHouse;
 
                 KomaPos komaP = house1.KomaPosAt(koma);
@@ -303,7 +303,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <returns></returns>
         public static List<K40> Komas_BySengo(
             //Kifu_Document kifuD,
-            Kifu_Element siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+            IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             Sengo sengo, LarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();
@@ -339,7 +339,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house1 = dammyNode3.KomaHouse;
 
                 KomaPos komaP = house1.KomaPosAt(koma);
@@ -388,7 +388,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house2 = dammyNode3.KomaHouse;
 
                 KomaPos komaP = house2.KomaPosAt(koma);
@@ -437,7 +437,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Kifu_Element dammyNode4 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house3 = dammyNode4.KomaHouse;
                 KomaPos komaP = house3.KomaPosAt(koma);
 
@@ -471,7 +471,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <returns></returns>
         public static List<K40> Komas_ByOkibaSengo(
             //Kifu_Document kifuD,
-            Kifu_Node6 siteiNode,//Kifu_Element siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+            Kifu_Node6 siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             Okiba okiba, Sengo sengo, LarabeLoggerTag logTag)
         {
             List<K40> komas = new List<K40>();

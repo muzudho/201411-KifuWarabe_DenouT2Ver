@@ -341,7 +341,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                         for (int i = 0; i <= kifuD.CountTeme(kifuD.Current8); i++)
                         {
-                            Kifu_Element dammyNode2 = kifuD.ElementAt8(i);
+                            IKifuElement dammyNode2 = kifuD.ElementAt8(i);
                             KomaHouse house1 = dammyNode2.KomaHouse;
 
                             sb.Append(house1.Log_Kyokumen(kifuD, i, "エラー駒になったとき(見直し)"));
@@ -359,7 +359,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                 Okiba srcOkiba;
                 M201 srcMasu;
 
-                Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house2 = dammyNode3.KomaHouse;
 
                 if ("*" == str2)

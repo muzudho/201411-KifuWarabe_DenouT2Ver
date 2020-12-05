@@ -24,7 +24,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         public static bool Is_Mate(
             Kifu_Node6 siteiNode,
             Sengo selfSengo,
-            Kifu_Element node1,//調べたい局面
+            IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
             LarabeLoggerTag logTag
             )

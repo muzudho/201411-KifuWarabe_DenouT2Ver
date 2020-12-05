@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KifuLarabe", "KifuLarabe\KifuLarabe.csproj", "{18FB9B6E-95B2-47FE-A2F6-4FD865ABD804}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KifuwaraneLib", "KifuLarabe\KifuwaraneLib.csproj", "{18FB9B6E-95B2-47FE-A2F6-4FD865ABD804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA8430F2-EF07-4BB4-9A7F-BC1A9D5E4793}
 	EndGlobalSection
 EndGlobal

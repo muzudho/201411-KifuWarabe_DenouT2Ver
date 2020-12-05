@@ -181,7 +181,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             K40 movedKoma,
             //K40 tottaKoma2,
             K40 underKoma,
-            Kifu_Element node6,
+            IKifuElement node6,
             LarabeLoggerTag logTag
             )
         {

@@ -106,7 +106,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                             ////------------------------------------------------------------
                             //RO_TeProcess last;
                             //{
-                            //    Kifu_Element kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                            //    IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                             //    last = kifuElement.TeProcess;
                             //}
                             //previousProcess = last; //符号の追加が行われる前に退避

@@ -25,7 +25,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             kifuD.ClearA();// 棋譜を空っぽにします。
 
-            Kifu_Element node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
+            IKifuElement node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
             node1.KomaHouse.SetStartpos();
 
             //// 2014-10-25 11:04 追加
@@ -39,7 +39,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
             Okiba okiba = Okiba.ShogiBan;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
-            Kifu_Element node2 = kifuD.ElementAt8(lastTeme);
+            IKifuElement node2 = kifuD.ElementAt8(lastTeme);
             KomaHouse house1 = node2.KomaHouse;
 
             K40 k40;
@@ -243,7 +243,7 @@ namespace Xenon.KifuLarabe.L04_Common
                         // それぞれの駒に適用
                         foreach (K40 koma in komas)
                         {
-                            Kifu_Element dammyNode2 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                            IKifuElement dammyNode2 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                             KomaHouse house1 = dammyNode2.KomaHouse;
 
                             // 初期配置？

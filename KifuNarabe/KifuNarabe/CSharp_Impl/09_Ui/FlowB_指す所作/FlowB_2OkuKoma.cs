@@ -76,7 +76,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             }
 
             //>>>>> 選択されている駒があるとき
-            Kifu_Element dammyNode1 = kifuD1.ElementAt8(lastTeme);
+            IKifuElement dammyNode1 = kifuD1.ElementAt8(lastTeme);
             KomaHouse house1 = dammyNode1.KomaHouse;
 
             KomaPos tumandeiruKoma = house1.KomaPosAt(btnTumandeiruKoma.Koma);
@@ -110,7 +110,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     {
                         bool match = false;
 
-                        Kifu_Element dammyNode3 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+                        IKifuElement dammyNode3 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
                         KomaHouse house4 = dammyNode3.KomaHouse;
 
                         house4.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
@@ -197,7 +197,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             {
                 System.Console.WriteLine("駒台上");
 
-                Kifu_Element dammyNode5 = kifuD1.ElementAt8(lastTeme);
+                IKifuElement dammyNode5 = kifuD1.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode5.KomaHouse;
 
                 house5.SetKomaPos(kifuD1, btnTumandeiruKoma.Koma, house5.KomaPosAt(btnTumandeiruKoma.Koma).Next(
@@ -253,7 +253,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     }
                     else
                     {
-                        Kifu_Element dammyNode5 = kifuD.ElementAt8(lastTeme);
+                        IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
                         KomaHouse house6 = dammyNode5.KomaHouse;
 
                         if (Okiba.ShogiBan == M201Util.GetOkiba(house6.KomaPosAt(btnKoma.Koma).Star.Masu))
@@ -272,7 +272,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                             // 棋譜に符号を追加（マウスボタンが放されたとき）TODO:まだ早い。駒が成るかもしれない。
                             //------------------------------
                             // 棋譜
-                            Kifu_Element dammyNode6 = kifuD.ElementAt8(lastTeme);
+                            IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house7 = dammyNode6.KomaHouse;
 
                             RO_TeProcess process = RO_TeProcess.Next3(
@@ -295,7 +295,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
                             TeProcess last;
                             {
-                                Kifu_Element kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                                IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                                 KomaHouse dammyHouse = kifuElement.KomaHouse;
 
                                 last = kifuElement.TeProcess;

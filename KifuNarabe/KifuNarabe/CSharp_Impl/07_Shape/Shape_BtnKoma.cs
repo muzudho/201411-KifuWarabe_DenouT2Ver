@@ -164,7 +164,7 @@ namespace Xenon.KifuNarabe.L07_Shape
                     pen = Pens.Black;
                 }
 
-                Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house4 = dammyNode3.KomaHouse;
 
                 if (house4.KomaPosAt(this.Koma).Star.Sengo == Sengo.Sente)
@@ -181,7 +181,7 @@ namespace Xenon.KifuNarabe.L07_Shape
             // 文字
             //----------
 
-            Kifu_Element dammyNode4 = kifuD.ElementAt8(lastTeme);
+            IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
             KomaHouse house5 = dammyNode4.KomaHouse;
 
             KomaPos komaP = house5.KomaPosAt(this.Koma);

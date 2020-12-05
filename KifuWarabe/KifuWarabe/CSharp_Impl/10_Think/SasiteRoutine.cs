@@ -122,7 +122,7 @@ namespace Xenon.KifuWarabe.L10_Think
 
                     try
                     {
-                        Kifu_Element dammyNode6 = kifu.ElementAt8(thisTeme);
+                        IKifuElement dammyNode6 = kifu.ElementAt8(thisTeme);
                         KomaHouse house1 = dammyNode6.KomaHouse;
 
                         // 合法手がなかった☆
@@ -158,7 +158,7 @@ namespace Xenon.KifuWarabe.L10_Think
 
                     try
                     {
-                        Kifu_Element dammyNode6 = kifu.ElementAt8(thisTeme);
+                        IKifuElement dammyNode6 = kifu.ElementAt8(thisTeme);
                         KomaHouse house1 = dammyNode6.KomaHouse;
 
                         sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");

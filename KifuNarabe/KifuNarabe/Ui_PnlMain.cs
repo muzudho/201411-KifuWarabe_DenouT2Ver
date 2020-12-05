@@ -192,7 +192,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
             foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente, logTag))
             {
-                Kifu_Element dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
+                IKifuElement dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode4.KomaHouse;
 
                 KomaPos komaP = house5.KomaPosAt(koma);
@@ -219,7 +219,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
             foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote, logTag))
             {
-                Kifu_Element dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
+                IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode5.KomaHouse;
 
                 KomaPos komaP = house5.KomaPosAt(koma);
@@ -243,7 +243,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             {
                 K40 koma = komas[ LarabeRandom.Random.Next(komas.Count)];//ランダムに１つ。
 
-                Kifu_Element dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
+                IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house6 = dammyNode5.KomaHouse;
 
                 KomaPos komaP = house6.KomaPosAt(koma);
@@ -328,7 +328,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
                 //RO_TeProcess last;
                 //{
-                //    Kifu_Element kifuElement = this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
+                //    IKifuElement kifuElement = this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
 
                 //    last = kifuElement.TeProcess;
                 //}

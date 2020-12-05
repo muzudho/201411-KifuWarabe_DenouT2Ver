@@ -84,7 +84,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
             if (isBack)
             {
-                Kifu_Element removedLeaf = kifuD.PopCurrent1();
+                IKifuElement removedLeaf = kifuD.PopCurrent1();
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
@@ -330,7 +330,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                     //MessageBox.Show("☆指した先に駒がありました。", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //System.Console.WriteLine("☆指した先に駒がありました。");
 
-                    Kifu_Element dammyNode2 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode2.KomaHouse;
 
                     KomaPos tottaKomaP = house1.KomaPosAt(underKoma);
@@ -352,7 +352,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                                     System.Console.WriteLine("☆後手akiMasuHandle=" + akiMasu);
 
                                     // 取られる動き
-                                    Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                                    IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                                     KomaHouse house2 = dammyNode3.KomaHouse;
 
                                     house2.SetKomaPos(kifuD, underKoma,
@@ -395,7 +395,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                                     System.Console.WriteLine("☆先手akiMasuHandle=" + akiMasu);
 
                                     // 取られる動き
-                                    Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                                    IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                                     KomaHouse house2 = dammyNode3.KomaHouse;
 
                                     house2.SetKomaPos(
@@ -442,7 +442,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                     //------------------------------
                     // 成りは解除。
                     //------------------------------
-                    Kifu_Element dammyNode4 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house3 = dammyNode4.KomaHouse;
                     switch (
                         M201Util.GetOkiba(house3.KomaPosAt(underKoma).Star.Masu)
@@ -488,7 +488,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
                     //{
                     //MessageBox.Show("tottaKomaSyurui=[" + tottaKomaSyurui + "]", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                    Kifu_Element dammy1 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                    IKifuElement dammy1 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                     KomaHouse house9 = dammy1.KomaHouse;
                     kifuD.AppendChildB_Swap(
                         tottaKomaSyurui,
@@ -512,7 +512,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             //------------------------------------------------------------
             // 駒の移動
             //------------------------------------------------------------
-            Kifu_Element dammyNode5 = kifuD.ElementAt8(lastTeme);
+            IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
             KomaHouse house4 = dammyNode5.KomaHouse;
 
             house4.SetKomaPos(kifuD, movedKoma, dst);
@@ -576,7 +576,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             // 先手駒台または後手駒台の、各マスの駒がある場所を調べます。
             bool[] exists = new bool[M201Util.KOMADAI_KOMABUKURO_SPACE_LENGTH];//駒台スペースは40マスです。
 
-            Kifu_Element dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+            IKifuElement dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
             KomaHouse house4 = dammyNode6.KomaHouse;
 
             house4.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>

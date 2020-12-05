@@ -134,7 +134,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="previousKomaP"></param>
         /// <returns></returns>
         public string ToText_UseDou(
-            Kifu_Element node
+            IKifuElement node
             )
         {
             TeProcess process = node.TeProcess;

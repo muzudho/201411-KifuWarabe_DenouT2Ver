@@ -102,7 +102,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     // 棋譜に符号を追加（マウスボタンが放されたとき）TODO:まだ早い。駒が成るかもしれない。
                     //------------------------------
                     // 棋譜
-                    Kifu_Element dammyNode1 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house4 = dammyNode1.KomaHouse;
 
                     RO_TeProcess process = RO_TeProcess.Next3(
@@ -116,7 +116,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
                     TeProcess last2;
                     {
-                        Kifu_Element kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                        IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                         KomaHouse dammyHouse = kifuElement.KomaHouse;
                         last2 = kifuElement.TeProcess;
                     }
@@ -165,7 +165,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
                 TeProcess last;
                 {
-                    Kifu_Element kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
+                    IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                     KomaHouse dammyHouse = kifuElement.KomaHouse;
 
                     last = kifuElement.TeProcess;

@@ -46,7 +46,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             // 棋譜から１手削ります
             //------------------------------
             //System.Console.WriteLine("ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
-            Kifu_Element removeeLeaf = kifuD.Current8;
+            IKifuElement removeeLeaf = kifuD.Current8;
 
             if (removeeLeaf is Kifu_Root6)
             {
@@ -93,7 +93,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 LarabeLoggerTag_Impl.LOGGING_BY_GUI
                 );
 
-            //Kifu_Element removedLeaf = kifuD.PopCurrent1();
+            //IKifuElement removedLeaf = kifuD.PopCurrent1();
             ////System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
 
             Shape_BtnKoma btn_movedKoma = Converter09.KomaToBtn(movedKoma, shape_PnlTaikyoku);
@@ -209,7 +209,7 @@ namespace Xenon.KifuNarabe.L09_Ui
 
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
-            Kifu_Element dammyNode5 = kifuD.ElementAt8(lastTeme);
+            IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
             KomaHouse house5 = dammyNode5.KomaHouse;
 
             K40 k40;
@@ -305,7 +305,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go20, Ks14.H01_Fu, "クリアー棋譜"));
 
 
-            Kifu_Element dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
+            IKifuElement dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
             KomaHouse house7 = dammyNode6.KomaHouse;
 
             house7.SetStartpos("9/9/9/9/9/9/9/9/9 b K1R1B1G2S2N2L2P9 k1r1b1g2s2n2l2p9 1");
@@ -328,7 +328,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             sb.AppendLine("        <div style=\"margin-top:10px; width:30px;\">");
             sb.Append("            ");
 
-            Kifu_Element dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+            IKifuElement dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
             KomaHouse house7 = dammyNode6.KomaHouse;
 
             house7.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
@@ -352,7 +352,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 {
                     bool isSpace = true;
 
-                    Kifu_Element dammyNode8 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+                    IKifuElement dammyNode8 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
                     KomaHouse house8 = dammyNode8.KomaHouse;
 
                     house8.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
@@ -397,7 +397,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             sb.AppendLine("        <div style=\"margin-top:10px; width:30px;\">");
             sb.Append("            ");
 
-            Kifu_Element dammyNode7 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
+            IKifuElement dammyNode7 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
             KomaHouse house9 = dammyNode7.KomaHouse;
 
             house9.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>

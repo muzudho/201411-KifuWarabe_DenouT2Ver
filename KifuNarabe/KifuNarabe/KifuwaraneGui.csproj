@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Xenon.KifuNarabe</RootNamespace>
     <AssemblyName>Xenon.KifuNarabe</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -118,9 +118,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KifuLarabe\KifuLarabe\KifuLarabe.csproj">
+    <ProjectReference Include="..\..\KifuLarabe\KifuLarabe\KifuwaraneLib.csproj">
       <Project>{18fb9b6e-95b2-47fe-a2f6-4fd865abd804}</Project>
-      <Name>KifuLarabe</Name>
+      <Name>KifuwaraneLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\KifuWarabe\KifuWarabe\KifuwaraneEngine.csproj">
+      <Project>{e96a7341-b8e6-4979-8b2a-94ff2818962c}</Project>
+      <Name>KifuwaraneEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

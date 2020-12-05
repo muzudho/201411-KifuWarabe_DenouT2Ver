@@ -61,7 +61,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             }
 
             Ks14 tottaKomaSyurui;
-            Kifu_Element dammyNode1 = kifuD.ElementAt8(lastTeme);
+            IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
             KomaHouse house1 = dammyNode1.KomaHouse;
 
             KomaPos dst = house1.KomaPosAt(btnKoma_Selected.Koma).Next(
@@ -88,7 +88,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             {
                 //>>>>> 駒があったとき
                 //MessageBox.Show("取る駒があったとき", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Kifu_Element dammyNode2 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house2 = dammyNode2.KomaHouse;
 
                 tottaKomaSyurui = Haiyaku184Array.Syurui(house2.KomaPosAt(btnKoma_Under.Koma).Star.Haiyaku);
@@ -104,7 +104,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                         {
                             // 駒台に空きスペースがありました。
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                            Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                            IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house3 = dammyNode3.KomaHouse;
 
                             // 取られる動き
@@ -120,7 +120,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                         {
                             // エラー：　駒台に空きスペースがありませんでした。
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                            Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                            IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house3 = dammyNode3.KomaHouse;
 
                             // 取られる動き
@@ -150,7 +150,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                             // 取られる動き
-                            Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                            IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house4 = dammyNode3.KomaHouse;
 
                             house4.SetKomaPos(kifuD, btnKoma_Under.Koma, house4.KomaPosAt(btnKoma_Under.Koma).Next(
@@ -167,7 +167,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                             // 取られる動き
-                            Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                            IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house4 = dammyNode3.KomaHouse;
 
                             house4.SetKomaPos(kifuD, btnKoma_Under.Koma, house4.KomaPosAt(btnKoma_Under.Koma).Next(
@@ -190,7 +190,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 //------------------------------
                 // 成りは解除。
                 //------------------------------
-                Kifu_Element dammyNode4 = kifuD.ElementAt8(lastTeme);
+                IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house5 = dammyNode4.KomaHouse;
 
                 switch (M201Util.GetOkiba(house5.KomaPosAt(btnKoma_Under.Koma).Star.Masu))
@@ -200,7 +200,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                         // 駒台へ移動しました
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                        Kifu_Element dammyNode5 = kifuD.ElementAt8(lastTeme);
+                        IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
                         KomaHouse house6 = dammyNode5.KomaHouse;
 
                         Ks14 syurui2 = house6.KomaPosAt(btnKoma_Under.Koma).ToFunariCase();
@@ -256,7 +256,7 @@ namespace Xenon.KifuNarabe.L09_Ui
             //
             //      選択している駒を、その場所に移動させます。
             //
-            Kifu_Element dammyNode6 = kifuD.ElementAt8(lastTeme);
+            IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
             KomaHouse house7 = dammyNode6.KomaHouse;
 
             house7.SetKomaPos(kifuD, btnKoma_Selected.Koma, dst);
@@ -550,7 +550,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     // 駒台の空いている枡
                     M201 akiMasu = KifuIO.GetKomadaiKomabukuroSpace(itaruOkiba, kifuD);
 
-                    Kifu_Element dammyNode7 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode7 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house10 = dammyNode7.KomaHouse;
 
                     house10.SetKomaPos(kifuD, koma, house10.KomaPosAt(koma).Next(
@@ -595,7 +595,7 @@ namespace Xenon.KifuNarabe.L09_Ui
         {
             int curHou = kifuD.CountTeme(kifuD.Current8);
 
-            Kifu_Element dammyNode1 = kifuD.ElementAt8(curHou);
+            IKifuElement dammyNode1 = kifuD.ElementAt8(curHou);
             KomaHouse house10 = dammyNode1.KomaHouse;
 
             KomaPos komaP = house10.KomaPosAt(koma);

@@ -124,7 +124,7 @@ namespace Xenon.KifuLarabe.L04_Common
             {
                 foreach (K40 koma in komaGroup)
                 {
-                    Kifu_Element dammyNode2 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode2.KomaHouse;
 
                     KomaPos komaP = house1.KomaPosAt(koma);

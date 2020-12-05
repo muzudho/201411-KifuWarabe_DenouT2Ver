@@ -24,8 +24,8 @@ namespace Xenon.KifuLarabe.L04_Common
         /// ツリー構造になっている本譜の葉ノード。
         /// 根を「startpos」等の初期局面コマンドとし、次の節からは棋譜の符号「2g2f」等が連なっている。
         /// </summary>
-        public Kifu_Element Current8 { get { return this.current8; } }
-        private Kifu_Element current8;
+        public IKifuElement Current8 { get { return this.current8; } }
+        private IKifuElement current8;
 
         #endregion
 
@@ -61,9 +61,9 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 
         /// </summary>
         /// <returns>ルートしかないリストの場合、ヌルを返します。</returns>
-        public Kifu_Element PopCurrent1()
+        public IKifuElement PopCurrent1()
         {
-            Kifu_Element deleteeElement = null;
+            IKifuElement deleteeElement = null;
 
             if (this.Current8 is Kifu_Root6)
             {
@@ -102,7 +102,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 現在の先後
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public Sengo CountSengo(int teme)//Kifu_Element element
+        public Sengo CountSengo(int teme)//IKifuElement element
         {
             Sengo result;
 
@@ -279,7 +279,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 List<K40> komasS = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Sente_Komadai, logTag);
                 foreach (K40 koma in komasS)
                 {
-                    Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house2 = dammyNode3.KomaHouse;
 
                     Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
@@ -325,7 +325,7 @@ namespace Xenon.KifuLarabe.L04_Common
                 List<K40> komasG = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Gote_Komadai, logTag);
                 foreach (K40 koma in komasG)
                 {
-                    Kifu_Element dammyNode3 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house2 = dammyNode3.KomaHouse;
 
                     Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
@@ -481,7 +481,7 @@ namespace Xenon.KifuLarabe.L04_Common
             //------------------------------------------------------------
             this.ClearA();// this.Clear8();
 
-            Kifu_Element dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
+            IKifuElement dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
             KomaHouse house3 = dammyNode6.KomaHouse;
 
             house3.SetStartpos(sb.ToString());
@@ -562,11 +562,11 @@ namespace Xenon.KifuLarabe.L04_Common
         /// <param name="item"></param>
         /// <param name="toBreak"></param>
         public delegate void DELEGATE_Foreach(int teme, KomaHouse house, Kifu_Node6 item, ref bool toBreak);
-        public void ForeachA(Kifu_Element endNode, DELEGATE_Foreach delegate_Foreach)
+        public void ForeachA(IKifuElement endNode, DELEGATE_Foreach delegate_Foreach)
         {
             bool toBreak = false;
 
-            List<Kifu_Element> list8 = new List<Kifu_Element>();
+            List<IKifuElement> list8 = new List<IKifuElement>();
 
             //
             // ツリー型なので、１本のリストに変換するために工夫します。
@@ -804,7 +804,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
         public Kifu_Root6 GetRoot8()
         {
-            Kifu_Element cur = this.Current8;
+            IKifuElement cur = this.Current8;
 
             while (!(cur is Kifu_Root6))
             {
@@ -836,7 +836,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// 
         /// 新版では、初期局面（ルート）は必ず含まれていることから、オリジン1です。
         /// </summary>
-        public int CountTeme(Kifu_Element element)
+        public int CountTeme(IKifuElement element)
         {
             // [0]初期局面 は必ず入っているので、ループが１回も回らないということはないはず。
             int countTeme = -1;
@@ -864,9 +864,9 @@ namespace Xenon.KifuLarabe.L04_Common
 
         #region ランダムアクセッサ
 
-        public Kifu_Element ElementAt8(int teme1)
+        public IKifuElement ElementAt8(int teme1)
         {
-            Kifu_Element found6 = null;
+            IKifuElement found6 = null;
 
             this.ForeachA(this.Current8, (int teme2, KomaHouse house5, Kifu_Node6 node6, ref bool toBreak) =>
             {

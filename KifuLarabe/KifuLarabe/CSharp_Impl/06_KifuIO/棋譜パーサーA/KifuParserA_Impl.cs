@@ -29,7 +29,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
         K40 movedKoma,
         //K40 tottaKoma,
         K40 underKoma,
-        Kifu_Element node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
+        IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
         LarabeLoggerTag logTag
     );
 
@@ -84,7 +84,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             K40 movedKoma,
             //K40 tottaKoma,
             K40 underKoma,
-            Kifu_Element node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
+            IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
             LarabeLoggerTag logTag
             )
         {

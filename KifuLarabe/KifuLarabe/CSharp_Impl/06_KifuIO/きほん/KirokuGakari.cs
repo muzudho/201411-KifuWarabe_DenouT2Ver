@@ -34,7 +34,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             StringBuilder sb = new StringBuilder();
 
             sb.Append("position ");
-            Kifu_Element node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
+            IKifuElement node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
             KomaHouse house1 = node1.KomaHouse;
             sb.Append(house1.Startpos);
             sb.Append(" moves ");
@@ -58,7 +58,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
 
                 //RO_TeProcess last;
                 //{
-                //    Kifu_Element kifuElement = saifuKifuD.ElementAt8(saifuKifuD.CountTeme(saifuKifuD.Current8));
+                //    IKifuElement kifuElement = saifuKifuD.ElementAt8(saifuKifuD.CountTeme(saifuKifuD.Current8));
                 //    last = kifuElement.TeProcess;
                 //}
                 //RO_TeProcess previousMasu = last; //符号の追加が行われる前に退避
@@ -122,7 +122,7 @@ namespace Xenon.KifuLarabe.L06_KifuIO
             StringBuilder sb = new StringBuilder();
 
             sb.Append("position ");
-            Kifu_Element node2 = kifuD.ElementAt8(kifuD.Root7_Teme);
+            IKifuElement node2 = kifuD.ElementAt8(kifuD.Root7_Teme);
             KomaHouse house1 = node2.KomaHouse;
             sb.Append(house1.Startpos);
             sb.Append(" moves ");

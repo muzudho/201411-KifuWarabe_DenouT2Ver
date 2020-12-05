@@ -10,7 +10,7 @@ namespace Xenon.KifuLarabe.L04_Common
 {
 
 
-    public class Kifu_Node6 : Kifu_Element
+    public class Kifu_Node6 : IKifuElement
     {
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Xenon.KifuLarabe.L04_Common
 
 
 
-        public Kifu_Element Previous { get; set; }
+        public IKifuElement Previous { get; set; }
 
         public TeProcess TeProcess
         {
@@ -37,7 +37,7 @@ namespace Xenon.KifuLarabe.L04_Common
         /// キー：SFEN ※この仕様は暫定
         /// 値：ノード
         /// </summary>
-        public Dictionary<string, Kifu_Element> Next2 { get; set; }
+        public Dictionary<string, IKifuElement> Next2 { get; set; }
 
 
 
@@ -47,7 +47,7 @@ namespace Xenon.KifuLarabe.L04_Common
             this.Previous = null;
             this.teProcess = teProcess;
             this.komaHouse = house;
-            this.Next2 = new Dictionary<string, Kifu_Element>();
+            this.Next2 = new Dictionary<string, IKifuElement>();
         }
 
     }

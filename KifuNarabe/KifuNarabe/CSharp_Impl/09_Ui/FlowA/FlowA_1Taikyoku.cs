@@ -63,7 +63,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                     // TODO:棋譜に反映させたい。
 
                     Ks14 tottaKomaSyurui;
-                    Kifu_Element dammyNode1 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house1 = dammyNode1.KomaHouse;
 
                     switch (house1.KomaPosAt(movedKoma.Koma).Star.Sengo)
@@ -93,7 +93,7 @@ namespace Xenon.KifuNarabe.L09_Ui
                 {
                     // 選択されている駒があるとき
                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    Kifu_Element dammyNode1 = kifuD.ElementAt8(lastTeme);
+                    IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house2 = dammyNode1.KomaHouse;
 
                     switch (house2.KomaPosAt(btnKoma_Selected.Koma).Star.Sengo)
