@@ -262,8 +262,8 @@ namespace Grayscale.KifuwaraneEngine
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
                             #endregion
-                            Program_Warabe.Send("id name " + engineName);
-                            Program_Warabe.Send("id author " + engineAuthor);
+                            Program_Warabe.Send($"id name {engineName}");
+                            Program_Warabe.Send($"id author {engineAuthor}");
                             Program_Warabe.Send("usiok");
 
                         }
