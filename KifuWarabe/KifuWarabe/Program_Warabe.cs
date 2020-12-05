@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
-
-using Xenon.KifuWarabe.L01_Log;
-using Xenon.KifuWarabe.L10_Think;
-
+using Grayscale.KifuwaraneEngine.L01_Log;
+using Grayscale.KifuwaraneEngine.L10_Think;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
 
-using System.Windows.Forms;
-
-namespace Xenon.KifuWarabe
+namespace Grayscale.KifuwaraneEngine
 {
 
 
@@ -438,7 +430,7 @@ namespace Xenon.KifuWarabe
                             // どうも、２０２０年のわたしだぜ☆　ログ・ファイルが増え続けるのは流石にダメだろ……☆（＾～＾）
                             // TODO usinewgame のときに ログ・ファイルを強制的に消すようにしとけばいいだろうか☆（＾～＾）
                             // TODO ハードコーディングでいいか……☆（＾～＾）
-                            File.Delete("#log_default(System.Diagnostics.Process (Xenon.KifuWarabe)).txt");
+                            File.Delete("#log_default(System.Diagnostics.Process (Grayscale.KifuwaraneEngine)).txt");
                             File.Delete("#log_エラー.txt");
                             File.Delete("#log_指し手生成ルーチン.txt");
                             File.Delete("#log_将棋エンジン_棋譜読取.txt");

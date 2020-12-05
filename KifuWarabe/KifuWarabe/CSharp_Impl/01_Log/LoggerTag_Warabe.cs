@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Grayscale.KifuwaraneLib;
 
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.L01_Log;
-
-namespace Xenon.KifuWarabe
+namespace Grayscale.KifuwaraneEngine
 {
     /// <summary>
     /// 拡張できる列挙型として利用。
