@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -91,7 +91,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         "強制転成表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount + "]\n" +
                         "masuHandle=[" + masuHandle + "]\n";
-                        LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                        LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                         throw new Exception(message);
                     }
 

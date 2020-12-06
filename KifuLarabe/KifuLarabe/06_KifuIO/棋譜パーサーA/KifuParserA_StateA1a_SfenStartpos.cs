@@ -1,5 +1,5 @@
 ﻿using System;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
@@ -36,7 +36,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             nextState = this;
@@ -47,7 +47,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 {
                     //>>>>> 棋譜が始まります。
 
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
 
                     inputLine = inputLine.Substring("moves".Length);
                     inputLine = inputLine.Trim();
@@ -57,7 +57,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 }
                 else
                 {
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
                     toBreak = true;
                 }
             }
@@ -68,7 +68,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;

@@ -2,6 +2,7 @@
 using System.Drawing;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
@@ -27,7 +28,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Shape_BtnMasu btnMasu,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -272,7 +273,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             SfenStartpos sfenStartpos,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
         )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -583,7 +584,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             K40 koma,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             int curHou = kifuD.CountTeme(kifuD.Current8);

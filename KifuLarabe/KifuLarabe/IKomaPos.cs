@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -38,7 +39,7 @@ namespace Grayscale.KifuwaraneLib
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        bool NeverOnaji(Kifu_Document kifuD, ILoggerFileConf logTag, params List<K40>[] komaGroupArgs);
+        bool NeverOnaji(Kifu_Document kifuD, ILoggerElement logTag, params List<K40>[] komaGroupArgs);
 
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Grayscale.KifuwaraneLib
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILoggerFileConf logTag);
+        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILoggerElement logTag);
 
 
         

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -20,7 +20,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
 
@@ -82,7 +82,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         public static void GetLegalMove(
             Kifu_Document kifuD,
             out KomaAndMasusDictionary kmDic_Self,
-            ILoggerFileConf logTag)
+            ILoggerElement logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -304,7 +304,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
             StringBuilder sbGohosyu,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             // 自駒（将棋盤上）
@@ -347,7 +347,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
+                LoggerImpl.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
                 throw;
             }
 
@@ -383,7 +383,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
+                LoggerImpl.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
                 throw;
             }
         }

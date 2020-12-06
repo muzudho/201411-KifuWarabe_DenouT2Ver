@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneEngine.L01_Log;
 using Grayscale.KifuwaraneEngine.L10_Think;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -25,7 +26,7 @@ namespace Grayscale.KifuwaraneEngine
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            ILoggerFileConf logTag = EngineLoggerFileConf.ENGINE;
+            ILoggerElement logTag = EngineLoggerFileConf.ENGINE;
 
             try
             {
@@ -83,7 +84,7 @@ namespace Grayscale.KifuwaraneEngine
                 //          └─ log.txt               ←これを削除
                 //
                 #endregion
-                LarabeLogger.GetInstance().RemoveFile();
+                LoggerImpl.GetInstance().RemoveFile();
 
 
                 //-------------+----------------------------------------------------------------------------------------------------------
@@ -122,7 +123,7 @@ namespace Grayscale.KifuwaraneEngine
 
                     //seihinName += " " + versionStr;
                 }
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
 
 
                 //-----------+------------------------------------------------------------------------------------------------------------
@@ -189,7 +190,7 @@ namespace Grayscale.KifuwaraneEngine
 
                         // メッセージが届いています！
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        LarabeLogger.GetInstance().WriteLineR(line);
+                        LoggerImpl.GetInstance().WriteLineR(line);
 
 
                         if ("usi" == line)
@@ -395,13 +396,13 @@ namespace Grayscale.KifuwaraneEngine
                             //------------------------------------------------------------
                             // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
                             //------------------------------------------------------------
-                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━━━━━設定━━━━━┓");
+                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━━━━━設定━━━━━┓");
                             foreach (KeyValuePair<string, string> pair in setoptionDictionary)
                             {
                                 // ここで将棋エンジンの設定を済ませておいてください。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
                             }
-                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━┛");
+                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━┛");
 
 
                             //------------------------------------------------------------
@@ -489,7 +490,7 @@ namespace Grayscale.KifuwaraneEngine
                             //
                             //
                             #endregion
-                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "(^-^)ﾉｼ");
+                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "(^-^)ﾉｼ");
 
                             // このプログラムを終了します。
                             Environment.Exit(0);
@@ -569,7 +570,7 @@ namespace Grayscale.KifuwaraneEngine
 
                         // メッセージが届いています！
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        LarabeLogger.GetInstance().WriteLineR(line);
+                        LoggerImpl.GetInstance().WriteLineR(line);
 
 
                         if (line.StartsWith("position"))
@@ -672,16 +673,16 @@ namespace Grayscale.KifuwaraneEngine
                                 #endregion
 
 
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, " ...");
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "    ...");
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "       ...");
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "（＾△＾）positionきたｺﾚ！");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, " ...");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "    ...");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "       ...");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）positionきたｺﾚ！");
 
                                 KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
 
                                 kifuParserA_Impl.Execute_All(line, kifuD, "Program#Main(Warabe)", logTag);
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen7(kifuD, "現局面になっているのかなんだぜ☆？　line=[" + line + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag)));
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen7(kifuD, "現局面になっているのかなんだぜ☆？　line=[" + line + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag)));
 
                                 //------------------------------------------------------------
                                 // じっとがまん
@@ -700,7 +701,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「position」：" + ex.GetType().Name + "：" + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「position」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -749,7 +750,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「go ponder」：" + ex.GetType().Name + "：" + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「go ponder」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -883,7 +884,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「go mate」：" + ex.GetType().Name + "：" + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「go mate」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -914,7 +915,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「go infinite」：" + ex.GetType().Name + "：" + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「go infinite」：" + ex.GetType().Name + "：" + ex.Message);
                             }
                         }
                         else if (line.StartsWith("go")) // 「go ponder」「go mate」「go infinite」とは区別します。
@@ -989,7 +990,7 @@ namespace Grayscale.KifuwaraneEngine
                                 int latestTeme = kifuD.CountTeme(kifuD.Current8);//現・手目
                                 KomaHouse genKyokumen = kifuD.ElementAt8(latestTeme).KomaHouse;//現局面
 
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "将棋サーバー「"+latestTeme+"手目、きふわらべ　さんの手番ですよ！」　" + line);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "将棋サーバー「"+latestTeme+"手目、きふわらべ　さんの手番ですよ！」　" + line);
 
                                 //------------------------------------------------------------
                                 // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
@@ -1002,9 +1003,9 @@ namespace Grayscale.KifuwaraneEngine
                                     || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
                                     )
                                 {
-                                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
-                                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
-                                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
+                                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
+                                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
+                                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
 
                                     //------------------------------------------------------------
                                     // 投了
@@ -1036,14 +1037,14 @@ namespace Grayscale.KifuwaraneEngine
                                         if (bestSasite.isEnableSfen())
                                         {
                                             string sfenText = bestSasite.ToSfenText();
-                                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]"+
+                                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]"+
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
                                             Program_Warabe.Send("bestmove " + sfenText);//指し手を送ります。
                                         }
                                         else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                                         {
-                                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
+                                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
                                             // 投了ｗ！
@@ -1055,7 +1056,7 @@ namespace Grayscale.KifuwaraneEngine
                                         //>>>>> エラーが起こりました。
 
                                         // どうにもできないので  ログだけ取って無視します。
-                                        LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
+                                        LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
                                     }
 
                                 }
@@ -1067,7 +1068,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「go」：" + ex.GetType().Name + " " + ex.Message + "：goを受け取ったときです。：");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「go」：" + ex.GetType().Name + " " + ex.Message + "：goを受け取ったときです。：");
                             }
 
                         }
@@ -1166,7 +1167,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「stop」：" + ex.GetType().Name + " " + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「stop」：" + ex.GetType().Name + " " + ex.Message);
                             }
 
                         }
@@ -1208,7 +1209,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「ponderhit」：" + ex.GetType().Name + " " + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「ponderhit」：" + ex.GetType().Name + " " + ex.Message);
                             }
                         }
                         else if (line.StartsWith("gameover"))
@@ -1272,7 +1273,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「gameover」：" + ex.GetType().Name + " " + ex.Message);
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「gameover」：" + ex.GetType().Name + " " + ex.Message);
                             }
                         }
                         else
@@ -1342,30 +1343,30 @@ namespace Grayscale.KifuwaraneEngine
                     //      └──────┴──────┘
                     //
                     #endregion
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
                     foreach (KeyValuePair<string, string> pair in setoptionDictionary)
                     {
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━goDictionary━━━━━┓");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━goDictionary━━━━━┓");
                     foreach (KeyValuePair<string, string> pair in goDictionary)
                     {
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━goMateDictionary━━━┓");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━goMateDictionary━━━┓");
                     foreach (KeyValuePair<string, string> pair in goMateDictionary)
                     {
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━gameoverDictionary━━┓");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━確認━━━━gameoverDictionary━━┓");
                     foreach (KeyValuePair<string, string> pair in gameoverDictionary)
                     {
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                 }
 
             }
@@ -1375,7 +1376,7 @@ namespace Grayscale.KifuwaraneEngine
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
             }
         }
 
@@ -1394,7 +1395,7 @@ namespace Grayscale.KifuwaraneEngine
             Console.Out.WriteLine(line);
 
             // ログ追記
-            LarabeLogger.GetInstance().WriteLineS(line);
+            LoggerImpl.GetInstance().WriteLineS(line);
         }
         #endregion
 

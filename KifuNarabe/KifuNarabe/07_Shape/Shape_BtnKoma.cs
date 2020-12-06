@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -119,7 +120,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
         /// </summary>
         /// <param name="g1"></param>
         /// <param name="kyokumen"></param>
-        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILoggerFileConf logTag)
+        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILoggerElement logTag)
         {
             if (!this.Visible)
             {

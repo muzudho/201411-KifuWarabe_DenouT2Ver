@@ -7,6 +7,7 @@ using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneLib.Entities.Log;
 
 namespace Grayscale.KifuwaraneEngine.L10_Think
 {
@@ -23,7 +24,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static IMove Sasu_Main(Kifu_Document kifu, ILoggerFileConf logTag)
+        public static IMove Sasu_Main(Kifu_Document kifu, ILoggerElement logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -41,7 +42,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
@@ -62,7 +63,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILoggerFileConf logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILoggerElement logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -107,7 +108,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
             }
 
             try
@@ -144,7 +145,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
                     }
 
 
@@ -168,7 +169,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
+                        LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
                     }
 
 
@@ -183,7 +184,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
             }
 
 
@@ -213,7 +214,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
             }
 
             return result;

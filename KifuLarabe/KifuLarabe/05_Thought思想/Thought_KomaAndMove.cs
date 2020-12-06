@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L05_Thought
@@ -16,7 +16,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -47,16 +47,16 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary Minus_OverThereMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
         )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "差し替える前");
-                LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
+                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "差し替える前");
+                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -65,8 +65,8 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "差し替えた後");
-                LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
+                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, "差し替えた後");
+                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
             }
 
             return c;

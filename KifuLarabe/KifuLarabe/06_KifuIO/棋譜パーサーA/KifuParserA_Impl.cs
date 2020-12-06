@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
     public delegate void RefreshHirateDelegate(
-        Kifu_Document kifuD,ILoggerFileConf logTag
+        Kifu_Document kifuD,ILoggerElement logTag
     );
     public delegate void RefreshShiteiKyokumenDelegate(
         Kifu_Document kifuD,
         ref string restText,
         SfenStartpos sfenStartpos,
-        ILoggerFileConf logTag
+        ILoggerElement logTag
     );
     public delegate void IttesasiPaintDelegate(
         Kifu_Document kifuD,
@@ -21,7 +21,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         //K40 tottaKoma,
         K40 underKoma,
         IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
-        ILoggerFileConf logTag
+        ILoggerElement logTag
     );
 
     /// <summary>
@@ -56,7 +56,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
         private void Dammy_RefreshHirate(
             Kifu_Document kifuD,
-            ILoggerFileConf logTag)
+            ILoggerElement logTag)
         {
         }
 
@@ -64,7 +64,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
         }
@@ -76,7 +76,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //K40 tottaKoma,
             K40 underKoma,
             IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
         }
@@ -94,7 +94,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -103,8 +103,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         {
             try
             {
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━━━━━┓");
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━━━━━┓");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState;
                 inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
@@ -119,7 +119,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;
@@ -135,7 +135,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -144,8 +144,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         {
             try
             {
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "┏━━━━━━━━━━┓");
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "┏━━━━━━━━━━┓");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState = this.State;
 
@@ -165,7 +165,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
             }
 
 

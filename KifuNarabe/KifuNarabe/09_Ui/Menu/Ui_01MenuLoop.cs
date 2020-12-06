@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
-using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
@@ -23,7 +23,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Ui_PnlMain ui_PnlMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             RequestForMain requestForMain = new RequestForMain();

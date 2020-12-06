@@ -2,8 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -26,7 +25,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -79,7 +78,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
-            LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
+            LoggerImpl.GetInstance().WriteLineMemo(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 
@@ -96,7 +95,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool isBack,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -292,7 +291,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool back,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             underKoma = K40.Error;

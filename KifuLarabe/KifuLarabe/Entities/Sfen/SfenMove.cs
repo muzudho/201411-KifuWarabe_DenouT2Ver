@@ -1,5 +1,4 @@
 ﻿using System;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
 
 namespace Grayscale.KifuwaraneLib.Entities.Sfen
 {

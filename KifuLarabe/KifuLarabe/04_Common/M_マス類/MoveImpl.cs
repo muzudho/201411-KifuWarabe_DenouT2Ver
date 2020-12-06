@@ -2,8 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -251,7 +251,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (-1 == srcDan)
             {
                 string message = "指定の元マス[" + this.SrcStar.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
 
@@ -259,7 +259,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (-1 == dan)
             {
                 string message = "指定の先マス[" + this.Star.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
 

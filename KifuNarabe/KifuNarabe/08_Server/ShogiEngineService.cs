@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Grayscale.KifuwaraneGui.L09_Ui;
 using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
@@ -58,7 +58,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
                 //------------------------------
                 // ログファイルを削除します。
                 //------------------------------
-                LarabeLogger.GetInstance().RemoveFile();
+                LoggerImpl.GetInstance().RemoveFile();
 
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -141,7 +141,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         /// 手番が替わったときの挙動を、ここに書きます。
         /// ************************************************************************************************************************
         /// </summary>
-        public static void Message_ChangeTurn(Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static void Message_ChangeTurn(Kifu_Document kifuD, ILoggerElement logTag)
         {
 
 
@@ -203,7 +203,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
             else
             {
                 //>>>>>>>>>> メッセージを受け取りました。
-                LarabeLogger.GetInstance().WriteLineR(line);
+                LoggerImpl.GetInstance().WriteLineR(line);
 
                 if (line.StartsWith("option"))
                 {
@@ -256,7 +256,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {
@@ -275,7 +275,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         {
             ShogiEngineService.shogiEngineProcess.StandardInput.WriteLine(line);
 
-            LarabeLogger.GetInstance().WriteLineS(line);
+            LoggerImpl.GetInstance().WriteLineS(line);
         }
 
     }

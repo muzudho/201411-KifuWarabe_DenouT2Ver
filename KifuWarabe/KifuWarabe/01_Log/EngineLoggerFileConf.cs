@@ -1,13 +1,14 @@
 ﻿using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 
 namespace Grayscale.KifuwaraneEngine
 {
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class EngineLoggerFileConf : LibLoggerFileConf
+    public class EngineLoggerFileConf : LoggerElementImpl
     {
-        public static readonly ILoggerFileConf ENGINE;
+        public static readonly ILoggerElement ENGINE;
 
         static EngineLoggerFileConf()
         {

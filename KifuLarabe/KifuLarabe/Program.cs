@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -14,12 +15,12 @@ namespace Grayscale.KifuwaraneLib
     /// </summary>
     public partial class LarabeLoggerTag_Impl
     {
-        public static readonly ILoggerFileConf SASITE_SEISEI_ROUTINE = new LibLoggerFileConf("#log_指し手生成ルーチン",".txt",true);
-        public static readonly ILoggerFileConf LOGGING_BY_GUI = new LibLoggerFileConf("#log_将棋GUI_棋譜読取",".txt",true);
-        public static readonly ILoggerFileConf LOGGING_BY_LARABE_STANDALONE = new LibLoggerFileConf("#log_ララベProgram",".txt",true);
-        public static readonly ILoggerFileConf LINKED_LIST = new LibLoggerFileConf("#log_リンクトリスト",".txt",false);
+        public static readonly ILoggerElement SASITE_SEISEI_ROUTINE = new LoggerElementImpl("#log_指し手生成ルーチン",".txt",true);
+        public static readonly ILoggerElement LOGGING_BY_GUI = new LoggerElementImpl("#log_将棋GUI_棋譜読取",".txt",true);
+        public static readonly ILoggerElement LOGGING_BY_LARABE_STANDALONE = new LoggerElementImpl("#log_ララベProgram",".txt",true);
+        public static readonly ILoggerElement LINKED_LIST = new LoggerElementImpl("#log_リンクトリスト",".txt",false);
 
-        public static readonly ILoggerFileConf ERROR = new LibLoggerFileConf("#log_エラー", ".txt", true);
+        public static readonly ILoggerElement ERROR = new LoggerElementImpl("#log_エラー", ".txt", true);
     }
 }
 
@@ -30,7 +31,7 @@ namespace Grayscale.KifuwaraneLib
         /// <summary>
         /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
         /// </summary>
-        public static int BuildVersion { get; private set; } = 8;
+        public static int BuildVersion { get; private set; } = 9;
 
         /// <summary>
         /// 棄権バージョン。形を整える。
@@ -40,7 +41,7 @@ namespace Grayscale.KifuwaraneLib
 
         public static int Main(string[] args)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
 
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
@@ -167,7 +168,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(New)");
@@ -243,7 +244,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(Next)");
@@ -344,7 +345,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy,"ルートが追加されたはずだぜ☆"));
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy,"ルートが追加されたはずだぜ☆"));
 
                 {
                     // ▲２六歩

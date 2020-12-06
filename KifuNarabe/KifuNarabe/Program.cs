@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L09_Ui;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Nett;
@@ -14,9 +15,9 @@ namespace Grayscale.KifuwaraneGui
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class LoggerTag_Narabe : LibLoggerFileConf
+    public class LoggerTag_Narabe : LoggerElementImpl
     {
-        public static readonly ILoggerFileConf PAINT;
+        public static readonly ILoggerElement PAINT;
 
         static LoggerTag_Narabe()
         {
@@ -40,8 +41,8 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
-            LarabeLogger.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            LoggerImpl.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -30,7 +29,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             else if (this.stars.Count+1 <= starIndex)
             {
                 string message = this.GetType().Name + "#SetStarPos：　リストの要素より2多いインデックスを指定されましたので、追加しません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
             else
@@ -53,7 +52,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#SetKomaPos：　駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
 
@@ -72,7 +71,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#KomaPosAt：駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
 
@@ -90,7 +89,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             else
             {
                 string message = this.GetType().Name + "#StarAt：　リストの要素より多いインデックスを指定されましたので、取得できません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw new Exception(message);
             }
 

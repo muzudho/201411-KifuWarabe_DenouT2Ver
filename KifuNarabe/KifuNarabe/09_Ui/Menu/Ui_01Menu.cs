@@ -4,7 +4,7 @@ using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
 using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
@@ -30,7 +30,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, ILoggerFileConf logTag)
+            Kifu_Document kifuD, out string backedInputText, ILoggerElement logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -131,7 +131,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerFileConf logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerElement logTag);
 
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -163,7 +163,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Ui_01MenuB ui_01MenuB = new Ui_01MenuB(requestForMain, shape_PnlTaikyoku);
             bool toBreak = false;
 
-            LarabeLogger.GetInstance().WriteLineMemo(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            LoggerImpl.GetInstance().WriteLineMemo(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
             bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
 
             // 再描画1

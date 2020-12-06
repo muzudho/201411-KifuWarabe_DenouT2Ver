@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
 
@@ -28,7 +29,7 @@ namespace Grayscale.KifuwaraneLib
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -45,7 +46,7 @@ namespace Grayscale.KifuwaraneLib
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

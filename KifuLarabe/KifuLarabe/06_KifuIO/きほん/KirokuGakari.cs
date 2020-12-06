@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
@@ -20,7 +21,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="fugoList"></param>
         public static string ToJapaneseKifuText(
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             StringBuilder sb = new StringBuilder();

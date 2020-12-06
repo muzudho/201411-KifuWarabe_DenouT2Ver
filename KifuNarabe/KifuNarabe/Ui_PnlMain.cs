@@ -6,6 +6,7 @@ using Grayscale.KifuwaraneGui.L01_Log;
 using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -67,7 +68,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             }
         }
 
-        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerElement logTag)
         {
             this.flowB = flowB;
             this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
@@ -127,7 +128,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public string ReadLine2(ILoggerFileConf logTag)
+        public string ReadLine2(ILoggerElement logTag)
         {
             int lastTeme = this.Kifu_Document.CountTeme(this.Kifu_Document.Current8);
 
@@ -355,14 +356,14 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
             {
 
                 //System.Console.WriteLine("timer input99=[" + input99 + "]");
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
 
                 this.AppendInput1Text(Ui_PnlMain.input99);
                 Ui_PnlMain.input99 = "";
@@ -404,7 +405,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
 
             this.setteiFile = new SetteiFile();
@@ -528,7 +529,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -556,7 +557,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -606,7 +607,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -671,7 +672,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         /// <param name="requestForMain"></param>
         public void Response(
-            RequestForMain requestForMain, ILoggerFileConf logTag)
+            RequestForMain requestForMain, ILoggerElement logTag)
         {
             //------------------------------
             // 入力欄の表示
@@ -707,7 +708,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 }
 
                 // ログ
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, this.txtOutput1.Text);
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, this.txtOutput1.Text);
             }
             else if (requestForMain.RequestClearTxtOutput)
             {
@@ -715,8 +716,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 this.WriteLine("");
 
                 // ログ
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "");
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "");
             }
 
             //------------------------------

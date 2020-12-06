@@ -3,6 +3,7 @@ using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.Entities.Log;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
 {
@@ -11,7 +12,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <summary>
         /// 駒を、平手の初期配置に並べます。
         /// </summary>
-        public static void ToHirate(Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static void ToHirate(Kifu_Document kifuD, ILoggerElement logTag)
         {
 
 
@@ -127,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
-            LarabeLogger.GetInstance().WriteLineMemo(logTag, "平手局面にセットしたぜ☆");
+            LoggerImpl.GetInstance().WriteLineMemo(logTag, "平手局面にセットしたぜ☆");
         }
 
 
@@ -143,7 +144,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             //------------------------------

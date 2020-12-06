@@ -69,7 +69,8 @@
   <ItemGroup>
     <Compile Include="01_Log\CsvLineParserImpl.cs" />
     <Compile Include="01_Log\LarabeFileOutput.cs" />
-    <Compile Include="01_Log\LarabeLogger.cs" />
+    <Compile Include="Entities\Log\ILogger.cs" />
+    <Compile Include="Entities\Log\LoggerImpl.cs" />
     <Compile Include="01_Log\LarabeRandom.cs" />
     <Compile Include="01_Log\LarabeShuffle.cs" />
     <Compile Include="03_Communication\J符号用\AgaruHiku.cs" />
@@ -127,17 +128,17 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
-    <Compile Include="Entities\L2_ApplicatedGame\ApplicatedMove.cs" />
-    <Compile Include="Entities\L2_ApplicatedGame\GameTranslator.cs" />
-    <Compile Include="Entities\L1_Sfen\SfenMove.cs" />
-    <Compile Include="Entities\L1_Sfen\SfenMoveBuilder.cs" />
-    <Compile Include="Entities\L1_Sfen\SfenReferences.cs" />
+    <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
+    <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
+    <Compile Include="Entities\Sfen\SfenMove.cs" />
+    <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />
+    <Compile Include="Entities\Sfen\SfenReferences.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />
-    <Compile Include="01_Log\LibLoggerFileConf.cs" />
+    <Compile Include="Entities\Log\LoggerElementImpl.cs" />
     <Compile Include="IKomaPos.cs" />
-    <Compile Include="ILoggerFileConf.cs" />
+    <Compile Include="Entities\Log\ILoggerElement.cs" />
     <Compile Include="IMove.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Entities\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

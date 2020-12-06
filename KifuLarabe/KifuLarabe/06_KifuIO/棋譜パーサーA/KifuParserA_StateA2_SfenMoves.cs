@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
@@ -35,7 +35,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             nextState = this;
@@ -64,7 +64,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                             {
                                 //「6g6f」形式でもなかった☆
 
-                                LarabeLogger.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
+                                LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
                                 toBreak = true;
                                 goto gt_EndMethod;
                             }
@@ -78,7 +78,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = this.GetType().Name + "#Execute（A）：" + ex.GetType().Name + "：" + ex.Message;
-                        LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                        LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                     }
 
 
@@ -110,7 +110,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                             //------------------------------
 
                             //LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag) + "　：　hint=" + hint);
-                            LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
+                            LoggerImpl.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
                             bool isBack = false;
                             KifuIO.Ittesasi3(
                                 teProcess,
@@ -121,7 +121,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                                 out underKoma,
                                 logTag
                                 );
-                            LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen7(kifuD,"一手指し終了"));
+                            LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen7(kifuD,"一手指し終了"));
 
                         }
                         catch (Exception ex)
@@ -131,7 +131,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（B）：" + ex.GetType().Name + "：" + ex.Message;
-                            LarabeLogger.GetInstance().WriteLineError(logTag, message);
+                            LoggerImpl.GetInstance().WriteLineError(logTag, message);
                         }
 
                         try
@@ -153,7 +153,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（C）：" + ex.GetType().Name + "：" + ex.Message;
-                            LarabeLogger.GetInstance().WriteLineError(logTag, message);
+                            LoggerImpl.GetInstance().WriteLineError(logTag, message);
                         }
 
 
@@ -164,13 +164,13 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                     {
                         toBreak = true;
                         string message = "＼（＾ｏ＾）／teProcessオブジェクトがない☆！　inputLine=[" + inputLine + "]";
-                        LarabeLogger.GetInstance().WriteLineError(logTag, message);
+                        LoggerImpl.GetInstance().WriteLineError(logTag, message);
                         throw new Exception(message);
                     }
                 }
                 else
                 {
-                    LarabeLogger.GetInstance().WriteLineMemo(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD,"棋譜パース"));
+                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD,"棋譜パース"));
                     toBreak = true;
                 }
             }
@@ -181,7 +181,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LarabeLogger.GetInstance().WriteLineError(logTag, message);
+                LoggerImpl.GetInstance().WriteLineError(logTag, message);
             }
 
         gt_EndMethod:

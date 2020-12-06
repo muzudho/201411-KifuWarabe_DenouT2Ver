@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             out string restText,
             out IMove move,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             bool successful = false;
@@ -187,7 +187,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                        LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
 
                         // 追加
                         throw;
@@ -203,7 +203,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return successful;

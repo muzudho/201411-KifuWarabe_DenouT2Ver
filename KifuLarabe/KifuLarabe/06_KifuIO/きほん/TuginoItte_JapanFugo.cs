@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -27,7 +26,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
+            string text, out string restText, out IMove process, Kifu_Document kifuD, ILoggerElement logTag)
         {
             process = null;
             bool successful = false;
@@ -82,7 +81,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // どうにもできないので  ログだけ取って無視します。
-                LarabeLogger.GetInstance().WriteLineMemo(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
+                LoggerImpl.GetInstance().WriteLineMemo(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
             }
 
 
@@ -112,7 +111,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string strDaHyoji, //打
             out IMove process,
             Kifu_Document kifuD,
-            ILoggerFileConf logTag
+            ILoggerElement logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -1098,7 +1097,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILoggerFileConf logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILoggerElement logTag)
         {
             bool hit = false;
             foundKoma = K40.Error;
