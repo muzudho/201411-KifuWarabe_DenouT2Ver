@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
@@ -15,7 +14,7 @@ namespace Grayscale.KifuwaraneLib
         /// <summary>
         /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
         /// </summary>
-        public static int BuildVersion { get; private set; } = 12;
+        public static int BuildVersion { get; private set; } = 13;
 
         /// <summary>
         /// 棄権バージョン。形を整える。
@@ -73,8 +72,7 @@ namespace Grayscale.KifuwaraneLib
                 var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion")); ;
                 List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                var outputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputForcePromotion"));
-                LarabeFileOutput.WriteFile(outputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(LibLoggerAddresses.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
 
@@ -85,8 +83,7 @@ namespace Grayscale.KifuwaraneLib
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku")); ;
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                var outputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputPieceTypeToHaiyaku"));
-                LarabeFileOutput.WriteFile(outputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(LibLoggerAddresses.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 

@@ -60,15 +60,13 @@ namespace Grayscale.KifuwaraneEngine
                 var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion")); ;
                 ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                var outputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputForcePromotion"));
-                LarabeFileOutput.WriteFile(outputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.TraceLine(LibLoggerAddresses.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku")); ;
                 Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                var outputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputPieceTypeToHaiyaku"));
-                LarabeFileOutput.WriteFile(outputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(LibLoggerAddresses.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 

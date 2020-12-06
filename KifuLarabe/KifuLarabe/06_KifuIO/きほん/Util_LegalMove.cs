@@ -268,7 +268,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                     sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
                 }
 
-                LarabeFileOutput.WriteFile("#リーガルムーブ(被王手時).txt", sbOhteDebug.ToString());
+                Logger.WriteFile(LibLoggerAddresses.LoggerLegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------

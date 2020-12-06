@@ -175,8 +175,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
 
                 }
 
-
-                LarabeFileOutput.WriteFile("#合法手.txt", sbGohosyu.ToString());
+                Logger.WriteFile(LibLoggerAddresses.LoggerLegalMove, sbGohosyu.ToString());
 
             }
             catch (Exception ex)

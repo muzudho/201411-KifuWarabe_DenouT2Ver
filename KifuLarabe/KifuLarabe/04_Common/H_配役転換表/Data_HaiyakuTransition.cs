@@ -152,7 +152,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     sb.AppendLine();
                 }
 
-                LarabeFileOutput.WriteFile("#Debug_配役転換表Load(1)_データ行のみ.txt", sb.ToString());
+                Logger.WriteFile(LibLoggerAddresses.LoggerHaichiTenkanHyoOnlyData, sb.ToString());
             }
 
 
@@ -219,8 +219,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             }
 
         gt_EndMethod:
-
-            LarabeFileOutput.WriteFile("#Debug_配役転換表Load(2).txt", sbDebug.ToString());
+            Logger.WriteFile(LibLoggerAddresses.LoggerHaichiTenkanHyoAll, sbDebug.ToString());
 
             return rows;
         }

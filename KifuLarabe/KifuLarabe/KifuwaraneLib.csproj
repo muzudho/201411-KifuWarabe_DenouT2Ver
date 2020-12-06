@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Log\CsvLineParserImpl.cs" />
-    <Compile Include="01_Log\LarabeFileOutput.cs" />
     <Compile Include="01_Log\LarabeRandom.cs" />
     <Compile Include="01_Log\LarabeShuffle.cs" />
     <Compile Include="03_Communication\J符号用\AgaruHiku.cs" />
