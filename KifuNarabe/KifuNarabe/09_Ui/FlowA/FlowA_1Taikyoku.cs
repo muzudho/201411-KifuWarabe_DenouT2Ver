@@ -1,9 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
+using Nett;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {
@@ -195,7 +197,10 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //----------
             if (shape_PnlTaikyoku.BtnShogiEngineKido.HitByMouse(e.Location.X, e.Location.Y))
             {
-                ShogiEngineService.StartShogiEngine( ui_PnlMain.SetteiFile.ShogiEngineFileName );
+                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+                var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+                var enginePath = toml.Get<TomlTable>("Resources").Get<string>("Engine");
+                ShogiEngineService.StartShogiEngine(enginePath);
             }
 
             //----------

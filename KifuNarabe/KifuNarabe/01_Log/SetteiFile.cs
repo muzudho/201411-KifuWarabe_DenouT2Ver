@@ -7,13 +7,13 @@ namespace Grayscale.KifuwaraneGui.L01_Log
 {
     /// <summary>
     /// 設定ファイル
+    /// 
+    /// ファイルパスは Engine.toml へ移動しました。
     /// </summary>
     public class SetteiFile
     {
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// 設定ファイル名です。
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
         public string SetteiFileName
         {
@@ -25,9 +25,7 @@ namespace Grayscale.KifuwaraneGui.L01_Log
         private string setteiFileName;
 
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// 設定ファイルのバージョンです。
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
         public string SetteiFileVer
         {
@@ -39,9 +37,7 @@ namespace Grayscale.KifuwaraneGui.L01_Log
         private string setteiFileVer;
 
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// 将棋エンジンの名前です。
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
         public string ShogiEngineName
         {
@@ -53,20 +49,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
         private string shogiEngineName;
 
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// 将棋エンジンのファイル名です。
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// </summary>
-        public string ShogiEngineFileName
-        {
-            get
-            {
-                return this.shogiEngineFileName;
-            }
-        }
-        private string shogiEngineFileName;
-
-        /// <summary>
         /// コンストラクターです。
         /// </summary>
         public SetteiFile()
@@ -74,7 +56,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
             this.setteiFileName = "settei.xml";
             this.setteiFileVer = "0.00.0";
             this.shogiEngineName = "The将棋エンジン";
-            this.shogiEngineFileName = "shogiEngine.exe";
         }
 
         public void DebugWrite()
@@ -83,7 +64,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
             sb.AppendLine("設定ファイル          : " + this.SetteiFileName);
             sb.AppendLine("設定ファイルVer       : " + this.SetteiFileVer);
             sb.AppendLine("将棋エンジン          : " + this.ShogiEngineName);
-            sb.AppendLine("将棋エンジン・ファイル: " + this.ShogiEngineFileName);
             System.Console.WriteLine();
             System.Console.WriteLine();
             System.Console.WriteLine();
@@ -114,7 +94,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
                     XmlElement xShogiEngine = (XmlElement)xShogiEngineNode;
 
                     this.shogiEngineName = xShogiEngine.GetAttribute("name");
-                    this.shogiEngineFileName = xShogiEngine.GetAttribute("file");
                     break;
                 }
             }
@@ -157,9 +136,6 @@ namespace Grayscale.KifuwaraneGui.L01_Log
 
                 // name="The将棋エンジン"
                 xShogiEngine.SetAttribute("file", this.ShogiEngineName);
-
-                // file="shogiEngine.exe"
-                xShogiEngine.SetAttribute("file", this.ShogiEngineFileName);
 
                 xKifunarabe.AppendChild(xShogiEngine);
 

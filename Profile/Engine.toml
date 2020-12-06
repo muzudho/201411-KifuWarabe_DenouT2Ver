@@ -8,6 +8,7 @@ Author = "Satoshi TAKAHASHI"
 
 [Resources]
 
+# 特に説明の無いものは Profile フォルダーからの相対パスです。
 # 道１８７
 Michi187 = "data_michi187.csv"
 
@@ -25,3 +26,15 @@ InputPieceTypeToHaiyaku = "data_syuruiToHaiyaku.csv"
 
 # 配役転換表(出力)
 OutputPieceTypeToHaiyaku = "配役転換表.html"
+
+# GUIから呼び出す将棋エンジン。
+# GUI の .exe ファイルからの相対パス。
+#
+# 旧 bin/Release/settei.xml 
+# <?xml version="1.0" encoding="UTF-8"?>
+# <kifunarabe setteiFileVer="0.00.0">
+#   <!--v(^-^)vｲｪｰｲ☆ 『将棋ＧＵＩ きふならべ』の設定ファイルなんだぜ☆！ 今は一番上に書いてある ＜shogiEngine＞ を見に行くぜ☆-->
+#   <shogiEngine file="shogiEngine.exe" />
+# </kifunarabe>
+#
+Engine = "./Grayscale.KifuwaraneEngine.exe"

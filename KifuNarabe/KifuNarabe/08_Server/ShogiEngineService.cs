@@ -101,6 +101,11 @@ namespace Grayscale.KifuwaraneGui.L08_Server
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.GetType().Name + "：" + ex.Message);
+                System.Console.WriteLine($"shogiEngineFileName: {shogiEngineFileName}");
+                
+
+                // 追加。トレース情報が欲しい。
+                throw;
             }
 
         gt_EndMethod:
