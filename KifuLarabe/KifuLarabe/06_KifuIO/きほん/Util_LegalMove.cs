@@ -360,22 +360,22 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // 盤上の自駒の移動候補から、 自駒がある枡を除外します。
                 ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan, logTag);
-                //LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
+                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
 
                 // そこから、敵駒がある枡「以降」を更に除外します。
                 // FIXME:
                 ido_onBan = Thought_KomaAndMove.Minus_OverThereMasus(ido_onBan, tekiMasus_OnBan, logTag);
-                //LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, "(②邪魔敵後)　盤＝" + ido_onBan.DebugString_Set());
+                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(②邪魔敵後)　盤＝" + ido_onBan.DebugString_Set());
 
 
                 // 自駒台の移動候補から、敵駒がある升を除外します。
                 ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan, logTag);
-                //LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
+                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
 
                 // 移動候補　＝　盤上の移動駒　＋　駒台の打駒
                 kouho = ido_onBan;
                 kouho.Merge(ido_OnDai);
-                //LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, "(④盤・台マージ後)　候補＝" + kouho.DebugString_Set());
+                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(④盤・台マージ後)　候補＝" + kouho.DebugString_Set());
 
             }
             catch (Exception ex)

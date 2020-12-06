@@ -356,7 +356,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
@@ -405,7 +405,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
 
 
             this.setteiFile = new SetteiFile();
@@ -529,7 +529,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -557,7 +557,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -607,7 +607,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -697,7 +697,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LarabeLoggerTag_Impl.LOGGING_BY_GUI));
+                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LibLoggerAddresses.LoggerGui));
                         break;
                     case SyuturyokuKirikae.Sfen:
                         this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));

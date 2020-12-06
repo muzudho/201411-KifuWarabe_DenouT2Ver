@@ -201,7 +201,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         "配役転換表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount2 + "]\n" +
                         "columnCount=[" + columnCount + "]\n";
-                        Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                        Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
                         throw new Exception(message);
                     }
 

@@ -41,7 +41,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
             Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７

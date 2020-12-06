@@ -83,7 +83,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 out movedKoma,
                 //out tottaKoma,
                 out underKoma,
-                LarabeLoggerTag_Impl.LOGGING_BY_GUI
+                LibLoggerAddresses.LoggerGui
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();

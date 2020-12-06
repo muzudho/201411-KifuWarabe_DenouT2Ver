@@ -10,27 +10,12 @@ using Nett;
 
 namespace Grayscale.KifuwaraneLib
 {
-    /// <summary>
-    /// 拡張できる列挙型として利用。
-    /// </summary>
-    public partial class LarabeLoggerTag_Impl
-    {
-        public static readonly ILoggerAddress SASITE_SEISEI_ROUTINE = new LoggerAddress("指し手生成ルーチン", true);
-        public static readonly ILoggerAddress LOGGING_BY_GUI = new LoggerAddress("将棋GUI_棋譜読取", true);
-        public static readonly ILoggerAddress LOGGING_BY_LARABE_STANDALONE = new LoggerAddress("ララベProgram", true);
-        public static readonly ILoggerAddress LINKED_LIST = new LoggerAddress("リンクトリスト", false);
-        public static readonly ILoggerAddress ERROR = new LoggerAddress("エラー", true);
-    }
-}
-
-namespace Grayscale.KifuwaraneLib
-{
     public class Program
     {
         /// <summary>
         /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
         /// </summary>
-        public static int BuildVersion { get; private set; } = 11;
+        public static int BuildVersion { get; private set; } = 12;
 
         /// <summary>
         /// 棄権バージョン。形を整える。
@@ -40,7 +25,7 @@ namespace Grayscale.KifuwaraneLib
 
         public static int Main(string[] args)
         {
-            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
+            ILoggerAddress logTag = LibLoggerAddresses.LoggerLib;
 
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
@@ -185,7 +170,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     System.Console.WriteLine("先手、飛車先の歩を突く");
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), Ks14.H00_Null), null);
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -194,7 +179,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -203,7 +188,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -212,7 +197,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -221,7 +206,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -230,7 +215,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -262,7 +247,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -271,7 +256,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -280,7 +265,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -289,7 +274,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -298,7 +283,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, Ks14.H07_Hisya), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H07_Hisya), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -307,7 +292,7 @@ namespace Grayscale.KifuwaraneLib
                 {
                     Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LibLoggerAddresses.LoggerLib);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }

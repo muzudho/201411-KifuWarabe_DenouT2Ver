@@ -42,7 +42,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            Logger.TraceLine(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            Logger.TraceLine(LibLoggerAddresses.LoggerGenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);

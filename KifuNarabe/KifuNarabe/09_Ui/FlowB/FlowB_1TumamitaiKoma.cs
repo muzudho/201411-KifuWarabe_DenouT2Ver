@@ -529,7 +529,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                         kifuD.AppendChildA_New(//マウスの左ボタンを放したときです。
                             newNode,
                             "FlowB_1TumamitaiKoma#MouseLeftButtonUp",
-                            LarabeLoggerTag_Impl.LOGGING_BY_GUI
+                            LibLoggerAddresses.LoggerGui
                             );
 
 

@@ -122,7 +122,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     kifuD.AppendChildA_New(//「成る／成らない」ボタンを押したときです。
                         newNode,
                         "FlowB_3ErabuNaruNaranai#MouseleftButtonDown",
-                        LarabeLoggerTag_Impl.LOGGING_BY_GUI
+                        LibLoggerAddresses.LoggerGui
                         );
 
 

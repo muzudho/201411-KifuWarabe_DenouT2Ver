@@ -139,6 +139,7 @@
     <Compile Include="IKomaPos.cs" />
     <Compile Include="Entities\Log\ILoggerAddress.cs" />
     <Compile Include="IMove.cs" />
+    <Compile Include="LibLoggerAddresses.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />
     <Compile Include="04_Common\きほん\KomanoKidou.cs" />

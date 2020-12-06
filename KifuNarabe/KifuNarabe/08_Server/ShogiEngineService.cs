@@ -256,7 +256,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.TraceLine(LibLoggerAddresses.LoggerGui, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {
