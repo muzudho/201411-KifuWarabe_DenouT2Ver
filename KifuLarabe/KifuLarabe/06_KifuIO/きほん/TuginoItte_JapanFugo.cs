@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -118,18 +119,18 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //------------------------------
             // 符号確定
             //------------------------------
-            MigiHidari migiHidari = Converter04.Str_ToMigiHidari(strMigiHidari);
-            AgaruHiku agaruHiku = Converter04.Str_ToAgaruHiku(strAgaruHiku);            // 上|引
-            NariFunari nariFunari = Converter04.Nari_ToBool(strNariFunari);//成
-            DaHyoji daHyoji = Converter04.Str_ToDaHyoji(strDaHyoji);             //打
+            MigiHidari migiHidari = PositionTranslator.Str_ToMigiHidari(strMigiHidari);
+            AgaruHiku agaruHiku = PositionTranslator.Str_ToAgaruHiku(strAgaruHiku);            // 上|引
+            NariFunari nariFunari = PositionTranslator.Nari_ToBool(strNariFunari);//成
+            DaHyoji daHyoji = PositionTranslator.Str_ToDaHyoji(strDaHyoji);             //打
 
-            Ks14 srcSyurui = Converter04.KomaMoji_ToSyurui(strSrcSyurui);
+            Ks14 srcSyurui = PositionTranslator.KomaMoji_ToSyurui(strSrcSyurui);
 
 
             //------------------------------
             // 
             //------------------------------
-            Sengo sengo = Converter04.Sengo_ToEnum(strSengo);
+            Sengo sengo = PositionTranslator.Sengo_ToEnum(strSengo);
 
 
             M201 dstMasu;
@@ -143,8 +144,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             {
                 dstMasu = M201Util.OkibaSujiDanToMasu(
                     Okiba.ShogiBan,
-                    Converter04.Suji_ToInt(strSuji),
-                    Converter04.Suji_ToInt(strDan)
+                    PositionTranslator.ArabiaNumericToInt(strSuji),
+                    PositionTranslator.ArabiaNumericToInt(strDan)
                     );
             }
 

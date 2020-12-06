@@ -2,6 +2,7 @@
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -143,7 +144,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             // TODO:合法手かどうか判定したい。
 
-            if (Okiba.ShogiBan == Converter04.Masu_ToOkiba(btnSasitaiMasu.Zahyo))//>>>>> 将棋盤：升目   ＜移動先など＞
+            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(btnSasitaiMasu.Zahyo))//>>>>> 将棋盤：升目   ＜移動先など＞
             {
                 System.Console.WriteLine("将棋盤上");
 
@@ -193,7 +194,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 KomaHouse house5 = dammyNode5.KomaHouse;
 
                 house5.SetKomaPos(kifuD1, btnTumandeiruKoma.Koma, house5.KomaPosAt(btnTumandeiruKoma.Koma).Next(
-                    Converter04.Okiba_ToSengo(M201Util.GetOkiba(btnSasitaiMasu.Zahyo)),// 先手の駒置きに駒を置けば、先手の向きに揃えます。
+                    PositionTranslator.Okiba_ToSengo(M201Util.GetOkiba(btnSasitaiMasu.Zahyo)),// 先手の駒置きに駒を置けば、先手の向きに揃えます。
                     btnSasitaiMasu.Zahyo,
                     KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house5.KomaPosAt(btnTumandeiruKoma.Koma).Star.Haiyaku)),
                     //KomaSyurui14Array.FunariCaseHandle[(int)kifuD.Old_KomaDoors.KomaDoors[(int)btnTumandeiruKoma.Koma].Syurui],//成りは解除。

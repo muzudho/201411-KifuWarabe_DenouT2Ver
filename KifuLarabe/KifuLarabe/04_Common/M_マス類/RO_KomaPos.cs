@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -186,7 +187,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             get
             {
-                return Okiba.ShogiBan == Converter04.Masu_ToOkiba(this.Star.Masu);
+                return Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(this.Star.Masu);
             }
         }
 
@@ -200,7 +201,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             get
             {
-                return Converter04.Masu_ToOkiba(this.Star.Masu).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai);
+                return PositionTranslator.Masu_ToOkiba(this.Star.Masu).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai);
             }
         }
 

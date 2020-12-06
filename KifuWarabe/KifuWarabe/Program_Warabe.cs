@@ -110,7 +110,7 @@ namespace Grayscale.KifuwaraneEngine
                 string engineAuthor;
                 string versionStr;
                 {
-                    engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+                    engineName = $"{toml.Get<TomlTable>("Engine").Get<string>("Name")} Bld{Grayscale.KifuwaraneLib.Program.BuildVersion}";
                     engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
 
                     // 製品名

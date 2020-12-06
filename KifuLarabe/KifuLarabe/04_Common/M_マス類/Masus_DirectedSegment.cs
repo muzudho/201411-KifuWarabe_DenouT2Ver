@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -136,7 +137,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             M201 masu1 = this.masuOrigin;
 
-            if (Okiba.ShogiBan == Converter04.Masu_ToOkiba(masu1))
+            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu1))
             {
                 this.orderedItems.Add(masu1);//１直線に遷移しているので、マス番号は重複しないはず。
 
@@ -146,7 +147,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     // 遷移
                     masu1 = M201Util.Offset( Okiba.ShogiBan, masu1, dSuji, dDan);
 
-                    if (Okiba.ShogiBan != Converter04.Masu_ToOkiba(masu1))
+                    if (Okiba.ShogiBan != PositionTranslator.Masu_ToOkiba(masu1))
                     {
                         //>>>>> 範囲外になった。
                         break;

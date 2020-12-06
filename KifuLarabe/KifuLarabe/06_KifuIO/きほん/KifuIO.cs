@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -533,7 +534,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                             kifuD,
                             tottaKoma,
                             teProcess.Next(
-                                Converter04.AlternateSengo(teProcess.Star.Sengo),//先後を逆にして駒台に置きます。
+                                PositionTranslator.AlternateSengo(teProcess.Star.Sengo),//先後を逆にして駒台に置きます。
 
                                 M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, (int)teProcess.Star.Masu),
 

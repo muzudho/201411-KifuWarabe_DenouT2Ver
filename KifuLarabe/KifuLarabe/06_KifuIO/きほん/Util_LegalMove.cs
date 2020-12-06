@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -26,7 +27,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             KomaAndMasusDictionary komaAndMove_Enemy;// 相手の駒の移動可能範囲
             Util_LegalMove.GetAvailableMove(
                 siteiNode,
-                Converter04.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu, logTag);
+                PositionTranslator.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu, logTag);
 
             // 自分の王の座標
             M201 kingMasu;
@@ -116,7 +117,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //------------------------------------------------------------
 
                 // 変換「自駒が動ける升」→「自駒が動ける手」
-                Dictionary<K40, List<ITeProcess>> teMap_All = Converter04.KmDic_ToKtDic(
+                Dictionary<K40, List<ITeProcess>> teMap_All = PositionTranslator.KmDic_ToKtDic(
                     kmDic_Self,
                     siteiNode_genzai
                     );
@@ -177,7 +178,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         bool mate2 = Util_LegalMove.Is_Mate(
                             nextNode,
-                            Converter04.AlternateSengo(sengo_comp),
+                            PositionTranslator.AlternateSengo(sengo_comp),
                             nextNode,
                             sbGohosyu,
                             logTag
@@ -314,7 +315,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu, logTag);
 
             // 敵駒（将棋盤上）
-            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, Converter04.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, PositionTranslator.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
 
 
             // 自駒の移動候補（将棋盤上）

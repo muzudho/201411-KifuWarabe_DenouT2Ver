@@ -3,98 +3,35 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
 {
-
-    /// <summary>
-    /// ************************************************************************************************************************
-    /// あるデータを、別のデータに変換します。
-    /// ************************************************************************************************************************
-    /// </summary>
-    public abstract class Converter04
+    public static class PositionTranslator
     {
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// アラビア数字。
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static string[] ARABIA_SUJI = new string[] { "１", "２", "３", "４", "５", "６", "７", "８", "９" };
+        public static string[] ArabiaNumeric { get; private set; } = new string[] { "１", "２", "３", "４", "５", "６", "７", "８", "９" };
 
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// 漢数字。
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static string[] KAN_SUJI = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+        public static string[] JapaneseNumeric { get; private set; } = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
-        public static Okiba Masu_ToOkiba(M201 masu)
-        {
-            Okiba result;
-
-            if ((int)M201.n11_１一 <= (int)masu && (int)masu <= (int)M201.n99_９九)
-            {
-                // 将棋盤
-                result = Okiba.ShogiBan;
-            }
-            else if ((int)M201.sen01 <= (int)masu && (int)masu <= (int)M201.sen40)
-            {
-                // 先手駒台
-                result = Okiba.Sente_Komadai;
-            }
-            else if ((int)M201.go01 <= (int)masu && (int)masu <= (int)M201.go40)
-            {
-                // 後手駒台
-                result = Okiba.Gote_Komadai;
-            }
-            else if((int)M201.fukuro01 <= (int)masu && (int)masu <= (int)M201.fukuro40)
-            {
-                // 駒袋
-                result = Okiba.KomaBukuro;
-            }
-            else
-            {
-                // 該当なし
-                result = Okiba.Empty;
-            }
-
-            return result;
-        }
-
-        public static string Masu_ToKanji(int masuHandle)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(Converter04.Int_ToArabiaSuji(Mh201Util.MasuToSuji(M201Array.Items_All[masuHandle])));
-            sb.Append(Converter04.Int_ToKanSuji(Mh201Util.MasuToDan(M201Array.Items_All[masuHandle])));
-
-            return sb.ToString();
-        }
-
-        public static string MasuHandle_ToKanji(int masuHandle)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(Converter04.Int_ToArabiaSuji(Mh201Util.MasuToSuji(M201Array.Items_All[masuHandle])));
-            sb.Append(Converter04.Int_ToKanSuji(Mh201Util.MasuToDan(M201Array.Items_All[masuHandle])));
-
-            return sb.ToString();
-        }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 数値を漢数字に変換します。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static string Int_ToKanSuji(int num)
+        public static string IntToJapanese(int num)
         {
             string numStr;
 
             if (1 <= num && num <= 9)
             {
-                numStr = KAN_SUJI[num - 1];
+                numStr = PositionTranslator.JapaneseNumeric[num - 1];
             }
             else
             {
@@ -106,19 +43,17 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 数値をアラビア数字に変換します。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static string Int_ToArabiaSuji(int num)
+        public static string IntToArabic(int num)
         {
             string numStr;
 
             if (1 <= num && num <= 9)
             {
-                numStr = ARABIA_SUJI[num - 1];
+                numStr = PositionTranslator.ArabiaNumeric[num - 1];
             }
             else
             {
@@ -128,15 +63,27 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return numStr;
         }
 
+        /// <summary>
+        /// 升番地を漢字に変換します。
+        /// </summary>
+        /// <param name="sq"></param>
+        /// <returns></returns>
+        public static string SqToJapanese(int sq)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(PositionTranslator.IntToArabic(Mh201Util.MasuToSuji(M201Array.Items_All[sq])));
+            sb.Append(PositionTranslator.IntToJapanese(Mh201Util.MasuToDan(M201Array.Items_All[sq])));
+
+            return sb.ToString();
+        }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// a～i を、1～9 に変換します。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static int Alphabet_ToInt(string alphabet)
+        public static int AlphabetToInt(string alphabet)
         {
             int num;
 
@@ -177,15 +124,12 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return num;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 1～9 を、a～i に変換します。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static string Int_ToAlphabet(int num)
+        public static string IntToAlphabet(int num)
         {
             string alphabet;
 
@@ -227,15 +171,12 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return alphabet;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// アラビア数字（全角半角）、漢数字を、int型に変換します。変換できなかった場合、0です。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="suji"></param>
         /// <returns></returns>
-        public static int Suji_ToInt(string suji)
+        public static int ArabiaNumericToInt(string suji)
         {
             int result;
 
@@ -304,245 +245,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return result;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
-        /// 駒の種類。
-        /// ************************************************************************************************************************
-        /// </summary>
-        /// <param name="syurui"></param>
-        /// <returns></returns>
-        public static void SfenSyokihaichi_ToSyurui(string sfen, out Sengo sengo, out Ks14 syurui)
-        {
-            switch (sfen)
-            {
-                case "P":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H01_Fu;
-                    break;
-
-                case "p":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H01_Fu;
-                    break;
-
-                case "L":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H02_Kyo;
-                    break;
-
-                case "l":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H02_Kyo;
-                    break;
-
-                case "N":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H03_Kei;
-                    break;
-
-                case "n":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H03_Kei;
-                    break;
-
-                case "S":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H04_Gin;
-                    break;
-
-                case "s":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H04_Gin;
-                    break;
-
-                case "G":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H05_Kin;
-                    break;
-
-                case "g":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H05_Kin;
-                    break;
-
-                case "R":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "r":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "B":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                case "b":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                case "K":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H06_Oh;
-                    break;
-
-                case "k":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H06_Oh;
-                    break;
-
-                case "+P":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H11_Tokin;
-                    break;
-
-                case "+p":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H11_Tokin;
-                    break;
-
-                case "+L":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H12_NariKyo;
-                    break;
-
-                case "+l":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H12_NariKyo;
-                    break;
-
-                case "+N":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H13_NariKei;
-                    break;
-
-                case "+n":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H13_NariKei;
-                    break;
-
-                case "+S":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H14_NariGin;
-                    break;
-
-                case "+s":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H14_NariGin;
-                    break;
-
-                case "+R":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "+r":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "+B":
-                    sengo = Sengo.Sente;
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                case "+b":
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                default:
-                    sengo = Sengo.Gote;
-                    syurui = Ks14.H00_Null;
-                    break;
-            }
-        }
-
-
-        /// <summary>
-        /// ************************************************************************************************************************
-        /// 打った駒の種類。
-        /// ************************************************************************************************************************
-        /// </summary>
-        /// <param name="syurui"></param>
-        /// <returns></returns>
-        public static void SfenUttaSyurui(string sfen, out Ks14 syurui)
-        {
-            switch (sfen)
-            {
-                case "P":
-                    syurui = Ks14.H01_Fu;
-                    break;
-
-                case "L":
-                    syurui = Ks14.H02_Kyo;
-                    break;
-
-                case "N":
-                    syurui = Ks14.H03_Kei;
-                    break;
-
-                case "S":
-                    syurui = Ks14.H04_Gin;
-                    break;
-
-                case "G":
-                    syurui = Ks14.H05_Kin;
-                    break;
-
-                case "R":
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "B":
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                case "K":
-                    syurui = Ks14.H06_Oh;
-                    break;
-
-                case "+P":
-                    syurui = Ks14.H11_Tokin;
-                    break;
-
-                case "+L":
-                    syurui = Ks14.H12_NariKyo;
-                    break;
-
-                case "+N":
-                    syurui = Ks14.H13_NariKei;
-                    break;
-
-                case "+S":
-                    syurui = Ks14.H14_NariGin;
-                    break;
-
-                case "+R":
-                    syurui = Ks14.H07_Hisya;
-                    break;
-
-                case "+B":
-                    syurui = Ks14.H08_Kaku;
-                    break;
-
-                default:
-                    System.Console.WriteLine("▲バグ【駒種類】Sfen=[" + sfen + "]");
-                    syurui = Ks14.H00_Null;
-                    break;
-            }
-        }
-
-
-        /// <summary>
-        /// ************************************************************************************************************************
         /// 駒の文字を、列挙型へ変換。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="moji"></param>
         /// <returns></returns>
@@ -618,10 +322,9 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return syurui;
         }
 
+
         /// <summary>
-        /// ************************************************************************************************************************
         /// 打。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="da"></param>
         /// <returns></returns>
@@ -637,11 +340,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return daStr;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 打表示。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="daStr"></param>
         /// <returns></returns>
@@ -657,11 +357,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return daHyoji;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 成り
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="nari"></param>
         /// <returns></returns>
@@ -684,11 +381,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return nariStr;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 成り。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="nariStr"></param>
         /// <returns></returns>
@@ -712,11 +406,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return nari;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 先後。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sengoStr"></param>
         /// <returns></returns>
@@ -743,7 +434,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Okiba okiba;
 
-            switch(sengo)
+            switch (sengo)
             {
                 case Sengo.Sente:
                     okiba = Okiba.Sente_Komadai;
@@ -779,9 +470,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 先後。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sengo"></param>
         /// <returns></returns>
@@ -804,11 +493,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return sengoStr;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 先後。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sengo"></param>
         /// <returns></returns>
@@ -832,11 +518,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return sengoStr;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 右左。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="migiHidari"></param>
         /// <returns></returns>
@@ -866,11 +549,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return str;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 寄、右、左、直、なし
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="migiHidariStr"></param>
         /// <returns></returns>
@@ -900,11 +580,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return migiHidari;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 上がる、引く
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="agaruHiku"></param>
         /// <returns></returns>
@@ -934,11 +611,41 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return str;
         }
 
+        public static Okiba Masu_ToOkiba(M201 masu)
+        {
+            Okiba result;
+
+            if ((int)M201.n11_１一 <= (int)masu && (int)masu <= (int)M201.n99_９九)
+            {
+                // 将棋盤
+                result = Okiba.ShogiBan;
+            }
+            else if ((int)M201.sen01 <= (int)masu && (int)masu <= (int)M201.sen40)
+            {
+                // 先手駒台
+                result = Okiba.Sente_Komadai;
+            }
+            else if ((int)M201.go01 <= (int)masu && (int)masu <= (int)M201.go40)
+            {
+                // 後手駒台
+                result = Okiba.Gote_Komadai;
+            }
+            else if ((int)M201.fukuro01 <= (int)masu && (int)masu <= (int)M201.fukuro40)
+            {
+                // 駒袋
+                result = Okiba.KomaBukuro;
+            }
+            else
+            {
+                // 該当なし
+                result = Okiba.Empty;
+            }
+
+            return result;
+        }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 上がる、引く。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="agaruHikuStr"></param>
         /// <returns></returns>
@@ -968,11 +675,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return agaruHiku;
         }
 
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 先後の交代
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sengo">先後</param>
         /// <returns>ひっくりかえった先後</returns>
@@ -998,7 +702,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return result;
         }
 
-
         /// <summary>
         /// 変換『「駒→手」のコレクション』→『「駒、指し手」のペアのリスト』
         /// </summary>
@@ -1021,7 +724,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             return kmList;
         }
-
 
         /// <summary>
         /// 変換「自駒が動ける升」→「自駒が動ける手」

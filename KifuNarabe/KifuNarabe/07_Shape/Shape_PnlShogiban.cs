@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
@@ -169,7 +170,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
             //----------
             for (int i = 0; i < 9; i++)
             {
-                g.DrawString(Converter04.Int_ToArabiaSuji(i + 1), new Font("ＭＳ ゴシック", 25.0f), Brushes.Black, new Point((8 - i) * this.MasuWidth + this.Bounds.X - 8, -1 * this.MasuHeight + this.Bounds.Y));
+                g.DrawString(PositionTranslator.IntToArabic(i + 1), new Font("ＭＳ ゴシック", 25.0f), Brushes.Black, new Point((8 - i) * this.MasuWidth + this.Bounds.X - 8, -1 * this.MasuHeight + this.Bounds.Y));
             }
 
             //----------
@@ -177,8 +178,8 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
             //----------
             for (int i = 0; i < 9; i++)
             {
-                g.DrawString(Converter04.Int_ToKanSuji(i + 1), new Font("ＭＳ ゴシック", 23.0f), Brushes.Black, new Point(9 * this.MasuWidth + this.Bounds.X, i * this.MasuHeight + this.Bounds.Y));
-                g.DrawString(Converter04.Int_ToAlphabet(i + 1), new Font("ＭＳ ゴシック", 11.0f), Brushes.Black, new Point(9 * this.MasuWidth + this.Bounds.X, i * this.MasuHeight + this.Bounds.Y));
+                g.DrawString(PositionTranslator.IntToJapanese(i + 1), new Font("ＭＳ ゴシック", 23.0f), Brushes.Black, new Point(9 * this.MasuWidth + this.Bounds.X, i * this.MasuHeight + this.Bounds.Y));
+                g.DrawString(PositionTranslator.IntToAlphabet(i + 1), new Font("ＭＳ ゴシック", 11.0f), Brushes.Black, new Point(9 * this.MasuWidth + this.Bounds.X, i * this.MasuHeight + this.Bounds.Y));
             }
 
 

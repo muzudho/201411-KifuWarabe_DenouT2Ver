@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -245,7 +246,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="masu"></param>
         public void AddElement(M201 masu)
         {
-            if (Okiba.ShogiBan == Converter04.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
             {
                 if (!this.elements_.Contains(masu))//マス番号の重複を除外
                 {

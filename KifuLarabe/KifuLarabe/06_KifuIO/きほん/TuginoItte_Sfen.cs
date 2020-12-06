@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Text.RegularExpressions;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.SfenTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -248,7 +250,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 {
                     //>>>>>>>>>> 「打」でした。
 
-                    Converter04.SfenUttaSyurui(str1, out uttaSyurui);
+                    SfenTranslator.SfenUttaSyurui(str1, out uttaSyurui);
 
                 }
                 else
@@ -266,7 +268,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                     //------------------------------
                     // 2
                     //------------------------------
-                    srcDan = Converter04.Alphabet_ToInt(str2);
+                    srcDan = PositionTranslator.AlphabetToInt(str2);
                 }
 
                 //------------------------------
@@ -281,7 +283,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 // 4
                 //------------------------------
                 int dan;
-                dan = Converter04.Alphabet_ToInt(str4);
+                dan = PositionTranslator.AlphabetToInt(str4);
 
 
 
@@ -293,7 +295,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                     // 駒台から、打った種類の駒を取得
                     koma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD,
-                        Converter04.Sengo_ToKomadai(kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))),//Okiba.Sente_Komadai,//FIXME:
+                        PositionTranslator.Sengo_ToKomadai(kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))),//Okiba.Sente_Komadai,//FIXME:
                         uttaSyurui, logTag);
                     if (K40.Error == koma)
                     {

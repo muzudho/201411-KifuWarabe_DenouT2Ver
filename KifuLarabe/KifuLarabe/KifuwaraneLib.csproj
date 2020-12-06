@@ -127,7 +127,9 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
+    <Compile Include="Entities\SfenTranslation\SfenTranslator.cs" />
     <Compile Include="Entities\Sfen\SfenReferences.cs" />
+    <Compile Include="Entities\PositionTranslation\PositionTranslator.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />
@@ -136,7 +138,6 @@
     <Compile Include="ILoggerFileConf.cs" />
     <Compile Include="ITeProcess.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="04_Common\きほん\Converter04.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />
     <Compile Include="04_Common\きほん\KomanoKidou.cs" />
     <Compile Include="04_Common\きほん\MukiUtil.cs" />
@@ -154,6 +155,7 @@
     <Analyzer Include="..\..\KifuNarabe\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
     <Analyzer Include="..\..\KifuNarabe\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

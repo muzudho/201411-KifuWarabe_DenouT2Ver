@@ -1,7 +1,7 @@
 [Engine]
 
-# 将棋ソフトの表示名です。
-Name = "Kifuwarane Bld2"
+# 将棋ソフトの表示名です。 後ろに ` Bld2` のようなビルド番号が付くものもあります。
+Name = "Kifuwarane"
 
 # 将棋ソフトの制作者名です。
 Author = "Satoshi TAKAHASHI"

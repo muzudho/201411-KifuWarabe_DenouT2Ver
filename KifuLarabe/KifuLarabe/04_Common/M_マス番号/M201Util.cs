@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -374,7 +375,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             M201 result = masu;
 
             // 将棋盤上で後手なら、180°回転します。
-            if (Okiba.ShogiBan == Converter04.Masu_ToOkiba(masu) && sengo == Sengo.Gote)
+            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu) && sengo == Sengo.Gote)
             {
                 result = M201Array.Items_All[ 80 - (int)masu];
             }
