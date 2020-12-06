@@ -347,7 +347,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
+                Logger.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
                 throw;
             }
 
@@ -383,7 +383,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
+                Logger.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
                 throw;
             }
         }

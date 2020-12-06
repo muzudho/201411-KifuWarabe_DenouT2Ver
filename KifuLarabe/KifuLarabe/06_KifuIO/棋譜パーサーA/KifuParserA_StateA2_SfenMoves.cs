@@ -64,7 +64,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                             {
                                 //「6g6f」形式でもなかった☆
 
-                                LoggerPool.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
+                                Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
                                 toBreak = true;
                                 goto gt_EndMethod;
                             }
@@ -78,7 +78,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = this.GetType().Name + "#Execute（A）：" + ex.GetType().Name + "：" + ex.Message;
-                        LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                        Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
                     }
 
 
@@ -110,7 +110,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                             //------------------------------
 
                             //LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag) + "　：　hint=" + hint);
-                            LoggerPool.TraceLine(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
+                            Logger.TraceLine(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
                             bool isBack = false;
                             KifuIO.Ittesasi3(
                                 teProcess,
@@ -121,7 +121,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                                 out underKoma,
                                 logTag
                                 );
-                            LoggerPool.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD,"一手指し終了"));
+                            Logger.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD,"一手指し終了"));
 
                         }
                         catch (Exception ex)
@@ -131,7 +131,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（B）：" + ex.GetType().Name + "：" + ex.Message;
-                            LoggerPool.ErrorLine(logTag, message);
+                            Logger.ErrorLine(logTag, message);
                         }
 
                         try
@@ -153,7 +153,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（C）：" + ex.GetType().Name + "：" + ex.Message;
-                            LoggerPool.ErrorLine(logTag, message);
+                            Logger.ErrorLine(logTag, message);
                         }
 
 
@@ -164,13 +164,13 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                     {
                         toBreak = true;
                         string message = "＼（＾ｏ＾）／teProcessオブジェクトがない☆！　inputLine=[" + inputLine + "]";
-                        LoggerPool.ErrorLine(logTag, message);
+                        Logger.ErrorLine(logTag, message);
                         throw new Exception(message);
                     }
                 }
                 else
                 {
-                    LoggerPool.TraceLine(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD,"棋譜パース"));
+                    Logger.TraceLine(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD,"棋譜パース"));
                     toBreak = true;
                 }
             }
@@ -181,7 +181,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerPool.ErrorLine(logTag, message);
+                Logger.ErrorLine(logTag, message);
             }
 
         gt_EndMethod:

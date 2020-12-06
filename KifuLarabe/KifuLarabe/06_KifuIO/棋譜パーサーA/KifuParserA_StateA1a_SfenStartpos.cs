@@ -47,7 +47,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 {
                     //>>>>> 棋譜が始まります。
 
-                    LoggerPool.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
+                    Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
 
                     inputLine = inputLine.Substring("moves".Length);
                     inputLine = inputLine.Trim();
@@ -57,7 +57,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 }
                 else
                 {
-                    LoggerPool.TraceLine(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
+                    Logger.TraceLine(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
                     toBreak = true;
                 }
             }
@@ -68,7 +68,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;

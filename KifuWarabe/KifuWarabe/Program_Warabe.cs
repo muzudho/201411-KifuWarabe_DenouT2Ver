@@ -84,7 +84,7 @@ namespace Grayscale.KifuwaraneEngine
                 //          └─ log.txt               ←これを削除
                 //
                 #endregion
-                LoggerPool.RemoveAllLogFile();
+                Logger.RemoveAllLogFile();
 
 
                 //-------------+----------------------------------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ namespace Grayscale.KifuwaraneEngine
 
                     //seihinName += " " + versionStr;
                 }
-                LoggerPool.TraceLine(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
+                Logger.TraceLine(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
 
 
                 //-----------+------------------------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ namespace Grayscale.KifuwaraneEngine
 
                         // メッセージが届いています！
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        LoggerPool.WriteLineR(LoggerPool.DefaultAddress, line);
+                        Logger.WriteLineR(Logger.DefaultAddress, line);
 
 
                         if ("usi" == line)
@@ -396,13 +396,13 @@ namespace Grayscale.KifuwaraneEngine
                             //------------------------------------------------------------
                             // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
                             //------------------------------------------------------------
-                            LoggerPool.TraceLine(logTag, "┏━━━━━設定━━━━━┓");
+                            Logger.TraceLine(logTag, "┏━━━━━設定━━━━━┓");
                             foreach (KeyValuePair<string, string> pair in setoptionDictionary)
                             {
                                 // ここで将棋エンジンの設定を済ませておいてください。
-                                LoggerPool.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                                Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                             }
-                            LoggerPool.TraceLine(logTag, "┗━━━━━━━━━━━━┛");
+                            Logger.TraceLine(logTag, "┗━━━━━━━━━━━━┛");
 
 
                             //------------------------------------------------------------
@@ -490,7 +490,7 @@ namespace Grayscale.KifuwaraneEngine
                             //
                             //
                             #endregion
-                            LoggerPool.TraceLine(logTag, "(^-^)ﾉｼ");
+                            Logger.TraceLine(logTag, "(^-^)ﾉｼ");
 
                             // このプログラムを終了します。
                             Environment.Exit(0);
@@ -570,7 +570,7 @@ namespace Grayscale.KifuwaraneEngine
 
                         // メッセージが届いています！
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        LoggerPool.WriteLineR(LoggerPool.DefaultAddress,line);
+                        Logger.WriteLineR(Logger.DefaultAddress,line);
 
 
                         if (line.StartsWith("position"))
@@ -673,16 +673,16 @@ namespace Grayscale.KifuwaraneEngine
                                 #endregion
 
 
-                                LoggerPool.TraceLine(logTag, " ...");
-                                LoggerPool.TraceLine(logTag, "    ...");
-                                LoggerPool.TraceLine(logTag, "       ...");
-                                LoggerPool.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！");
+                                Logger.TraceLine(logTag, " ...");
+                                Logger.TraceLine(logTag, "    ...");
+                                Logger.TraceLine(logTag, "       ...");
+                                Logger.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！");
 
                                 KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-                                LoggerPool.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
+                                Logger.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
 
                                 kifuParserA_Impl.Execute_All(line, kifuD, "Program#Main(Warabe)", logTag);
-                                LoggerPool.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD, "現局面になっているのかなんだぜ☆？　line=[" + line + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag)));
+                                Logger.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD, "現局面になっているのかなんだぜ☆？　line=[" + line + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag)));
 
                                 //------------------------------------------------------------
                                 // じっとがまん
@@ -701,7 +701,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「position」：" + ex.GetType().Name + "：" + ex.Message);
+                                Logger.TraceLine(logTag, "Program「position」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -750,7 +750,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「go ponder」：" + ex.GetType().Name + "：" + ex.Message);
+                                Logger.TraceLine(logTag, "Program「go ponder」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -884,7 +884,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「go mate」：" + ex.GetType().Name + "：" + ex.Message);
+                                Logger.TraceLine(logTag, "Program「go mate」：" + ex.GetType().Name + "：" + ex.Message);
                             }
 
                         }
@@ -915,7 +915,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「go infinite」：" + ex.GetType().Name + "：" + ex.Message);
+                                Logger.TraceLine(logTag, "Program「go infinite」：" + ex.GetType().Name + "：" + ex.Message);
                             }
                         }
                         else if (line.StartsWith("go")) // 「go ponder」「go mate」「go infinite」とは区別します。
@@ -990,7 +990,7 @@ namespace Grayscale.KifuwaraneEngine
                                 int latestTeme = kifuD.CountTeme(kifuD.Current8);//現・手目
                                 KomaHouse genKyokumen = kifuD.ElementAt8(latestTeme).KomaHouse;//現局面
 
-                                LoggerPool.TraceLine(logTag, "将棋サーバー「"+latestTeme+"手目、きふわらべ　さんの手番ですよ！」　" + line);
+                                Logger.TraceLine(logTag, "将棋サーバー「"+latestTeme+"手目、きふわらべ　さんの手番ですよ！」　" + line);
 
                                 //------------------------------------------------------------
                                 // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
@@ -1003,9 +1003,9 @@ namespace Grayscale.KifuwaraneEngine
                                     || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
                                     )
                                 {
-                                    LoggerPool.TraceLine(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
-                                    LoggerPool.TraceLine(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
-                                    LoggerPool.TraceLine(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
+                                    Logger.TraceLine(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
+                                    Logger.TraceLine(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
+                                    Logger.TraceLine(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
 
                                     //------------------------------------------------------------
                                     // 投了
@@ -1037,14 +1037,14 @@ namespace Grayscale.KifuwaraneEngine
                                         if (bestSasite.isEnableSfen())
                                         {
                                             string sfenText = bestSasite.ToSfenText();
-                                            LoggerPool.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]"+
+                                            Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]"+
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
                                             Program_Warabe.Send("bestmove " + sfenText);//指し手を送ります。
                                         }
                                         else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                                         {
-                                            LoggerPool.TraceLine(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
+                                            Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
                                             // 投了ｗ！
@@ -1056,7 +1056,7 @@ namespace Grayscale.KifuwaraneEngine
                                         //>>>>> エラーが起こりました。
 
                                         // どうにもできないので  ログだけ取って無視します。
-                                        LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
+                                        Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
                                     }
 
                                 }
@@ -1068,7 +1068,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「go」：" + ex.GetType().Name + " " + ex.Message + "：goを受け取ったときです。：");
+                                Logger.TraceLine(logTag, "Program「go」：" + ex.GetType().Name + " " + ex.Message + "：goを受け取ったときです。：");
                             }
 
                         }
@@ -1167,7 +1167,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「stop」：" + ex.GetType().Name + " " + ex.Message);
+                                Logger.TraceLine(logTag, "Program「stop」：" + ex.GetType().Name + " " + ex.Message);
                             }
 
                         }
@@ -1209,7 +1209,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「ponderhit」：" + ex.GetType().Name + " " + ex.Message);
+                                Logger.TraceLine(logTag, "Program「ponderhit」：" + ex.GetType().Name + " " + ex.Message);
                             }
                         }
                         else if (line.StartsWith("gameover"))
@@ -1273,7 +1273,7 @@ namespace Grayscale.KifuwaraneEngine
                                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                                 // どうにもできないので  ログだけ取って無視します。
-                                LoggerPool.TraceLine(logTag, "Program「gameover」：" + ex.GetType().Name + " " + ex.Message);
+                                Logger.TraceLine(logTag, "Program「gameover」：" + ex.GetType().Name + " " + ex.Message);
                             }
                         }
                         else
@@ -1343,30 +1343,30 @@ namespace Grayscale.KifuwaraneEngine
                     //      └──────┴──────┘
                     //
                     #endregion
-                    LoggerPool.TraceLine(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
+                    Logger.TraceLine(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
                     foreach (KeyValuePair<string, string> pair in setoptionDictionary)
                     {
-                        LoggerPool.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LoggerPool.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LoggerPool.TraceLine(logTag, "┏━確認━━━━goDictionary━━━━━┓");
+                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.TraceLine(logTag, "┏━確認━━━━goDictionary━━━━━┓");
                     foreach (KeyValuePair<string, string> pair in goDictionary)
                     {
-                        LoggerPool.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LoggerPool.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LoggerPool.TraceLine(logTag, "┏━確認━━━━goMateDictionary━━━┓");
+                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.TraceLine(logTag, "┏━確認━━━━goMateDictionary━━━┓");
                     foreach (KeyValuePair<string, string> pair in goMateDictionary)
                     {
-                        LoggerPool.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LoggerPool.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    LoggerPool.TraceLine(logTag, "┏━確認━━━━gameoverDictionary━━┓");
+                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.TraceLine(logTag, "┏━確認━━━━gameoverDictionary━━┓");
                     foreach (KeyValuePair<string, string> pair in gameoverDictionary)
                     {
-                        LoggerPool.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
-                    LoggerPool.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                 }
 
             }
@@ -1376,7 +1376,7 @@ namespace Grayscale.KifuwaraneEngine
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.TraceLine(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                Logger.TraceLine(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
             }
         }
 
@@ -1395,7 +1395,7 @@ namespace Grayscale.KifuwaraneEngine
             Console.Out.WriteLine(line);
 
             // ログ追記
-            LoggerPool.WriteLineS(LoggerPool.DefaultAddress,line);
+            Logger.WriteLineS(Logger.DefaultAddress,line);
         }
         #endregion
 

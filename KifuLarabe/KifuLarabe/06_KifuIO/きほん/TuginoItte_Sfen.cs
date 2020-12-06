@@ -187,7 +187,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                        Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
 
                         // 追加
                         throw;
@@ -203,7 +203,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return successful;

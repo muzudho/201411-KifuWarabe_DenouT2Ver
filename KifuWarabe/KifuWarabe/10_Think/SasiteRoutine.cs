@@ -42,7 +42,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            LoggerPool.TraceLine(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            Logger.TraceLine(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
@@ -108,7 +108,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
+                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
             }
 
             try
@@ -145,7 +145,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
+                        Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
                     }
 
 
@@ -169,7 +169,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
+                        Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
                     }
 
 
@@ -184,7 +184,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
+                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
             }
 
 
@@ -214,7 +214,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerPool.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
+                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
             }
 
             return result;

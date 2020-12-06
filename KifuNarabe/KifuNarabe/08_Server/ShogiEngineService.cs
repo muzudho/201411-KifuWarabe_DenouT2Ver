@@ -58,7 +58,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
                 //------------------------------
                 // ログファイルを削除します。
                 //------------------------------
-                LoggerPool.RemoveAllLogFile();
+                Logger.RemoveAllLogFile();
 
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -203,7 +203,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
             else
             {
                 //>>>>>>>>>> メッセージを受け取りました。
-                LoggerPool.WriteLineR(LoggerPool.DefaultAddress, line);
+                Logger.WriteLineR(Logger.DefaultAddress, line);
 
                 if (line.StartsWith("option"))
                 {
@@ -256,7 +256,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {
@@ -275,7 +275,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         {
             ShogiEngineService.shogiEngineProcess.StandardInput.WriteLine(line);
 
-            LoggerPool.WriteLineS(LoggerPool.DefaultAddress,line);
+            Logger.WriteLineS(Logger.DefaultAddress,line);
         }
 
     }

@@ -54,9 +54,9 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.ERROR, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.ERROR, "差し替える前");
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
+                Logger.TraceLine(LarabeLoggerTag_Impl.ERROR, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                Logger.TraceLine(LarabeLoggerTag_Impl.ERROR, "差し替える前");
+                Logger.TraceLine(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -65,8 +65,8 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.ERROR, "差し替えた後");
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
+                Logger.TraceLine(LarabeLoggerTag_Impl.ERROR, "差し替えた後");
+                Logger.TraceLine(LarabeLoggerTag_Impl.ERROR, c.LogString_Set());
             }
 
             return c;

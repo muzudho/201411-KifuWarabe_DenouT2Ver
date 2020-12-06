@@ -15,12 +15,11 @@ namespace Grayscale.KifuwaraneLib
     /// </summary>
     public partial class LarabeLoggerTag_Impl
     {
-        public static readonly ILoggerAddress SASITE_SEISEI_ROUTINE = new LoggerAddressImpl("#log_指し手生成ルーチン",".txt",true);
-        public static readonly ILoggerAddress LOGGING_BY_GUI = new LoggerAddressImpl("#log_将棋GUI_棋譜読取",".txt",true);
-        public static readonly ILoggerAddress LOGGING_BY_LARABE_STANDALONE = new LoggerAddressImpl("#log_ララベProgram",".txt",true);
-        public static readonly ILoggerAddress LINKED_LIST = new LoggerAddressImpl("#log_リンクトリスト",".txt",false);
-
-        public static readonly ILoggerAddress ERROR = new LoggerAddressImpl("#log_エラー", ".txt", true);
+        public static readonly ILoggerAddress SASITE_SEISEI_ROUTINE = new LoggerAddress("指し手生成ルーチン", true);
+        public static readonly ILoggerAddress LOGGING_BY_GUI = new LoggerAddress("将棋GUI_棋譜読取", true);
+        public static readonly ILoggerAddress LOGGING_BY_LARABE_STANDALONE = new LoggerAddress("ララベProgram", true);
+        public static readonly ILoggerAddress LINKED_LIST = new LoggerAddress("リンクトリスト", false);
+        public static readonly ILoggerAddress ERROR = new LoggerAddress("エラー", true);
     }
 }
 
@@ -31,7 +30,7 @@ namespace Grayscale.KifuwaraneLib
         /// <summary>
         /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
         /// </summary>
-        public static int BuildVersion { get; private set; } = 10;
+        public static int BuildVersion { get; private set; } = 11;
 
         /// <summary>
         /// 棄権バージョン。形を整える。
@@ -163,12 +162,12 @@ namespace Grayscale.KifuwaraneLib
 
 
             #region 後手２三歩打テスト ※配役等の設定後に
-            if(false)
+            if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(New)");
@@ -193,7 +192,7 @@ namespace Grayscale.KifuwaraneLib
 
                 // 後手、角頭の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null),null);
+                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -239,12 +238,12 @@ namespace Grayscale.KifuwaraneLib
             #endregion
 
             #region
-            if(false)
+            if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(Next)");
@@ -340,12 +339,12 @@ namespace Grayscale.KifuwaraneLib
             #endregion
 
             #region
-            if(false)
+            if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy,"ルートが追加されたはずだぜ☆"));
+                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 {
                     // ▲２六歩
@@ -362,7 +361,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -389,7 +388,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -416,7 +415,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -443,7 +442,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -470,7 +469,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -497,7 +496,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -524,7 +523,7 @@ namespace Grayscale.KifuwaraneLib
 
                     // 最初
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
-                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme( kifuD_dammy.Current8)));
+                    System.Console.Write("先後=" + kifuD_dammy.CountSengo(kifuD_dammy.CountTeme(kifuD_dammy.Current8)));
 
                     if (MoveImpl.NULL_OBJECT == kifuD_dammy.Current8.TeProcess)
                     {
@@ -875,7 +874,7 @@ namespace Grayscale.KifuwaraneLib
 
 
             #region マイナス1
-            if(false)
+            if (false)
             {
                 // 「８二、７二、６二、５二、４二」
                 IMasus _M1 = new Masus_DirectedSegment(M201.n82_８二, Sengo.Gote, Muki.滑, 5);

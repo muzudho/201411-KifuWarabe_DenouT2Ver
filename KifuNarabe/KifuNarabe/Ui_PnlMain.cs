@@ -363,7 +363,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             {
 
                 //System.Console.WriteLine("timer input99=[" + input99 + "]");
-                LoggerPool.TraceLine(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
+                Logger.TraceLine(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
 
                 this.AppendInput1Text(Ui_PnlMain.input99);
                 Ui_PnlMain.input99 = "";
@@ -708,7 +708,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 }
 
                 // ログ
-                LoggerPool.TraceLine(logTag, this.txtOutput1.Text);
+                Logger.TraceLine(logTag, this.txtOutput1.Text);
             }
             else if (requestForMain.RequestClearTxtOutput)
             {
@@ -716,8 +716,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 this.WriteLine("");
 
                 // ログ
-                LoggerPool.TraceLine(logTag, "");
-                LoggerPool.TraceLine(logTag, "");
+                Logger.TraceLine(logTag, "");
+                Logger.TraceLine(logTag, "");
             }
 
             //------------------------------

@@ -78,7 +78,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
-            LoggerPool.TraceLine(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
+            Logger.TraceLine(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 

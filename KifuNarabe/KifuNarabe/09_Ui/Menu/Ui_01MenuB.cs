@@ -56,8 +56,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             {
                 // 最初はここ
 
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "... ...");
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "... ...");
+                Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -77,7 +77,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //          *1…初期配置を作るということです。
                 // 
 
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
+                Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -86,7 +86,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 // 「startpos コマンド（平手局面）」または「指定局面」を処理しました。
 
 
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
+                Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -102,7 +102,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             if (kifuParserA_Impl.State is KifuParserA_StateA2_SfenMoves)
             {
-                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
+                Logger.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);//, LarabeLogger.INSTANCE
                 if (toBreak)
                 {

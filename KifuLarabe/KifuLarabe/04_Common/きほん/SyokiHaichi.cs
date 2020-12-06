@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
-            LoggerPool.TraceLine(logTag, "平手局面にセットしたぜ☆");
+            Logger.TraceLine(logTag, "平手局面にセットしたぜ☆");
         }
 
 

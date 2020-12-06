@@ -103,8 +103,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         {
             try
             {
-                LoggerPool.TraceLine(logTag, "┏━━━━━┓");
-                LoggerPool.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logger.TraceLine(logTag, "┏━━━━━┓");
+                Logger.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState;
                 inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
@@ -119,7 +119,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;
@@ -144,8 +144,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         {
             try
             {
-                LoggerPool.TraceLine(logTag, "┏━━━━━━━━━━┓");
-                LoggerPool.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logger.TraceLine(logTag, "┏━━━━━━━━━━┓");
+                Logger.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState = this.State;
 
@@ -165,7 +165,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
+                Logger.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
 

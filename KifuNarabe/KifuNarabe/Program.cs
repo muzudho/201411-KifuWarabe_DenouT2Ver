@@ -15,17 +15,17 @@ namespace Grayscale.KifuwaraneGui
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class LoggerTag_Narabe : LoggerAddressImpl
+    public class LoggerTag_Narabe : LoggerAddress
     {
         public static readonly ILoggerAddress PAINT;
 
         static LoggerTag_Narabe()
         {
-            LoggerTag_Narabe.PAINT = new LoggerTag_Narabe("#log_将棋GUI_ペイント",".txt",true);
+            LoggerTag_Narabe.PAINT = new LoggerTag_Narabe("#log_将棋GUI_ペイント", true);
         }
 
-        public LoggerTag_Narabe(string fileNameWoe,string extension,bool enable)
-            : base(fileNameWoe, extension,enable)
+        public LoggerTag_Narabe(string fileStem, bool enable)
+            : base(fileStem, enable)
         {
         }
     }
@@ -42,7 +42,7 @@ namespace Grayscale.KifuwaraneGui
         static void Main()
         {
             ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
-            LoggerPool.TraceLine(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
+            Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
