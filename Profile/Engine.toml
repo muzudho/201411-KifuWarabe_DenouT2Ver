@@ -5,3 +5,23 @@ Name = "Kifuwarane Bld2"
 
 # 将棋ソフトの制作者名です。
 Author = "Satoshi TAKAHASHI"
+
+[Resources]
+
+# 道１８７
+Michi187 = "data_michi187.csv"
+
+# 駒の配役１８１
+Haiyaku181 = "data_haiyaku185_UTF-8.csv"
+
+# 強制転成表(入力)
+InputForcePromotion = "data_forcePromotion_UTF-8.csv"
+
+# 強制転成表(出力)
+OutputForcePromotion = "強制転成表.html"
+
+# 配役転換表(入力)
+InputPieceTypeToHaiyaku = "data_syuruiToHaiyaku.csv"
+
+# 配役転換表(出力)
+OutputPieceTypeToHaiyaku = "配役転換表.html"

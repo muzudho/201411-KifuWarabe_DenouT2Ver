@@ -10,7 +10,6 @@ using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
-using System.Configuration;
 using Nett;
 
 namespace Grayscale.KifuwaraneEngine

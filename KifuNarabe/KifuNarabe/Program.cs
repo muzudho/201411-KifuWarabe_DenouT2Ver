@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L09_Ui;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
+using Nett;
 
 namespace Grayscale.KifuwaraneGui
 {
@@ -44,23 +46,30 @@ namespace Grayscale.KifuwaraneGui
             //----------
             // 道１８７
             //----------
-            Michi187Array.Load("data_michi187.csv");
+            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+            var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+            var michi187 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Michi187"));
+            Michi187Array.Load(michi187);
 
             //----------
             // 駒の配役１８１
             //----------
-            Haiyaku184Array.Load("data_haiyaku185_UTF-8.csv", Encoding.UTF8);
+            var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181")); ;
+            Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
             {
                 // 駒配役を生成した後で。
 
                 System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                System.Console.WriteLine("data_forcePromotion_UTF-8.csv");
-                List<List<string>> rows = ForcePromotionArray.Load("data_forcePromotion_UTF-8.csv", Encoding.UTF8);
+                var inputForcePromotionFileName = toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion");
+                System.Console.WriteLine(inputForcePromotionFileName);
+                var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName); ;
+                List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
                 //System.Console.Write(ForcePromotionArray.DebugString());
 
-                LarabeFileOutput.WriteFile("強制転成表.html",ForcePromotionArray.DebugHtml());
+                var outputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputForcePromotion"));
+                LarabeFileOutput.WriteFile(outputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
             //------------------------------
@@ -68,10 +77,13 @@ namespace Grayscale.KifuwaraneGui
             //------------------------------
             {
                 System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                System.Console.WriteLine("data_syuruiToHaiyaku.csv");
-                List<List<string>> rows = Data_HaiyakuTransition.Load("data_syuruiToHaiyaku.csv", Encoding.UTF8);
+                var inputPieceTypeToHaiyakuFileName = toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku");
+                System.Console.WriteLine(inputPieceTypeToHaiyakuFileName);
+                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName); ;
+                List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                LarabeFileOutput.WriteFile("配役転換表.html",Data_HaiyakuTransition.DebugHtml());
+                var outputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputPieceTypeToHaiyaku"));
+                LarabeFileOutput.WriteFile(outputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 
