@@ -14,6 +14,7 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
         public string DstPiece { get; private set; }
         public bool IsPromote { get; private set; }
         */
+        // 忘れず初期化☆（＾～＾）！
         public char[] Chars { get; private set; } = new char[5] { ' ', ' ', ' ', ' ', ' ', };
 
         public SfenMove(SfenMoveBuilder builder)

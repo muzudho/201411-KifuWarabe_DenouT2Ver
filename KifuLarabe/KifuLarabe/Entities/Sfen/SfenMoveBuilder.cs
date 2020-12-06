@@ -20,6 +20,7 @@
         public string DstPiece { get; set; }
         public bool IsPromote { get; set; }
          */
+        // 忘れず初期化☆（＾～＾）！
         public char[] Chars { get; private set; } = new char[5] { ' ', ' ', ' ', ' ', ' ', };
 
         /// <summary>
