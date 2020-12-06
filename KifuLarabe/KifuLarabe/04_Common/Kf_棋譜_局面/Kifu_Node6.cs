@@ -15,14 +15,14 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
         public IKifuElement Previous { get; set; }
 
-        public ITeProcess TeProcess
+        public IMove TeProcess
         {
             get
             {
                 return this.teProcess;
             }
         }
-        private ITeProcess teProcess;
+        private IMove teProcess;
 
         /// <summary>
         /// キー：SFEN ※この仕様は暫定
@@ -33,7 +33,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
 
-        public Kifu_Node6(ITeProcess teProcess, KomaHouse house)
+        public Kifu_Node6(IMove teProcess, KomaHouse house)
         {
             this.Previous = null;
             this.teProcess = teProcess;

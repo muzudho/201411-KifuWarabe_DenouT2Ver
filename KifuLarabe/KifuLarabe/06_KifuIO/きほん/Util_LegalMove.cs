@@ -117,11 +117,11 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //------------------------------------------------------------
 
                 // 変換「自駒が動ける升」→「自駒が動ける手」
-                Dictionary<K40, List<ITeProcess>> teMap_All = PositionTranslator.KmDic_ToKtDic(
+                Dictionary<K40, List<IMove>> teMap_All = PositionTranslator.KmDic_ToKtDic(
                     kmDic_Self,
                     siteiNode_genzai
                     );
-                Dictionary<ITeProcess, KomaHouse> kyokumenList = new Dictionary<ITeProcess, KomaHouse>();
+                Dictionary<IMove, KomaHouse> kyokumenList = new Dictionary<IMove, KomaHouse>();
 
 
 
@@ -134,13 +134,13 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 sbOhteDebug.AppendLine("■(a)ひとまず全ての手を、局面に変換します。");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                foreach (KeyValuePair<K40, List<ITeProcess>> entry1 in teMap_All)
+                foreach (KeyValuePair<K40, List<IMove>> entry1 in teMap_All)
                 {
 
                     K40 koma = entry1.Key;// 駒
                     Ks14 syurui = Ks14Converter.FromKoma(koma);// Haiyaku184Array.Syurui(kyokumen.Stars[(int)koma].Star.Haiyaku);//駒の種類
                     // 駒の動ける升全て
-                    foreach (ITeProcess teProcess in entry1.Value)
+                    foreach (IMove teProcess in entry1.Value)
                     {
                         M201 masu = teProcess.Star.Masu;
 
@@ -161,14 +161,14 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
 
                 // compの移動先リスト
-                Dictionary<K40, ITeProcess> enable_teMap = new Dictionary<K40, ITeProcess>();
+                Dictionary<K40, IMove> enable_teMap = new Dictionary<K40, IMove>();
                 List<Kifu_Node6> enable_nextNodes = new List<Kifu_Node6>();
-                foreach (KeyValuePair<K40, List<ITeProcess>> teEntry in teMap_All)
+                foreach (KeyValuePair<K40, List<IMove>> teEntry in teMap_All)
                 {
                     K40 koma = teEntry.Key;
-                    List<ITeProcess> teList = teEntry.Value;
+                    List<IMove> teList = teEntry.Value;
 
-                    foreach (ITeProcess te in teList)
+                    foreach (IMove te in teList)
                     {
                         Kifu_Node6 nextNode = kifuD.CreateNodeA(
                             te.SrcStar,
@@ -209,7 +209,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 sbOhteDebug.AppendLine("■デバッグ出力(b)enable_teMap");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(b)
-                foreach (KeyValuePair<K40, ITeProcess> entry1 in enable_teMap)
+                foreach (KeyValuePair<K40, IMove> entry1 in enable_teMap)
                 {
                     sbOhteDebug.AppendLine("(b)" + entry1.Key + "=" + entry1.Value);
                 }
@@ -231,10 +231,10 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // 作り直し
                 kmDic_Self = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
-                foreach (KeyValuePair<K40, ITeProcess> entry in enable_teMap)
+                foreach (KeyValuePair<K40, IMove> entry in enable_teMap)
                 {
                     K40 koma = entry.Key;
-                    ITeProcess te = entry.Value;
+                    IMove te = entry.Value;
 
                     // ポテンシャル・ムーブを調べます。
                     IMasus masus_PotentialMove = new Masus_Set();

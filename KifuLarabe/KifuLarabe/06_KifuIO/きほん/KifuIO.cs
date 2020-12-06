@@ -20,7 +20,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="tottaKoma"></param>
         /// <param name="underKoma"></param>
         public static void Ittesasi3(
-            ITeProcess teProcess,
+            IMove teProcess,
             Kifu_Document kifuD,
             bool isBack,
             out K40 movedKoma,
@@ -92,7 +92,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="isBack"></param>
         private static void Kifusasi25(
             out K40 movedKoma,
-            ITeProcess teProcess,
+            IMove teProcess,
             Kifu_Document kifuD,
             bool isBack,
             ILoggerFileConf logTag
@@ -177,7 +177,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="back"></param>
         /// <returns></returns>
         private static Ks14 Kifusasi30(
-            ITeProcess te,
+            IMove te,
             bool back)
         {
             //------------------------------------------------------------
@@ -220,7 +220,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <returns></returns>
         private static IKomaPos Kifusasi35(
             Ks14 syurui2,
-            ITeProcess te,
+            IMove te,
             Kifu_Document kifuD, bool back)
         {
             IKomaPos dst;
@@ -288,7 +288,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Ks14 syurui2,
             ref K40 movedKoma,
             out K40 underKoma,
-            ITeProcess teProcess,
+            IMove teProcess,
             Kifu_Document kifuD,
             bool back,
             ILoggerFileConf logTag

@@ -76,7 +76,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LINKED_LIST, "リンクトリストの最後の要素が削除された");
 
-        gt_EndMethod:
+        // gt_EndMethod:
             return deleteeElement;
         }
 
@@ -732,7 +732,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 goto gt_EndMethod;
             }
 
-            ITeProcess oldLastTe = this.PopCurrent1().TeProcess;
+            IMove oldLastTe = this.PopCurrent1().TeProcess;
 
             RO_TeProcess item = RO_TeProcess.New(
                 oldLastTe.SrcStar,

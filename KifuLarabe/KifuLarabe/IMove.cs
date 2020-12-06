@@ -3,7 +3,10 @@ using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib
 {
-    public interface ITeProcess : IKomaPos
+    /// <summary>
+    /// 指し手。
+    /// </summary>
+    public interface IMove : IKomaPos
     {
 
         /// <summary>
@@ -48,7 +51,7 @@ namespace Grayscale.KifuwaraneLib
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        ITeProcess Src();
+        IMove Src();
 
         /// <summary>
         /// “打” ＜アクション時＞

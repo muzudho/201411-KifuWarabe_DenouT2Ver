@@ -26,7 +26,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+            string text, out string restText, out IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             process = null;
             bool successful = false;
@@ -109,7 +109,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string strAgaruHiku, // 上|引
             string strNariFunari, //成|不成
             string strDaHyoji, //打
-            out ITeProcess process,
+            out IMove process,
             Kifu_Document kifuD,
             ILoggerFileConf logTag
             )

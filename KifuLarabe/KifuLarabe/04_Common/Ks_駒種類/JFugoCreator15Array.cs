@@ -10,7 +10,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
     /// </summary>
     public abstract class JFugoCreator15Array
     {
-        public delegate FugoJ DELEGATE_CreateJFugo(ITeProcess teProcess, Kifu_Document kifuD, ILoggerFileConf logTag);
+        public delegate FugoJ DELEGATE_CreateJFugo(IMove teProcess, Kifu_Document kifuD, ILoggerFileConf logTag);
 
         public static DELEGATE_CreateJFugo[] ItemMethods
         {
@@ -45,7 +45,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
 
-        public static FugoJ CreateNullKoma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateNullKoma(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // エラー
@@ -90,7 +90,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="process">移動先、移動元、両方のマス番号</param>
         /// <param name="kyokumen"></param>
         /// <returns></returns>
-        public static FugoJ CreateFu(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateFu(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 歩
@@ -111,7 +111,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //│  │Ｅ│  │
             //└─┴─┴─┘
             IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 棋譜の現局面：競合駒
@@ -176,7 +176,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKyo(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateKyo(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 香
@@ -206,7 +206,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //  │  │E7│  │
             //  └─┴─┴─┘
             IMasus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -275,7 +275,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKei(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateKei(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 桂
@@ -301,7 +301,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //└─┘　└─┘
             IMasus srcI = KomanoKidou.SrcKeimatobi_巻戻し跳(process.Star.Sengo, process.Star.Masu);
             IMasus srcJ = KomanoKidou.SrcKeimatobi_巻戻し駆(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -379,7 +379,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateGin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateGin(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 銀
@@ -404,7 +404,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
             IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
             IMasus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -541,7 +541,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateKin(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -561,7 +561,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         public static void CreateKin_static(
-            ITeProcess process,//移動先、移動元、両方のマス番号
+            IMove process,//移動先、移動元、両方のマス番号
             Kifu_Document kifuD,
             out MigiHidari migiHidari, out AgaruHiku agaruHiku, out NariFunari nari, out DaHyoji daHyoji,
             ILoggerFileConf logTag
@@ -588,7 +588,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcE = KomanoKidou.SrcIppo_巻戻し引(process.Star.Sengo, process.Star.Masu);
             IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
             IMasus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -729,7 +729,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             nari = NariFunari.CTRL_SONOMAMA;
         }
 
-        public static FugoJ CreateOh(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateOh(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 王
@@ -768,7 +768,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateHisya(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateHisya(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 飛
@@ -820,7 +820,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcC = KomanoKidou.SrcKantu_巻戻し射(process.Star.Sengo, process.Star.Masu);
             IMasus srcE = KomanoKidou.SrcKantu_巻戻し引(process.Star.Sengo, process.Star.Masu);
             IMasus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 棋譜の現局面：競合駒
@@ -927,7 +927,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateKaku(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateKaku(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 角
@@ -979,7 +979,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcD = KomanoKidou.SrcKantu_巻戻し沈(process.Star.Sengo, process.Star.Masu);
             IMasus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
             IMasus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -1084,7 +1084,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateRyu(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateRyu(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 竜
@@ -1140,7 +1140,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcF = KomanoKidou.SrcIppo_巻戻し降(process.Star.Sengo, process.Star.Masu);
             IMasus srcG = KomanoKidou.SrcKantu_巻戻し滑(process.Star.Sengo, process.Star.Masu);
             IMasus srcH = KomanoKidou.SrcIppo_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -1270,7 +1270,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateUma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateUma(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // 馬
@@ -1326,7 +1326,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IMasus srcF = KomanoKidou.SrcKantu_巻戻し降(process.Star.Sengo, process.Star.Masu);
             IMasus srcG = KomanoKidou.SrcIppo_巻戻し滑(process.Star.Sengo, process.Star.Masu);
             IMasus srcH = KomanoKidou.SrcKantu_巻戻し浮(process.Star.Sengo, process.Star.Masu);
-            ITeProcess src = process.Src();
+            IMove src = process.Src();
 
             //----------
             // 競合駒
@@ -1455,7 +1455,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateTokin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateTokin(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1474,7 +1474,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKyo(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateNariKyo(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1493,7 +1493,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariKei(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateNariKei(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1513,7 +1513,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateNariGin(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateNariGin(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1532,7 +1532,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return fugo;
         }
 
-        public static FugoJ CreateErrorKoma(ITeProcess process, Kifu_Document kifuD, ILoggerFileConf logTag)
+        public static FugoJ CreateErrorKoma(IMove process, Kifu_Document kifuD, ILoggerFileConf logTag)
         {
             //************************************************************
             // エラー

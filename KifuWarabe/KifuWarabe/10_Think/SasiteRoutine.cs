@@ -22,7 +22,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static ITeProcess Sasu_Main(Kifu_Document kifu, ILoggerFileConf logTag)
+        public static IMove Sasu_Main(Kifu_Document kifu, ILoggerFileConf logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -43,7 +43,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             LarabeLogger.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.SASITE_SEISEI_ROUTINE, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
-            ITeProcess bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
+            IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
 
             // TODO:    できれば、合法手のリストから　さらに相手番の合法手のリストを伸ばして、
             //          １手先、２手先……の局面を　ツリー構造（Kifu_Document）に蓄えたあと、

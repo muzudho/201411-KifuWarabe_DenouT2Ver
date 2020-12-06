@@ -15,7 +15,7 @@ namespace Grayscale.KifuwaraneLib
 
         IKifuElement Previous { get; set; }
 
-        ITeProcess TeProcess { get; }
+        IMove TeProcess { get; }
 
         /// <summary>
         /// キー：SFEN ※この仕様は暫定

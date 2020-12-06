@@ -286,14 +286,14 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                                 shape_PnlTaikyoku.MousePos_TottaKomaSyurui//×Ks14.H00_Null
                                 );// 選択している駒の元の場所と、移動先
 
-                            ITeProcess last;
+                            IMove last;
                             {
                                 IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                                 KomaHouse dammyHouse = kifuElement.KomaHouse;
 
                                 last = kifuElement.TeProcess;
                             }
-                            ITeProcess previousProcess = last; //符号の追加が行われる前に退避
+                            IMove previousProcess = last; //符号の追加が行われる前に退避
                             Kifu_Node6 newNode = kifuD.CreateNodeA(
                                 process.SrcStar,
                                 process.Star,

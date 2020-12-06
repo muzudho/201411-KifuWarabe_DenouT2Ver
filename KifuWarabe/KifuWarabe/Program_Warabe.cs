@@ -1032,7 +1032,7 @@ namespace Grayscale.KifuwaraneEngine
                                         //------------------------------------------------------------
                                         // 指し手のチョイス
                                         //------------------------------------------------------------
-                                        ITeProcess bestSasite = SasiteRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
+                                        IMove bestSasite = SasiteRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
                                         if (bestSasite.isEnableSfen())
                                         {
                                             string sfenText = bestSasite.ToSfenText();

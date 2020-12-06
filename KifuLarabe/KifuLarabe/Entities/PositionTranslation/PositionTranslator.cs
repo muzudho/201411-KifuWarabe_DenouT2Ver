@@ -83,6 +83,52 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
+        public static int AlphabetToInt(char alphabet)
+        {
+            int num;
+
+            switch (alphabet)
+            {
+                case 'a':
+                    num = 1;
+                    break;
+                case 'b':
+                    num = 2;
+                    break;
+                case 'c':
+                    num = 3;
+                    break;
+                case 'd':
+                    num = 4;
+                    break;
+                case 'e':
+                    num = 5;
+                    break;
+                case 'f':
+                    num = 6;
+                    break;
+                case 'g':
+                    num = 7;
+                    break;
+                case 'h':
+                    num = 8;
+                    break;
+                case 'i':
+                    num = 9;
+                    break;
+                default:
+                    num = -1;
+                    break;
+            }
+
+            return num;
+        }
+
+        /// <summary>
+        /// a～i を、1～9 に変換します。
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
         public static int AlphabetToInt(string alphabet)
         {
             int num;
@@ -730,12 +776,12 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         /// </summary>
         /// <param name="kmDic_Self"></param>
         /// <returns></returns>
-        public static Dictionary<K40, List<ITeProcess>> KmDic_ToKtDic(
+        public static Dictionary<K40, List<IMove>> KmDic_ToKtDic(
             KomaAndMasusDictionary kmDic_Self,
             Kifu_Node6 siteiNode_genzai
             )
         {
-            Dictionary<K40, List<ITeProcess>> teMap_All = new Dictionary<K40, List<ITeProcess>>();
+            Dictionary<K40, List<IMove>> teMap_All = new Dictionary<K40, List<IMove>>();
 
             //
             //
@@ -748,7 +794,7 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
                 {
                     RO_Star star = siteiNode_genzai.KomaHouse.KomaPosAt(koma).Star;
 
-                    ITeProcess teProcess = RO_TeProcess.Next3(
+                    IMove teProcess = RO_TeProcess.Next3(
                         // 元
                         star,
                         // 先
@@ -770,7 +816,7 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
                     else
                     {
                         // まだ登録されていない駒
-                        List<ITeProcess> teList = new List<ITeProcess>();
+                        List<IMove> teList = new List<IMove>();
                         teList.Add(teProcess);
                         teMap_All.Add(koma, teList);
                     }

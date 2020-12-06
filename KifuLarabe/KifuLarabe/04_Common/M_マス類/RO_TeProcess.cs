@@ -31,10 +31,10 @@ namespace Grayscale.KifuwaraneLib.L04_Common
     /// ・駒種類：「歩」「と金」など。補助で容易。
     /// </summary>
     [Serializable]
-    public class RO_TeProcess : RO_KomaPos, ITeProcess
+    public class RO_TeProcess : RO_KomaPos, IMove
     {
 
-        public static readonly ITeProcess NULL_OBJECT = new RO_TeProcess_Syokihaichi();
+        public static readonly IMove NULL_OBJECT = new RO_TeProcess_Syokihaichi();
 
 
 
@@ -178,7 +178,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public ITeProcess Src()
+        public IMove Src()
         {
             RO_TeProcess src = new RO_TeProcess(
 

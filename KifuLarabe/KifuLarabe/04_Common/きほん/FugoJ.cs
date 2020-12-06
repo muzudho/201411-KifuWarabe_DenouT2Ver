@@ -130,8 +130,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             IKifuElement node
             )
         {
-            ITeProcess process = node.TeProcess;
-            ITeProcess previousKomaP = node.Previous.TeProcess;
+            IMove process = node.TeProcess;
+            IMove previousKomaP = node.Previous.TeProcess;
 
             StringBuilder sb = new StringBuilder();
 

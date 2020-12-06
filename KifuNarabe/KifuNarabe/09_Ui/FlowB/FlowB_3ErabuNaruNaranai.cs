@@ -106,7 +106,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                         shape_PnlTaikyoku.MousePos_TottaKomaSyurui
                         );// 選択している駒の元の場所と、移動先
 
-                    ITeProcess last2;
+                    IMove last2;
                     {
                         IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                         KomaHouse dammyHouse = kifuElement.KomaHouse;
@@ -155,7 +155,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 requestForMain.RequestOutputKifu = true;
                 requestForMain.RequestRefresh = true;
 
-                ITeProcess last;
+                IMove last;
                 {
                     IKifuElement kifuElement = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                     KomaHouse dammyHouse = kifuElement.KomaHouse;

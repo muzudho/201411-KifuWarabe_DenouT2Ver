@@ -10,42 +10,42 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
         /// </summary>
         /// <param name="syurui"></param>
         /// <returns></returns>
-        public static void SfenUttaSyurui(string sfen, out Ks14 syurui)
+        public static void SfenUttaSyurui(char sfen, out Ks14 syurui)
         {
             switch (sfen)
             {
-                case "P":
+                case 'P':
                     syurui = Ks14.H01_Fu;
                     break;
 
-                case "L":
+                case 'L':
                     syurui = Ks14.H02_Kyo;
                     break;
 
-                case "N":
+                case 'N':
                     syurui = Ks14.H03_Kei;
                     break;
 
-                case "S":
+                case 'S':
                     syurui = Ks14.H04_Gin;
                     break;
 
-                case "G":
+                case 'G':
                     syurui = Ks14.H05_Kin;
                     break;
 
-                case "R":
+                case 'R':
                     syurui = Ks14.H07_Hisya;
                     break;
 
-                case "B":
+                case 'B':
                     syurui = Ks14.H08_Kaku;
                     break;
 
-                case "K":
+                case 'K':
                     syurui = Ks14.H06_Oh;
                     break;
-
+                /*
                 case "+P":
                     syurui = Ks14.H11_Tokin;
                     break;
@@ -69,6 +69,7 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
                 case "+B":
                     syurui = Ks14.H08_Kaku;
                     break;
+                */
 
                 default:
                     System.Console.WriteLine("▲バグ【駒種類】Sfen=[" + sfen + "]");
