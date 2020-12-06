@@ -77,7 +77,7 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
 
                 K40 dropP; // 打った種類の駒(Piece)。
 
-                if ('*' == sfen.Chars[1])
+                if (sfen.Dropped)
                 {
                     //>>>>> 「打」でした。
 
@@ -142,7 +142,7 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
                 IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                 KomaHouse house2 = dammyNode3.KomaHouse;
 
-                if ('*' == sfen.Chars[1])
+                if (sfen.Dropped)
                 {
                     //>>>>> 打った駒の場合
 

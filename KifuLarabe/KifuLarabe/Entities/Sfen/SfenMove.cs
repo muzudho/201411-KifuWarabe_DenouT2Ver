@@ -7,7 +7,17 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
         /*
         public int SrcFile { get; private set; }
         public int SrcRank { get; private set; }
-        public bool IsDrop { get; private set; }
+        */
+        /// <summary>
+        /// 打です。
+        /// </summary>
+        public bool Dropped 
+        {
+            get {
+                return '*' == this.Chars[1];
+            }
+        }
+        /*
         public string SrcPiece { get; private set; }
         public int DstFile { get; private set; }
         public int DstRank { get; private set; }
