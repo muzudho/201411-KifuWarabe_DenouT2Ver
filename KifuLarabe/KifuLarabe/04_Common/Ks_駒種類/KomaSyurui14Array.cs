@@ -1,4 +1,5 @@
-﻿using Grayscale.KifuwaraneLib.L03_Communication;
+﻿using Grayscale.KifuwaraneLib.Entities.Sfen;
+using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
 {
@@ -41,24 +42,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// </summary>
         public static string[] Fugo { get { return KomaSyurui14Array.fugo; } }
         protected static string[] fugo;
-
-
-        /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// 駒のSFEN符号用の単語。
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// </summary>
-        public static string[] Sfen { get { return KomaSyurui14Array.sfen; } }
-        protected static string[] sfen;
-
-
-        /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// 駒のSFEN(打)符号用の単語。
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// </summary>
-        public static string[] SfenDa { get { return KomaSyurui14Array.sfenDa; } }
-        protected static string[] sfenDa;
 
 
         /// <summary>
@@ -179,43 +162,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 false,//[15]エラー
             };
 
-            KomaSyurui14Array.sfenDa = new string[]{
-                "×",//[0]ヌル
-                "P",//[1]
-                "L",
-                "N",
-                "S",
-                "G",
-                "K",
-                "R",
-                "B",
-                "R",
-                "B",
-                "P",
-                "L",
-                "N",
-                "S",
-                "＜打×Ｕ＞",//[15]
-            };
-
-            KomaSyurui14Array.sfen = new string[]{
-                "×",//[0]ヌル
-                "P",
-                "L",
-                "N",
-                "S",
-                "G",
-                "K",
-                "R",
-                "B",
-                "+R",
-                "+B",
-                "+P",
-                "+L",
-                "+N",
-                "+S",
-                "Ｕ×Sfen",
-            };
 
             KomaSyurui14Array.fugo = new string[]{
                 "×",//[0]ヌル
@@ -392,7 +338,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// </summary>
         public static string SfenText(Ks14 koma, Sengo sengo)
         {
-            string str = KomaSyurui14Array.Sfen[(int)koma];
+            string str = SfenReferences.Sfen[(int)koma];
 
             if (Sengo.Gote == sengo)
             {

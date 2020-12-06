@@ -14,8 +14,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
     /// </summary>
     public abstract class Converter04
     {
-
-        #region プロパティ類
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
         /// アラビア数字。
@@ -29,10 +27,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
         public static string[] KAN_SUJI = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-
-        #endregion
-
-
 
         public static Okiba Masu_ToOkiba(M201 masu)
         {

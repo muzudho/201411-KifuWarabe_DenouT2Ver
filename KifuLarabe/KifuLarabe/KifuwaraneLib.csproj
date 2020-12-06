@@ -123,6 +123,7 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
+    <Compile Include="Entities\Sfen\SfenReferences.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />

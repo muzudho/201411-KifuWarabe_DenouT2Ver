@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -278,7 +279,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // (自)筋・(自)段は書かずに、「P*」といった表記で埋めます。
-                sb.Append(KomaSyurui14Array.SfenDa[(int)Haiyaku184Array.Syurui(this.SrcStar.Haiyaku)]);
+                sb.Append(SfenReferences.SfenDa[(int)Haiyaku184Array.Syurui(this.SrcStar.Haiyaku)]);
                 sb.Append("*");
             }
             else
