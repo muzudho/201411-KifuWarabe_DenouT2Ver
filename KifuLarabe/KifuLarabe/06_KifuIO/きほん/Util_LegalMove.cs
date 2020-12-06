@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -28,7 +28,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             KomaAndMasusDictionary komaAndMove_Enemy;// 相手の駒の移動可能範囲
             Util_LegalMove.GetAvailableMove(
                 siteiNode,
-                PositionTranslator.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu, logTag);
+                GameTranslator.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu, logTag);
 
             // 自分の王の座標
             M201 kingMasu;
@@ -179,7 +179,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         bool mate2 = Util_LegalMove.Is_Mate(
                             nextNode,
-                            PositionTranslator.AlternateSengo(sengo_comp),
+                            GameTranslator.AlternateSengo(sengo_comp),
                             nextNode,
                             sbGohosyu,
                             logTag
@@ -316,7 +316,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu, logTag);
 
             // 敵駒（将棋盤上）
-            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, PositionTranslator.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, GameTranslator.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
 
 
             // 自駒の移動候補（将棋盤上）

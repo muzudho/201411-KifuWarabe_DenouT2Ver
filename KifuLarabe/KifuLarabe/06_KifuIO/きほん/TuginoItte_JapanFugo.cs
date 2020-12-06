@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
@@ -120,10 +120,10 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //------------------------------
             // 符号確定
             //------------------------------
-            MigiHidari migiHidari = PositionTranslator.Str_ToMigiHidari(strMigiHidari);
-            AgaruHiku agaruHiku = PositionTranslator.Str_ToAgaruHiku(strAgaruHiku);            // 上|引
-            NariFunari nariFunari = PositionTranslator.Nari_ToBool(strNariFunari);//成
-            DaHyoji daHyoji = PositionTranslator.Str_ToDaHyoji(strDaHyoji);             //打
+            MigiHidari migiHidari = GameTranslator.Str_ToMigiHidari(strMigiHidari);
+            AgaruHiku agaruHiku = GameTranslator.Str_ToAgaruHiku(strAgaruHiku);            // 上|引
+            NariFunari nariFunari = GameTranslator.Nari_ToBool(strNariFunari);//成
+            DaHyoji daHyoji = GameTranslator.Str_ToDaHyoji(strDaHyoji);             //打
 
             Ks14 srcSyurui = ApplicatedMove.KomaMoji_ToSyurui(strSrcSyurui);
 
@@ -131,7 +131,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //------------------------------
             // 
             //------------------------------
-            Sengo sengo = PositionTranslator.Sengo_ToEnum(strSengo);
+            Sengo sengo = GameTranslator.Sengo_ToEnum(strSengo);
 
 
             M201 dstMasu;
@@ -145,8 +145,8 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             {
                 dstMasu = M201Util.OkibaSujiDanToMasu(
                     Okiba.ShogiBan,
-                    PositionTranslator.ArabiaNumericToInt(strSuji),
-                    PositionTranslator.ArabiaNumericToInt(strDan)
+                    GameTranslator.ArabiaNumericToInt(strSuji),
+                    GameTranslator.ArabiaNumericToInt(strDan)
                     );
             }
 

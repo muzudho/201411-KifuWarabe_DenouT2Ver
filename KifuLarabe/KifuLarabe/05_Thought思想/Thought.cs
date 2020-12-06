@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 

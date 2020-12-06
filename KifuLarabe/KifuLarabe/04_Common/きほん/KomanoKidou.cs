@@ -1,5 +1,5 @@
 ﻿using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -228,7 +228,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <returns></returns>
         public static IMasus DstKeimatobi_駆(Sengo sengo, M201 masu_ji)
         {
-            return KomanoKidou.SrcKeimatobi_巻戻し跳(PositionTranslator.AlternateSengo( sengo), masu_ji);
+            return KomanoKidou.SrcKeimatobi_巻戻し跳(GameTranslator.AlternateSengo( sengo), masu_ji);
         }
 
 
@@ -242,7 +242,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <returns></returns>
         public static IMasus DstKeimatobi_跳(Sengo sengo, M201 masu_ji)
         {
-            return KomanoKidou.SrcKeimatobi_巻戻し駆(PositionTranslator.AlternateSengo( sengo), masu_ji);
+            return KomanoKidou.SrcKeimatobi_巻戻し駆(GameTranslator.AlternateSengo( sengo), masu_ji);
         }
 
 

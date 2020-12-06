@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -318,7 +319,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     if (suji == 0)//１筋が最後だぜ☆
                     {
                         sb.Append("┃");
-                        sb.AppendLine(PositionTranslator.IntToJapanese(dan + 1));
+                        sb.AppendLine(GameTranslator.IntToJapanese(dan + 1));
                     }
                     else
                     {

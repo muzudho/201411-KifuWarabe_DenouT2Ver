@@ -1,5 +1,6 @@
 ﻿using System.Text;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -135,7 +136,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append(PositionTranslator.Sengo_ToStr(process.Star.Sengo));
+            sb.Append(GameTranslator.Sengo_ToStr(process.Star.Sengo));
 
             //------------------------------
             // “同”で表記できるところは、“同”で表記します。それ以外は“筋・段”で表記します。
@@ -151,8 +152,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             else
             {
                 // “筋・段”
-                sb.Append(PositionTranslator.IntToArabic(Mh201Util.MasuToSuji(process.Star.Masu)));
-                sb.Append(PositionTranslator.IntToJapanese(Mh201Util.MasuToDan(process.Star.Masu)));
+                sb.Append(GameTranslator.IntToArabic(Mh201Util.MasuToSuji(process.Star.Masu)));
+                sb.Append(GameTranslator.IntToJapanese(Mh201Util.MasuToDan(process.Star.Masu)));
             }
 
             //------------------------------
@@ -163,22 +164,22 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //------------------------------
             // “右”とか
             //------------------------------
-            sb.Append(PositionTranslator.MigiHidari_ToStr(this.MigiHidari));
+            sb.Append(GameTranslator.MigiHidari_ToStr(this.MigiHidari));
 
             //------------------------------
             // “寄”とか
             //------------------------------
-            sb.Append(PositionTranslator.AgaruHiku_ToStr(this.AgaruHiku));
+            sb.Append(GameTranslator.AgaruHiku_ToStr(this.AgaruHiku));
 
             //------------------------------
             // “成”とか
             //------------------------------
-            sb.Append(PositionTranslator.Nari_ToStr(this.Nari));
+            sb.Append(GameTranslator.Nari_ToStr(this.Nari));
 
             //------------------------------
             // “打”とか
             //------------------------------
-            sb.Append(PositionTranslator.Bool_ToDa(this.DaHyoji));
+            sb.Append(GameTranslator.Bool_ToDa(this.DaHyoji));
 
             return sb.ToString();
         }
@@ -203,13 +204,13 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append(PositionTranslator.Sengo_ToStr(process.Star.Sengo));
+            sb.Append(GameTranslator.Sengo_ToStr(process.Star.Sengo));
 
             //------------------------------
             // “同”に変換せず、“筋・段”をそのまま出します。
             //------------------------------
-            sb.Append(PositionTranslator.IntToArabic(Mh201Util.MasuToSuji(process.Star.Masu)));
-            sb.Append(PositionTranslator.IntToJapanese(Mh201Util.MasuToDan(process.Star.Masu)));
+            sb.Append(GameTranslator.IntToArabic(Mh201Util.MasuToSuji(process.Star.Masu)));
+            sb.Append(GameTranslator.IntToJapanese(Mh201Util.MasuToDan(process.Star.Masu)));
 
             //------------------------------
             // “歩”とか。“全”ではなく“成銀”    ＜符号用＞
@@ -219,22 +220,22 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //------------------------------
             // “右”とか
             //------------------------------
-            sb.Append(PositionTranslator.MigiHidari_ToStr(this.MigiHidari));
+            sb.Append(GameTranslator.MigiHidari_ToStr(this.MigiHidari));
 
             //------------------------------
             // “寄”とか
             //------------------------------
-            sb.Append(PositionTranslator.AgaruHiku_ToStr(this.AgaruHiku));
+            sb.Append(GameTranslator.AgaruHiku_ToStr(this.AgaruHiku));
 
             //------------------------------
             // “成”とか
             //------------------------------
-            sb.Append(PositionTranslator.Nari_ToStr(this.Nari));
+            sb.Append(GameTranslator.Nari_ToStr(this.Nari));
 
             //------------------------------
             // “打”とか
             //------------------------------
-            sb.Append(PositionTranslator.Bool_ToDa(this.DaHyoji));
+            sb.Append(GameTranslator.Bool_ToDa(this.DaHyoji));
 
             return sb.ToString();
         }

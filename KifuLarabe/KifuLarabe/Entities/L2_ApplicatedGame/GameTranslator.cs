@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
+namespace Grayscale.KifuwaraneLib.Entities.ApplicatedGame
 {
-    public static class PositionTranslator
+    public static class GameTranslator
     {
         /// <summary>
         /// アラビア数字。
@@ -15,7 +19,6 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         /// 漢数字。
         /// </summary>
         public static string[] JapaneseNumeric { get; private set; } = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-
 
         /// <summary>
         /// 数値を漢数字に変換します。
@@ -28,7 +31,7 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
 
             if (1 <= num && num <= 9)
             {
-                numStr = PositionTranslator.JapaneseNumeric[num - 1];
+                numStr = GameTranslator.JapaneseNumeric[num - 1];
             }
             else
             {
@@ -37,7 +40,6 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
 
             return numStr;
         }
-
 
         /// <summary>
         /// 数値をアラビア数字に変換します。
@@ -50,7 +52,7 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
 
             if (1 <= num && num <= 9)
             {
-                numStr = PositionTranslator.ArabiaNumeric[num - 1];
+                numStr = GameTranslator.ArabiaNumeric[num - 1];
             }
             else
             {
@@ -61,95 +63,197 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         }
 
         /// <summary>
-        /// a～i を、1～9 に変換します。
+        /// 打った駒の種類。
         /// </summary>
-        /// <param name="?"></param>
-        /// <returns></returns>
-        public static int AlphabetToInt(char alphabet)
+        /// <param name="sfen"></param>
+        /// <returns>駒種類</returns>
+        public static Ks14 SfenUttaSyurui(char sfen)
         {
-            int num;
-
-            switch (alphabet)
+            switch (sfen)
             {
-                case 'a':
-                    num = 1;
-                    break;
-                case 'b':
-                    num = 2;
-                    break;
-                case 'c':
-                    num = 3;
-                    break;
-                case 'd':
-                    num = 4;
-                    break;
-                case 'e':
-                    num = 5;
-                    break;
-                case 'f':
-                    num = 6;
-                    break;
-                case 'g':
-                    num = 7;
-                    break;
-                case 'h':
-                    num = 8;
-                    break;
-                case 'i':
-                    num = 9;
-                    break;
-                default:
-                    num = -1;
-                    break;
+                case 'P': return Ks14.H01_Fu;
+                case 'L': return Ks14.H02_Kyo;
+                case 'N': return Ks14.H03_Kei;
+                case 'S': return Ks14.H04_Gin;
+                case 'G': return Ks14.H05_Kin;
+                case 'R': return Ks14.H07_Hisya;
+                case 'B': return Ks14.H08_Kaku;
+                case 'K': return Ks14.H06_Oh;
+                // SFEN は成り駒を打てない。
+                // エラーにせず 零元を返します。
+                default: return Ks14.H00_Null;
             }
-
-            return num;
         }
 
         /// <summary>
-        /// a～i を、1～9 に変換します。
+        /// 駒の種類。
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="syurui"></param>
         /// <returns></returns>
-        public static int AlphabetToInt(string alphabet)
+        public static void SfenSyokihaichi_ToSyurui(string sfen, out Sengo sengo, out Ks14 syurui)
         {
-            int num;
-
-            switch (alphabet)
+            switch (sfen)
             {
-                case "a":
-                    num = 1;
+                case "P":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H01_Fu;
                     break;
-                case "b":
-                    num = 2;
+
+                case "p":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H01_Fu;
                     break;
-                case "c":
-                    num = 3;
+
+                case "L":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H02_Kyo;
                     break;
-                case "d":
-                    num = 4;
+
+                case "l":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H02_Kyo;
                     break;
-                case "e":
-                    num = 5;
+
+                case "N":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H03_Kei;
                     break;
-                case "f":
-                    num = 6;
+
+                case "n":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H03_Kei;
                     break;
+
+                case "S":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H04_Gin;
+                    break;
+
+                case "s":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H04_Gin;
+                    break;
+
+                case "G":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H05_Kin;
+                    break;
+
                 case "g":
-                    num = 7;
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H05_Kin;
                     break;
-                case "h":
-                    num = 8;
+
+                case "R":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H07_Hisya;
                     break;
-                case "i":
-                    num = 9;
+
+                case "r":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H07_Hisya;
                     break;
+
+                case "B":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H08_Kaku;
+                    break;
+
+                case "b":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H08_Kaku;
+                    break;
+
+                case "K":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H06_Oh;
+                    break;
+
+                case "k":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H06_Oh;
+                    break;
+
+                case "+P":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H11_Tokin;
+                    break;
+
+                case "+p":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H11_Tokin;
+                    break;
+
+                case "+L":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H12_NariKyo;
+                    break;
+
+                case "+l":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H12_NariKyo;
+                    break;
+
+                case "+N":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H13_NariKei;
+                    break;
+
+                case "+n":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H13_NariKei;
+                    break;
+
+                case "+S":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H14_NariGin;
+                    break;
+
+                case "+s":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H14_NariGin;
+                    break;
+
+                case "+R":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H07_Hisya;
+                    break;
+
+                case "+r":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H07_Hisya;
+                    break;
+
+                case "+B":
+                    sengo = Sengo.Sente;
+                    syurui = Ks14.H08_Kaku;
+                    break;
+
+                case "+b":
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H08_Kaku;
+                    break;
+
                 default:
-                    num = -1;
+                    sengo = Sengo.Gote;
+                    syurui = Ks14.H00_Null;
                     break;
             }
+        }
 
-            return num;
+        /// <summary>
+        /// 升番地を漢字に変換します。
+        /// </summary>
+        /// <param name="sq"></param>
+        /// <returns></returns>
+        public static string SqToJapanese(int sq)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(GameTranslator.IntToArabic(Mh201Util.MasuToSuji(M201Array.Items_All[sq])));
+            sb.Append(GameTranslator.IntToJapanese(Mh201Util.MasuToDan(M201Array.Items_All[sq])));
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -159,44 +263,22 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         /// <returns></returns>
         public static string IntToAlphabet(int num)
         {
-            string alphabet;
-
             switch (num)
             {
-                case 1:
-                    alphabet = "a";
-                    break;
-                case 2:
-                    alphabet = "b";
-                    break;
-                case 3:
-                    alphabet = "c";
-                    break;
-                case 4:
-                    alphabet = "d";
-                    break;
-                case 5:
-                    alphabet = "e";
-                    break;
-                case 6:
-                    alphabet = "f";
-                    break;
-                case 7:
-                    alphabet = "g";
-                    break;
-                case 8:
-                    alphabet = "h";
-                    break;
-                case 9:
-                    alphabet = "i";
-                    break;
+                case 1: return "a";
+                case 2: return "b";
+                case 3: return "c";
+                case 4: return "d";
+                case 5: return "e";
+                case 6: return "f";
+                case 7: return "g";
+                case 8: return "h";
+                case 9: return "i";
                 default:
                     string message = "筋[" + num + "]をアルファベットに変えることはできませんでした。";
                     LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                     throw new Exception(message);
             }
-
-            return alphabet;
         }
 
         /// <summary>
@@ -206,71 +288,168 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
         /// <returns></returns>
         public static int ArabiaNumericToInt(string suji)
         {
-            int result;
-
             switch (suji)
             {
                 case "1":
                 case "１":
                 case "一":
-                    result = 1;
-                    break;
+                    return 1;
 
                 case "2":
                 case "２":
                 case "二":
-                    result = 2;
-                    break;
+                    return 2;
 
                 case "3":
                 case "３":
                 case "三":
-                    result = 3;
-                    break;
+                    return 3;
 
                 case "4":
                 case "４":
                 case "四":
-                    result = 4;
-                    break;
+                    return 4;
 
                 case "5":
                 case "５":
                 case "五":
-                    result = 5;
-                    break;
+                    return 5;
 
                 case "6":
                 case "６":
                 case "六":
-                    result = 6;
-                    break;
+                    return 6;
 
                 case "7":
                 case "７":
                 case "七":
-                    result = 7;
-                    break;
+                    return 7;
 
                 case "8":
                 case "８":
                 case "八":
-                    result = 8;
-                    break;
+                    return 8;
 
                 case "9":
                 case "９":
                 case "九":
-                    result = 9;
-                    break;
+                    return 9;
 
                 default:
-                    result = 0;
-                    break;
+                    return 0;
+            }
+        }
 
+        public static Okiba Masu_ToOkiba(M201 masu)
+        {
+            Okiba result;
+
+            if ((int)M201.n11_１一 <= (int)masu && (int)masu <= (int)M201.n99_９九)
+            {
+                // 将棋盤
+                result = Okiba.ShogiBan;
+            }
+            else if ((int)M201.sen01 <= (int)masu && (int)masu <= (int)M201.sen40)
+            {
+                // 先手駒台
+                result = Okiba.Sente_Komadai;
+            }
+            else if ((int)M201.go01 <= (int)masu && (int)masu <= (int)M201.go40)
+            {
+                // 後手駒台
+                result = Okiba.Gote_Komadai;
+            }
+            else if ((int)M201.fukuro01 <= (int)masu && (int)masu <= (int)M201.fukuro40)
+            {
+                // 駒袋
+                result = Okiba.KomaBukuro;
+            }
+            else
+            {
+                // 該当なし
+                result = Okiba.Empty;
             }
 
             return result;
+        }
+
+
+        /// <summary>
+        /// 変換『「駒→手」のコレクション』→『「駒、指し手」のペアのリスト』
+        /// </summary>
+        public static List<KomaAndMasu> KmDic_ToKmList(
+            KomaAndMasusDictionary kmDic
+            )
+        {
+            List<KomaAndMasu> kmList = new List<KomaAndMasu>();
+
+            foreach (K40 koma in kmDic.ToKeyList())
+            {
+                IMasus masus = kmDic.ElementAt(koma);
+
+                foreach (M201 masu in masus.Elements)
+                {
+                    // セットとして作っているので、重複エレメントは無いはず……☆
+                    kmList.Add(new KomaAndMasu(koma, masu));
+                }
+            }
+
+            return kmList;
+        }
+
+        /// <summary>
+        /// 変換「自駒が動ける升」→「自駒が動ける手」
+        /// </summary>
+        /// <param name="kmDic_Self"></param>
+        /// <returns></returns>
+        public static Dictionary<K40, List<IMove>> KmDic_ToKtDic(
+            KomaAndMasusDictionary kmDic_Self,
+            Kifu_Node6 siteiNode_genzai
+            )
+        {
+            Dictionary<K40, List<IMove>> teMap_All = new Dictionary<K40, List<IMove>>();
+
+            //
+            //
+            kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
+            {
+                K40 koma = entry.Key;
+
+
+                foreach (int masuHandle in entry.Value.Elements)
+                {
+                    RO_Star star = siteiNode_genzai.KomaHouse.KomaPosAt(koma).Star;
+
+                    IMove teProcess = MoveImpl.Next3(
+                        // 元
+                        star,
+                        // 先
+                        new RO_Star(
+                            star.Sengo,//FIXME: sengo_comp,
+                            M201Array.Items_All[masuHandle],
+                            star.Haiyaku//TODO:成るとか考えたい
+                        ),
+
+                        Ks14.H00_Null//取った駒不明
+                    );
+                    //sbSfen.Append(sbSfen.ToString());
+
+                    if (teMap_All.ContainsKey(koma))
+                    {
+                        // すでに登録されている駒
+                        teMap_All[koma].Add(teProcess);
+                    }
+                    else
+                    {
+                        // まだ登録されていない駒
+                        List<IMove> teList = new List<IMove>();
+                        teList.Add(teProcess);
+                        teMap_All.Add(koma, teList);
+                    }
+                }
+            });
+
+            return teMap_All;
         }
 
         /// <summary>
@@ -618,5 +797,6 @@ namespace Grayscale.KifuwaraneLib.Entities.PositionTranslation
 
             return result;
         }
+
     }
 }

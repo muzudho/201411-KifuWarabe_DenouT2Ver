@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
@@ -55,7 +54,7 @@ namespace Grayscale.KifuwaraneLib.Entities.ApplicatedGame
 
                     // 駒台から、打った種類の駒を取得
                     dropP = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD,
-                        PositionTranslator.Sengo_ToKomadai(kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))),//Okiba.Sente_Komadai,//FIXME:
+                        GameTranslator.Sengo_ToKomadai(kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))),//Okiba.Sente_Komadai,//FIXME:
                         dropPT, logTag);
                     if (K40.Error == dropP)
                     {

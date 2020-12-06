@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
@@ -270,12 +270,12 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if ("w" == sfenStartpos.StrSengo)
             {
                 // １手目の手番を後手にしたいので、初期局面の手番は先手にします。
-                kifuD.GetRoot8().SetSengo_Root1(PositionTranslator.AlternateSengo(Sengo.Gote));
+                kifuD.GetRoot8().SetSengo_Root1(GameTranslator.AlternateSengo(Sengo.Gote));
             }
             else
             {
                 // １手目の手番を先手にしたいので、初期局面の手番は後手にします。
-                kifuD.GetRoot8().SetSengo_Root1(PositionTranslator.AlternateSengo(Sengo.Sente));
+                kifuD.GetRoot8().SetSengo_Root1(GameTranslator.AlternateSengo(Sengo.Sente));
             }
 
 

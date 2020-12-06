@@ -1,5 +1,5 @@
 ﻿using System;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 
 namespace Grayscale.KifuwaraneLib.Entities.Sfen
 {
@@ -28,7 +28,7 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
             {
                 if (!this.Dropped)
                 {
-                    return PositionTranslator.AlphabetToInt(this.Chars[1]);
+                    return SfenReferences.AlphabetToInt(this.Chars[1]);
                 }
 
                 return 0;
@@ -62,7 +62,7 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
         {
             get
             {
-                return PositionTranslator.AlphabetToInt(this.Chars[3]);
+                return SfenReferences.AlphabetToInt(this.Chars[3]);
             }
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;

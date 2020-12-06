@@ -1,5 +1,5 @@
 ﻿using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.Sfen;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common

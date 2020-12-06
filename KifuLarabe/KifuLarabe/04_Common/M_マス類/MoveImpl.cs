@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -300,7 +300,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         strSrcDan = "Ｎ段";//エラー表現
                         break;
                     default:
-                        strSrcDan = PositionTranslator.IntToAlphabet(srcDan);
+                        strSrcDan = GameTranslator.IntToAlphabet(srcDan);
                         break;
                 }
                 sb.Append(strSrcDan);
@@ -332,7 +332,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     strDan = "Ｎ段";//エラー表現
                     break;
                 default:
-                    strDan = PositionTranslator.IntToAlphabet(dan);
+                    strDan = GameTranslator.IntToAlphabet(dan);
                     break;
             }
             sb.Append(strDan);

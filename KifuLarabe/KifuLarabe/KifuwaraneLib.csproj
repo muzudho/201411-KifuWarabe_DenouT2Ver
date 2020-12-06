@@ -127,12 +127,11 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
-    <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
-    <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
-    <Compile Include="Entities\Sfen\SfenMove.cs" />
-    <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />
-    <Compile Include="Entities\Sfen\SfenReferences.cs" />
-    <Compile Include="Entities\PositionTranslation\PositionTranslator.cs" />
+    <Compile Include="Entities\L2_ApplicatedGame\ApplicatedMove.cs" />
+    <Compile Include="Entities\L2_ApplicatedGame\GameTranslator.cs" />
+    <Compile Include="Entities\L1_Sfen\SfenMove.cs" />
+    <Compile Include="Entities\L1_Sfen\SfenMoveBuilder.cs" />
+    <Compile Include="Entities\L1_Sfen\SfenReferences.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />
