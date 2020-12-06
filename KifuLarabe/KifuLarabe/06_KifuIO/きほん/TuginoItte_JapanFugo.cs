@@ -26,7 +26,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out IMove process, Kifu_Document kifuD, ILoggerElement logTag)
+            string text, out string restText, out IMove process, Kifu_Document kifuD, ILoggerAddress logTag)
         {
             process = null;
             bool successful = false;
@@ -81,7 +81,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerImpl.GetInstance().WriteLineMemo(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
+                LoggerPool.TraceLine(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
             }
 
 
@@ -111,7 +111,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string strDaHyoji, //打
             out IMove process,
             Kifu_Document kifuD,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -1097,7 +1097,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILoggerElement logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILoggerAddress logTag)
         {
             bool hit = false;
             foundKoma = K40.Error;

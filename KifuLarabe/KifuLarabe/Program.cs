@@ -15,12 +15,12 @@ namespace Grayscale.KifuwaraneLib
     /// </summary>
     public partial class LarabeLoggerTag_Impl
     {
-        public static readonly ILoggerElement SASITE_SEISEI_ROUTINE = new LoggerElementImpl("#log_指し手生成ルーチン",".txt",true);
-        public static readonly ILoggerElement LOGGING_BY_GUI = new LoggerElementImpl("#log_将棋GUI_棋譜読取",".txt",true);
-        public static readonly ILoggerElement LOGGING_BY_LARABE_STANDALONE = new LoggerElementImpl("#log_ララベProgram",".txt",true);
-        public static readonly ILoggerElement LINKED_LIST = new LoggerElementImpl("#log_リンクトリスト",".txt",false);
+        public static readonly ILoggerAddress SASITE_SEISEI_ROUTINE = new LoggerAddressImpl("#log_指し手生成ルーチン",".txt",true);
+        public static readonly ILoggerAddress LOGGING_BY_GUI = new LoggerAddressImpl("#log_将棋GUI_棋譜読取",".txt",true);
+        public static readonly ILoggerAddress LOGGING_BY_LARABE_STANDALONE = new LoggerAddressImpl("#log_ララベProgram",".txt",true);
+        public static readonly ILoggerAddress LINKED_LIST = new LoggerAddressImpl("#log_リンクトリスト",".txt",false);
 
-        public static readonly ILoggerElement ERROR = new LoggerElementImpl("#log_エラー", ".txt", true);
+        public static readonly ILoggerAddress ERROR = new LoggerAddressImpl("#log_エラー", ".txt", true);
     }
 }
 
@@ -31,7 +31,7 @@ namespace Grayscale.KifuwaraneLib
         /// <summary>
         /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
         /// </summary>
-        public static int BuildVersion { get; private set; } = 9;
+        public static int BuildVersion { get; private set; } = 10;
 
         /// <summary>
         /// 棄権バージョン。形を整える。
@@ -41,7 +41,7 @@ namespace Grayscale.KifuwaraneLib
 
         public static int Main(string[] args)
         {
-            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
+            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_LARABE_STANDALONE;
 
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
@@ -168,7 +168,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(New)");
@@ -244,7 +244,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(Next)");
@@ -345,7 +345,7 @@ namespace Grayscale.KifuwaraneLib
                 System.Console.WriteLine("──────────────────────────────");
                 Kifu_Document kifuD_dammy = new Kifu_Document();
 
-                LoggerImpl.GetInstance().WriteLineMemo(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy,"ルートが追加されたはずだぜ☆"));
+                LoggerPool.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy,"ルートが追加されたはずだぜ☆"));
 
                 {
                     // ▲２六歩

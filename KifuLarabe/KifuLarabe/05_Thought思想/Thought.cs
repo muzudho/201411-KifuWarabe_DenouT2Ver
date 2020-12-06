@@ -11,7 +11,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
     {
         public static KomaAndMasusDictionary GetPotentialMovesByKoma(
             IKifuElement siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            List<K40> komas, ILoggerElement logTag)
+            List<K40> komas, ILoggerAddress logTag)
         {
             KomaAndMasusDictionary komaAndMove = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
 
@@ -50,7 +50,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
             Sengo selfSengo,
             Okiba okiba,
             StringBuilder sbGohosyu,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             //------------------------------------------------------------

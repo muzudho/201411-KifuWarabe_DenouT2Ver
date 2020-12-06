@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             out string restText,
             out IMove move,
             Kifu_Document kifuD,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             bool successful = false;
@@ -187,7 +187,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                        LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
 
                         // 追加
                         throw;
@@ -203,7 +203,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return successful;

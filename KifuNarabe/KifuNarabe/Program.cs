@@ -15,9 +15,9 @@ namespace Grayscale.KifuwaraneGui
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class LoggerTag_Narabe : LoggerElementImpl
+    public class LoggerTag_Narabe : LoggerAddressImpl
     {
-        public static readonly ILoggerElement PAINT;
+        public static readonly ILoggerAddress PAINT;
 
         static LoggerTag_Narabe()
         {
@@ -41,8 +41,8 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILoggerElement logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
-            LoggerImpl.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
+            ILoggerAddress logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
+            LoggerPool.TraceLine(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];

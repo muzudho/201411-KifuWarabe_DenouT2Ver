@@ -23,7 +23,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Ui_PnlMain ui_PnlMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             Kifu_Document kifuD,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             RequestForMain requestForMain = new RequestForMain();

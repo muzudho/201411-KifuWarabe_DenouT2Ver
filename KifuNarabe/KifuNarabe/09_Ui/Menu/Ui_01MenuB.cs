@@ -56,8 +56,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             {
                 // 最初はここ
 
-                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "... ...");
-                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "... ...");
+                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -77,7 +77,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //          *1…初期配置を作るということです。
                 // 
 
-                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
+                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -86,7 +86,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 // 「startpos コマンド（平手局面）」または「指定局面」を処理しました。
 
 
-                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
+                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);
                 if (toBreak)
                 {
@@ -102,7 +102,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             if (kifuParserA_Impl.State is KifuParserA_StateA2_SfenMoves)
             {
-                LoggerImpl.GetInstance().WriteLineMemo(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
+                LoggerPool.TraceLine(LarabeLoggerTag_Impl.LOGGING_BY_GUI, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい", LarabeLoggerTag_Impl.LOGGING_BY_GUI);//, LarabeLogger.INSTANCE
                 if (toBreak)
                 {
@@ -127,7 +127,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public void RefreshHirate(Kifu_Document kifuD, ILoggerElement logTag)
+        public void RefreshHirate(Kifu_Document kifuD, ILoggerAddress logTag)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
@@ -144,7 +144,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             SyokiHaichi.ByStartpos(sfenStartpos, kifuD, logTag);
@@ -172,7 +172,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //K40 tottaKoma2,
             K40 underKoma,
             IKifuElement node6,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             if (K40Util.OnKoma((int)movedKoma))

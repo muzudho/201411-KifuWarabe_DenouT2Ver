@@ -6,9 +6,9 @@ namespace Grayscale.KifuwaraneEngine
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class EngineLoggerFileConf : LoggerElementImpl
+    public class EngineLoggerFileConf : LoggerAddressImpl
     {
-        public static readonly ILoggerElement ENGINE;
+        public static readonly ILoggerAddress ENGINE;
 
         static EngineLoggerFileConf()
         {

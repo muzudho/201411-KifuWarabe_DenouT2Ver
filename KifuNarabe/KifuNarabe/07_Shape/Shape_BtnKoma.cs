@@ -120,7 +120,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
         /// </summary>
         /// <param name="g1"></param>
         /// <param name="kyokumen"></param>
-        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILoggerElement logTag)
+        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILoggerAddress logTag)
         {
             if (!this.Visible)
             {

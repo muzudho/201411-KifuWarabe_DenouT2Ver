@@ -30,7 +30,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, ILoggerElement logTag)
+            Kifu_Document kifuD, out string backedInputText, ILoggerAddress logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -131,7 +131,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerElement logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILoggerAddress logTag);
 
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -163,7 +163,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Ui_01MenuB ui_01MenuB = new Ui_01MenuB(requestForMain, shape_PnlTaikyoku);
             bool toBreak = false;
 
-            LoggerImpl.GetInstance().WriteLineMemo(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            LoggerPool.TraceLine(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
             bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
 
             // 再描画1

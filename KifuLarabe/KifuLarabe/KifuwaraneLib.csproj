@@ -69,8 +69,6 @@
   <ItemGroup>
     <Compile Include="01_Log\CsvLineParserImpl.cs" />
     <Compile Include="01_Log\LarabeFileOutput.cs" />
-    <Compile Include="Entities\Log\ILogger.cs" />
-    <Compile Include="Entities\Log\LoggerImpl.cs" />
     <Compile Include="01_Log\LarabeRandom.cs" />
     <Compile Include="01_Log\LarabeShuffle.cs" />
     <Compile Include="03_Communication\J符号用\AgaruHiku.cs" />
@@ -130,15 +128,16 @@
     <Compile Include="05_Thought思想\Thought.cs" />
     <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
     <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
+    <Compile Include="Entities\Log\LoggerPool.cs" />
     <Compile Include="Entities\Sfen\SfenMove.cs" />
     <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />
     <Compile Include="Entities\Sfen\SfenReferences.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />
-    <Compile Include="Entities\Log\LoggerElementImpl.cs" />
+    <Compile Include="Entities\Log\LoggerAddressImpl.cs" />
     <Compile Include="IKomaPos.cs" />
-    <Compile Include="Entities\Log\ILoggerElement.cs" />
+    <Compile Include="Entities\Log\ILoggerAddress.cs" />
     <Compile Include="IMove.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />

@@ -20,7 +20,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
 
@@ -82,7 +82,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         public static void GetLegalMove(
             Kifu_Document kifuD,
             out KomaAndMasusDictionary kmDic_Self,
-            ILoggerElement logTag)
+            ILoggerAddress logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -304,7 +304,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
             StringBuilder sbGohosyu,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             // 自駒（将棋盤上）
@@ -347,7 +347,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerImpl.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
+                LoggerPool.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
                 throw;
             }
 
@@ -383,7 +383,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                LoggerImpl.GetInstance().WriteLineError(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
+                LoggerPool.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
                 throw;
             }
         }

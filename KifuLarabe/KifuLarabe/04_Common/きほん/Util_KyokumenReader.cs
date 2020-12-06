@@ -49,7 +49,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// </summary>
         /// <param name="km"></param>
         /// <returns></returns>
-        public static List<K40> KomaHandles_EachSrc(Kifu_Document kifuD, Sengo sengo, IKomaPos itaru, IMasus srcList,ILoggerElement logTag)
+        public static List<K40> KomaHandles_EachSrc(Kifu_Document kifuD, Sengo sengo, IKomaPos itaru, IMasus srcList,ILoggerAddress logTag)
         {
             List<K40> komaHandleList = new List<K40>();
 
@@ -96,7 +96,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="syurui"></param>
         /// <param name="uc_Main"></param>
         /// <returns>無ければ -1</returns>
-        public static K40 Koma_BySyuruiIgnoreCase(Kifu_Document kifuD, Okiba okiba, Ks14 syurui,ILoggerElement logTag)
+        public static K40 Koma_BySyuruiIgnoreCase(Kifu_Document kifuD, Okiba okiba, Ks14 syurui,ILoggerAddress logTag)
         {
             K40 found = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -146,7 +146,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="masu">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu(Kifu_Document kifuD, M201 masu, ILoggerElement logTag)
+        public static K40 Koma_AtMasu(Kifu_Document kifuD, M201 masu, ILoggerAddress logTag)
         {
             K40 komaFound = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -191,7 +191,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="masu1">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu_Shogiban(Kifu_Document kifuD, Sengo sengo, M201 masu1, ILoggerElement logTag)
+        public static K40 Koma_AtMasu_Shogiban(Kifu_Document kifuD, Sengo sengo, M201 masu1, ILoggerAddress logTag)
         {
             K40 foundKoma = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -249,7 +249,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="syurui"></param>
         /// <param name="hKomas"></param>
         /// <returns></returns>
-        public List<K40> Komas_BySyurui(Kifu_Document kifuD, Ks14 syurui, ILoggerElement logTag)
+        public List<K40> Komas_BySyurui(Kifu_Document kifuD, Ks14 syurui, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -296,7 +296,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public static List<K40> Komas_BySengo(
             //Kifu_Document kifuD,
             IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Sengo sengo, ILoggerElement logTag)
+            Sengo sengo, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
 
@@ -324,7 +324,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSyurui(Kifu_Document kifuD, Okiba okiba, Ks14 syurui, ILoggerElement logTag)
+        public static List<K40> Komas_ByOkibaSyurui(Kifu_Document kifuD, Okiba okiba, Ks14 syurui, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -373,7 +373,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSengoSyurui(Kifu_Document kifuD, Okiba okiba, Sengo sengo, Ks14 syurui, ILoggerElement logTag)
+        public static List<K40> Komas_ByOkibaSengoSyurui(Kifu_Document kifuD, Okiba okiba, Sengo sengo, Ks14 syurui, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -422,7 +422,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="kifuD"></param>
         /// <param name="okiba"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkiba(Kifu_Document kifuD, Okiba okiba, ILoggerElement logTag)
+        public static List<K40> Komas_ByOkiba(Kifu_Document kifuD, Okiba okiba, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -464,7 +464,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public static List<K40> Komas_ByOkibaSengo(
             //Kifu_Document kifuD,
             Kifu_Node6 siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Okiba okiba, Sengo sengo, ILoggerElement logTag)
+            Okiba okiba, Sengo sengo, ILoggerAddress logTag)
         {
             List<K40> komas = new List<K40>();
 

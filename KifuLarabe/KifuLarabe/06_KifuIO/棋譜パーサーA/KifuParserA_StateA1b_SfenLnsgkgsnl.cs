@@ -38,7 +38,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             nextState = this;
@@ -75,7 +75,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;

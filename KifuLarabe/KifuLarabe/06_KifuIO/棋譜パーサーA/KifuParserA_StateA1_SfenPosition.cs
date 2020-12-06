@@ -35,7 +35,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IKifuParserA owner,
             ref bool toBreak,
             string hint,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             nextState = this;
@@ -47,7 +47,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                     // 平手の初期配置です。
                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
+                    LoggerPool.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
 
                     inputLine = inputLine.Substring("startpos".Length);
                     inputLine = inputLine.Trim();
@@ -59,7 +59,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 }
                 else
                 {
-                    LoggerImpl.GetInstance().WriteLineMemo(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
+                    LoggerPool.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
                     nextState = KifuParserA_StateA1b_SfenLnsgkgsnl.GetInstance();
                 }
             }
@@ -70,7 +70,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                LoggerImpl.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
+                LoggerPool.ErrorLine(LarabeLoggerTag_Impl.ERROR, message);
             }
 
             return inputLine;

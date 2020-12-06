@@ -25,7 +25,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -78,7 +78,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
-            LoggerImpl.GetInstance().WriteLineMemo(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
+            LoggerPool.TraceLine(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 
@@ -95,7 +95,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool isBack,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -291,7 +291,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool back,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             underKoma = K40.Error;

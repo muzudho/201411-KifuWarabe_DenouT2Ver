@@ -12,7 +12,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <summary>
         /// 駒を、平手の初期配置に並べます。
         /// </summary>
-        public static void ToHirate(Kifu_Document kifuD, ILoggerElement logTag)
+        public static void ToHirate(Kifu_Document kifuD, ILoggerAddress logTag)
         {
 
 
@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
-            LoggerImpl.GetInstance().WriteLineMemo(logTag, "平手局面にセットしたぜ☆");
+            LoggerPool.TraceLine(logTag, "平手局面にセットしたぜ☆");
         }
 
 
@@ -144,7 +144,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
             Kifu_Document kifuD,
-            ILoggerElement logTag
+            ILoggerAddress logTag
             )
         {
             //------------------------------
