@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
-using Grayscale.KifuwaraneLib.Entities.SfenTranslation;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -218,7 +218,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         // 駒でした。
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                        SfenTranslator.SfenSyokihaichi_ToSyurui(moji, out sengo, out syurui);
+                        GameTranslator.SfenSyokihaichi_ToSyurui(moji, out sengo, out syurui);
 
                         //System.Console.WriteLine("　　　　sengo=" + sengo.ToString());
                         //System.Console.WriteLine("　　　　syurui=" + syurui.ToString());

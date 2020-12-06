@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
@@ -117,7 +118,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 //------------------------------------------------------------
 
                 // 変換「自駒が動ける升」→「自駒が動ける手」
-                Dictionary<K40, List<IMove>> teMap_All = PositionTranslator.KmDic_ToKtDic(
+                Dictionary<K40, List<IMove>> teMap_All = GameTranslator.KmDic_ToKtDic(
                     kmDic_Self,
                     siteiNode_genzai
                     );

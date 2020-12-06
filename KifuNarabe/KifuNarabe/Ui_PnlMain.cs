@@ -233,7 +233,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
                 IKomaPos komaP = house6.KomaPosAt(koma);
 
-                RO_TeProcess tuginoItteData;
+                MoveImpl tuginoItteData;
                 switch (this.kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)))
                 {
                     case Sengo.Gote:
@@ -245,7 +245,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             int dan = Mh201Util.MasuToDan(komaP.Star.Masu);
 
                             // 前に１つ突き出させます。
-                            tuginoItteData = RO_TeProcess.Next3(
+                            tuginoItteData = MoveImpl.Next3(
 
                                 new RO_Star(
                                     this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)),
@@ -280,7 +280,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             int dan = Mh201Util.MasuToDan(komaP.Star.Masu);
 
                             // 前に１つ突き出させます。
-                            tuginoItteData = RO_TeProcess.Next3(
+                            tuginoItteData = MoveImpl.Next3(
 
                                 new RO_Star(
                                     this.kifu_Document.CountSengo(this.kifu_Document.CountTeme(this.kifu_Document.Current8)),

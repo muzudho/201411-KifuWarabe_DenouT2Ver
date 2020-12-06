@@ -46,7 +46,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                 {
                     //MessageBox.Show("一手指し開始　：　今回の符号つ「" + inputLine + "」\n"+kifuD.Old_KomaHouses.DebugText_Kyokumen(kifuD,"一手指し前"), "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    IMove teProcess = RO_TeProcess.NULL_OBJECT;
+                    IMove teProcess = MoveImpl.NULL_OBJECT;
                     string restText;
 
                     try

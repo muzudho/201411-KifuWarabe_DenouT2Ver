@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -187,7 +188,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             get
             {
-                return Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(this.Star.Masu);
+                return Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(this.Star.Masu);
             }
         }
 
@@ -201,7 +202,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             get
             {
-                return PositionTranslator.Masu_ToOkiba(this.Star.Masu).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai);
+                return GameTranslator.Masu_ToOkiba(this.Star.Masu).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai);
             }
         }
 

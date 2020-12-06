@@ -1,4 +1,5 @@
-﻿using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+﻿using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -51,11 +52,11 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan==PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan== GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
             }
-            else if( PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai|Okiba.Gote_Komadai))
+            else if(GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai|Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_歩打面(sengo));
             }
@@ -71,7 +72,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 if (Program.RETIRE_VERSION)
                 {
@@ -84,7 +85,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 }
 
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_歩打面(sengo));//香も同じ
             }
@@ -101,12 +102,12 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst.AddSupersets(KomanoKidou.DstKeimatobi_駆(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstKeimatobi_跳(sengo, masu_ji));
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_桂打面(sengo));
             }
@@ -123,7 +124,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstIppo_昇(sengo, masu_ji));
@@ -132,7 +133,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 dst.AddSupersets(KomanoKidou.DstIppo_降(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstIppo_浮(sengo, masu_ji));
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -148,11 +149,11 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             IMasus dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst = Rule01_PotentialMove_15Array.CreateKin_static(sengo, masu_ji);
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -164,7 +165,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstIppo_昇(sengo, masu_ji));
@@ -186,7 +187,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstIppo_昇(sengo, masu_ji));
@@ -197,7 +198,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 dst.AddSupersets(KomanoKidou.DstIppo_滑(sengo, masu_ji));
                 dst.AddSupersets(KomanoKidou.DstIppo_浮(sengo, masu_ji));
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -214,7 +215,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 if (Program.RETIRE_VERSION)
                 {
@@ -232,7 +233,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     dst.AddSupersets(KomanoKidou.DstKantu_滑(sengo, masu_ji));
                 }
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -249,7 +250,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 if (Program.RETIRE_VERSION)
                 {
@@ -268,7 +269,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 }
 
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -286,7 +287,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 if (Program.RETIRE_VERSION)
                 {
@@ -312,7 +313,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     dst.AddSupersets(KomanoKidou.DstIppo_浮(sengo, masu_ji));
                 }
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }
@@ -330,7 +331,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         {
             Masus_Set dst = new Masus_Set();
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu_ji))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
                 if (Program.RETIRE_VERSION)
                 {
@@ -356,7 +357,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     dst.AddSupersets(KomanoKidou.DstKantu_浮(sengo, masu_ji));
                 }
             }
-            else if (PositionTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
+            else if (GameTranslator.Masu_ToOkiba(masu_ji).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))
             {
                 dst.AddSupersets(KomanoKidou.Dst_全打面(sengo));
             }

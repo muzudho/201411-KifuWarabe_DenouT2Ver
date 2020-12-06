@@ -1,4 +1,5 @@
-﻿using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+﻿using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
@@ -551,7 +552,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             M201 masu = M201Util.Offset(
                 Okiba.ShogiBan, masu_itaru, sengo, Muki.上);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcA = new Masus_DirectedSegment(masu, sengo, Muki.上, 8);
             }
@@ -627,7 +628,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //　└─┴─┴─┴─┴─┴─┴─┴─┴─┘
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.昇);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcB = new Masus_DirectedSegment(masu, sengo, Muki.昇, 8);
             }
@@ -702,7 +703,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┘
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.射);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcC = new Masus_DirectedSegment(masu, sengo, Muki.射, 8);
             }
@@ -776,7 +777,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //　└─┴─┴─┴─┴─┴─┴─┴─┴─┘Ｄ
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.沈);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcD = new Masus_DirectedSegment(masu, sengo, Muki.沈, 8);
             }
@@ -852,7 +853,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //　                  Ｅ
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.引);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcE = new Masus_DirectedSegment(masu, sengo, Muki.引, 8);
             }
@@ -926,7 +927,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //Ｆ└─┴─┴─┴─┴─┴─┴─┴─┴─┘
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.降);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcF = new Masus_DirectedSegment(masu, sengo, Muki.降, 8);
             }
@@ -1000,7 +1001,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //  └─┴─┴─┴─┴─┴─┴─┴─┴─┘
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.滑);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcG = new Masus_DirectedSegment(masu, sengo, Muki.滑, 8);
             }
@@ -1074,7 +1075,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //　└─┴─┴─┴─┴─┴─┴─┴─┴─┘
 
             M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.浮);
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
             {
                 srcH = new Masus_DirectedSegment(masu, sengo, Muki.浮, 8);
             }
@@ -1113,7 +1114,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 0, 1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcA.AddElement(masu);
                 }
@@ -1132,7 +1133,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 0, -1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcA.AddElement(masu);
                 }
@@ -1168,7 +1169,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, 1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcB.AddElement(masu);
                 }
@@ -1187,7 +1188,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, -1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcB.AddElement(masu);
                 }
@@ -1223,7 +1224,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, 0);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcC.AddElement(masu);
                 }
@@ -1242,7 +1243,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, 0);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcC.AddElement(masu);
                 }
@@ -1278,7 +1279,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.沈);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcD.AddElement(masu);
                 }
@@ -1297,7 +1298,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, sengo, Muki.沈);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcD.AddElement(masu);
                 }
@@ -1334,7 +1335,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 0, -1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcE.AddElement(masu);
                 }
@@ -1353,7 +1354,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 0, 1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcE.AddElement(masu);
                 }
@@ -1390,7 +1391,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, -1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcF.AddElement(masu);
                 }
@@ -1409,7 +1410,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, 1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcF.AddElement(masu);
                 }
@@ -1445,7 +1446,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, 0);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcG.AddElement(masu);
                 }
@@ -1464,7 +1465,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, 0);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcG.AddElement(masu);
                 }
@@ -1500,7 +1501,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, 1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcH.AddElement(masu);
                 }
@@ -1519,7 +1520,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //  └─┴─┴─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, -1);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcH.AddElement(masu);
                 }
@@ -1559,7 +1560,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┘　└─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, -2);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcI.AddElement(masu);
                 }
@@ -1582,7 +1583,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┘　└─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, 2);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcI.AddElement(masu);
                 }
@@ -1625,7 +1626,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 // 競合駒マス(pre masu)
                 //----------
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, -1, -2);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcJ.AddElement(masu);
                 }
@@ -1648,7 +1649,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 //└─┘　└─┘
 
                 M201 masu = M201Util.Offset(Okiba.ShogiBan, masu_itaru, 1, 2);
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(masu))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu))
                 {
                     srcJ.AddElement(masu);
                 }

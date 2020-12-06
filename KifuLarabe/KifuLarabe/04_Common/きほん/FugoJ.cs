@@ -198,7 +198,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="previousKomaP"></param>
         /// <returns></returns>
         public string ToText_NoUseDou(
-            RO_TeProcess process
+            MoveImpl process
             )
         {
             StringBuilder sb = new StringBuilder();

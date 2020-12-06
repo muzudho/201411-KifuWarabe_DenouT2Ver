@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -124,7 +125,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             NariFunari nariFunari = PositionTranslator.Nari_ToBool(strNariFunari);//成
             DaHyoji daHyoji = PositionTranslator.Str_ToDaHyoji(strDaHyoji);             //打
 
-            Ks14 srcSyurui = PositionTranslator.KomaMoji_ToSyurui(strSrcSyurui);
+            Ks14 srcSyurui = ApplicatedMove.KomaMoji_ToSyurui(strSrcSyurui);
 
 
             //------------------------------
@@ -1069,7 +1070,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
 
             // １手を、データにします。
-            process = RO_TeProcess.Next3(
+            process = MoveImpl.Next3(
 
                 new RO_StarManual(
                     sengo,

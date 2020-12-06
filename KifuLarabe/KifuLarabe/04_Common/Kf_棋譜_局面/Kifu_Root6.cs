@@ -37,7 +37,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
         public Kifu_Root6() :
-            base(RO_TeProcess.NULL_OBJECT,
+            base(MoveImpl.NULL_OBJECT,
             new KomaHouse()
             )
         {

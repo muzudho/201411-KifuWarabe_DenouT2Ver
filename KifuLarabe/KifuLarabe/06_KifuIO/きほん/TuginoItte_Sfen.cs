@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Text;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.Sfen;
-using Grayscale.KifuwaraneLib.Entities.SfenTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
@@ -172,7 +169,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
                                 moveB.Str5th = m.Groups[5].Value.ToCharArray()[0];
                             }
 
-                            SfenMoveReferences.GetData_FromTextSub(
+                            ApplicatedMove.GetData_FromTextSub(
                                 moveB.Build(),
                                 out move,
                                 kifuD,

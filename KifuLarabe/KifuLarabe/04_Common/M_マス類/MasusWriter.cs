@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 
@@ -24,7 +25,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             // フラグ立て
             foreach (int hMasu in masus.Elements)
             {
-                if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba( M201Array.Items_All[ hMasu] ))
+                if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba( M201Array.Items_All[ hMasu] ))
                 {
                     ban81[hMasu] = true;
                 }
@@ -47,7 +48,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 for (int suji = 9; suji >= 1; suji--)// 筋は左右逆☆
                 {
                     M201 masu = M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, suji, dan);
-                    if (Okiba.ShogiBan== PositionTranslator.Masu_ToOkiba(masu))
+                    if (Okiba.ShogiBan== GameTranslator.Masu_ToOkiba(masu))
                     {
                         if (ban81[(int)masu])
                         {

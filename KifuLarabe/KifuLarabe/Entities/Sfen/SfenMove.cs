@@ -1,13 +1,40 @@
 ﻿using System;
+using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 
 namespace Grayscale.KifuwaraneLib.Entities.Sfen
 {
     public class SfenMove
     {
-        /*
-        public int SrcFile { get; private set; }
-        public int SrcRank { get; private set; }
-        */
+        public int SrcFile
+        {
+            get
+            {
+                if (!this.Dropped)
+                {
+                    int srcFile;
+                    if (int.TryParse(this.Chars[0].ToString(), out srcFile))
+                    {
+                        return srcFile;
+                    }
+                }
+
+                return 0;
+            }
+        }
+
+        public int SrcRank
+        {
+            get
+            {
+                if (!this.Dropped)
+                {
+                    return PositionTranslator.AlphabetToInt(this.Chars[1]);
+                }
+
+                return 0;
+            }
+        }
+
         /// <summary>
         /// 打です。
         /// </summary>
@@ -17,13 +44,36 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
                 return '*' == this.Chars[1];
             }
         }
-        /*
-        public string SrcPiece { get; private set; }
-        public int DstFile { get; private set; }
-        public int DstRank { get; private set; }
-        public string DstPiece { get; private set; }
-        public bool IsPromote { get; private set; }
-        */
+        
+        public int DstFile
+        {
+            get
+            {
+                int dstFile;
+                if (int.TryParse(this.Chars[2].ToString(), out dstFile))
+                {
+                    return dstFile;
+                }
+                throw new Exception($"Error: dstFile={this.Chars[2].ToString()}");
+            }
+        }
+
+        public int DstRank
+        {
+            get
+            {
+                return PositionTranslator.AlphabetToInt(this.Chars[3]);
+            }
+        }
+
+        public bool Promoted
+        {
+            get
+            {
+                return '+' == this.Chars[4];
+            }
+        }
+
         // 忘れず初期化☆（＾～＾）！
         public char[] Chars { get; private set; } = new char[5] { ' ', ' ', ' ', ' ', ' ', };
 
@@ -33,11 +83,8 @@ namespace Grayscale.KifuwaraneLib.Entities.Sfen
             this.SrcFile = builder.SrcFile;
             this.SrcRank = builder.SrcRank;
             this.IsDrop = builder.IsDrop;
-            this.SrcPiece = builder.SrcPiece;
             this.DstFile = builder.DstFile;
-            this.SrcFile = builder.SrcFile;
             this.DstRank = builder.DstRank;
-            this.DstPiece = builder.DstPiece;
             this.IsPromote = builder.IsPromote;
             */
             Array.Copy(builder.Chars, this.Chars, builder.Chars.Length);

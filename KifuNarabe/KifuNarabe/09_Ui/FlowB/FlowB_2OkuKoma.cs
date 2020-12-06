@@ -2,6 +2,7 @@
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -144,7 +145,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             // TODO:合法手かどうか判定したい。
 
-            if (Okiba.ShogiBan == PositionTranslator.Masu_ToOkiba(btnSasitaiMasu.Zahyo))//>>>>> 将棋盤：升目   ＜移動先など＞
+            if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(btnSasitaiMasu.Zahyo))//>>>>> 将棋盤：升目   ＜移動先など＞
             {
                 System.Console.WriteLine("将棋盤上");
 
@@ -268,7 +269,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                             KomaHouse house7 = dammyNode6.KomaHouse;
 
-                            RO_TeProcess process = RO_TeProcess.Next3(
+                            MoveImpl process = MoveImpl.Next3(
                                 shape_PnlTaikyoku.MousePosOrNull2.Star,
                                 //new RO_Star(
                                 //    kifuD.CountSengo(kifuD.Current8),

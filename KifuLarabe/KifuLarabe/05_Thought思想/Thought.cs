@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -64,7 +65,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
                     {
                         KomaHouse house1 = siteiNode.KomaHouse;
 
-                        if (PositionTranslator.Masu_ToOkiba(house1.KomaPosAt(koma).Star.Masu).HasFlag(okiba))
+                        if (GameTranslator.Masu_ToOkiba(house1.KomaPosAt(koma).Star.Masu).HasFlag(okiba))
                         {
                             hMasus_Self.AddElement(house1.KomaPosAt(koma).Star.Masu);
                         }

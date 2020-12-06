@@ -121,8 +121,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                                 Sengo.Gote,
                                 M201Util.OkibaSujiDanToMasu(
                                     Okiba.Gote_Komadai,
-                                    RO_TeProcess.CTRL_NOTHING_PROPERTY_SUJI,
-                                    RO_TeProcess.CTRL_NOTHING_PROPERTY_DAN
+                                    MoveImpl.CTRL_NOTHING_PROPERTY_SUJI,
+                                    MoveImpl.CTRL_NOTHING_PROPERTY_DAN
                                     ),
                                 KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house3.KomaPosAt(btnKoma_Under.Koma).Star.Haiyaku)),
                                 //KomaSyurui14Array.FunariCaseHandle[(int)kifuD.Old_KomaDoors.KomaDoors[(int)btnKoma_Under.Koma].Syurui], // 取った駒は非成へ
@@ -167,8 +167,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                                 Sengo.Sente,
                                 M201Util.OkibaSujiDanToMasu(
                                     Okiba.Sente_Komadai,
-                                    RO_TeProcess.CTRL_NOTHING_PROPERTY_SUJI,
-                                    RO_TeProcess.CTRL_NOTHING_PROPERTY_DAN
+                                    MoveImpl.CTRL_NOTHING_PROPERTY_SUJI,
+                                    MoveImpl.CTRL_NOTHING_PROPERTY_DAN
                                     ),
                                 KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house4.KomaPosAt(btnKoma_Under.Koma).Star.Haiyaku)),
                                 //KomaSyurui14Array.FunariCaseHandle[(int)kifuD.Old_KomaDoors.KomaDoors[(int)btnKoma_Under.Koma].Syurui], // 取った駒は非成へ

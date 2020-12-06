@@ -97,7 +97,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     KomaHouse house4 = dammyNode1.KomaHouse;
 
-                    RO_TeProcess process = RO_TeProcess.Next3(
+                    MoveImpl process = MoveImpl.Next3(
 
                         shape_PnlTaikyoku.MousePosOrNull2.Star,
 

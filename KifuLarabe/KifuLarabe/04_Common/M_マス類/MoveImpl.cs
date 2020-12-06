@@ -10,9 +10,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 {
 
     /// <summary>
-    /// ************************************************************************************************************************
     /// 升目の場所、または　駒がどこからどこへ動いたかの一手、を表すデータです。
-    /// ************************************************************************************************************************
     /// 
     /// リードオンリーな、盤上用の升目符号。「元」→「現」の形。
     /// 
@@ -31,15 +29,10 @@ namespace Grayscale.KifuwaraneLib.L04_Common
     /// ・駒種類：「歩」「と金」など。補助で容易。
     /// </summary>
     [Serializable]
-    public class RO_TeProcess : RO_KomaPos, IMove
+    public class MoveImpl : RO_KomaPos, IMove
     {
 
         public static readonly IMove NULL_OBJECT = new RO_TeProcess_Syokihaichi();
-
-
-
-
-        #region プロパティー類
 
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -58,27 +51,24 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public Ks14 TottaSyurui { get { return this.tottaKoma; } }
         private Ks14 tottaKoma;
 
-        #endregion
-
-
-        public static RO_TeProcess New(
+        public static MoveImpl New(
             RO_Star srcStar,
             RO_Star dstStar,
 
             Ks14 tottaKoma
             )
         {
-            return new RO_TeProcess(srcStar, dstStar, tottaKoma);
+            return new MoveImpl(srcStar, dstStar, tottaKoma);
         }
 
-        public static RO_TeProcess Next3(
+        public static MoveImpl Next3(
             RO_Star srcStarM,//元が配役の場合
             RO_Star dstStarM,//先が配役の場合
 
             Ks14 tottaKoma
         )
         {
-            return new RO_TeProcess(
+            return new MoveImpl(
 
                 srcStarM,
 
@@ -96,14 +86,14 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 );
         }
 
-        public static RO_TeProcess Next3(
+        public static MoveImpl Next3(
             RO_Star srcStarM,//元が配役の場合
             RO_StarManual dstStarM,//配役ではなくて、種類の場合
 
             Ks14 tottaKoma
         )
         {
-            return new RO_TeProcess(
+            return new MoveImpl(
 
                 srcStarM,
 
@@ -117,14 +107,14 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 );
         }
 
-        public static RO_TeProcess Next3(
+        public static MoveImpl Next3(
             RO_StarManual srcStarM,//配役ではなくて、種類の場合
             RO_StarManual dstStarM,//配役ではなくて、種類の場合
 
             Ks14 tottaKoma
             )
         {
-            return new RO_TeProcess(
+            return new MoveImpl(
 
                 new RO_Star(
                     srcStarM.Sengo,
@@ -157,7 +147,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <param name="dstSyurui"></param>
         /// <param name="srcSyurui"></param>
         /// <param name="previousTe"></param>
-        protected RO_TeProcess(
+        protected MoveImpl(
 
             RO_Star srcStar,
 
@@ -180,7 +170,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <returns></returns>
         public IMove Src()
         {
-            RO_TeProcess src = new RO_TeProcess(
+            MoveImpl src = new MoveImpl(
 
                 new RO_Star(
                     this.Star.Sengo,

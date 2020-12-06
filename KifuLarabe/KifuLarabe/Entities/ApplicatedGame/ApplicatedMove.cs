@@ -6,9 +6,9 @@ using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
 using Grayscale.KifuwaraneLib.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
+namespace Grayscale.KifuwaraneLib.Entities.ApplicatedGame
 {
-    public static class SfenMoveReferences
+    public static class ApplicatedMove
     {
         /// <summary>
         /// 符号１「7g7f」を元に、指し手 を作ります。
@@ -23,57 +23,29 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
             ILoggerFileConf logTag
             )
         {
-            move = RO_TeProcess.NULL_OBJECT;
+            move = MoveImpl.NULL_OBJECT;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
             try
             {
-                Ks14 dropPT; // 打った駒の種類(Piece Type)
-
                 // 筋と段。
-                int srcFile = RO_TeProcess.CTRL_NOTHING_PROPERTY_SUJI;
-                int srcRank = RO_TeProcess.CTRL_NOTHING_PROPERTY_DAN;
-
-                if ('*' == sfen.Chars[1])
+                int srcFile = sfen.SrcFile;
+                if(srcFile == 0)
                 {
-                    //>>>>>>>>>> 「打」でした。
-
-                    SfenTranslator.SfenUttaSyurui(sfen.Chars[0], out dropPT);
-
-                }
-                else
-                {
-                    //>>>>>>>>>> 指しました。
-                    dropPT = Ks14.H00_Null;//打った駒はない☆
-
-                    //------------------------------
-                    // 1
-                    //------------------------------
-                    if (!int.TryParse(sfen.Chars[0].ToString(), out srcFile))
-                    {
-                    }
-
-                    //------------------------------
-                    // 2
-                    //------------------------------
-                    srcRank = PositionTranslator.AlphabetToInt(sfen.Chars[1]);
+                    srcFile = MoveImpl.CTRL_NOTHING_PROPERTY_SUJI;
                 }
 
-                //------------------------------
-                // 3
-                //------------------------------
-                int dstFile;
-                if (!int.TryParse(sfen.Chars[2].ToString(), out dstFile))
+                int srcRank = sfen.SrcRank;
+                if (srcRank==0)
                 {
+                    srcRank = MoveImpl.CTRL_NOTHING_PROPERTY_DAN;
                 }
 
-                //------------------------------
-                // 4
-                //------------------------------
-                int destRank;
-                destRank = PositionTranslator.AlphabetToInt(sfen.Chars[3]);
+                // 打った駒の種類(Piece Type)
+                Ks14 dropPT = GameTranslator.SfenUttaSyurui(sfen.Chars[0]);
 
-
+                int dstFile = sfen.DstFile;
+                int destRank = sfen.DstRank;
 
                 K40 dropP; // 打った種類の駒(Piece)。
 
@@ -178,7 +150,7 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
                 //------------------------------
                 // 5
                 //------------------------------
-                if ('+' == sfen.Chars[4])
+                if (sfen.Promoted)
                 {
                     // 成りました
                     dstPT = KomaSyurui14Array.NariCaseHandle[(int)dstPT];
@@ -189,7 +161,7 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
                 // 結果
                 //------------------------------
                 // 棋譜
-                move = RO_TeProcess.Next3(
+                move = MoveImpl.Next3(
 
                     new RO_StarManual(
                         kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)),
@@ -215,7 +187,84 @@ namespace Grayscale.KifuwaraneLib.Entities.SfenTranslation
                 LarabeLogger.GetInstance().WriteLineError(LarabeLoggerTag_Impl.ERROR, message);
                 throw;
             }
-
         }
+
+        /// <summary>
+        /// 駒の文字を、列挙型へ変換。
+        /// </summary>
+        /// <param name="moji"></param>
+        /// <returns></returns>
+        public static Ks14 KomaMoji_ToSyurui(string moji)
+        {
+            Ks14 syurui;
+
+            switch (moji)
+            {
+                case "歩":
+                    syurui = Ks14.H01_Fu;
+                    break;
+
+                case "香":
+                    syurui = Ks14.H02_Kyo;
+                    break;
+
+                case "桂":
+                    syurui = Ks14.H03_Kei;
+                    break;
+
+                case "銀":
+                    syurui = Ks14.H04_Gin;
+                    break;
+
+                case "金":
+                    syurui = Ks14.H05_Kin;
+                    break;
+
+                case "飛":
+                    syurui = Ks14.H07_Hisya;
+                    break;
+
+                case "角":
+                    syurui = Ks14.H08_Kaku;
+                    break;
+
+                case "王"://thru
+                case "玉":
+                    syurui = Ks14.H06_Oh;
+                    break;
+
+                case "と":
+                    syurui = Ks14.H11_Tokin;
+                    break;
+
+                case "成香":
+                    syurui = Ks14.H12_NariKyo;
+                    break;
+
+                case "成桂":
+                    syurui = Ks14.H13_NariKei;
+                    break;
+
+                case "成銀":
+                    syurui = Ks14.H14_NariGin;
+                    break;
+
+                case "竜"://thru
+                case "龍":
+                    syurui = Ks14.H09_Ryu;
+                    break;
+
+                case "馬":
+                    syurui = Ks14.H10_Uma;
+                    break;
+
+                default:
+                    syurui = Ks14.H00_Null;
+                    break;
+            }
+
+            return syurui;
+        }
+
     }
 }

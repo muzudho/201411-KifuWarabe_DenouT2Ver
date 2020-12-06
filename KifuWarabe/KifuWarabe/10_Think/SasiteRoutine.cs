@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
@@ -60,12 +61,12 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="sasiteList">指し手の一覧</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        private static RO_TeProcess Choice_Random(
+        private static MoveImpl Choice_Random(
             Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILoggerFileConf logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
-            RO_TeProcess result = null;
+            MoveImpl result = null;
             int thisTeme = kifu.CountTeme(kifu.Current8);//この局面の手目
 
             Kh185 bestmoveHaiyaku = Kh185.n000_未設定;
@@ -75,7 +76,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             try
             {
                 // 変換『「駒→手」のコレクション』→『「駒、指し手」のペアのリスト』
-                List<KomaAndMasu> kmList = PositionTranslator.KmDic_ToKmList(sasiteList);
+                List<KomaAndMasu> kmList = GameTranslator.KmDic_ToKmList(sasiteList);
 
                 //------------------------------------------------------------
                 // 合法手の手を、シャッフルした駒順に見ていきます。
@@ -133,8 +134,8 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                         else
                         {
                             sbGohosyu.AppendLine("hMoveKoma=" + KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]);
-                            sbGohosyu.AppendLine("hSrc=" + PositionTranslator.SqToJapanese((int)bestmoveMasuSrc));
-                            sbGohosyu.AppendLine("hDst=" + PositionTranslator.SqToJapanese((int)bestmoveMasuDst));
+                            sbGohosyu.AppendLine("hSrc=" + GameTranslator.SqToJapanese((int)bestmoveMasuSrc));
+                            sbGohosyu.AppendLine("hDst=" + GameTranslator.SqToJapanese((int)bestmoveMasuDst));
                         }
                         sbGohosyu.AppendLine("┗━━━━━━━━━━┛選択手");
                     }
@@ -158,8 +159,8 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
 
                         sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
                         sbGohosyu.AppendLine("hMoveKoma=" + KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]);
-                        sbGohosyu.AppendLine("hSrc=" + PositionTranslator.SqToJapanese((int)bestmoveMasuSrc));
-                        sbGohosyu.AppendLine("hDst=" + PositionTranslator.SqToJapanese((int)bestmoveMasuDst));
+                        sbGohosyu.AppendLine("hSrc=" + GameTranslator.SqToJapanese((int)bestmoveMasuSrc));
+                        sbGohosyu.AppendLine("hDst=" + GameTranslator.SqToJapanese((int)bestmoveMasuDst));
                         sbGohosyu.AppendLine("┗━━━━━━━━━━┛選択手");
                     }
                     catch (Exception ex)
@@ -190,7 +191,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             try
             {
 
-                result = RO_TeProcess.Next3(
+                result = MoveImpl.Next3(
 
                     new RO_Star(
                         kifu.CountSengo(kifu.CountTeme(kifu.Current8)),

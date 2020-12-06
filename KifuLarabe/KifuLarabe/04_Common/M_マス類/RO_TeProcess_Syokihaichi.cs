@@ -3,7 +3,7 @@ using Grayscale.KifuwaraneLib.L03_Communication;
 
 namespace Grayscale.KifuwaraneLib.L04_Common
 {
-    public class RO_TeProcess_Syokihaichi : RO_TeProcess, IMove
+    public class RO_TeProcess_Syokihaichi : MoveImpl, IMove
     {
         public RO_TeProcess_Syokihaichi()
             : base(

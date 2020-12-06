@@ -492,7 +492,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                         IKifuElement dammyNode8 = kifuD.ElementAt8(lastTeme);
                         KomaHouse house10 = dammyNode8.KomaHouse;
 
-                        RO_TeProcess process = RO_TeProcess.Next3(
+                        MoveImpl process = MoveImpl.Next3(
                             shape_PnlTaikyoku.MousePosOrNull2.Star,
                             //new RO_Star(
                             //    kifuD.CountSengo(kifuD.Current8),

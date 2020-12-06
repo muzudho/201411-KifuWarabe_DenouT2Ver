@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
 using Grayscale.KifuwaraneLib.Entities.PositionTranslation;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L03_Communication;
@@ -128,7 +129,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 foreach (KeyValuePair<int, Kh185> entry2 in entry1.Value)
                 {
                     sb.Append(
-                        PositionTranslator.SqToJapanese(entry2.Key)
+                        GameTranslator.SqToJapanese(entry2.Key)
                         );
                     sb.Append(".");
                     sb.Append(entry2.Value);

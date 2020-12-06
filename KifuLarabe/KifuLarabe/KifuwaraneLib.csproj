@@ -104,7 +104,7 @@
     <Compile Include="04_Common\M_マス類\Masus_Conic.cs" />
     <Compile Include="04_Common\M_マス類\Masus_DirectedSegment.cs" />
     <Compile Include="04_Common\M_マス類\Masus_Set.cs" />
-    <Compile Include="04_Common\M_マス類\RO_TeProcess.cs" />
+    <Compile Include="04_Common\M_マス類\MoveImpl.cs" />
     <Compile Include="04_Common\M_マス類\Masus_Ordered.cs" />
     <Compile Include="04_Common\Kh_駒配役\Kh185.cs" />
     <Compile Include="04_Common\きふわらべ\K40.cs" />
@@ -127,8 +127,8 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
-    <Compile Include="Entities\SfenTranslation\SfenMoveReferences.cs" />
-    <Compile Include="Entities\SfenTranslation\SfenTranslator.cs" />
+    <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
+    <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
     <Compile Include="Entities\Sfen\SfenMove.cs" />
     <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />
     <Compile Include="Entities\Sfen\SfenReferences.cs" />

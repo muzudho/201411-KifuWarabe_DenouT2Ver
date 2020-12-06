@@ -659,7 +659,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
 
-            RO_TeProcess item = RO_TeProcess.New(
+            MoveImpl item = MoveImpl.New(
                 srcStar,
                 dstStar,
                 tottaSyurui
@@ -734,7 +734,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             IMove oldLastTe = this.PopCurrent1().TeProcess;
 
-            RO_TeProcess item = RO_TeProcess.New(
+            MoveImpl item = MoveImpl.New(
                 oldLastTe.SrcStar,
                 oldLastTe.Star,
                 tottaSyurui//ここを差替えます。
