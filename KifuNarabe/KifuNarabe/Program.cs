@@ -43,17 +43,13 @@ namespace Grayscale.KifuwaraneGui
             ILoggerFileConf logTag = LarabeLoggerTag_Impl.LOGGING_BY_GUI;
             LarabeLogger.GetInstance().WriteLineMemo(logTag, "乱数のたね＝["+LarabeRandom.Seed+"]");
 
-            //----------
             // 道１８７
-            //----------
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
             var michi187 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Michi187"));
             Michi187Array.Load(michi187);
 
-            //----------
             // 駒の配役１８１
-            //----------
             var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181")); ;
             Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 

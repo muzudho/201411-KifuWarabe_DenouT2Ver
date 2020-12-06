@@ -45,19 +45,29 @@ namespace Grayscale.KifuwaraneEngine
                 // 準備 |
                 //------+-----------------------------------------------------------------------------------------------------------------
 
-                // 道
-                Michi187Array.Load("data_michi187.csv");
+                // 道１８７
+                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+                var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+                var michi187 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Michi187"));
+                Michi187Array.Load(michi187);
 
-                // 配役
-                Haiyaku184Array.Load("data_haiyaku185_UTF-8.csv", Encoding.UTF8);
+                // 駒の配役１８１
+                var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181")); ;
+                Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
-                // 強制転成　※駒配役を生成した後で。
-                ForcePromotionArray.Load("data_forcePromotion_UTF-8.csv", Encoding.UTF8);
-                LarabeFileOutput.WriteFile("強制転成表.html", ForcePromotionArray.DebugHtml());
+                // ※駒配役を生成した後で。
+                var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion")); ;
+                ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
+
+                var outputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputForcePromotion"));
+                LarabeFileOutput.WriteFile(outputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
-                Data_HaiyakuTransition.Load("data_syuruiToHaiyaku.csv", Encoding.UTF8);
-                LarabeFileOutput.WriteFile("配役転換表.html", Data_HaiyakuTransition.DebugHtml());
+                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku")); ;
+                Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
+
+                var outputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("OutputPieceTypeToHaiyaku"));
+                LarabeFileOutput.WriteFile(outputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 
@@ -100,8 +110,6 @@ namespace Grayscale.KifuwaraneEngine
                 string engineAuthor;
                 string versionStr;
                 {
-                    var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-                    var toml = Toml.ReadFile(Path.Combine(profilePath,"Engine.toml"));
                     engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
                     engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
 
