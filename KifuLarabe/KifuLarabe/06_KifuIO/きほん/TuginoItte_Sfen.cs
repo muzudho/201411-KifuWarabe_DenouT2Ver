@@ -13,9 +13,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
     public abstract class TuginoItte_Sfen
     {
         /// <summary>
-        /// ************************************************************************************************************************
         /// 「lnsgkgsn1/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL w - 1」といった記述を解析します。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
         public static bool GetDataStartpos_FromText(string text, out string restText, out SfenStartpos sfenStartpos)
@@ -116,9 +114,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// テキスト形式の符号「7g7f 3c3d 6g6f…」の最初の要素を、切り取ってプロセスに変換します。
-        /// ************************************************************************************************************************
         /// 
         /// 再生、コマ送りで利用。
         /// </summary>
@@ -128,7 +124,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             out string restText,
             out IMove move,
             Kifu_Document kifuD,
-            ILog logTag
+            ILogName logTag
             )
         {
             bool successful = false;

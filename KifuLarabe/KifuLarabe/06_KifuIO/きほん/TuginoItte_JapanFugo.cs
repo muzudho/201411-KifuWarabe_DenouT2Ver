@@ -18,15 +18,13 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
     {
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// テキスト形式の符号「▲７六歩△３四歩▲２六歩…」の最初の要素を、切り取ってプロセスに変換します。
-        /// ************************************************************************************************************************
         /// 
         /// 再生、コマ送りで利用。
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out IMove process, Kifu_Document kifuD, ILog logTag)
+            string text, out string restText, out IMove process, Kifu_Document kifuD, ILogName logTag)
         {
             process = null;
             bool successful = false;
@@ -90,9 +88,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 次の１手データを作ります(*1)
-        /// ************************************************************************************************************************
         /// 
         ///         *1…符号１「▲６８銀上」を元に、「7968」を作ります。
         /// 
@@ -111,7 +107,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string strDaHyoji, //打
             out IMove process,
             Kifu_Document kifuD,
-            ILog logTag
+            ILogName logTag
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -1089,15 +1085,13 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 将棋盤上での検索
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="srcAll">候補マス</param>
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILog logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILogName logTag)
         {
             bool hit = false;
             foundKoma = K40.Error;

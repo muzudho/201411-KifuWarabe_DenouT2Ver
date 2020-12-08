@@ -29,20 +29,14 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
 
-        #region カレント移動系
-
         public void Move_Previous()
         {
             this.current8 = this.Current8.Previous;
         }
 
-        #endregion
-
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 現在の要素を切り取って返します。なければヌル。
-        /// ************************************************************************************************************************
         /// 
         /// カレントは、１手前に戻ります。
         /// 
@@ -135,13 +129,11 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 駒を駒袋に移動させます。
-        /// ************************************************************************************************************************
         /// 
         /// 駒袋には、不成にして入れておきます。
         /// </summary>
-        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILog logTag)
+        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILogName logTag)
         {
             this.ClearA();//this.Clear8();
 
@@ -166,11 +158,9 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// [ここから採譜]機能
-        /// ************************************************************************************************************************
         /// </summary>
-        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILog logTag)
+        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILogName logTag)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -474,10 +464,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             house3.SetStartpos(sb.ToString());
         }
 
-
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -494,53 +480,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             return house4.Log_Kyokumen(kifuD, kifuD.CountTeme(kifuD.Current8), memo);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         /// <summary>
         /// 記録係が利用します。
@@ -591,16 +530,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
         }
 
-
-
-
-
-
-
-
-
-        #region 追加系
-
         /// <summary>
         /// 動作確認用に
         /// </summary>
@@ -614,7 +543,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //KomaHouse newHouse,
             Kifu_Node6 newNode,
             string hint,
-            ILog logTag
+            ILogName logTag
             )
         {
 
@@ -677,9 +606,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 棋譜に符号を追加します。
-        /// ************************************************************************************************************************
         /// 
         /// KifuIO を通して使ってください。
         /// 
@@ -695,7 +622,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //Ks14 tottaSyurui,
             Kifu_Node6 newNode,
             string hint,
-            ILog logTag
+            ILogName logTag
 
             ,
             [CallerMemberName] string memberName = "",
@@ -718,7 +645,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             Ks14 tottaSyurui,
             KomaHouse newHouse,
             string hint,
-            ILog logTag
+            ILogName logTag
 
             ,
             [CallerMemberName] string memberName = "",
@@ -758,15 +685,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             ;
         }
 
-        #endregion
-
-
-        #region クリアー系
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 棋譜を空っぽにします。
-        /// ************************************************************************************************************************
         /// </summary>
         public void ClearA()
         {
@@ -781,13 +701,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             Logger.TraceLine(Logs.LoggerLinkedList, "リンクトリストは、クリアーされた");
         }
-
-        #endregion
-
-
-
-
-        #region 要素直引き系
 
         public Kifu_Root6 GetRoot8()
         {
@@ -807,14 +720,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             return (Kifu_Root6)cur;
         }
-
-        #endregion
-
-
-
-
-
-        #region 手目
 
         public int Root7_Teme { get { return 0; } }
 
@@ -845,12 +750,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return countTeme;
         }
 
-        #endregion
-
-
-
-        #region ランダムアクセッサ
-
         public IKifuElement ElementAt8(int teme1)
         {
             IKifuElement found6 = null;
@@ -874,10 +773,5 @@ namespace Grayscale.KifuwaraneLib.L04_Common
 
             return found6;
         }
-
-        #endregion
-
     }
-
-
 }

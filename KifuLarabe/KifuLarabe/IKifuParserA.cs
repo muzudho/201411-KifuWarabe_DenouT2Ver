@@ -29,7 +29,7 @@ namespace Grayscale.KifuwaraneLib
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            ILog logTag
+            ILogName logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -46,7 +46,7 @@ namespace Grayscale.KifuwaraneLib
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            ILog logTag
+            ILogName logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

@@ -21,17 +21,13 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public const int CTRL_NOTHING_PROPERTY_DAN = int.MinValue;
 
         /// <summary>
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// 先後、升、配役
-        /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
         public RO_Star Star { get { return this.star; } }
         protected RO_Star star;
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 駒用。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sengo"></param>
         /// <param name="masu"></param>
@@ -77,13 +73,8 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 );
         }
 
-
-        #region （マッチ）一致判定類
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 先後一致判定。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="m2"></param>
         /// <returns></returns>
@@ -97,7 +88,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        public bool NeverOnaji(Kifu_Document kifuD, ILog logTag, params List<K40>[] komaGroupArgs)
+        public bool NeverOnaji(Kifu_Document kifuD, ILogName logTag, params List<K40>[] komaGroupArgs)
         {
             bool unmatched = true;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -128,12 +119,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return unmatched;
         }
 
-        #endregion
-
-
-
-        #region （イズ）状況判定類
-
         /// <summary>
         /// 先手
         /// </summary>
@@ -159,9 +144,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 相手陣に入っていれば真。
-        /// ************************************************************************************************************************
         /// 
         ///         後手は 7,8,9 段。
         ///         先手は 1,2,3 段。
@@ -179,9 +162,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 将棋盤上にあれば真。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
         public bool OnShogiban
@@ -193,9 +174,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 駒台の上にあれば真。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
         public bool OnKomadai
@@ -236,10 +215,6 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             }
         }
 
-        #endregion
-
-
-
         /// <summary>
         /// 不成ケース
         /// </summary>
@@ -249,16 +224,12 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             return KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(this.Star.Haiyaku));
         }
 
-
-
         /// <summary>
-        /// ************************************************************************************************************************
         /// 含まれるか判定。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        public bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILog logTag)
+        public bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogName logTag)
         {
             bool matched = false;
 

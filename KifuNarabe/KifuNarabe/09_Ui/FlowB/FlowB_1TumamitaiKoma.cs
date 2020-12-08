@@ -22,7 +22,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
     public class FlowB_1TumamitaiKoma : FlowB
     {
 
-        public static void Check_MouseoverKomaKiki(IKomaPos koma, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public static void Check_MouseoverKomaKiki(IKomaPos koma, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             shape_PnlTaikyoku.Shogiban.KikiBan = new Masus_Set();// .Clear();
 
@@ -45,7 +45,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <summary>
         /// v(^▽^)v超能力『メナス』だぜ☆ 未来の脅威を予測し、可視化するぜ☆ｗｗｗ
         /// </summary>
-        public static void Menace(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public static void Menace(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             if (0 < kifuD.CountTeme(kifuD.Current8))
             {
@@ -94,7 +94,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             //------------------------------
             // メナス
@@ -103,9 +103,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウス・ムーブ時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -113,7 +111,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -322,15 +320,13 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの左ボタン押下時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="requestForMain"></param>
         /// <param name="e"></param>
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
-        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             FlowB nextPhase = null;
             int curHou = kifuD.CountTeme(kifuD.Current8);
@@ -425,9 +421,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの左ボタンを放した時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -435,7 +429,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -715,9 +709,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの右ボタン押下時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -725,7 +717,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             FlowB nextPhase = null;
 
@@ -733,9 +725,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの右ボタンを放した時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -743,7 +733,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             FlowB nextPhase = null;
 

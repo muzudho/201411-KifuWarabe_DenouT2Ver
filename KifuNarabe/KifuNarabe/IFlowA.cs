@@ -10,9 +10,7 @@ namespace Grayscale.KifuwaraneGui
     public interface IFlowA
     {
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの左ボタン押下時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -20,12 +18,10 @@ namespace Grayscale.KifuwaraneGui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        IFlowA MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag);
+        IFlowA MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの左ボタンを放した時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -33,12 +29,10 @@ namespace Grayscale.KifuwaraneGui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag);
+        IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの右ボタン押下時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -46,12 +40,10 @@ namespace Grayscale.KifuwaraneGui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag);
+        IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// マウスの右ボタンを放した時。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="ui_PnlMain"></param>
         /// <param name="requestForMain"></param>
@@ -59,7 +51,6 @@ namespace Grayscale.KifuwaraneGui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag);
-
+        IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
     }
 }

@@ -13,9 +13,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 {
 
     /// <summary>
-    /// ************************************************************************************************************************
     /// UI(*1)に関する操作です。
-    /// ************************************************************************************************************************
     /// 
     ///         *1…目に触れ、入力のために触る部分です。ユーザーインターフェース。ボタンやラベルなど。
     /// 
@@ -24,13 +22,11 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
     {
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// [戻る]ボタン
-        /// ************************************************************************************************************************
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, ILog logTag)
+            Kifu_Document kifuD, out string backedInputText, ILogName logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -131,13 +127,11 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// [コマ送り]ボタン
-        /// ************************************************************************************************************************
         /// </summary>
         public static bool Komaokuri_GUI(
             ref RequestForMain requestForMain,
@@ -146,7 +140,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
-            ILog logTag
+            ILogName logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -192,9 +186,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 将棋盤の上の駒を、全て駒台に移動します。（クリアー）
-        /// ************************************************************************************************************************
         /// </summary>
         public static void ClearKifu(Kifu_Document kifuD)
         {
@@ -305,9 +297,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// HTML出力。（これは作者のホームページ用に書かれています）
-        /// ************************************************************************************************************************
         /// </summary>
         public static string CreateHtml(Kifu_Document kifuD1)
         {
@@ -415,9 +405,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
         /*
         /// <summary>
-        /// ************************************************************************************************************************
         /// 棋譜最後の駒の成／不成を切り替えます。
-        /// ************************************************************************************************************************
         /// </summary>
         public static void Nari_KifuLast(Shape_BtnKoma btnKoma, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu kifu)
         {

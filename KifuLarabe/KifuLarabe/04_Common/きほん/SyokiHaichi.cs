@@ -12,7 +12,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <summary>
         /// 駒を、平手の初期配置に並べます。
         /// </summary>
-        public static void ToHirate(Kifu_Document kifuD, ILog logTag)
+        public static void ToHirate(Kifu_Document kifuD, ILogName logTag)
         {
 
 
@@ -144,7 +144,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
             Kifu_Document kifuD,
-            ILog logTag
+            ILogName logTag
             )
         {
             //------------------------------

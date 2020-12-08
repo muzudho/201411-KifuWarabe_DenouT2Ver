@@ -20,7 +20,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
-            ILog logTag
+            ILogName logTag
             )
         {
 
@@ -82,7 +82,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         public static void GetLegalMove(
             Kifu_Document kifuD,
             out KomaAndMasusDictionary kmDic_Self,
-            ILog logTag)
+            ILogName logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -304,7 +304,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
             StringBuilder sbGohosyu,
-            ILog logTag
+            ILogName logTag
             )
         {
             // 自駒（将棋盤上）

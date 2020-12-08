@@ -6,7 +6,7 @@ namespace Grayscale.KifuwaraneLib
     public interface IKifuParserAState
     {
 
-        string Execute(string inputLine, Kifu_Document kifuD, out IKifuParserAState nextState, IKifuParserA owner, ref bool toBreak, string hint, ILog logTag);
+        string Execute(string inputLine, Kifu_Document kifuD, out IKifuParserAState nextState, IKifuParserA owner, ref bool toBreak, string hint, ILogName logTag);
 
     }
 }

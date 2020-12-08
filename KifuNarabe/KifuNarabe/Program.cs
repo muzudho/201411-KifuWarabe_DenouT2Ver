@@ -41,7 +41,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
             Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Sfen;
+using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Grayscale.KifuwaraneLib.L06_KifuIO;
-using Grayscale.KifuwaraneLib.Entities.Log;
 
 namespace Grayscale.KifuwaraneEngine.L10_Think
 {
@@ -24,7 +23,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static IMove Sasu_Main(Kifu_Document kifu, ILog logTag)
+        public static IMove Sasu_Main(Kifu_Document kifu, ILogName logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -63,7 +62,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILog logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILogName logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 

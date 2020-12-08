@@ -68,7 +68,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             }
         }
 
-        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILog logTag)
+        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
         {
             this.flowB = flowB;
             this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
@@ -128,7 +128,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public string ReadLine2(ILog logTag)
+        public string ReadLine2(ILogName logTag)
         {
             int lastTeme = this.Kifu_Document.CountTeme(this.Kifu_Document.Current8);
 
@@ -356,7 +356,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
@@ -405,7 +405,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
 
 
             this.setteiFile = new SetteiFile();
@@ -529,7 +529,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -557,7 +557,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -607,7 +607,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILog logTag = Logs.LoggerGui;
+            ILogName logTag = Logs.LoggerGui;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -672,7 +672,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         /// <param name="requestForMain"></param>
         public void Response(
-            RequestForMain requestForMain, ILog logTag)
+            RequestForMain requestForMain, ILogName logTag)
         {
             //------------------------------
             // 入力欄の表示
