@@ -26,7 +26,7 @@ namespace Grayscale.KifuwaraneEngine
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            ILoggerAddress logTag = EngineLoggerAddresses.ENGINE;
+            ILog logTag = EngineLoggerAddresses.ENGINE;
 
             try
             {
@@ -53,20 +53,20 @@ namespace Grayscale.KifuwaraneEngine
                 Michi187Array.Load(michi187);
 
                 // 駒の配役１８１
-                var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181")); ;
+                var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181"));
                 Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
                 // ※駒配役を生成した後で。
-                var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion")); ;
+                var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
                 ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                Logger.TraceLine(LibLoggerAddresses.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.TraceLine(Logs.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
-                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku")); ;
+                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
                 Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(LibLoggerAddresses.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(Logs.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 

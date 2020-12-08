@@ -141,7 +141,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         /// 手番が替わったときの挙動を、ここに書きます。
         /// ************************************************************************************************************************
         /// </summary>
-        public static void Message_ChangeTurn(Kifu_Document kifuD, ILoggerAddress logTag)
+        public static void Message_ChangeTurn(Kifu_Document kifuD, ILog logTag)
         {
 
 
@@ -256,7 +256,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    Logger.TraceLine(LibLoggerAddresses.LoggerGui, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.TraceLine(Logs.LoggerGui, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {

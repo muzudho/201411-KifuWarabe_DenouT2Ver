@@ -15,9 +15,9 @@ namespace Grayscale.KifuwaraneGui
     /// <summary>
     /// 拡張できる列挙型として利用。
     /// </summary>
-    public class LoggerTag_Narabe : LoggerAddress
+    public class LoggerTag_Narabe : Log
     {
-        public static readonly ILoggerAddress PAINT;
+        public static readonly ILog PAINT;
 
         static LoggerTag_Narabe()
         {
@@ -41,7 +41,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILoggerAddress logTag = LibLoggerAddresses.LoggerGui;
+            ILog logTag = Logs.LoggerGui;
             Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７
@@ -51,7 +51,7 @@ namespace Grayscale.KifuwaraneGui
             Michi187Array.Load(michi187);
 
             // 駒の配役１８１
-            var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181")); ;
+            var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181"));
             Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
             {
@@ -60,12 +60,12 @@ namespace Grayscale.KifuwaraneGui
                 System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputForcePromotionFileName = toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion");
                 System.Console.WriteLine(inputForcePromotionFileName);
-                var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName); ;
+                var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName);
                 List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
                 //System.Console.Write(ForcePromotionArray.DebugString());
 
-                Logger.WriteFile(LibLoggerAddresses.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(Logs.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
             //------------------------------
@@ -75,10 +75,10 @@ namespace Grayscale.KifuwaraneGui
                 System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputPieceTypeToHaiyakuFileName = toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku");
                 System.Console.WriteLine(inputPieceTypeToHaiyakuFileName);
-                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName); ;
+                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(LibLoggerAddresses.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(Logs.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 

@@ -24,7 +24,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static IMove Sasu_Main(Kifu_Document kifu, ILoggerAddress logTag)
+        public static IMove Sasu_Main(Kifu_Document kifu, ILog logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -42,7 +42,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            Logger.TraceLine(LibLoggerAddresses.LoggerGenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            Logger.TraceLine(Logs.LoggerGenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
@@ -63,7 +63,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILoggerAddress logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILog logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -175,7 +175,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
 
                 }
 
-                Logger.WriteFile(LibLoggerAddresses.LoggerLegalMove, sbGohosyu.ToString());
+                Logger.WriteFile(Logs.LoggerLegalMove, sbGohosyu.ToString());
 
             }
             catch (Exception ex)

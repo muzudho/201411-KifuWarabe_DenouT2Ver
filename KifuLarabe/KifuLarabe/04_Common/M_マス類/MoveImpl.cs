@@ -251,7 +251,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (-1 == srcDan)
             {
                 string message = "指定の元マス[" + this.SrcStar.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
 
@@ -259,7 +259,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (-1 == dan)
             {
                 string message = "指定の先マス[" + this.Star.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
 

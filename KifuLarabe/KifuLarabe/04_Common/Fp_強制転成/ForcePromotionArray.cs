@@ -91,7 +91,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         "強制転成表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount + "]\n" +
                         "masuHandle=[" + masuHandle + "]\n";
-                        Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                        Logger.ErrorLine(Logs.LoggerError, message);
                         throw new Exception(message);
                     }
 

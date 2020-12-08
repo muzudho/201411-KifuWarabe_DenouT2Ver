@@ -29,7 +29,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             else if (this.stars.Count+1 <= starIndex)
             {
                 string message = this.GetType().Name + "#SetStarPos：　リストの要素より2多いインデックスを指定されましたので、追加しません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
             else
@@ -52,7 +52,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#SetKomaPos：　駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
 
@@ -71,7 +71,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#KomaPosAt：駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
 
@@ -89,7 +89,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             else
             {
                 string message = this.GetType().Name + "#StarAt：　リストの要素より多いインデックスを指定されましたので、取得できません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
                 throw new Exception(message);
             }
 

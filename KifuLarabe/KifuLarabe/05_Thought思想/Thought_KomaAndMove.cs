@@ -16,7 +16,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILoggerAddress logTag
+            ILog logTag
             )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -47,16 +47,16 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary Minus_OverThereMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILoggerAddress logTag
+            ILog logTag
         )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                Logger.TraceLine(LibLoggerAddresses.LoggerError, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                Logger.TraceLine(LibLoggerAddresses.LoggerError, "差し替える前");
-                Logger.TraceLine(LibLoggerAddresses.LoggerError, c.LogString_Set());
+                Logger.TraceLine(Logs.LoggerError, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                Logger.TraceLine(Logs.LoggerError, "差し替える前");
+                Logger.TraceLine(Logs.LoggerError, c.LogString_Set());
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -65,8 +65,8 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                Logger.TraceLine(LibLoggerAddresses.LoggerError, "差し替えた後");
-                Logger.TraceLine(LibLoggerAddresses.LoggerError, c.LogString_Set());
+                Logger.TraceLine(Logs.LoggerError, "差し替えた後");
+                Logger.TraceLine(Logs.LoggerError, c.LogString_Set());
             }
 
             return c;

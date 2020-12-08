@@ -6,13 +6,13 @@ using Grayscale.KifuwaraneLib.L04_Common;
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
     public delegate void RefreshHirateDelegate(
-        Kifu_Document kifuD,ILoggerAddress logTag
+        Kifu_Document kifuD,ILog logTag
     );
     public delegate void RefreshShiteiKyokumenDelegate(
         Kifu_Document kifuD,
         ref string restText,
         SfenStartpos sfenStartpos,
-        ILoggerAddress logTag
+        ILog logTag
     );
     public delegate void IttesasiPaintDelegate(
         Kifu_Document kifuD,
@@ -21,7 +21,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         //K40 tottaKoma,
         K40 underKoma,
         IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
-        ILoggerAddress logTag
+        ILog logTag
     );
 
     /// <summary>
@@ -56,7 +56,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
         private void Dammy_RefreshHirate(
             Kifu_Document kifuD,
-            ILoggerAddress logTag)
+            ILog logTag)
         {
         }
 
@@ -64,7 +64,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILoggerAddress logTag
+            ILog logTag
             )
         {
         }
@@ -76,7 +76,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //K40 tottaKoma,
             K40 underKoma,
             IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
-            ILoggerAddress logTag
+            ILog logTag
             )
         {
         }
@@ -94,7 +94,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            ILoggerAddress logTag
+            ILog logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -119,7 +119,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
             }
 
             return inputLine;
@@ -135,7 +135,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            ILoggerAddress logTag
+            ILog logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -165,7 +165,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.ErrorLine(LibLoggerAddresses.LoggerError, message);
+                Logger.ErrorLine(Logs.LoggerError, message);
             }
 
 

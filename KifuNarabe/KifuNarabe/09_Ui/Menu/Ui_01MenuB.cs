@@ -56,9 +56,9 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             {
                 // 最初はここ
 
-                Logger.TraceLine(LibLoggerAddresses.LoggerGui, "... ...");
-                Logger.TraceLine(LibLoggerAddresses.LoggerGui, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu", LibLoggerAddresses.LoggerGui);
+                Logger.TraceLine(Logs.LoggerGui, "... ...");
+                Logger.TraceLine(Logs.LoggerGui, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu", Logs.LoggerGui);
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -77,8 +77,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //          *1…初期配置を作るということです。
                 // 
 
-                Logger.TraceLine(LibLoggerAddresses.LoggerGui, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい", LibLoggerAddresses.LoggerGui);
+                Logger.TraceLine(Logs.LoggerGui, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい", Logs.LoggerGui);
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -86,8 +86,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 // 「startpos コマンド（平手局面）」または「指定局面」を処理しました。
 
 
-                Logger.TraceLine(LibLoggerAddresses.LoggerGui, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい", LibLoggerAddresses.LoggerGui);
+                Logger.TraceLine(Logs.LoggerGui, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい", Logs.LoggerGui);
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -102,8 +102,8 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             if (kifuParserA_Impl.State is KifuParserA_StateA2_SfenMoves)
             {
-                Logger.TraceLine(LibLoggerAddresses.LoggerGui, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい", LibLoggerAddresses.LoggerGui);//, LarabeLogger.INSTANCE
+                Logger.TraceLine(Logs.LoggerGui, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい", Logs.LoggerGui);//, LarabeLogger.INSTANCE
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -127,7 +127,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public void RefreshHirate(Kifu_Document kifuD, ILoggerAddress logTag)
+        public void RefreshHirate(Kifu_Document kifuD, ILog logTag)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
@@ -144,7 +144,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILoggerAddress logTag
+            ILog logTag
             )
         {
             SyokiHaichi.ByStartpos(sfenStartpos, kifuD, logTag);
@@ -172,7 +172,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //K40 tottaKoma2,
             K40 underKoma,
             IKifuElement node6,
-            ILoggerAddress logTag
+            ILog logTag
             )
         {
             if (K40Util.OnKoma((int)movedKoma))

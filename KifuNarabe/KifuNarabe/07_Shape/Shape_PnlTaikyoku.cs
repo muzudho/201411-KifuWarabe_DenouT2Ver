@@ -1145,7 +1145,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void Paint(
-            object sender, PaintEventArgs e, Kifu_Document kifuD, ILoggerAddress logTag
+            object sender, PaintEventArgs e, Kifu_Document kifuD, ILog logTag
             )
         {
             if (!this.Visible)
