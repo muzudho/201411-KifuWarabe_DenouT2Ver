@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 棋譜。

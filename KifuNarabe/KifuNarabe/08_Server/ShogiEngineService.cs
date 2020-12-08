@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using Grayscale.KifuwaraneGui.L09_Ui;
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L04_Common;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
 
 namespace Grayscale.KifuwaraneGui.L08_Server
 {
@@ -185,7 +185,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
             else
             {
                 //>>>>>>>>>> メッセージを受け取りました。
-                Logger.WriteLineR(Logger.DefaultAddress, line);
+                Logger.WriteLineR(Logger.DefaultLogRecord, line);
 
                 if (line.StartsWith("option"))
                 {
@@ -255,7 +255,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         {
             ShogiEngineService.shogiEngineProcess.StandardInput.WriteLine(line);
 
-            Logger.WriteLineS(Logger.DefaultAddress,line);
+            Logger.WriteLineS(Logger.DefaultLogRecord,line);
         }
 
     }

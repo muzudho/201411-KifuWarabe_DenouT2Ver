@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneEntities.Misc;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 「1,上一,１九,１八,１七,１六,１五,１四,１三,１二,１一」を、

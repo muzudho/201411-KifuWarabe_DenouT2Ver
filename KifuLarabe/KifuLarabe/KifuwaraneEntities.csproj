@@ -8,8 +8,8 @@
     <ProjectGuid>{18FB9B6E-95B2-47FE-A2F6-4FD865ABD804}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Grayscale.KifuwaraneLib</RootNamespace>
-    <AssemblyName>Grayscale.KifuwaraneLib</AssemblyName>
+    <RootNamespace>Grayscale.KifuwaraneEntities</RootNamespace>
+    <AssemblyName>Grayscale.KifuwaraneEntities</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -67,9 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="01_Log\CsvLineParserImpl.cs" />
-    <Compile Include="01_Log\LarabeRandom.cs" />
-    <Compile Include="01_Log\LarabeShuffle.cs" />
+    <Compile Include="Misc\CsvLineParserImpl.cs" />
+    <Compile Include="Misc\RandomLib.cs" />
+    <Compile Include="Misc\ShuffleLib.cs" />
     <Compile Include="03_Communication\J符号用\AgaruHiku.cs" />
     <Compile Include="03_Communication\J符号用\DaHyoji.cs" />
     <Compile Include="03_Communication\J符号用\MigiHidari.cs" />
@@ -125,21 +125,21 @@
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_Impl.cs" />
     <Compile Include="06_KifuIO\棋譜パーサーA\KifuParserA_StateA1b_SfenLnsgkgsnl.cs" />
     <Compile Include="05_Thought思想\Thought.cs" />
-    <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
-    <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
-    <Compile Include="Entities\Log\ILogTag.cs" />
-    <Compile Include="Entities\Log\Logger.cs" />
-    <Compile Include="Entities\Log\LogTag.cs" />
-    <Compile Include="Entities\Log\LogTags.cs" />
-    <Compile Include="Entities\Sfen\SfenMove.cs" />
-    <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />
-    <Compile Include="Entities\Sfen\SfenReferences.cs" />
+    <Compile Include="ApplicatedGame\ApplicatedMove.cs" />
+    <Compile Include="ApplicatedGame\GameTranslator.cs" />
+    <Compile Include="Log\ILogTag.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LogTag.cs" />
+    <Compile Include="Log\LogTags.cs" />
+    <Compile Include="Sfen\SfenMove.cs" />
+    <Compile Include="Sfen\SfenMoveBuilder.cs" />
+    <Compile Include="Sfen\SfenReferences.cs" />
     <Compile Include="IKifuParserA.cs" />
     <Compile Include="IKifuParserAState.cs" />
     <Compile Include="IKifuElement.cs" />
-    <Compile Include="Entities\Log\LogRecord.cs" />
+    <Compile Include="Log\LogRecord.cs" />
     <Compile Include="IKomaPos.cs" />
-    <Compile Include="Entities\Log\ILogRecord.cs" />
+    <Compile Include="Log\ILogRecord.cs" />
     <Compile Include="IMove.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="04_Common\きほん\FugoJ.cs" />
@@ -153,14 +153,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Entities\README.md" />
+    <None Include="README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\KifuNarabe\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
     <Analyzer Include="..\..\KifuNarabe\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

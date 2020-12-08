@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.L05_Thought
+namespace Grayscale.KifuwaraneEntities.L05_Thought
 {
     public abstract class Thought_KomaAndMove
     {

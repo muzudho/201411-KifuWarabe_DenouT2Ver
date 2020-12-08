@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneEntities.Misc;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 駒配役１８４だぜ☆

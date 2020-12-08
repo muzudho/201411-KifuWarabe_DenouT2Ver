@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Grayscale.KifuwaraneLib.L01_Log
+namespace Grayscale.KifuwaraneEntities.Misc
 {
-    public abstract class LarabeShuffle<T>
+    public abstract class ShuffleLib<T>
     {
         public static void Shuffle_FisherYates(ref List<T> items)
         {
@@ -10,7 +10,7 @@ namespace Grayscale.KifuwaraneLib.L01_Log
             while (n > 1)
             {
                 n--;
-                int k = LarabeRandom.Random.Next(n + 1);
+                int k = RandomLib.Random.Next(n + 1);
                 T tmp = items[k];
                 items[k] = items[n];
                 items[n] = tmp;

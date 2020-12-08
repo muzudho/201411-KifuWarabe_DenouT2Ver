@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.L01_Log;
+using Grayscale.KifuwaraneEntities.Misc;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 配役１８４ユーティリティー。
@@ -99,7 +99,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 goto gt_EndMethod;
             }
 
-            IMasus michi187 = Haiyaku184Array.KukanMasus[haiyaku][LarabeRandom.Random.Next(Haiyaku184Array.KukanMasus[haiyaku].Count)];
+            IMasus michi187 = Haiyaku184Array.KukanMasus[haiyaku][RandomLib.Random.Next(Haiyaku184Array.KukanMasus[haiyaku].Count)];
 
             List<int> elements = new List<int>();
             foreach (int element in michi187.Elements)
@@ -107,7 +107,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                 elements.Add(element);
             }
 
-            result = elements[LarabeRandom.Random.Next(elements.Count)];
+            result = elements[RandomLib.Random.Next(elements.Count)];
 
         gt_EndMethod:
             return result;

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib
+namespace Grayscale.KifuwaraneEntities
 {
     public interface IKomaPos
     {

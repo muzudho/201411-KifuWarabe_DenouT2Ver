@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneGui.L07_Shape
 {

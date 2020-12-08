@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.Misc;
 using Grayscale.KifuwaraneGui.L09_Ui;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L01_Log;
-using Grayscale.KifuwaraneLib.L04_Common;
 using Nett;
 
 namespace Grayscale.KifuwaraneGui
@@ -20,7 +20,7 @@ namespace Grayscale.KifuwaraneGui
         static void Main()
         {
             ILogTag logTag = LogTags.GuiRecordLog;
-            Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
+            Logger.TraceLine(logTag, "乱数のたね＝[" + RandomLib.Seed + "]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];

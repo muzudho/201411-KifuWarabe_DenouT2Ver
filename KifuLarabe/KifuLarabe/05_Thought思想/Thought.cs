@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.L05_Thought
+namespace Grayscale.KifuwaraneEntities.L05_Thought
 {
     public abstract class Thought
     {

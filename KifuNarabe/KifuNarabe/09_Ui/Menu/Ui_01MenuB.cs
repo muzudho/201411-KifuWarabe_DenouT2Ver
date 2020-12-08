@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneGui.L07_Shape;
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {

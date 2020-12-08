@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L09_Ui;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneGui
 {

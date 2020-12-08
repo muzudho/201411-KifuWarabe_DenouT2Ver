@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Grayscale.KifuwaraneLib.L01_Log
+namespace Grayscale.KifuwaraneEntities.Misc
 {
-    public class LarabeRandom
+    public class RandomLib
     {
         /// <summary>
         /// 乱数のたね。
@@ -11,7 +11,7 @@ namespace Grayscale.KifuwaraneLib.L01_Log
         {
             get
             {
-                return LarabeRandom.seed;
+                return RandomLib.seed;
             }
         }
         private static int seed;
@@ -20,20 +20,20 @@ namespace Grayscale.KifuwaraneLib.L01_Log
         {
             get
             {
-                return LarabeRandom.random;
+                return RandomLib.random;
             }
         }
         private static Random random;
 
-        static LarabeRandom()
+        static RandomLib()
         {
             //------------------------------
             // 乱数のたね
             //------------------------------
             //LarabeRandom.seed = 0;//乱数固定
-            LarabeRandom.seed = DateTime.Now.Millisecond;//乱数使用
+            RandomLib.seed = DateTime.Now.Millisecond;//乱数使用
 
-            random = new Random(LarabeRandom.seed);
+            random = new Random(RandomLib.seed);
         }
     }
 }

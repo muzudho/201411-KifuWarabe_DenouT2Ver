@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneLib.L04_Common
+﻿namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     public class Ks14Converter
     {

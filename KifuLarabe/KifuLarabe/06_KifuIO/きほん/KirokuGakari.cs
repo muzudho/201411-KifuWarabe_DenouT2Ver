@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {
     /// <summary>
     /// 記録係

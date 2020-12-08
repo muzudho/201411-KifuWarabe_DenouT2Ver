@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneLib.L03_Communication;
+using Grayscale.KifuwaraneEntities.L03_Communication;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     public class RO_TeProcess_Syokihaichi : MoveImpl, IMove
     {

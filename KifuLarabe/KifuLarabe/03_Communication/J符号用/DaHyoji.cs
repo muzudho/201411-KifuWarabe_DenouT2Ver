@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneLib.L03_Communication
+﻿namespace Grayscale.KifuwaraneEntities.L03_Communication
 {
     /// <summary>
     /// “打”表示。必ずしも、持ち駒を打つタイミングとは一致しません。

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib
+namespace Grayscale.KifuwaraneEntities
 {
     public interface IKifuElement
     {

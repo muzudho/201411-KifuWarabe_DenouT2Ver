@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.Entities.ApplicatedGame;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L01_Log;
-using Grayscale.KifuwaraneLib.L04_Common;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Misc;
 
 namespace Grayscale.KifuwaraneEngine.L10_Think
 {
@@ -83,7 +83,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //------------------------------------------------------------
                 Kifu_Node6 siteiNode = (Kifu_Node6)kifu.ElementAt8(thisTeme);
                 //List<K40> komas = komaAndMove.ToKeyList();
-                LarabeShuffle<KomaAndMasu>.Shuffle_FisherYates(ref kmList);// 取り出した駒の順序を、てきとーにシャッフル
+                ShuffleLib<KomaAndMasu>.Shuffle_FisherYates(ref kmList);// 取り出した駒の順序を、てきとーにシャッフル
                 foreach (KomaAndMasu kmPair in kmList)
                 {
                     // 元位置

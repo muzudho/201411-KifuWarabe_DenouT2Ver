@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneLib.L03_Communication;
+﻿using Grayscale.KifuwaraneEntities.L03_Communication;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 星。

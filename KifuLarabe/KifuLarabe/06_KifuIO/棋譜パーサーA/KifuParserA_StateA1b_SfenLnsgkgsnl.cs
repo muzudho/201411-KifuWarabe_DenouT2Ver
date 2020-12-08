@@ -1,8 +1,8 @@
 ﻿using System;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {
     /// <summary>
     /// 指定局面から始める配置です。

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayscale.KifuwaraneLib.Entities.Sfen
+namespace Grayscale.KifuwaraneEntities.Sfen
 {
     public class SfenMove
     {

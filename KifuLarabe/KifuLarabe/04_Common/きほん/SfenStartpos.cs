@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneLib.L04_Common
+﻿namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// SFEN形式の初期配置の書き方の、データの持ち方です。

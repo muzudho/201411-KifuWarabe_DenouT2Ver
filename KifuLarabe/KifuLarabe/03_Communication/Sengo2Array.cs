@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneLib.L03_Communication;
+﻿using Grayscale.KifuwaraneEntities.L03_Communication;
 
-namespace Grayscale.KifuwaraneLib
+namespace Grayscale.KifuwaraneEntities
 {
     public class Sengo2Array
     {

@@ -130,9 +130,9 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KifuLarabe\KifuLarabe\KifuwaraneLib.csproj">
+    <ProjectReference Include="..\..\KifuLarabe\KifuLarabe\KifuwaraneEntities.csproj">
       <Project>{18fb9b6e-95b2-47fe-a2f6-4fd865abd804}</Project>
-      <Name>KifuwaraneLib</Name>
+      <Name>KifuwaraneEntities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\KifuWarabe\KifuWarabe\KifuwaraneEngine.csproj">
       <Project>{e96a7341-b8e6-4979-8b2a-94ff2818962c}</Project>

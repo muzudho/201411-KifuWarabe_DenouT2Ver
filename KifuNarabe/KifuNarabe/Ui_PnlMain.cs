@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.Misc;
 using Grayscale.KifuwaraneGui.L01_Log;
 using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneGui.L07_Shape;
-using Grayscale.KifuwaraneLib;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L01_Log;
-using Grayscale.KifuwaraneLib.L03_Communication;
-using Grayscale.KifuwaraneLib.L04_Common;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {
@@ -227,7 +227,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)), logTag);
             if (0<komas.Count)
             {
-                K40 koma = komas[ LarabeRandom.Random.Next(komas.Count)];//ランダムに１つ。
+                K40 koma = komas[ RandomLib.Random.Next(komas.Count)];//ランダムに１つ。
 
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 KomaHouse house6 = dammyNode5.KomaHouse;

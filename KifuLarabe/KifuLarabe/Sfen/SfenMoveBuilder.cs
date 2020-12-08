@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneLib.Entities.Sfen
+﻿namespace Grayscale.KifuwaraneEntities.Sfen
 {
     /// <summary>
     /// メソッド・チェーンできないけど……☆（＾～＾）

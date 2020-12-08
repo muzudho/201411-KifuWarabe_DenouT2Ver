@@ -1,7 +1,7 @@
-﻿using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
+﻿using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneLib
+namespace Grayscale.KifuwaraneEntities
 {
     public interface IKifuParserAState
     {

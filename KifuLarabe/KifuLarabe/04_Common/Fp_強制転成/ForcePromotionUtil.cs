@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Grayscale.KifuwaraneLib.L04_Common
+namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     public abstract class ForcePromotionUtil
     {

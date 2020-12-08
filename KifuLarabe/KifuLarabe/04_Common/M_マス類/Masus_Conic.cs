@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneLib.L04_Common
+﻿namespace Grayscale.KifuwaraneEntities.L04_Common
 {
     /// <summary>
     /// 元位置から、放射状に伸びる有向線分のリスト。

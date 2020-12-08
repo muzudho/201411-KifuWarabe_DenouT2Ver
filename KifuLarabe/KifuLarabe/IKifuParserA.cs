@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneLib.Entities.Log;
-using Grayscale.KifuwaraneLib.L04_Common;
-using Grayscale.KifuwaraneLib.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.L06_KifuIO;
 
-namespace Grayscale.KifuwaraneLib
+namespace Grayscale.KifuwaraneEntities
 {
     public interface IKifuParserA
     {
