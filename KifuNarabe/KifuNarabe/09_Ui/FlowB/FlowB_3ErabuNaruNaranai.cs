@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L07_Shape;

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     /// <summary>
     /// 指し手。

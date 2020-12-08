@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program_Warabe.cs" />
     <Compile Include="01_Log\PerformanceMetrics.cs" />
     <Compile Include="10_Think\SasiteRoutine.cs" />
     <Compile Include="Program.cs" />

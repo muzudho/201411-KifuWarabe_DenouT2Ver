@@ -1,7 +1,7 @@
 ﻿using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     public interface IKifuParserAState
     {

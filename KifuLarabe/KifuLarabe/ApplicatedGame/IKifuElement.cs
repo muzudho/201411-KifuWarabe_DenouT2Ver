@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     public interface IKifuElement
     {
