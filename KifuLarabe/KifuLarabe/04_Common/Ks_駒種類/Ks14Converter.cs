@@ -1,4 +1,6 @@
-﻿namespace Grayscale.KifuwaraneEntities.L04_Common
+﻿using Grayscale.KifuwaraneEntities.L04_Common;
+
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     public class Ks14Converter
     {

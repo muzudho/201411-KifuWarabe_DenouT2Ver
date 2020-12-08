@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
+﻿using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 駒の種類１５個ごとの、「周りに障害物がないときに、ルール上移動可能なマス」。

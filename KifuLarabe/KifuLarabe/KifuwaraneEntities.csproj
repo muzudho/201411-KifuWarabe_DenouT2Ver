@@ -78,17 +78,17 @@
     <Compile Include="ApplicatedGame\Okiba.cs" />
     <Compile Include="ApplicatedGame\Sengo.cs" />
     <Compile Include="ApplicatedGame\Sengo2Array.cs" />
-    <Compile Include="04_Common\Fp_強制転成\ForcePromotionArray.cs" />
-    <Compile Include="04_Common\Fp_強制転成\ForcePromotionUtil.cs" />
-    <Compile Include="04_Common\H_配役転換表\Data_HaiyakuTransition.cs" />
-    <Compile Include="04_Common\Kf_棋譜_局面\Kifu_Document.cs" />
-    <Compile Include="04_Common\Kf_棋譜_局面\Kifu_Node6.cs" />
-    <Compile Include="04_Common\Kf_棋譜_局面\Kifu_Root6.cs" />
-    <Compile Include="04_Common\Kf_棋譜_局面\KomaHouse.cs" />
-    <Compile Include="04_Common\Kh_駒配役\Haiyaku184Util.cs" />
+    <Compile Include="ApplicatedGame\Architecture\ForcePromotionArray.cs" />
+    <Compile Include="ApplicatedGame\Architecture\ForcePromotionUtil.cs" />
+    <Compile Include="ApplicatedGame\Architecture\Data_HaiyakuTransition.cs" />
+    <Compile Include="ApplicatedGame\Architecture\TreeDocument.cs" />
+    <Compile Include="ApplicatedGame\Architecture\TreeNode6.cs" />
+    <Compile Include="ApplicatedGame\Architecture\TreeRoot6.cs" />
+    <Compile Include="ApplicatedGame\Architecture\PositionKomaHouse.cs" />
+    <Compile Include="ApplicatedGame\Architecture\Haiyaku184Util.cs" />
     <Compile Include="04_Common\Ks_駒種類\JFugoCreator15Array.cs" />
     <Compile Include="04_Common\Ks_駒種類\Ks14.cs" />
-    <Compile Include="04_Common\Kk_駒軌道\Rule01_PotentialMove_15Array.cs" />
+    <Compile Include="ApplicatedGame\Architecture\Rule01_PotentialMove_15Array.cs" />
     <Compile Include="04_Common\Ks_駒種類\Ks14Converter.cs" />
     <Compile Include="04_Common\M_マス類\RO_Star.cs" />
     <Compile Include="04_Common\M_マス類\RO_StarManual.cs" />
@@ -104,9 +104,9 @@
     <Compile Include="04_Common\M_マス類\Masus_Set.cs" />
     <Compile Include="04_Common\M_マス類\MoveImpl.cs" />
     <Compile Include="04_Common\M_マス類\Masus_Ordered.cs" />
-    <Compile Include="04_Common\Kh_駒配役\Kh185.cs" />
+    <Compile Include="ApplicatedGame\Architecture\Kh185.cs" />
     <Compile Include="04_Common\きふわらべ\K40.cs" />
-    <Compile Include="04_Common\Kh_駒配役\Haiyaku184Array.cs" />
+    <Compile Include="ApplicatedGame\Architecture\Haiyaku184Array.cs" />
     <Compile Include="04_Common\きふわらべ\K40Util.cs" />
     <Compile Include="04_Common\きふわらべ\KomaAndMasusDictionary.cs" />
     <Compile Include="04_Common\きふわらべ\Kuukan24.cs" />
@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ApplicatedGame\Architecture\README.md" />
     <None Include="README.md" />
     <None Include="packages.config" />
   </ItemGroup>
