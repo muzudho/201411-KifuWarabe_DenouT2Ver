@@ -19,7 +19,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
             Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７
@@ -43,7 +43,7 @@ namespace Grayscale.KifuwaraneGui
 
                 //System.Console.Write(ForcePromotionArray.DebugString());
 
-                Logger.WriteFile(Logs.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
             //------------------------------
@@ -56,7 +56,7 @@ namespace Grayscale.KifuwaraneGui
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(Logs.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 

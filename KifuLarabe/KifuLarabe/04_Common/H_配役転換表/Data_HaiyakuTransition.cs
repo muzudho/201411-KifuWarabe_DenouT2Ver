@@ -152,7 +152,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                     sb.AppendLine();
                 }
 
-                Logger.WriteFile(Logs.LoggerHaichiTenkanHyoOnlyData, sb.ToString());
+                Logger.WriteFile(LogTags.HaichiTenkanHyoOnlyDataLog, sb.ToString());
             }
 
 
@@ -201,7 +201,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
                         "配役転換表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount2 + "]\n" +
                         "columnCount=[" + columnCount + "]\n";
-                        Logger.ErrorLine(Logs.LoggerError, message);
+                        Logger.ErrorLine(LogTags.ErrorLog, message);
                         throw new Exception(message);
                     }
 
@@ -219,7 +219,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             }
 
         gt_EndMethod:
-            Logger.WriteFile(Logs.LoggerHaichiTenkanHyoAll, sbDebug.ToString());
+            Logger.WriteFile(LogTags.HaichiTenkanHyoAllLog, sbDebug.ToString());
 
             return rows;
         }

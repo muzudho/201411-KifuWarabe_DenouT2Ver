@@ -79,7 +79,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 out movedKoma,
                 //out tottaKoma,
                 out underKoma,
-                Logs.LoggerGui
+                LogTags.GuiRecordLog
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();

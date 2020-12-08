@@ -295,7 +295,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             kifuD.AppendChildA_New(//マウスの左ボタンを放したときです。
                                 newNode,
                                 "FlowB_2OkuKoma#MouseLeftButtonUp",
-                                Logs.LoggerGui
+                                LogTags.GuiRecordLog
                                 );
 
 

@@ -38,3 +38,16 @@ OutputPieceTypeToHaiyaku = "配役転換表.html"
 # </kifunarabe>
 #
 Engine = "./Grayscale.KifuwaraneEngine.exe"
+
+# Log file stem.
+GenMoveLog = "指し手生成ルーチン"
+GuiRecordLog = "将棋GUI_棋譜読取"
+LibLog = "ララベProgram"
+LinkedListLog = "リンクトリスト"
+ErrorLog = "エラー"
+LegalMoveLog = "合法手"
+LegalMoveEvasionLog = "リーガルムーブ(被王手時)"
+HaichiTenkanHyoOnlyDataLog = "Debug_配役転換表Load(1)_データ行のみ"
+HaichiTenkanHyoAllLog = "Debug_配役転換表Load(2)"
+EngineRecordLog = "将棋エンジン_棋譜読取"
+GuiPaint = "将棋GUI_ペイント"

@@ -68,7 +68,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.ErrorLine(Logs.LoggerError, message);
+                Logger.ErrorLine(LogTags.ErrorLog, message);
             }
 
             return inputLine;

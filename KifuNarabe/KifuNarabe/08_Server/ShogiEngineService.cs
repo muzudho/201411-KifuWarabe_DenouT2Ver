@@ -238,7 +238,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    Logger.TraceLine(Logs.LoggerGui, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.TraceLine(LogTags.GuiRecordLog, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {

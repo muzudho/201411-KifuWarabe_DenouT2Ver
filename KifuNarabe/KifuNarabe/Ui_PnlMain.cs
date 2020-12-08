@@ -356,7 +356,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
@@ -405,7 +405,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
 
 
             this.setteiFile = new SetteiFile();
@@ -511,7 +511,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //------------------------------
             // 画面の描画です。
             //------------------------------
-            this.Shape_PnlTaikyoku.Paint(sender, e, this.Kifu_Document, Logs.Paint);
+            this.Shape_PnlTaikyoku.Paint(sender, e, this.Kifu_Document, LogTags.GuiPaint);
 
         gt_EndMethod:
             ;
@@ -529,7 +529,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -557,7 +557,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -607,7 +607,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = Logs.LoggerGui;
+            ILogTag logTag = LogTags.GuiRecordLog;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -697,7 +697,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, Logs.LoggerGui));
+                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiRecordLog));
                         break;
                     case SyuturyokuKirikae.Sfen:
                         this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));

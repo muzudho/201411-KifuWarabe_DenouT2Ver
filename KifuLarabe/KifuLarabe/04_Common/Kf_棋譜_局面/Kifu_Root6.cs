@@ -28,7 +28,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             if (!(this is Kifu_Root6))
             {
                 string message = "Kifu_Rootクラスではないのに、SetSengo_Rootメソッドを使用しました。\n this.GetType().Name=[" + this.GetType().Name + "]";
-                Logger.ErrorLine(Logs.LoggerError, message);
+                Logger.ErrorLine(LogTags.ErrorLog, message);
                 throw new Exception(message);
             }
 

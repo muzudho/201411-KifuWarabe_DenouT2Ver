@@ -22,7 +22,7 @@ namespace Grayscale.KifuwaraneEngine
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            ILogTag logTag = Logs.Engine;
+            ILogTag logTag = LogTags.EngineRecordLog;
 
             try
             {
@@ -56,13 +56,13 @@ namespace Grayscale.KifuwaraneEngine
                 var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
                 ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                Logger.TraceLine(Logs.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.TraceLine(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
                 Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(Logs.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 
