@@ -19,7 +19,7 @@ namespace Grayscale.KifuwaraneLib.Entities.ApplicatedGame
             SfenMove sfen,
             out IMove move,
             Kifu_Document kifuD,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             move = MoveImpl.NULL_OBJECT;

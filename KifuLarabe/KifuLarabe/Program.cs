@@ -24,7 +24,7 @@ namespace Grayscale.KifuwaraneLib
 
         public static int Main(string[] args)
         {
-            ILogName logTag = Logs.LoggerLib;
+            ILogTag logTag = Logs.LoggerLib;
 
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));

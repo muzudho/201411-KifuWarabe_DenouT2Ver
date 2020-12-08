@@ -6,13 +6,13 @@ using Grayscale.KifuwaraneLib.L04_Common;
 namespace Grayscale.KifuwaraneLib.L06_KifuIO
 {
     public delegate void RefreshHirateDelegate(
-        Kifu_Document kifuD, ILogName logTag
+        Kifu_Document kifuD, ILogTag logTag
     );
     public delegate void RefreshShiteiKyokumenDelegate(
         Kifu_Document kifuD,
         ref string restText,
         SfenStartpos sfenStartpos,
-        ILogName logTag
+        ILogTag logTag
     );
     public delegate void IttesasiPaintDelegate(
         Kifu_Document kifuD,
@@ -21,7 +21,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
         //K40 tottaKoma,
         K40 underKoma,
         IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
-        ILogName logTag
+        ILogTag logTag
     );
 
     /// <summary>
@@ -56,7 +56,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
 
         private void Dammy_RefreshHirate(
             Kifu_Document kifuD,
-            ILogName logTag)
+            ILogTag logTag)
         {
         }
 
@@ -64,7 +64,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILogName logTag
+            ILogTag logTag
             )
         {
         }
@@ -76,7 +76,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             //K40 tottaKoma,
             K40 underKoma,
             IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
-            ILogName logTag
+            ILogTag logTag
             )
         {
         }
@@ -94,7 +94,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             Kifu_Document kifuD,
             ref bool isBreak,
             string hint,
-            ILogName logTag
+            ILogTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -135,7 +135,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             string inputLine,
             Kifu_Document kifuD,
             string hint,
-            ILogName logTag
+            ILogTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

@@ -4,32 +4,10 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneGui.L09_Ui;
-using Grayscale.KifuwaraneLib;
 using Grayscale.KifuwaraneLib.Entities.Log;
 using Grayscale.KifuwaraneLib.L01_Log;
 using Grayscale.KifuwaraneLib.L04_Common;
 using Nett;
-
-namespace Grayscale.KifuwaraneGui
-{
-    /// <summary>
-    /// 拡張できる列挙型として利用。
-    /// </summary>
-    public class LoggerTag_Narabe : Log
-    {
-        public static readonly ILog PAINT;
-
-        static LoggerTag_Narabe()
-        {
-            LoggerTag_Narabe.PAINT = new LoggerTag_Narabe("#log_将棋GUI_ペイント", true);
-        }
-
-        public LoggerTag_Narabe(string fileStem, bool enable)
-            : base(fileStem, enable)
-        {
-        }
-    }
-}
 
 namespace Grayscale.KifuwaraneGui
 {
@@ -41,7 +19,7 @@ namespace Grayscale.KifuwaraneGui
         [STAThread]
         static void Main()
         {
-            ILogName logTag = Logs.LoggerGui;
+            ILogTag logTag = Logs.LoggerGui;
             Logger.TraceLine(logTag, "乱数のたね＝[" + LarabeRandom.Seed + "]");
 
             // 道１８７

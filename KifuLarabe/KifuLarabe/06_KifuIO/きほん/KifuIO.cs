@@ -25,7 +25,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
-            ILogName logTag
+            ILogTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -95,7 +95,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool isBack,
-            ILogName logTag
+            ILogTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -291,7 +291,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             IMove teProcess,
             Kifu_Document kifuD,
             bool back,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             underKoma = K40.Error;

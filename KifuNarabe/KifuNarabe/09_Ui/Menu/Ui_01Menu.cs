@@ -26,7 +26,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, ILogName logTag)
+            Kifu_Document kifuD, out string backedInputText, ILogTag logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -127,7 +127,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag);
 
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
-            ILogName logTag
+            ILogTag logTag
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

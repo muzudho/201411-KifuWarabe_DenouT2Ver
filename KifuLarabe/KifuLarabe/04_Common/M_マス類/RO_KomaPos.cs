@@ -88,7 +88,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        public bool NeverOnaji(Kifu_Document kifuD, ILogName logTag, params List<K40>[] komaGroupArgs)
+        public bool NeverOnaji(Kifu_Document kifuD, ILogTag logTag, params List<K40>[] komaGroupArgs)
         {
             bool unmatched = true;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -229,7 +229,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        public bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogName logTag)
+        public bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogTag logTag)
         {
             bool matched = false;
 

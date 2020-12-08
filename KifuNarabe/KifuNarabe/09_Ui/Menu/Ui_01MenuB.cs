@@ -125,7 +125,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public void RefreshHirate(Kifu_Document kifuD, ILogName logTag)
+        public void RefreshHirate(Kifu_Document kifuD, ILogTag logTag)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
@@ -142,7 +142,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Kifu_Document kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             SyokiHaichi.ByStartpos(sfenStartpos, kifuD, logTag);
@@ -170,7 +170,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //K40 tottaKoma2,
             K40 underKoma,
             IKifuElement node6,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             if (K40Util.OnKoma((int)movedKoma))

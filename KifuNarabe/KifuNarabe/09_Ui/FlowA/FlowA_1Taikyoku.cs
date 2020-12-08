@@ -23,7 +23,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         public IFlowA MouseLeftButtonDown(
-            Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
+            Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
         {
             IFlowA nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -287,7 +287,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
+        public IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
         {
             IFlowA nextPhaseA = null;
 
@@ -314,7 +314,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
+        public IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
         {
             IFlowA nextPhase = null;
 
@@ -341,7 +341,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogName logTag)
+        public IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
         {
             IFlowA nextPhase = null;
 

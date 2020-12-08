@@ -127,9 +127,9 @@
     <Compile Include="05_Thought思想\Thought.cs" />
     <Compile Include="Entities\ApplicatedGame\ApplicatedMove.cs" />
     <Compile Include="Entities\ApplicatedGame\GameTranslator.cs" />
-    <Compile Include="Entities\Log\ILogName.cs" />
+    <Compile Include="Entities\Log\ILogTag.cs" />
     <Compile Include="Entities\Log\Logger.cs" />
-    <Compile Include="Entities\Log\LogName.cs" />
+    <Compile Include="Entities\Log\LogTag.cs" />
     <Compile Include="Entities\Log\Logs.cs" />
     <Compile Include="Entities\Sfen\SfenMove.cs" />
     <Compile Include="Entities\Sfen\SfenMoveBuilder.cs" />

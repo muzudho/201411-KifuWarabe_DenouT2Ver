@@ -114,13 +114,11 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 駒ボタンの描画はここに書きます。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="g1"></param>
         /// <param name="kyokumen"></param>
-        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILog logTag)
+        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILogTag logTag)
         {
             if (!this.Visible)
             {

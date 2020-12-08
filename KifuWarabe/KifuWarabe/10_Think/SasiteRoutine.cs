@@ -23,7 +23,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static IMove Sasu_Main(Kifu_Document kifu, ILogName logTag)
+        public static IMove Sasu_Main(Kifu_Document kifu, ILogTag logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -62,7 +62,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILogName logTag)
+            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILogTag logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 

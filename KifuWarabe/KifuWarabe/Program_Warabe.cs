@@ -22,7 +22,7 @@ namespace Grayscale.KifuwaraneEngine
         /// <param name="args"></param>
         public static void Main_Warabe(string[] args)
         {
-            ILogName logTag = Logs.ENGINE;
+            ILogTag logTag = Logs.Engine;
 
             try
             {

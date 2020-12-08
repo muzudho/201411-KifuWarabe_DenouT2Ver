@@ -124,7 +124,7 @@ namespace Grayscale.KifuwaraneLib.L06_KifuIO
             out string restText,
             out IMove move,
             Kifu_Document kifuD,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             bool successful = false;

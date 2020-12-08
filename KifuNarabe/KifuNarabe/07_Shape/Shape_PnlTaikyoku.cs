@@ -1138,14 +1138,12 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
 
 
         /// <summary>
-        /// ************************************************************************************************************************
         /// 対局の描画の一式は、ここに書きます。
-        /// ************************************************************************************************************************
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void Paint(
-            object sender, PaintEventArgs e, Kifu_Document kifuD, ILog logTag
+            object sender, PaintEventArgs e, Kifu_Document kifuD, ILogTag logTag
             )
         {
             if (!this.Visible)

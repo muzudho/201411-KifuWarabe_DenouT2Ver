@@ -16,7 +16,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILogName logTag
+            ILogTag logTag
             )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -47,7 +47,7 @@ namespace Grayscale.KifuwaraneLib.L05_Thought
         public static KomaAndMasusDictionary Minus_OverThereMasus(
             KomaAndMasusDictionary a1,
             IMasus b,
-            ILogName logTag
+            ILogTag logTag
         )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);

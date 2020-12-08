@@ -32,7 +32,7 @@ namespace Grayscale.KifuwaraneLib
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        bool NeverOnaji(Kifu_Document kifuD, ILogName logTag, params List<K40>[] komaGroupArgs);
+        bool NeverOnaji(Kifu_Document kifuD, ILogTag logTag, params List<K40>[] komaGroupArgs);
 
         /// <summary>
         /// 成り
@@ -53,7 +53,7 @@ namespace Grayscale.KifuwaraneLib
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogName logTag);
+        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogTag logTag);
 
         /// <summary>
         /// 外字を利用した、デバッグ用の駒の名前１文字だぜ☆

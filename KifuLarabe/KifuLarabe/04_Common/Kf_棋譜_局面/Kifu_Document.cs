@@ -133,7 +133,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// 
         /// 駒袋には、不成にして入れておきます。
         /// </summary>
-        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILogName logTag)
+        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILogTag logTag)
         {
             this.ClearA();//this.Clear8();
 
@@ -160,7 +160,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
         /// <summary>
         /// [ここから採譜]機能
         /// </summary>
-        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILogName logTag)
+        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILogTag logTag)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -543,7 +543,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //KomaHouse newHouse,
             Kifu_Node6 newNode,
             string hint,
-            ILogName logTag
+            ILogTag logTag
             )
         {
 
@@ -622,7 +622,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             //Ks14 tottaSyurui,
             Kifu_Node6 newNode,
             string hint,
-            ILogName logTag
+            ILogTag logTag
 
             ,
             [CallerMemberName] string memberName = "",
@@ -645,7 +645,7 @@ namespace Grayscale.KifuwaraneLib.L04_Common
             Ks14 tottaSyurui,
             KomaHouse newHouse,
             string hint,
-            ILogName logTag
+            ILogTag logTag
 
             ,
             [CallerMemberName] string memberName = "",
