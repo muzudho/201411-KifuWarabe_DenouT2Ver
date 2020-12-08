@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     public abstract class M201Util
     {

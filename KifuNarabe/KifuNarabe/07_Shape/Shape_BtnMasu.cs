@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
 namespace Grayscale.KifuwaraneGui.L07_Shape
 {

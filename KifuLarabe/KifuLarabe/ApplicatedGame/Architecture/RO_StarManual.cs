@@ -1,17 +1,15 @@
 ﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
-    /// 星。
-    /// 
-    /// 先後(駒の向き)と升と配役で表されます。
+    /// 駒種類による指定。
     /// </summary>
-    public class RO_Star
+    public class RO_StarManual
     {
-
-        /// <summary>
+                /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
         /// 現・駒の向き
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -29,17 +27,18 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
 
         /// <summary>
-        /// 駒配役１８４
+        /// 駒種類１４
         /// </summary>
-        public Kh185 Haiyaku { get { return this.haiyaku; } }
-        private Kh185 haiyaku;
+        public Ks14 Syurui { get { return this.syurui; } }
+        private Ks14 syurui;
 
 
-        public RO_Star(Sengo sengo, M201 masu, Kh185 haiyaku)
+        public RO_StarManual(Sengo sengo, M201 masu, Ks14 syurui)
         {
             this.sengo = sengo;
             this.masu = masu;
-            this.haiyaku = haiyaku;
+            this.syurui = syurui;
         }
+
     }
 }

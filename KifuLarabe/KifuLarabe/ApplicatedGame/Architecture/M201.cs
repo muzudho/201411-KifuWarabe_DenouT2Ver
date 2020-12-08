@@ -1,6 +1,7 @@
 ﻿using System;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     public static class M201Array
     {

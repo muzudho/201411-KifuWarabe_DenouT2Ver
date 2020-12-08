@@ -5,8 +5,9 @@ using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneEntities.Sfen;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
 
     /// <summary>

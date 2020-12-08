@@ -1,8 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     public class RO_TeProcess_Syokihaichi : MoveImpl, IMove
     {

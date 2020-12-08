@@ -6,3 +6,4 @@
 * `Kh` - 駒配役
 * `Kk` - 駒軌道 PotentialMove
 * `Ks` - 駒種類
+* `M` - 升
