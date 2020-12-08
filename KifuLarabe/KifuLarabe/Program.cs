@@ -3,8 +3,8 @@ using System.IO;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.UseCase;
 using Nett;
 
 namespace Grayscale.KifuwaraneEntities

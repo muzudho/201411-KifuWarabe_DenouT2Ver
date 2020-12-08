@@ -2,31 +2,29 @@
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     /// <summary>
-    /// 指定局面から始める配置です。
-    /// 
-    /// 「lnsgkgsnl/1r5b1/ppppppppp/9/9/6P2/PPPPPP1PP/1B5R1/LNSGKGSNL w - 1」といった文字の読込み
+    /// 平手の初期配置です。
     /// </summary>
-    public class KifuParserA_StateA1b_SfenLnsgkgsnl : IKifuParserAState
+    public class KifuParserA_StateA1a_SfenStartpos : IKifuParserAState
     {
 
 
-        public static KifuParserA_StateA1b_SfenLnsgkgsnl GetInstance()
+        public static KifuParserA_StateA1a_SfenStartpos GetInstance()
         {
             if (null == instance)
             {
-                instance = new KifuParserA_StateA1b_SfenLnsgkgsnl();
+                instance = new KifuParserA_StateA1a_SfenStartpos();
             }
 
             return instance;
         }
-        private static KifuParserA_StateA1b_SfenLnsgkgsnl instance;
+        private static KifuParserA_StateA1a_SfenStartpos instance;
 
 
 
-        private KifuParserA_StateA1b_SfenLnsgkgsnl()
+        private KifuParserA_StateA1a_SfenStartpos()
         {
         }
 
@@ -45,27 +43,22 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
             try
             {
-                string restText;
-                SfenStartpos sfenStartpos;
-
-                if (!TuginoItte_Sfen.GetDataStartpos_FromText(inputLine, out restText, out sfenStartpos))
+                if (inputLine.StartsWith("moves"))
                 {
-                    // 解析に失敗しました。
-                    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    toBreak = true;
+                    //>>>>> 棋譜が始まります。
+
+                    Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
+
+                    inputLine = inputLine.Substring("moves".Length);
+                    inputLine = inputLine.Trim();
+
+
+                    nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
                 }
                 else
                 {
-                    inputLine = restText;
-
-                    owner.OnRefreshShiteiKyokumen(
-                        kifuD,
-                        ref inputLine,
-                        sfenStartpos,
-                        logTag
-                        );
-
-                    nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
+                    Logger.TraceLine(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
+                    toBreak = true;
                 }
             }
             catch (Exception ex)

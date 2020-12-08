@@ -6,7 +6,7 @@ using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.JapaneseView;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.UseCase
 {
     /// <summary>
     /// 符号(*1)を元に、棋譜データの持ち方に変換します。

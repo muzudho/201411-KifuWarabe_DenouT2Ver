@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.UseCase;
 
-namespace Grayscale.KifuwaraneEntities.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
 
     /// <summary>

@@ -2,7 +2,7 @@
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     /// <summary>
     /// 「position」を読込みました。

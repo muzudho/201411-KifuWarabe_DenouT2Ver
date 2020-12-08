@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.UseCase;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {

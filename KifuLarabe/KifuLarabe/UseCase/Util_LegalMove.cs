@@ -6,7 +6,7 @@ using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L05_Thought;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L06_KifuIO
+namespace Grayscale.KifuwaraneEntities.UseCase
 {
     public abstract class Util_LegalMove
     {

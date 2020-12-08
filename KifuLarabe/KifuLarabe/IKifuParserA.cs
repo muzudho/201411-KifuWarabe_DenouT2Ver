@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities

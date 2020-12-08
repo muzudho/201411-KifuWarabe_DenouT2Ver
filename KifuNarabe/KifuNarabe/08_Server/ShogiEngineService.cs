@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.UseCase;
 using Grayscale.KifuwaraneGui.L09_Ui;
 
 namespace Grayscale.KifuwaraneGui.L08_Server

@@ -8,8 +8,8 @@ using Grayscale.KifuwaraneEngine.L10_Think;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.UseCase;
 using Nett;
 
 namespace Grayscale.KifuwaraneEngine

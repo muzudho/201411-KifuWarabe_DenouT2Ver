@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L02_DammyConsole;
 using Grayscale.KifuwaraneGui.L07_Shape;
