@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneEntities.Misc;
 
 namespace Grayscale.KifuwaraneEngine.L10_Think
@@ -23,7 +24,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="kifu">ツリー構造になっている棋譜</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
-        public static IMove Sasu_Main(Kifu_Document kifu, ILogTag logTag)
+        public static IMove Sasu_Main(TreeDocument kifu, ILogTag logTag)
         {
             //------------------------------------------------------------
             // （＞＿＜）次の１手の合法手の中からランダムに選ぶぜ☆！
@@ -62,7 +63,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            Kifu_Document kifu, ref KomaAndMasusDictionary sasiteList, ILogTag logTag)
+            TreeDocument kifu, ref KomaAndMasusDictionary sasiteList, ILogTag logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -81,7 +82,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                 //------------------------------------------------------------
                 // 合法手の手を、シャッフルした駒順に見ていきます。
                 //------------------------------------------------------------
-                Kifu_Node6 siteiNode = (Kifu_Node6)kifu.ElementAt8(thisTeme);
+                TreeNode6 siteiNode = (TreeNode6)kifu.ElementAt8(thisTeme);
                 //List<K40> komas = komaAndMove.ToKeyList();
                 ShuffleLib<KomaAndMasu>.Shuffle_FisherYates(ref kmList);// 取り出した駒の順序を、てきとーにシャッフル
                 foreach (KomaAndMasu kmPair in kmList)
@@ -119,7 +120,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                     try
                     {
                         IKifuElement dammyNode6 = kifu.ElementAt8(thisTeme);
-                        KomaHouse house1 = dammyNode6.KomaHouse;
+                        PositionKomaHouse house1 = dammyNode6.KomaHouse;
 
                         // 合法手がなかった☆
                         sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
@@ -155,7 +156,7 @@ namespace Grayscale.KifuwaraneEngine.L10_Think
                     try
                     {
                         IKifuElement dammyNode6 = kifu.ElementAt8(thisTeme);
-                        KomaHouse house1 = dammyNode6.KomaHouse;
+                        PositionKomaHouse house1 = dammyNode6.KomaHouse;
 
                         sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
                         sbGohosyu.AppendLine("hMoveKoma=" + KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneEntities.Sfen;
@@ -17,7 +18,7 @@ namespace Grayscale.KifuwaraneEntities.ApplicatedGame
         public static void GetData_FromTextSub(
             SfenMove sfen,
             out IMove move,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
@@ -92,7 +93,7 @@ namespace Grayscale.KifuwaraneEntities.ApplicatedGame
                         for (int i = 0; i <= kifuD.CountTeme(kifuD.Current8); i++)
                         {
                             IKifuElement dammyNode2 = kifuD.ElementAt8(i);
-                            KomaHouse house1 = dammyNode2.KomaHouse;
+                            PositionKomaHouse house1 = dammyNode2.KomaHouse;
 
                             sb.Append(house1.Log_Kyokumen(kifuD, i, "エラー駒になったとき(見直し)"));
                         }
@@ -110,7 +111,7 @@ namespace Grayscale.KifuwaraneEntities.ApplicatedGame
                 M201 srcSq;
 
                 IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house2 = dammyNode3.KomaHouse;
+                PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
                 if (sfen.Dropped)
                 {

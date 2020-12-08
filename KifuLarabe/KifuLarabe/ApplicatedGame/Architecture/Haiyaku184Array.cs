@@ -2,8 +2,9 @@
 using System.IO;
 using System.Text;
 using Grayscale.KifuwaraneEntities.Misc;
+using Grayscale.KifuwaraneEntities.L04_Common;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 駒配役１８４だぜ☆

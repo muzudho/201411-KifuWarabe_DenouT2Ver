@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
@@ -9,7 +10,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <summary>
         /// 駒を、平手の初期配置に並べます。
         /// </summary>
-        public static void ToHirate(Kifu_Document kifuD, ILogTag logTag)
+        public static void ToHirate(TreeDocument kifuD, ILogTag logTag)
         {
 
 
@@ -30,7 +31,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             Okiba okiba = Okiba.ShogiBan;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
             IKifuElement node2 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house1 = node2.KomaHouse;
+            PositionKomaHouse house1 = node2.KomaHouse;
 
             K40 k40;
 
@@ -140,7 +141,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <returns></returns>
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
@@ -234,7 +235,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                         foreach (K40 koma in komas)
                         {
                             IKifuElement dammyNode2 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-                            KomaHouse house1 = dammyNode2.KomaHouse;
+                            PositionKomaHouse house1 = dammyNode2.KomaHouse;
 
                             // 初期配置？
                             house1.SetKomaPos(kifuD, koma, house1.KomaPosAt(koma).Next(

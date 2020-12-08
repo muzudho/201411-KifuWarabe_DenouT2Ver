@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
@@ -1142,7 +1143,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void Paint(
-            object sender, PaintEventArgs e, Kifu_Document kifuD, ILogTag logTag
+            object sender, PaintEventArgs e, TreeDocument kifuD, ILogTag logTag
             )
         {
             if (!this.Visible)

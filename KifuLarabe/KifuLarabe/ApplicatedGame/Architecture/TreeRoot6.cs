@@ -1,10 +1,10 @@
 ﻿using System;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
-    public class Kifu_Root6 : Kifu_Node6
+    public class TreeRoot6 : TreeNode6
     {
         /// <summary>
         /// 初手局面[0]の手番
@@ -25,7 +25,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <param name="sengo"></param>
         public void SetSengo_Root1(Sengo sengo)
         {
-            if (!(this is Kifu_Root6))
+            if (!(this is TreeRoot6))
             {
                 string message = "Kifu_Rootクラスではないのに、SetSengo_Rootメソッドを使用しました。\n this.GetType().Name=[" + this.GetType().Name + "]";
                 Logger.ErrorLine(LogTags.ErrorLog, message);
@@ -36,9 +36,9 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         }
 
 
-        public Kifu_Root6() :
+        public TreeRoot6() :
             base(MoveImpl.NULL_OBJECT,
-            new KomaHouse()
+            new PositionKomaHouse()
             )
         {
             this.sengo = Sengo.Sente;//FIXME:次の手番は先手になります。

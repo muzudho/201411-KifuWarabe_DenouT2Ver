@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 局面
     /// </summary>
-    public class KomaHouse
+    public class PositionKomaHouse
     {
         /// <summary>
         /// 駒台に戻すとき
@@ -19,7 +19,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <param name="kifuD"></param>
         /// <param name="starIndex"></param>
         /// <param name="komaP"></param>
-        public void SetStarPos(Kifu_Document kifuD, int starIndex, IKomaPos komaP)
+        public void SetStarPos(TreeDocument kifuD, int starIndex, IKomaPos komaP)
         {
             if(this.stars.Count==starIndex)
             {
@@ -39,7 +39,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
 
         public void SetKomaPos(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             K40 koma,
             IKomaPos komaP
             ,
@@ -109,19 +109,19 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         private List<IKomaPos> stars;
 
 
-        public KomaHouse()
+        public PositionKomaHouse()
         {
             this.stars = new List<IKomaPos>();
             this.startpos = "未設定";
         }
 
-        public KomaHouse(List<IKomaPos> stars)
+        public PositionKomaHouse(List<IKomaPos> stars)
         {
             this.stars = stars;
             this.startpos = "未設定";
         }
 
-        public KomaHouse(IKomaPos[] items)
+        public PositionKomaHouse(IKomaPos[] items)
         {
             this.stars = items.OfType<IKomaPos>().ToList();
             this.startpos = "未設定";
@@ -248,7 +248,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// 
         /// </summary>
         public string Log_Kyokumen(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             int arrayIndex,
             string memo
             ,
@@ -406,8 +406,8 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
 
 
-        public delegate void DELEGATE_KomaHouse_Foreach(Kifu_Document kifuD, RO_KomaPos koma, ref bool toBreak);
-        public void Foreach_Items(Kifu_Document kifuD, DELEGATE_KomaHouse_Foreach delegate_KomaHouse_Foreach)
+        public delegate void DELEGATE_KomaHouse_Foreach(TreeDocument kifuD, RO_KomaPos koma, ref bool toBreak);
+        public void Foreach_Items(TreeDocument kifuD, DELEGATE_KomaHouse_Foreach delegate_KomaHouse_Foreach)
         {
             bool toBreak = false;
 

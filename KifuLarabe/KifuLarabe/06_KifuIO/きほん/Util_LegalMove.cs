@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L05_Thought;
 using Grayscale.KifuwaraneEntities.Log;
@@ -14,7 +15,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// 王手されていないか、調べます。
         /// </summary>
         public static bool Is_Mate(
-            Kifu_Node6 siteiNode,
+            TreeNode6 siteiNode,
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
             StringBuilder sbGohosyu,
@@ -78,7 +79,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="sbGohosyu"></param>
         /// <param name="logTag"></param>
         public static void GetLegalMove(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             out KomaAndMasusDictionary kmDic_Self,
             ILogTag logTag)
         {
@@ -86,7 +87,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
             // 現在の局面
             int teme_genzai = kifuD.CountTeme(kifuD.Current8);
-            Kifu_Node6 siteiNode_genzai = (Kifu_Node6)kifuD.ElementAt8(teme_genzai);
+            TreeNode6 siteiNode_genzai = (TreeNode6)kifuD.ElementAt8(teme_genzai);
             Sengo sengo_comp = kifuD.CountSengo(teme_genzai);
 
 
@@ -120,7 +121,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                     kmDic_Self,
                     siteiNode_genzai
                     );
-                Dictionary<IMove, KomaHouse> kyokumenList = new Dictionary<IMove, KomaHouse>();
+                Dictionary<IMove, PositionKomaHouse> kyokumenList = new Dictionary<IMove, PositionKomaHouse>();
 
 
 
@@ -143,7 +144,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                     {
                         M201 masu = teProcess.Star.Masu;
 
-                        KomaHouse kyokumen = new KomaHouse();// 局面（デフォルトで、平手初期局面）
+                        PositionKomaHouse kyokumen = new PositionKomaHouse();// 局面（デフォルトで、平手初期局面）
                         kyokumen.Reset_ToHirateSyokihaichi();
                         kyokumen.SetKomaPos(kifuD, koma, RO_KomaPos.Reset(new RO_Star(sengo, masu, Data_HaiyakuTransition.ToHaiyaku(syurui, (int)masu))));
                         kyokumenList.Add(teProcess, kyokumen);
@@ -151,7 +152,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 }
 
                 // ログ出力
-                foreach (KomaHouse house in kyokumenList.Values)
+                foreach (PositionKomaHouse house in kyokumenList.Values)
                 {
                     sbOhteDebug.AppendLine(house.Log_Kyokumen(kifuD, teme, "(a)ひとまず全ての手"));// 局面をテキストで作成
                 }
@@ -161,7 +162,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
                 // compの移動先リスト
                 Dictionary<K40, IMove> enable_teMap = new Dictionary<K40, IMove>();
-                List<Kifu_Node6> enable_nextNodes = new List<Kifu_Node6>();
+                List<TreeNode6> enable_nextNodes = new List<TreeNode6>();
                 foreach (KeyValuePair<K40, List<IMove>> teEntry in teMap_All)
                 {
                     K40 koma = teEntry.Key;
@@ -169,7 +170,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
                     foreach (IMove te in teList)
                     {
-                        Kifu_Node6 nextNode = kifuD.CreateNodeA(
+                        TreeNode6 nextNode = kifuD.CreateNodeA(
                             te.SrcStar,
                             te.Star,
                             te.TottaSyurui
@@ -215,7 +216,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
 
 
-                foreach (Kifu_Node6 nextNode in enable_nextNodes)
+                foreach (TreeNode6 nextNode in enable_nextNodes)
                 {
                     kifuD.AppendChildA_New(
                         nextNode,
@@ -261,7 +262,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 sbOhteDebug.AppendLine("■デバッグ出力(d)enable_nextNodes");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                foreach (Kifu_Node6 nextNode in enable_nextNodes)
+                foreach (TreeNode6 nextNode in enable_nextNodes)
                 {
                     sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
                 }
@@ -275,7 +276,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 //
                 // どの駒が、どの升へ動いたとき、どのような棋譜になるか☆
                 //
-                Dictionary<K40, Dictionary<M201, Kifu_Document>> nextKyokumens = new Dictionary<K40, Dictionary<M201, Kifu_Document>>();
+                Dictionary<K40, Dictionary<M201, TreeDocument>> nextKyokumens = new Dictionary<K40, Dictionary<M201, TreeDocument>>();
 
                 //foreach (string inputLine in sfenList)
                 //{
@@ -298,7 +299,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="sbGohosyu"></param>
         /// <param name="logger"></param>
         public static void GetAvailableMove(
-            Kifu_Node6 siteiNode,
+            TreeNode6 siteiNode,
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
             StringBuilder sbGohosyu,

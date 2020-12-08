@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities
 {
@@ -26,7 +26,7 @@ namespace Grayscale.KifuwaraneEntities
         /// <returns></returns>
         string Execute_Step(
             string inputLine,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ref bool isBreak,
             string hint,
             ILogTag logTag
@@ -44,7 +44,7 @@ namespace Grayscale.KifuwaraneEntities
         /// <param name="larabeLogger"></param>
         void Execute_All(
             string inputLine,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             string hint,
             ILogTag logTag
             ,

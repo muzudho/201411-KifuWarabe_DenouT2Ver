@@ -1,6 +1,7 @@
 ﻿using System.Text;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {
@@ -20,7 +21,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// </summary>
         /// <param name="fugoList"></param>
         public static string ToJapaneseKifuText(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
@@ -28,12 +29,12 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
             sb.Append("position ");
             IKifuElement node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
-            KomaHouse house1 = node1.KomaHouse;
+            PositionKomaHouse house1 = node1.KomaHouse;
             sb.Append(house1.Startpos);
             sb.Append(" moves ");
 
             // 採譜用に、新しい対局を用意します。
-            Kifu_Document saifuKifuD = new Kifu_Document();
+            TreeDocument saifuKifuD = new TreeDocument();
 
             house1.SetStartpos(house1.Startpos);
 
@@ -41,7 +42,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             SyokiHaichi.ToHirate(saifuKifuD,logTag);
 
 
-            kifuD.ForeachA(kifuD.Current8, (int teme, KomaHouse house, Kifu_Node6 node6, ref bool toBreak) =>
+            kifuD.ForeachA(kifuD.Current8, (int teme, PositionKomaHouse house, TreeNode6 node6, ref bool toBreak) =>
             {
                 if(0==teme)
                 {
@@ -61,7 +62,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 //------------------------------
                 // 符号の追加（記録係）
                 //------------------------------
-                Kifu_Node6 newNode = saifuKifuD.CreateNodeA(
+                TreeNode6 newNode = saifuKifuD.CreateNodeA(
                     node6.TeProcess.SrcStar,
                     node6.TeProcess.Star,
                     node6.TeProcess.TottaSyurui
@@ -110,18 +111,18 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// 
         /// </summary>
         /// <param name="fugoList"></param>
-        public static string ToSfenKifuText(Kifu_Document kifuD)
+        public static string ToSfenKifuText(TreeDocument kifuD)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("position ");
             IKifuElement node2 = kifuD.ElementAt8(kifuD.Root7_Teme);
-            KomaHouse house1 = node2.KomaHouse;
+            PositionKomaHouse house1 = node2.KomaHouse;
             sb.Append(house1.Startpos);
             sb.Append(" moves ");
 
             int count = 0;
-            kifuD.ForeachA(kifuD.Current8, (int teme, KomaHouse house, Kifu_Node6 node6, ref bool toBreak) =>
+            kifuD.ForeachA(kifuD.Current8, (int teme, PositionKomaHouse house, TreeNode6 node6, ref bool toBreak) =>
             {
                 if (0 == teme)
                 {

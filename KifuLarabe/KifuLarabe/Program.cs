@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
@@ -147,7 +148,7 @@ namespace Grayscale.KifuwaraneEntities
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
-                Kifu_Document kifuD_dammy = new Kifu_Document();
+                TreeDocument kifuD_dammy = new TreeDocument();
 
                 Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
@@ -166,7 +167,7 @@ namespace Grayscale.KifuwaraneEntities
                 // 先手、飛車先の歩を突く
                 {
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), Ks14.H00_Null), null);
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
@@ -174,7 +175,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、角頭の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -183,7 +184,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 先手、飛車先の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -192,7 +193,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、飛車先の歩を突く（同歩）
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -201,7 +202,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 先手、同飛
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -210,7 +211,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、２三歩打
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -223,7 +224,7 @@ namespace Grayscale.KifuwaraneEntities
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
-                Kifu_Document kifuD_dammy = new Kifu_Document();
+                TreeDocument kifuD_dammy = new TreeDocument();
 
                 Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
@@ -242,7 +243,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 先手、飛車先の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -251,7 +252,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、角頭の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -260,7 +261,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 先手、飛車先の歩を突く
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -269,7 +270,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、飛車先の歩を突く（同歩）
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -278,7 +279,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 先手、同飛
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, Ks14.H07_Hisya), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H07_Hisya), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, Ks14.H07_Hisya), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H07_Hisya), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -287,7 +288,7 @@ namespace Grayscale.KifuwaraneEntities
 
                 // 後手、２三歩打
                 {
-                    Kifu_Node6 newNode = new Kifu_Node6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.LibLog);
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -324,7 +325,7 @@ namespace Grayscale.KifuwaraneEntities
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
-                Kifu_Document kifuD_dammy = new Kifu_Document();
+                TreeDocument kifuD_dammy = new TreeDocument();
 
                 Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
@@ -524,7 +525,7 @@ namespace Grayscale.KifuwaraneEntities
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
-                Kifu_Document kifuD_dammy = new Kifu_Document();
+                TreeDocument kifuD_dammy = new TreeDocument();
 
                 const bool isForward = false;
                 const bool isBack = true;

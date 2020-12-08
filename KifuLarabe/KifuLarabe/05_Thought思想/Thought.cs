@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
@@ -62,7 +63,7 @@ namespace Grayscale.KifuwaraneEntities.L05_Thought
 
                     if (K40Util.OnKoma((int)koma))//エラーは除外
                     {
-                        KomaHouse house1 = siteiNode.KomaHouse;
+                        PositionKomaHouse house1 = siteiNode.KomaHouse;
 
                         if (GameTranslator.Masu_ToOkiba(house1.KomaPosAt(koma).Star.Masu).HasFlag(okiba))
                         {

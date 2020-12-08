@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
@@ -32,7 +33,7 @@ namespace Grayscale.KifuwaraneEntities
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        bool NeverOnaji(Kifu_Document kifuD, ILogTag logTag, params List<K40>[] komaGroupArgs);
+        bool NeverOnaji(TreeDocument kifuD, ILogTag logTag, params List<K40>[] komaGroupArgs);
 
         /// <summary>
         /// 成り
@@ -53,7 +54,7 @@ namespace Grayscale.KifuwaraneEntities
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        bool ExistsIn(IMasus masu2Arr, Kifu_Document kifuD, ILogTag logTag);
+        bool ExistsIn(IMasus masu2Arr, TreeDocument kifuD, ILogTag logTag);
 
         /// <summary>
         /// 外字を利用した、デバッグ用の駒の名前１文字だぜ☆

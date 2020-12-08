@@ -1,6 +1,7 @@
-﻿using Grayscale.KifuwaraneGui.L07_Shape;
-using Grayscale.KifuwaraneEntities.Log;
+﻿using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneGui.L07_Shape;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {
@@ -8,7 +9,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
     {
 
 
-        public static void DrawKomaokuri1(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
+        public static void DrawKomaokuri1(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
         {
             //------------------------------------------------------------
             // 駒・再描画
@@ -26,7 +27,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public static void DrawKomaokuri2(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
+        public static void DrawKomaokuri2(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
         {
             //------------------------------
             // メナス

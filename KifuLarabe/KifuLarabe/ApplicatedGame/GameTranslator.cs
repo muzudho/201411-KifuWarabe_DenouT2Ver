@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.JapaneseView;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
@@ -403,7 +404,7 @@ namespace Grayscale.KifuwaraneEntities.ApplicatedGame
         /// <returns></returns>
         public static Dictionary<K40, List<IMove>> KmDic_ToKtDic(
             KomaAndMasusDictionary kmDic_Self,
-            Kifu_Node6 siteiNode_genzai
+            TreeNode6 siteiNode_genzai
             )
         {
             Dictionary<K40, List<IMove>> teMap_All = new Dictionary<K40, List<IMove>>();

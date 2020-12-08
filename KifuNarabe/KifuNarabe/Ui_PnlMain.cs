@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
@@ -68,7 +69,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             }
         }
 
-        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag)
+        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
         {
             this.flowB = flowB;
             this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
@@ -95,14 +96,14 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// 将棋の状況は全部この中です。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public Kifu_Document Kifu_Document
+        public TreeDocument Kifu_Document
         {
             get
             {
                 return this.kifu_Document;
             }
         }
-        private Kifu_Document kifu_Document;
+        private TreeDocument kifu_Document;
 
         #endregion
 
@@ -174,12 +175,12 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             // 先手駒の利きを表にします。
             bool[] kikiSTable = new bool[Ui_PnlMain.NSQUARE];
 
-            Kifu_Node6 siteiNode = (Kifu_Node6)this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
+            TreeNode6 siteiNode = (TreeNode6)this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
 
             foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente, logTag))
             {
                 IKifuElement dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
-                KomaHouse house5 = dammyNode4.KomaHouse;
+                PositionKomaHouse house5 = dammyNode4.KomaHouse;
 
                 IKomaPos komaP = house5.KomaPosAt(koma);
 
@@ -206,7 +207,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote, logTag))
             {
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
-                KomaHouse house5 = dammyNode5.KomaHouse;
+                PositionKomaHouse house5 = dammyNode5.KomaHouse;
 
                 IKomaPos komaP = house5.KomaPosAt(koma);
 
@@ -230,7 +231,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 K40 koma = komas[ RandomLib.Random.Next(komas.Count)];//ランダムに１つ。
 
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
-                KomaHouse house6 = dammyNode5.KomaHouse;
+                PositionKomaHouse house6 = dammyNode5.KomaHouse;
 
                 IKomaPos komaP = house6.KomaPosAt(koma);
 
@@ -318,7 +319,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
                 //    last = kifuElement.TeProcess;
                 //}
-                Kifu_Node6 node6 = new Kifu_Node6(tuginoItteData,
+                TreeNode6 node6 = new TreeNode6(tuginoItteData,
                     this.kifu_Document.Current8.KomaHouse//FIXME:
                     );
                 tuginoItte = fugoJ.ToText_UseDou(node6);//, last
@@ -432,7 +433,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //
             //      先後や駒など、対局に用いられる事柄、物を事前準備しておきます。
             //
-            this.kifu_Document = new Kifu_Document();
+            this.kifu_Document = new TreeDocument();
 
             //----------
             // ブラシ

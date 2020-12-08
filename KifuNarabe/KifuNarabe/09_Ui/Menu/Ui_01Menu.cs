@@ -2,6 +2,7 @@
 using System.Text;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
@@ -26,7 +27,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD, out string backedInputText, ILogTag logTag)
+            TreeDocument kifuD, out string backedInputText, ILogTag logTag)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -37,7 +38,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //System.Console.WriteLine("ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             IKifuElement removeeLeaf = kifuD.Current8;
 
-            if (removeeLeaf is Kifu_Root6)
+            if (removeeLeaf is TreeRoot6)
             {
                 goto gt_EndMethod;
             }
@@ -127,7 +128,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD, ILogTag logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag);
 
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         public static bool Komaokuri_GUI(
             ref RequestForMain requestForMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
             string hint,
@@ -188,14 +189,14 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <summary>
         /// 将棋盤の上の駒を、全て駒台に移動します。（クリアー）
         /// </summary>
-        public static void ClearKifu(Kifu_Document kifuD)
+        public static void ClearKifu(TreeDocument kifuD)
         {
             kifuD.ClearA();// 棋譜を空っぽにします。
 
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
             IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house5 = dammyNode5.KomaHouse;
+            PositionKomaHouse house5 = dammyNode5.KomaHouse;
 
             K40 k40;
 
@@ -291,7 +292,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
 
             IKifuElement dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
-            KomaHouse house7 = dammyNode6.KomaHouse;
+            PositionKomaHouse house7 = dammyNode6.KomaHouse;
 
             house7.SetStartpos("9/9/9/9/9/9/9/9/9 b K1R1B1G2S2N2L2P9 k1r1b1g2s2n2l2p9 1");
         }
@@ -299,7 +300,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// <summary>
         /// HTML出力。（これは作者のホームページ用に書かれています）
         /// </summary>
-        public static string CreateHtml(Kifu_Document kifuD1)
+        public static string CreateHtml(TreeDocument kifuD1)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -312,9 +313,9 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             sb.Append("            ");
 
             IKifuElement dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
-            KomaHouse house7 = dammyNode6.KomaHouse;
+            PositionKomaHouse house7 = dammyNode6.KomaHouse;
 
-            house7.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
+            house7.Foreach_Items(kifuD1, (TreeDocument kifuD2, RO_KomaPos koma, ref bool toBreak) =>
             {
                 if (M201Util.GetOkiba(koma.Star.Masu) == Okiba.Gote_Komadai)
                 {
@@ -336,9 +337,9 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     bool isSpace = true;
 
                     IKifuElement dammyNode8 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
-                    KomaHouse house8 = dammyNode8.KomaHouse;
+                    PositionKomaHouse house8 = dammyNode8.KomaHouse;
 
-                    house8.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
+                    house8.Foreach_Items(kifuD1, (TreeDocument kifuD2, RO_KomaPos koma, ref bool toBreak) =>
                     {
                         if (
                             M201Util.GetOkiba(koma.Star.Masu) == Okiba.ShogiBan //盤上
@@ -381,9 +382,9 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             sb.Append("            ");
 
             IKifuElement dammyNode7 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
-            KomaHouse house9 = dammyNode7.KomaHouse;
+            PositionKomaHouse house9 = dammyNode7.KomaHouse;
 
-            house9.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
+            house9.Foreach_Items(kifuD1, (TreeDocument kifuD2, RO_KomaPos koma, ref bool toBreak) =>
             {
                 if (M201Util.GetOkiba(koma.Star.Masu) == Okiba.Sente_Komadai)
                 {

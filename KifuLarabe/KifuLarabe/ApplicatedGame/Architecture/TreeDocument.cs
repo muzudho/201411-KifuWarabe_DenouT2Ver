@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 棋譜。
     /// </summary>
-    public class Kifu_Document
+    public class TreeDocument
     {
         /// <summary>
         /// ツリー構造になっている本譜の葉ノード。
@@ -20,9 +20,9 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         public IKifuElement Current8 { get { return this.current8; } }
         private IKifuElement current8;
 
-        public Kifu_Document()
+        public TreeDocument()
         {
-            this.current8 = new Kifu_Root6();
+            this.current8 = new TreeRoot6();
 
             Logger.TraceLine(LogTags.LinkedListLog, "リンクトリストは作られた"+this.DebugText_Kyokumen7(this, "ルートが追加されたはずだぜ☆"));
         }
@@ -46,7 +46,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         {
             IKifuElement deleteeElement = null;
 
-            if (this.Current8 is Kifu_Root6)
+            if (this.Current8 is TreeRoot6)
             {
                 // やってはいけない操作は、例外を返すようにします。
                 string message = "ルート局面を削除しようとしました。";
@@ -133,7 +133,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// 
         /// 駒袋には、不成にして入れておきます。
         /// </summary>
-        public void SetKyokumen_ToKomabukuro3(Kifu_Document kifuD, ILogTag logTag)
+        public void SetKyokumen_ToKomabukuro3(TreeDocument kifuD, ILogTag logTag)
         {
             this.ClearA();//this.Clear8();
 
@@ -141,7 +141,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
             foreach (K40 koma in K40Array.Items_KomaOnly)
             {
-                KomaHouse house1 = kifuD.ElementAt8(lastTeme).KomaHouse;
+                PositionKomaHouse house1 = kifuD.ElementAt8(lastTeme).KomaHouse;
 
                 IKomaPos komaP = house1.KomaPosAt(koma);
 
@@ -160,7 +160,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <summary>
         /// [ここから採譜]機能
         /// </summary>
-        public void SetStartpos_KokokaraSaifu(Kifu_Document kifuD, Sengo sengo, ILogTag logTag)
+        public void SetStartpos_KokokaraSaifu(TreeDocument kifuD, Sengo sengo, ILogTag logTag)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -184,7 +184,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                             spaceCount = 0;
                         }
 
-                        KomaHouse house1 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8)).KomaHouse;
+                        PositionKomaHouse house1 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8)).KomaHouse;
 
                         sb.Append(KomaSyurui14Array.SfenText(
                             Haiyaku184Array.Syurui(house1.KomaPosAt(hKoma).Star.Haiyaku),
@@ -257,7 +257,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                 foreach (K40 koma in komasS)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house2 = dammyNode3.KomaHouse;
+                    PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
                     Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
 
@@ -303,7 +303,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                 foreach (K40 koma in komasG)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house2 = dammyNode3.KomaHouse;
+                    PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
                     Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
 
@@ -459,7 +459,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             this.ClearA();// this.Clear8();
 
             IKifuElement dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);
-            KomaHouse house3 = dammyNode6.KomaHouse;
+            PositionKomaHouse house3 = dammyNode6.KomaHouse;
 
             house3.SetStartpos(sb.ToString());
         }
@@ -468,7 +468,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// 
         /// </summary>
         public string DebugText_Kyokumen7(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             string memo
             ,
             [CallerMemberName] string memberName = "",
@@ -476,7 +476,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            KomaHouse house4 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8)).KomaHouse;
+            PositionKomaHouse house4 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8)).KomaHouse;
 
             return house4.Log_Kyokumen(kifuD, kifuD.CountTeme(kifuD.Current8), memo);
         }
@@ -487,7 +487,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <param name="teme">手目</param>
         /// <param name="item"></param>
         /// <param name="toBreak"></param>
-        public delegate void DELEGATE_Foreach(int teme, KomaHouse house, Kifu_Node6 item, ref bool toBreak);
+        public delegate void DELEGATE_Foreach(int teme, PositionKomaHouse house, TreeNode6 item, ref bool toBreak);
         public void ForeachA(IKifuElement endNode, DELEGATE_Foreach delegate_Foreach)
         {
             bool toBreak = false;
@@ -512,9 +512,9 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
             int teme = 0;//初期局面が[0]
 
-            foreach (Kifu_Node6 item in list8)//正順になっています。
+            foreach (TreeNode6 item in list8)//正順になっています。
             {
-                KomaHouse house = item.KomaHouse;
+                PositionKomaHouse house = item.KomaHouse;
 
                 delegate_Foreach(teme, house, item, ref toBreak);
                 if (toBreak)
@@ -538,10 +538,10 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <param name="hint"></param>
         /// <param name="logTag"></param>
         public void AppendChild_Main(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             //TeProcess item,
             //KomaHouse newHouse,
-            Kifu_Node6 newNode,
+            TreeNode6 newNode,
             string hint,
             ILogTag logTag
             )
@@ -566,22 +566,22 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         }
 
 
-        public Kifu_Node6 CreateNodeA(
+        public TreeNode6 CreateNodeA(
             RO_Star srcStar,
             RO_Star dstStar,
             Ks14 tottaSyurui
             )
         {
             // 最後尾をコピーして、最後尾に付け加えます。
-            KomaHouse newHouse;
+            PositionKomaHouse newHouse;
             {
-                KomaHouse latestHouse = this.ElementAt8(this.CountTeme(this.Current8)).KomaHouse;
+                PositionKomaHouse latestHouse = this.ElementAt8(this.CountTeme(this.Current8)).KomaHouse;
 
                 //Array dst = new RO_KomaPos[lastHouse.Stars.Length];
                 //Array.Copy(lastHouse.Stars, dst, lastHouse.Stars.Length);
                 //newHouse = new KomaHouse((RO_KomaPos[])dst);// RO_KomaPos[K40Array.Items_KomaOnly.Length];
 
-                newHouse = new KomaHouse(latestHouse.Stars);
+                newHouse = new PositionKomaHouse(latestHouse.Stars);
 
                 Logger.TraceLine(LogTags.LinkedListLog, newHouse.Log_Kyokumen(this, this.CountTeme(this.Current8), "増えたニュー局面"));
             }
@@ -602,7 +602,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                 throw new Exception(message);
             }
 
-            return new Kifu_Node6(item, newHouse);
+            return new TreeNode6(item, newHouse);
         }
 
         /// <summary>
@@ -620,7 +620,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             //RO_Star srcStar,
             //RO_Star dstStar,
             //Ks14 tottaSyurui,
-            Kifu_Node6 newNode,
+            TreeNode6 newNode,
             string hint,
             ILogTag logTag
 
@@ -643,7 +643,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// <param name="process"></param>
         public void AppendChildB_Swap(
             Ks14 tottaSyurui,
-            KomaHouse newHouse,
+            PositionKomaHouse newHouse,
             string hint,
             ILogTag logTag
 
@@ -675,7 +675,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                 throw new Exception(message);
             }
 
-            Kifu_Node6 newNode = new Kifu_Node6(item, newHouse);//, Converter04.AlternateSengo(this.Current2.Sengo)
+            TreeNode6 newNode = new TreeNode6(item, newHouse);//, Converter04.AlternateSengo(this.Current2.Sengo)
             this.AppendChild_Main(this, newNode, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead", logTag);
             //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead", logTag);
 
@@ -691,7 +691,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         public void ClearA()
         {
             // ルートまで遡ります。
-            while (!(this.Current8 is Kifu_Root6))
+            while (!(this.Current8 is TreeRoot6))
             {
                 this.current8 = this.Current8.Previous;
             }
@@ -702,11 +702,11 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             Logger.TraceLine(LogTags.LinkedListLog, "リンクトリストは、クリアーされた");
         }
 
-        public Kifu_Root6 GetRoot8()
+        public TreeRoot6 GetRoot8()
         {
             IKifuElement cur = this.Current8;
 
-            while (!(cur is Kifu_Root6))
+            while (!(cur is TreeRoot6))
             {
                 cur = cur.Previous;
 
@@ -718,7 +718,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
                 }
             }
 
-            return (Kifu_Root6)cur;
+            return (TreeRoot6)cur;
         }
 
         public int Root7_Teme { get { return 0; } }
@@ -733,7 +733,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             // [0]初期局面 は必ず入っているので、ループが１回も回らないということはないはず。
             int countTeme = -1;
 
-            this.ForeachA(element, (int teme2, KomaHouse house, Kifu_Node6 node6, ref bool toBreak) =>
+            this.ForeachA(element, (int teme2, PositionKomaHouse house, TreeNode6 node6, ref bool toBreak) =>
             {
                 countTeme = teme2;
             });
@@ -754,7 +754,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         {
             IKifuElement found6 = null;
 
-            this.ForeachA(this.Current8, (int teme2, KomaHouse house5, Kifu_Node6 node6, ref bool toBreak) =>
+            this.ForeachA(this.Current8, (int teme2, PositionKomaHouse house5, TreeNode6 node6, ref bool toBreak) =>
             {
                 if (teme1 == teme2) //新Verは 0 にも対応。 teme1が 0 のとき、配列Verは 1 スタートなので、スルーされるので、このループに入る前に処理しておきます。
                 {

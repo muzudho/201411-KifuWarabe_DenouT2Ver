@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
 {

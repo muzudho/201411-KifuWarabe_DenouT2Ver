@@ -7,6 +7,7 @@ using Grayscale.KifuwaraneEngine.L01_Log;
 using Grayscale.KifuwaraneEngine.L10_Think;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
@@ -547,7 +548,7 @@ namespace Grayscale.KifuwaraneEngine
                     PerformanceMetrics performanceMetrics = new PerformanceMetrics();
 
 
-                    Kifu_Document kifuD = new Kifu_Document();
+                    TreeDocument kifuD = new TreeDocument();
 
                     while (true)
                     {
@@ -982,7 +983,7 @@ namespace Grayscale.KifuwaraneEngine
                                 // ┏━━━━サンプル・プログラム━━━━┓
 
                                 int latestTeme = kifuD.CountTeme(kifuD.Current8);//現・手目
-                                KomaHouse genKyokumen = kifuD.ElementAt8(latestTeme).KomaHouse;//現局面
+                                PositionKomaHouse genKyokumen = kifuD.ElementAt8(latestTeme).KomaHouse;//現局面
 
                                 Logger.TraceLine(logTag, "将棋サーバー「"+latestTeme+"手目、きふわらべ　さんの手番ですよ！」　" + line);
 

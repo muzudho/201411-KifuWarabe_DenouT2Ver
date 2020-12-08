@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {
@@ -123,7 +124,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             string text,
             out string restText,
             out IMove move,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {

@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
@@ -20,7 +21,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="underKoma"></param>
         public static void Ittesasi3(
             IMove teProcess,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
@@ -92,7 +93,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         private static void Kifusasi25(
             out K40 movedKoma,
             IMove teProcess,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             bool isBack,
             ILogTag logTag
             ,
@@ -128,7 +129,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 //------------------------------
                 // 符号の追加（一手進む）
                 //------------------------------
-                Kifu_Node6 newNode = kifuD.CreateNodeA(
+                TreeNode6 newNode = kifuD.CreateNodeA(
                     teProcess.SrcStar,
                     teProcess.Star,
                     teProcess.TottaSyurui
@@ -220,7 +221,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         private static IKomaPos Kifusasi35(
             Ks14 syurui2,
             IMove te,
-            Kifu_Document kifuD, bool back)
+            TreeDocument kifuD, bool back)
         {
             IKomaPos dst;
             if (back)
@@ -288,7 +289,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             ref K40 movedKoma,
             out K40 underKoma,
             IMove teProcess,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             bool back,
             ILogTag logTag
             )
@@ -320,7 +321,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                     //System.Console.WriteLine("☆指した先に駒がありました。");
 
                     IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house1 = dammyNode2.KomaHouse;
+                    PositionKomaHouse house1 = dammyNode2.KomaHouse;
 
                     IKomaPos tottaKomaP = house1.KomaPosAt(underKoma);
                     tottaKomaSyurui = Haiyaku184Array.Syurui(tottaKomaP.Star.Haiyaku);
@@ -342,7 +343,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
                                     // 取られる動き
                                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                                    KomaHouse house2 = dammyNode3.KomaHouse;
+                                    PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
                                     house2.SetKomaPos(kifuD, underKoma,
                                         tottaKomaP.Next(
@@ -385,7 +386,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
                                     // 取られる動き
                                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                                    KomaHouse house2 = dammyNode3.KomaHouse;
+                                    PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
                                     house2.SetKomaPos(
                                         kifuD, underKoma, tottaKomaP.Next(
@@ -432,7 +433,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                     // 成りは解除。
                     //------------------------------
                     IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house3 = dammyNode4.KomaHouse;
+                    PositionKomaHouse house3 = dammyNode4.KomaHouse;
                     switch (
                         M201Util.GetOkiba(house3.KomaPosAt(underKoma).Star.Masu)
                         )
@@ -478,7 +479,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                     //MessageBox.Show("tottaKomaSyurui=[" + tottaKomaSyurui + "]", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     IKifuElement dammy1 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-                    KomaHouse house9 = dammy1.KomaHouse;
+                    PositionKomaHouse house9 = dammy1.KomaHouse;
                     kifuD.AppendChildB_Swap(
                         tottaKomaSyurui,
                         house9,
@@ -502,7 +503,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             // 駒の移動
             //------------------------------------------------------------
             IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house4 = dammyNode5.KomaHouse;
+            PositionKomaHouse house4 = dammyNode5.KomaHouse;
 
             house4.SetKomaPos(kifuD, movedKoma, dst);
 
@@ -558,7 +559,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="okiba">先手駒台、または後手駒台</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>置ける場所。無ければヌル。</returns>
-        public static M201 GetKomadaiKomabukuroSpace(Okiba okiba, Kifu_Document kifuD1)
+        public static M201 GetKomadaiKomabukuroSpace(Okiba okiba, TreeDocument kifuD1)
         {
             M201 akiMasu = M201.Error;
 
@@ -566,9 +567,9 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             bool[] exists = new bool[M201Util.KOMADAI_KOMABUKURO_SPACE_LENGTH];//駒台スペースは40マスです。
 
             IKifuElement dammyNode6 = kifuD1.ElementAt8(kifuD1.CountTeme(kifuD1.Current8));
-            KomaHouse house4 = dammyNode6.KomaHouse;
+            PositionKomaHouse house4 = dammyNode6.KomaHouse;
 
-            house4.Foreach_Items(kifuD1, (Kifu_Document kifuD2, RO_KomaPos koma, ref bool toBreak) =>
+            house4.Foreach_Items(kifuD1, (TreeDocument kifuD2, RO_KomaPos koma, ref bool toBreak) =>
             {
                 if (M201Util.GetOkiba(koma.Star.Masu) == okiba)
                 {

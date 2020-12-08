@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
 {
@@ -200,7 +201,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
         /// 全ての駒の、全ての升の、ログ文字列作成。
         /// </summary>
         /// <returns></returns>
-        public string Log_AllKomaMasus(Kifu_Document kifu)
+        public string Log_AllKomaMasus(TreeDocument kifu)
         {
             StringBuilder sb1 = new StringBuilder();
 
@@ -208,7 +209,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
             Sengo sengo = kifu.CountSengo(teme);// 先後
             this.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
             {
-                KomaHouse kyokumen = new KomaHouse();// 局面（デフォルトで、平手初期局面）
+                PositionKomaHouse kyokumen = new PositionKomaHouse();// 局面（デフォルトで、平手初期局面）
 
                 K40 koma = entry.Key;// 駒
                 Ks14 syurui = Ks14Converter.FromKoma(koma);// Haiyaku184Array.Syurui(kyokumen.Stars[(int)koma].Star.Haiyaku);//駒の種類

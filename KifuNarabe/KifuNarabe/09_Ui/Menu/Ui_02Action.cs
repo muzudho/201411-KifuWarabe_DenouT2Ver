@@ -2,6 +2,7 @@
 using System.Drawing;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
@@ -27,7 +28,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             Shape_BtnKoma btnKoma_Selected,
             Shape_BtnMasu btnMasu,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
@@ -56,7 +57,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
             Ks14 tottaKomaSyurui;
             IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house1 = dammyNode1.KomaHouse;
+            PositionKomaHouse house1 = dammyNode1.KomaHouse;
 
             IKomaPos dst = house1.KomaPosAt(btnKoma_Selected.Koma).Next(
                     house1.KomaPosAt(btnKoma_Selected.Koma).Star.Sengo,
@@ -83,7 +84,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 //>>>>> 駒があったとき
                 //MessageBox.Show("取る駒があったとき", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house2 = dammyNode2.KomaHouse;
+                PositionKomaHouse house2 = dammyNode2.KomaHouse;
 
                 tottaKomaSyurui = Haiyaku184Array.Syurui(house2.KomaPosAt(btnKoma_Under.Koma).Star.Haiyaku);
 
@@ -99,7 +100,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             // 駒台に空きスペースがありました。
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                             IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                            KomaHouse house3 = dammyNode3.KomaHouse;
+                            PositionKomaHouse house3 = dammyNode3.KomaHouse;
 
                             // 取られる動き
                             house3.SetKomaPos(kifuD, btnKoma_Under.Koma, house3.KomaPosAt(btnKoma_Under.Koma).Next(
@@ -115,7 +116,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                             // エラー：　駒台に空きスペースがありませんでした。
                             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                             IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                            KomaHouse house3 = dammyNode3.KomaHouse;
+                            PositionKomaHouse house3 = dammyNode3.KomaHouse;
 
                             // 取られる動き
                             house3.SetKomaPos(kifuD, btnKoma_Under.Koma, house3.KomaPosAt(btnKoma_Under.Koma).Next(
@@ -145,7 +146,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
                             // 取られる動き
                             IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                            KomaHouse house4 = dammyNode3.KomaHouse;
+                            PositionKomaHouse house4 = dammyNode3.KomaHouse;
 
                             house4.SetKomaPos(kifuD, btnKoma_Under.Koma, house4.KomaPosAt(btnKoma_Under.Koma).Next(
                                 Sengo.Sente,
@@ -162,7 +163,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
                             // 取られる動き
                             IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                            KomaHouse house4 = dammyNode3.KomaHouse;
+                            PositionKomaHouse house4 = dammyNode3.KomaHouse;
 
                             house4.SetKomaPos(kifuD, btnKoma_Under.Koma, house4.KomaPosAt(btnKoma_Under.Koma).Next(
                                 Sengo.Sente,
@@ -185,7 +186,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                 // 成りは解除。
                 //------------------------------
                 IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house5 = dammyNode4.KomaHouse;
+                PositionKomaHouse house5 = dammyNode4.KomaHouse;
 
                 switch (M201Util.GetOkiba(house5.KomaPosAt(btnKoma_Under.Koma).Star.Masu))
                 {
@@ -195,7 +196,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                         IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
-                        KomaHouse house6 = dammyNode5.KomaHouse;
+                        PositionKomaHouse house6 = dammyNode5.KomaHouse;
 
                         Ks14 syurui2 = house6.KomaPosAt(btnKoma_Under.Koma).ToFunariCase();
 
@@ -251,7 +252,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
             //      選択している駒を、その場所に移動させます。
             //
             IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house7 = dammyNode6.KomaHouse;
+            PositionKomaHouse house7 = dammyNode6.KomaHouse;
 
             house7.SetKomaPos(kifuD, btnKoma_Selected.Koma, dst);
 
@@ -272,7 +273,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         public static void Refresh_KomabukuroToKomadai(
             SfenStartpos sfenStartpos,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
         )
         {
@@ -545,7 +546,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
                     M201 akiMasu = KifuIO.GetKomadaiKomabukuroSpace(itaruOkiba, kifuD);
 
                     IKifuElement dammyNode7 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house10 = dammyNode7.KomaHouse;
+                    PositionKomaHouse house10 = dammyNode7.KomaHouse;
 
                     house10.SetKomaPos(kifuD, koma, house10.KomaPosAt(koma).Next(
                         itaruSengo,
@@ -583,14 +584,14 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         public static void Refresh_KomaLocation(
             K40 koma,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
             int curHou = kifuD.CountTeme(kifuD.Current8);
 
             IKifuElement dammyNode1 = kifuD.ElementAt8(curHou);
-            KomaHouse house10 = dammyNode1.KomaHouse;
+            PositionKomaHouse house10 = dammyNode1.KomaHouse;
 
             IKomaPos komaP = house10.KomaPosAt(koma);
             Shape_BtnKoma btnKoma = Converter09.KomaToBtn(koma, shape_PnlTaikyoku);

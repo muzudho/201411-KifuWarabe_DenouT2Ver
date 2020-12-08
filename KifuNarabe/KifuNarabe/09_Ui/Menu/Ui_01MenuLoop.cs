@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {
@@ -18,7 +19,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         public static void Saisei(
             Ui_PnlMain ui_PnlMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {

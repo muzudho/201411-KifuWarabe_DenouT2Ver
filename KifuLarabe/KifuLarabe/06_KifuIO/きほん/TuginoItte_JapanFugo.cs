@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.JapaneseView;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
@@ -24,7 +25,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out IMove process, Kifu_Document kifuD, ILogTag logTag)
+            string text, out string restText, out IMove process, TreeDocument kifuD, ILogTag logTag)
         {
             process = null;
             bool successful = false;
@@ -106,7 +107,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
             string strNariFunari, //成|不成
             string strDaHyoji, //打
             out IMove process,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag
             )
         {
@@ -1016,7 +1017,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house4 = dammyNode6.KomaHouse;
+                PositionKomaHouse house4 = dammyNode6.KomaHouse;
 
                 srcMasuHandle1 = (int)house4.KomaPosAt(foundKoma).Star.Masu;
             }
@@ -1046,7 +1047,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 K40 hitKoma = komaHandles[0];//▲！コマ送りボタンを連打すると、エラーになります。
 
                 IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house4 = dammyNode6.KomaHouse;
+                PositionKomaHouse house4 = dammyNode6.KomaHouse;
                 srcMasuHandle1 = (int)house4.KomaPosAt(hitKoma).Star.Masu;
             }
 
@@ -1091,7 +1092,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, Kifu_Document kifuD, out K40 foundKoma, ILogTag logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, TreeDocument kifuD, out K40 foundKoma, ILogTag logTag)
         {
             bool hit = false;
             foundKoma = K40.Error;
@@ -1103,7 +1104,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
                 foreach(K40 koma in K40Array.Items_KomaOnly)
                 {
                     IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
-                    KomaHouse house4 = dammyNode6.KomaHouse;
+                    PositionKomaHouse house4 = dammyNode6.KomaHouse;
 
                     IKomaPos komaP2 = house4.KomaPosAt(koma);
 

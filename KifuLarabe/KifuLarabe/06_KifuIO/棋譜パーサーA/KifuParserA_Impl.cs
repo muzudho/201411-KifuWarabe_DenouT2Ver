@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {
     public delegate void RefreshHirateDelegate(
-        Kifu_Document kifuD, ILogTag logTag
+        TreeDocument kifuD, ILogTag logTag
     );
     public delegate void RefreshShiteiKyokumenDelegate(
-        Kifu_Document kifuD,
+        TreeDocument kifuD,
         ref string restText,
         SfenStartpos sfenStartpos,
         ILogTag logTag
     );
     public delegate void IttesasiPaintDelegate(
-        Kifu_Document kifuD,
+        TreeDocument kifuD,
         string restText,
         K40 movedKoma,
         //K40 tottaKoma,
@@ -55,13 +56,13 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 
 
         private void Dammy_RefreshHirate(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ILogTag logTag)
         {
         }
 
         private void Dammy_RefreshShiteiKyokumen(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
             ILogTag logTag
@@ -70,7 +71,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         }
 
         private void Dammy_IttesasiPaint(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             string restText,
             K40 movedKoma,
             //K40 tottaKoma,
@@ -91,7 +92,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <returns></returns>
         public string Execute_Step(
             string inputLine,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ref bool isBreak,
             string hint,
             ILogTag logTag
@@ -133,7 +134,7 @@ namespace Grayscale.KifuwaraneEntities.L06_KifuIO
         /// <param name="larabeLogger"></param>
         public void Execute_All(
             string inputLine,
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             string hint,
             ILogTag logTag
             ,

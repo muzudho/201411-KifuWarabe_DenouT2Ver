@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
 namespace Grayscale.KifuwaraneEntities
 {
@@ -8,8 +8,8 @@ namespace Grayscale.KifuwaraneEntities
         /// <summary>
         /// 配列型。[0]平手局面、[1]１手目の局面……。リンクリスト→ツリー構造の順に移行を進めたい。
         /// </summary>
-        KomaHouse KomaHouse { get; }
-        void SetKomaHouse(KomaHouse value);
+        PositionKomaHouse KomaHouse { get; }
+        void SetKomaHouse(PositionKomaHouse value);
 
 
 

@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneGui.L02_DammyConsole;
-using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneGui.L02_DammyConsole;
+using Grayscale.KifuwaraneGui.L07_Shape;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {
@@ -30,7 +31,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         /// ＜棋譜読込用＞＜マウス入力非対応＞
         /// </summary>
         public bool ReadLine_TuginoItteSusumu(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ref bool toBreak,
             string hint
             ,
@@ -125,7 +126,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
 
-        public void RefreshHirate(Kifu_Document kifuD, ILogTag logTag)
+        public void RefreshHirate(TreeDocument kifuD, ILogTag logTag)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
@@ -139,7 +140,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
 
 
         public void RefreshShiteiKyokumen(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             ref string restText,
             SfenStartpos sfenStartpos,
             ILogTag logTag
@@ -164,7 +165,7 @@ namespace Grayscale.KifuwaraneGui.L09_Ui
         }
 
         public void IttesasiPaint(
-            Kifu_Document kifuD,
+            TreeDocument kifuD,
             string restText,
             K40 movedKoma,
             //K40 tottaKoma2,

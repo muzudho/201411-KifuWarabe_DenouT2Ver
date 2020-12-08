@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L09_Ui;
@@ -124,7 +124,7 @@ namespace Grayscale.KifuwaraneGui.L08_Server
         /// <summary>
         /// 手番が替わったときの挙動を、ここに書きます。
         /// </summary>
-        public static void Message_ChangeTurn(Kifu_Document kifuD, ILogTag logTag)
+        public static void Message_ChangeTurn(TreeDocument kifuD, ILogTag logTag)
         {
 
 

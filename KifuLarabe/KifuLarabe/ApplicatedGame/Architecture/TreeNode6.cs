@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
-    public class Kifu_Node6 : IKifuElement
+    public class TreeNode6 : IKifuElement
     {
         /// <summary>
         /// 配列型。[0]平手局面、[1]１手目の局面……。リンクリスト→ツリー構造の順に移行を進めたい。
         /// </summary>
-        public KomaHouse KomaHouse { get { return this.komaHouse; } }
-        public void SetKomaHouse(KomaHouse house) { this.komaHouse=house; }
-        protected KomaHouse komaHouse;
+        public PositionKomaHouse KomaHouse { get { return this.komaHouse; } }
+        public void SetKomaHouse(PositionKomaHouse house) { this.komaHouse=house; }
+        protected PositionKomaHouse komaHouse;
 
 
 
@@ -33,7 +33,7 @@ namespace Grayscale.KifuwaraneEntities.L04_Common
 
 
 
-        public Kifu_Node6(IMove teProcess, KomaHouse house)
+        public TreeNode6(IMove teProcess, PositionKomaHouse house)
         {
             this.Previous = null;
             this.teProcess = teProcess;

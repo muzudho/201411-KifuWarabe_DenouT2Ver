@@ -2,6 +2,7 @@
 using System.Drawing;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
@@ -118,7 +119,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
         /// </summary>
         /// <param name="g1"></param>
         /// <param name="kyokumen"></param>
-        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, Kifu_Document kifuD,ILogTag logTag)
+        public void Paint(Graphics g1, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD,ILogTag logTag)
         {
             if (!this.Visible)
             {
@@ -158,7 +159,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
                 }
 
                 IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                KomaHouse house4 = dammyNode3.KomaHouse;
+                PositionKomaHouse house4 = dammyNode3.KomaHouse;
 
                 if (house4.KomaPosAt(this.Koma).Star.Sengo == Sengo.Sente)
                 {
@@ -175,7 +176,7 @@ namespace Grayscale.KifuwaraneGui.L07_Shape
             //----------
 
             IKifuElement dammyNode4 = kifuD.ElementAt8(lastTeme);
-            KomaHouse house5 = dammyNode4.KomaHouse;
+            PositionKomaHouse house5 = dammyNode4.KomaHouse;
 
             IKomaPos komaP = house5.KomaPosAt(this.Koma);
             if (komaP.Star.Sengo == Sengo.Sente)
