@@ -7,3 +7,4 @@
 * `Kk` - 駒軌道 PotentialMove
 * `Ks` - 駒種類
 * `M` - 升
+* `Mi` - 道。

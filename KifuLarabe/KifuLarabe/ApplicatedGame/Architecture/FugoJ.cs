@@ -3,7 +3,7 @@ using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.JapaneseView;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
 
     /// <summary>

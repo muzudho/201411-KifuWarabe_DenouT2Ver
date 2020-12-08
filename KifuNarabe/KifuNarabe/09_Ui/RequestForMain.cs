@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui
 {

@@ -1,8 +1,4 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L04_Common;
-
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 星。

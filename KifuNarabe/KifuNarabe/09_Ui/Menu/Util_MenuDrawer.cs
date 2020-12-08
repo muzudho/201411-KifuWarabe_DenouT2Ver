@@ -1,5 +1,4 @@
 ﻿using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L07_Shape;
 

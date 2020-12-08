@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Grayscale.KifuwaraneEntities.Misc;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities.L04_Common
+namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 「1,上一,１九,１八,１七,１六,１五,１四,１三,１二,１一」を、

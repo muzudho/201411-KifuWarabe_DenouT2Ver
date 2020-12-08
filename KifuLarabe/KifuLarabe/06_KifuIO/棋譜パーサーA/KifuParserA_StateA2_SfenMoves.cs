@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.L06_KifuIO

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneEntities.L05_Thought
 {

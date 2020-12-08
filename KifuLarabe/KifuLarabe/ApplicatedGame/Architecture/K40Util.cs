@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.L04_Common
+﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     public abstract class K40Util
     {

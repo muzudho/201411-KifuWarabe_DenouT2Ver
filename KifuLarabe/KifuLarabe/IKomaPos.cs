@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities

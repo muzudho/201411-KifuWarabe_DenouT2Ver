@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture

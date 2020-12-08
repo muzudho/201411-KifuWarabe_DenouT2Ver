@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
 using Grayscale.KifuwaraneEntities.JapaneseView;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame

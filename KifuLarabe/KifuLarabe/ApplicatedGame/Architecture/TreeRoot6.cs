@@ -1,5 +1,4 @@
 ﻿using System;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture

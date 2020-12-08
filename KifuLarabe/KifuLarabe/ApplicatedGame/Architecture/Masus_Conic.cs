@@ -1,6 +1,4 @@
-﻿using Grayscale.KifuwaraneEntities.L04_Common;
-
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 元位置から、放射状に伸びる有向線分のリスト。

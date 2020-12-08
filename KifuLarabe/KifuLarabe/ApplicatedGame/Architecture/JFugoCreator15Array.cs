@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Grayscale.KifuwaraneEntities.JapaneseView;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture

@@ -1,7 +1,4 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.L04_Common;
-
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 足し算、引き算をしたいときなどに使います。
