@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.L03_Communication
+﻿namespace Grayscale.KifuwaraneEntities.JapaneseView
 {
     /// <summary>
     /// 駒の動作(*1)です。

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using Grayscale.KifuwaraneGui.L09_Ui;
-using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.KifuwaraneGui.L09_Ui;
 
 namespace Grayscale.KifuwaraneGui.L08_Server
 {

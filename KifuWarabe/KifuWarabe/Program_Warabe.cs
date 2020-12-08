@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 using Grayscale.KifuwaraneEngine.L01_Log;
 using Grayscale.KifuwaraneEngine.L10_Think;
 using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
 using Nett;
 
 namespace Grayscale.KifuwaraneEngine

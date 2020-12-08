@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using Grayscale.KifuwaraneEntities;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneGui.L07_Shape;
 using Grayscale.KifuwaraneGui.L08_Server;
-using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L03_Communication;
-using Grayscale.KifuwaraneEntities.L04_Common;
 using Nett;
 
 namespace Grayscale.KifuwaraneGui.L09_Ui

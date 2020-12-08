@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.L03_Communication
+﻿namespace Grayscale.KifuwaraneEntities.JapaneseView
 {
     /// <summary>
     /// 駒の相対位置(*1)です。

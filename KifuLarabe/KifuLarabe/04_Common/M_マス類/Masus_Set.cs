@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L03_Communication;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
 {

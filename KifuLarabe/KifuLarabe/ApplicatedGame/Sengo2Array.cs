@@ -1,6 +1,4 @@
-﻿using Grayscale.KifuwaraneEntities.L03_Communication;
-
-namespace Grayscale.KifuwaraneEntities
+﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {
     public class Sengo2Array
     {

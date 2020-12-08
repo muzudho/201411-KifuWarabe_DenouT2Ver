@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.ApplicatedGame;
 using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.L06_KifuIO;
+using Grayscale.KifuwaraneEntities.Log;
 using Nett;
 
 namespace Grayscale.KifuwaraneEntities

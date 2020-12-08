@@ -2,8 +2,6 @@
 using System.Drawing;
 using Grayscale.KifuwaraneEntities;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L03_Communication;
 using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneGui.L07_Shape

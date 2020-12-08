@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L03_Communication;
+using Grayscale.KifuwaraneEntities.JapaneseView;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
 {

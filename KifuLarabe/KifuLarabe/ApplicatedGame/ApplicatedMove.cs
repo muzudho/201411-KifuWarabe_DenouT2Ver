@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Text;
+using Grayscale.KifuwaraneEntities.L04_Common;
 using Grayscale.KifuwaraneEntities.Log;
 using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L03_Communication;
-using Grayscale.KifuwaraneEntities.L04_Common;
 
 namespace Grayscale.KifuwaraneEntities.ApplicatedGame
 {

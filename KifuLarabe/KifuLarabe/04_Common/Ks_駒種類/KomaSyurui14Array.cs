@@ -1,5 +1,5 @@
-﻿using Grayscale.KifuwaraneEntities.Sfen;
-using Grayscale.KifuwaraneEntities.L03_Communication;
+﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
+using Grayscale.KifuwaraneEntities.Sfen;
 
 namespace Grayscale.KifuwaraneEntities.L04_Common
 {

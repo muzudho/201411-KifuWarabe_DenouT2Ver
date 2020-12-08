@@ -2,9 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.L03_Communication;
 using Grayscale.KifuwaraneEntities.L04_Common;
+using Grayscale.KifuwaraneEntities.Log;
 
 namespace Grayscale.KifuwaraneEntities.L06_KifuIO
 {

@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.L03_Communication
+﻿namespace Grayscale.KifuwaraneEntities.JapaneseView
 {
     /// <summary>
     /// 成、不成です。
