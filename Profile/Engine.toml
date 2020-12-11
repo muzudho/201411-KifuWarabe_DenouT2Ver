@@ -1,3 +1,7 @@
+#
+# 特に説明の無いファイルパスは Profile フォルダーからの相対パスです。
+#
+
 [Engine]
 
 # 将棋ソフトの表示名です。 後ろに ` Bld2` のようなビルド番号が付くものもあります。
@@ -8,7 +12,6 @@ Author = "Satoshi TAKAHASHI"
 
 [Resources]
 
-# 特に説明の無いものは Profile フォルダーからの相対パスです。
 # 道１８７
 Michi187 = "data_michi187.csv"
 
@@ -40,14 +43,14 @@ OutputPieceTypeToHaiyaku = "配役転換表.html"
 Engine = "./Grayscale.Kifuwarane.Engine.exe"
 
 # Log file stem.
-GenMoveLog = "指し手生成ルーチン"
-GuiRecordLog = "将棋GUI_棋譜読取"
-LibLog = "ララベProgram"
-LinkedListLog = "リンクトリスト"
-ErrorLog = "エラー"
-LegalMoveLog = "合法手"
-LegalMoveEvasionLog = "リーガルムーブ(被王手時)"
-HaichiTenkanHyoOnlyDataLog = "Debug_配役転換表Load(1)_データ行のみ"
-HaichiTenkanHyoAllLog = "Debug_配役転換表Load(2)"
-EngineRecordLog = "将棋エンジン_棋譜読取"
-GuiPaint = "将棋GUI_ペイント"
+GenMoveLog = "../Logs/指し手生成ルーチン"
+GuiRecordLog = "../Logs/将棋GUI_棋譜読取"
+LibLog = "../Logs/ララベProgram"
+LinkedListLog = "../Logs/リンクトリスト"
+ErrorLog = "../Logs/エラー"
+LegalMoveLog = "../Logs/合法手"
+LegalMoveEvasionLog = "../Logs/リーガルムーブ(被王手時)"
+HaichiTenkanHyoOnlyDataLog = "../Logs/Debug_配役転換表Load(1)_データ行のみ"
+HaichiTenkanHyoAllLog = "../Logs/Debug_配役転換表Load(2)"
+EngineRecordLog = "../Logs/将棋エンジン_棋譜読取"
+GuiPaint = "../Logs/将棋GUI_ペイント"
