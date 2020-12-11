@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public enum Kuukan24
     {

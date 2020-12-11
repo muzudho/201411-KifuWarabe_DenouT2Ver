@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// SFEN形式の初期配置の書き方の、データの持ち方です。

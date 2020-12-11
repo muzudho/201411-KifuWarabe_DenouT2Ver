@@ -1,7 +1,7 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+﻿using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 駒の軌道を、ここに書きます。

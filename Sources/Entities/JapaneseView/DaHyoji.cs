@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.JapaneseView
+﻿namespace Grayscale.Kifuwarane.Entities.JapaneseView
 {
     /// <summary>
     /// “打”表示。必ずしも、持ち駒を打つタイミングとは一致しません。

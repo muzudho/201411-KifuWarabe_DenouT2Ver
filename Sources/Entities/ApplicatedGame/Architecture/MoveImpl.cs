@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.Sfen;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Sfen;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
 
     /// <summary>

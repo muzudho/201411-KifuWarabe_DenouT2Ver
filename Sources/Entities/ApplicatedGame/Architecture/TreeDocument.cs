@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.UseCase;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.UseCase;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 棋譜。

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E3C071CD-1194-422A-825E-9C0A62B086AC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>UseCase</RootNamespace>
-    <AssemblyName>UseCase</AssemblyName>
+    <RootNamespace>Grayscale.Kifuwarane.UseCase</RootNamespace>
+    <AssemblyName>Grayscale.Kifuwarane.UseCase</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

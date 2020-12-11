@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.JapaneseView;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.JapaneseView;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
     public static class GameTranslator
     {

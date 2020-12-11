@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.Misc;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Misc;
 using Nett;
 using System.Windows.Forms;
-using Grayscale.KifuwaraneGui.L09_Ui;
+using Grayscale.Kifuwarane.Gui.L09_Ui;
 
-namespace Grayscale.KifuwaraneGui
+namespace Grayscale.Kifuwarane.Gui
 {
     static class Program
     {

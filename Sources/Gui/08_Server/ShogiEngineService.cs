@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.UseCase;
-using Grayscale.KifuwaraneGui.L09_Ui;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Gui.L09_Ui;
 
-namespace Grayscale.KifuwaraneGui.L08_Server
+namespace Grayscale.Kifuwarane.Gui.L08_Server
 {
     /// <summary>
     /// １つの将棋エンジンと通信します。１対１の関係になります。

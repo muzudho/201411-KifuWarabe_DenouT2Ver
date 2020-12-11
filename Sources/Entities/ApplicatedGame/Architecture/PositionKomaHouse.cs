@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 局面

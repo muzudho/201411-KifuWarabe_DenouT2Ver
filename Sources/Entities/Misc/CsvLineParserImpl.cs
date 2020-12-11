@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Grayscale.KifuwaraneEntities.Misc
+namespace Grayscale.Kifuwarane.Entities.Misc
 {
     /// <summary>
     /// CSVの１行分のパーサー。

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Grayscale.KifuwaraneEntities.Misc
+namespace Grayscale.Kifuwarane.Entities.Misc
 {
     public abstract class ShuffleLib<T>
     {

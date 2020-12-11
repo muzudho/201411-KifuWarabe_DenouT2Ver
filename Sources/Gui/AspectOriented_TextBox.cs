@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Grayscale.KifuwaraneGui.L09_Ui
+namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
     public abstract class AspectOriented_TextBox
     {

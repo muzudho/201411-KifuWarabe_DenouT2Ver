@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.Sfen;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Sfen;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
     public static class ApplicatedMove
     {

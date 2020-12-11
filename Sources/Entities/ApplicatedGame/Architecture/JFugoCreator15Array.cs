@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneEntities.JapaneseView;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities.JapaneseView;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// J符号作成１５個。

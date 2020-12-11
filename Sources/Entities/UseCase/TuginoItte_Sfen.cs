@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.Sfen;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Sfen;
 
-namespace Grayscale.KifuwaraneEntities.UseCase
+namespace Grayscale.Kifuwarane.Entities.UseCase
 {
     /// <summary>
     /// 「7g7f」といった記述を、棋譜データの持ち方に変換します。

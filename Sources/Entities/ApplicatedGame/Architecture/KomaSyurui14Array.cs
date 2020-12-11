@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneEntities.Sfen;
+﻿using Grayscale.Kifuwarane.Entities.Sfen;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public abstract class KomaSyurui14Array
     {

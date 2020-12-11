@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.JapaneseView;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.JapaneseView;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneEntities.UseCase
+namespace Grayscale.Kifuwarane.Entities.UseCase
 {
     /// <summary>
     /// 符号(*1)を元に、棋譜データの持ち方に変換します。

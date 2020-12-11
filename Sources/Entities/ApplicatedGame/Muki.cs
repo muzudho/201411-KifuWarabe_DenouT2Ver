@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame
+﻿namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
     /// <summary>
     /// 向き

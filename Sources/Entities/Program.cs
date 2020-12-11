@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Text;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.UseCase;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.UseCase;
 using Nett;
 
-namespace Grayscale.KifuwaraneEntities
+namespace Grayscale.Kifuwarane.Entities
 {
     public class Program
     {

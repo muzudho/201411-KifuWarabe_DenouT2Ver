@@ -1,8 +1,8 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneGui.L07_Shape;
+﻿using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Gui.L07_Shape;
 
-namespace Grayscale.KifuwaraneGui.L09_Ui
+namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
     public abstract class Util_MenuDrawer
     {

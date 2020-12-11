@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayscale.KifuwaraneEntities.Misc
+namespace Grayscale.Kifuwarane.Entities.Misc
 {
     public class RandomLib
     {

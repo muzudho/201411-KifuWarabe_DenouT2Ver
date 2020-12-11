@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+﻿using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public class KomaAndMasu
     {

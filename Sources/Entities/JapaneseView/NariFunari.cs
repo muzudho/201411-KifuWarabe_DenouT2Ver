@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.JapaneseView
+﻿namespace Grayscale.Kifuwarane.Entities.JapaneseView
 {
     /// <summary>
     /// 成、不成です。

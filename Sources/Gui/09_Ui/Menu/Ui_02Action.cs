@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.UseCase;
-using Grayscale.KifuwaraneGui.L07_Shape;
+using Grayscale.Kifuwarane.Entities;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Gui.L07_Shape;
 
-namespace Grayscale.KifuwaraneGui.L09_Ui
+namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
 
     /// <summary>

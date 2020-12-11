@@ -1,0 +1,57 @@
+2020/12/11 19:40:11  > usi：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:11<   option name 子 type check default true：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   option name USI type spin default 2 min 1 max 13：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   option name 卯 type button default うさぎ：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   option name 辰 type string default DRAGON：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   option name 巳 type filename default スネーク.html：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   id name Kifuwarane Bld13：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   id author Satoshi TAKAHASHI：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:11<   usiok：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:13  > quit：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > usi：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27<   option name 子 type check default true：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   option name USI type spin default 2 min 1 max 13：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   option name 卯 type button default うさぎ：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   option name 辰 type string default DRAGON：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   option name 巳 type filename default スネーク.html：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   id name Kifuwarane Bld13：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   id author Satoshi TAKAHASHI：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27<   usiok：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27  > setoption name USI_Ponder value true：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name USI_Hash value 256：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name 子 value true：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name USI value 2：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name 寅 value tiger：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name 辰 value DRAGON：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > setoption name 巳 value スネーク.html：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27  > isready：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:27<   readyok：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:27  > usinewgame：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186
+2020/12/11 19:40:28  > position startpos moves 2g2f：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:28  > go btime 301000 wtime 300000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:28<   bestmove 4a4b：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:29  > position startpos moves 2g2f 4a4b 2f2e：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:29  > go btime 302000 wtime 301000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:29<   bestmove 9a9b：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:30  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:30  > go btime 303000 wtime 302000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:30<   bestmove 5a6b：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:31  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d 5a6b 2d2c+：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:31  > go btime 304000 wtime 303000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:31<   bestmove 8c8d：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:32  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d 5a6b 2d2c+ 8c8d 2c2b：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:32  > go btime 305000 wtime 304000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:32<   bestmove 8b8c：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:33  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d 5a6b 2d2c+ 8c8d 2c2b 8b8c 2b3a：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:33  > go btime 306000 wtime 305000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:33<   bestmove 5c5d：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:35  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d 5a6b 2d2c+ 8c8d 2c2b 8b8c 2b3a 5c5d 2h2b+：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:35  > go btime 307000 wtime 306000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:35<   bestmove 6a7b：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:36  > position startpos moves 2g2f 4a4b 2f2e 9a9b 2e2d 5a6b 2d2c+ 8c8d 2c2b 8b8c 2b3a 5c5d 2h2b+ 6a7b 2b4b：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:36  > go btime 308000 wtime 307000 binc 2000 winc 2000：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:36<   bestmove 7c7d：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：1383
+2020/12/11 19:40:36  > gameover lose：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：562
+2020/12/11 19:40:36  > quit：Main：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Engine\Program.cs：186

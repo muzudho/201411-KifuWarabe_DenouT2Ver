@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public abstract class MasusWriter
     {

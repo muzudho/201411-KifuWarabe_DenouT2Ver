@@ -1,10 +1,10 @@
 ﻿using System.Windows.Forms;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneGui.L07_Shape;
-using Grayscale.KifuwaraneGui.L09_Ui;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Gui.L07_Shape;
+using Grayscale.Kifuwarane.Gui.L09_Ui;
 
-namespace Grayscale.KifuwaraneGui
+namespace Grayscale.Kifuwarane.Gui
 {
 
     public interface IFlowA

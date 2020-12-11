@@ -1,6 +1,6 @@
-﻿using Grayscale.KifuwaraneEntities.ApplicatedGame;
+﻿using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public abstract class MukiUtil
     {

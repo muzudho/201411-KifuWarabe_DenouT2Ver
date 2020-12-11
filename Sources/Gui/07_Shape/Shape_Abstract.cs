@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Grayscale.KifuwaraneGui.L07_Shape
+namespace Grayscale.Kifuwarane.Gui.L07_Shape
 {
 
     /// <summary>

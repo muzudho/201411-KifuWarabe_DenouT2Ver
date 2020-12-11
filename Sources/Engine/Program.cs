@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using Grayscale.KifuwaraneEngine.L01_Log;
-using Grayscale.KifuwaraneEngine.L10_Think;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
-using Grayscale.KifuwaraneEntities.UseCase;
+using Grayscale.Kifuwarane.Engine.L01_Log;
+using Grayscale.Kifuwarane.Engine.L10_Think;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.UseCase;
 using Nett;
 
-namespace Grayscale.KifuwaraneEngine
+namespace Grayscale.Kifuwarane.Engine
 {
     class Program
     {
@@ -104,7 +104,7 @@ namespace Grayscale.KifuwaraneEngine
                 string engineAuthor;
                 string versionStr;
                 {
-                    engineName = $"{toml.Get<TomlTable>("Engine").Get<string>("Name")} Bld{Grayscale.KifuwaraneEntities.Program.BuildVersion}";
+                    engineName = $"{toml.Get<TomlTable>("Engine").Get<string>("Name")} Bld{Grayscale.Kifuwarane.Entities.Program.BuildVersion}";
                     engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
 
                     // 製品名
@@ -435,7 +435,7 @@ namespace Grayscale.KifuwaraneEngine
                             // どうも、２０２０年のわたしだぜ☆　ログ・ファイルが増え続けるのは流石にダメだろ……☆（＾～＾）
                             // TODO usinewgame のときに ログ・ファイルを強制的に消すようにしとけばいいだろうか☆（＾～＾）
                             // TODO ハードコーディングでいいか……☆（＾～＾）
-                            File.Delete("#log_default(System.Diagnostics.Process (Grayscale.KifuwaraneEngine)).txt");
+                            File.Delete("#log_default(System.Diagnostics.Process (Grayscale.Kifuwarane.Engine)).txt");
                             File.Delete("#log_エラー.txt");
                             File.Delete("#log_指し手生成ルーチン.txt");
                             File.Delete("#log_将棋エンジン_棋譜読取.txt");

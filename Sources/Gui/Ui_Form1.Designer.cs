@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneGui.L09_Ui
+﻿namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
     partial class Ui_Form1
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ui_PnlMain1 = new Grayscale.KifuwaraneGui.L09_Ui.Ui_PnlMain();
+            this.ui_PnlMain1 = new Grayscale.Kifuwarane.Gui.L09_Ui.Ui_PnlMain();
             this.SuspendLayout();
             // 
             // ui_PnlMain1
@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(1050, 773);
             this.Controls.Add(this.ui_PnlMain1);
             this.Name = "Ui_Form1";
-            this.Text = "Grayscale.KifuwaraneGui";
+            this.Text = "Grayscale.Kifuwarane.Gui";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Ui_Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ui_Form1_FormClosed);
             this.Load += new System.EventHandler(this.Ui_Form1_Load);

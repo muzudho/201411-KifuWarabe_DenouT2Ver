@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Grayscale.KifuwaraneEntities.Misc;
+using Grayscale.Kifuwarane.Entities.Misc;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 配役１８４ユーティリティー。

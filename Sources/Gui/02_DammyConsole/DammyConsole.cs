@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneGui.L02_DammyConsole
+﻿namespace Grayscale.Kifuwarane.Gui.L02_DammyConsole
 {
 
     /// <summary>

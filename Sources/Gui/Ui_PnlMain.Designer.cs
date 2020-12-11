@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneGui.L09_Ui
+﻿namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
     partial class Ui_PnlMain
     {

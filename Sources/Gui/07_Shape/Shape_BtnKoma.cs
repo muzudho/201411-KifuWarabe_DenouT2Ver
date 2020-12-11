@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Drawing;
-using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneGui.L07_Shape
+namespace Grayscale.Kifuwarane.Gui.L07_Shape
 {
 
 

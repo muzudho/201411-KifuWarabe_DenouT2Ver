@@ -1,4 +1,4 @@
-﻿namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+﻿namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 足し算、引き算をしたいときなどに使います。

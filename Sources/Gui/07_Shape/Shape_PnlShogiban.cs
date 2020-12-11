@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Grayscale.KifuwaraneEntities;
-using Grayscale.KifuwaraneEntities.ApplicatedGame;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 
-namespace Grayscale.KifuwaraneGui.L07_Shape
+namespace Grayscale.Kifuwarane.Gui.L07_Shape
 {
 
     /// <summary>

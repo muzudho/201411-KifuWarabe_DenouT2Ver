@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     public static class Ks14Array
     {

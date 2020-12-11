@@ -1,8 +1,8 @@
 ﻿using System;
-using Grayscale.KifuwaraneEntities.ApplicatedGame.Architecture;
-using Grayscale.KifuwaraneEntities.Log;
+using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Log;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
     /// <summary>
     /// 平手の初期配置です。

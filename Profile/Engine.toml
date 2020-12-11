@@ -37,7 +37,7 @@ OutputPieceTypeToHaiyaku = "配役転換表.html"
 #   <shogiEngine file="shogiEngine.exe" />
 # </kifunarabe>
 #
-Engine = "./Grayscale.KifuwaraneEngine.exe"
+Engine = "./Grayscale.Kifuwarane.Engine.exe"
 
 # Log file stem.
 GenMoveLog = "指し手生成ルーチン"

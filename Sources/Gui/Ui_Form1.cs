@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
-using Grayscale.KifuwaraneGui.L08_Server;
+using Grayscale.Kifuwarane.Gui.L08_Server;
 
-namespace Grayscale.KifuwaraneGui.L09_Ui
+namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
     [Serializable]
     public partial class Ui_Form1 : Form

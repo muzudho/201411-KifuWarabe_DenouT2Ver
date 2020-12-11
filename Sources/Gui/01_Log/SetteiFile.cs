@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 
-namespace Grayscale.KifuwaraneGui.L01_Log
+namespace Grayscale.Kifuwarane.Gui.L01_Log
 {
     /// <summary>
     /// 設定ファイル

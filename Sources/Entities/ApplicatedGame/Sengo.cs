@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayscale.KifuwaraneEntities.ApplicatedGame
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
     /// <summary>
     /// 先後です。

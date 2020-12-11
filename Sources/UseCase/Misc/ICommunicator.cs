@@ -1,4 +1,4 @@
-﻿namespace KifuwaraneUseCase.Misc
+﻿namespace Grayscale.Kifuwarane.UseCase.Misc
 {
     public interface ICommunicator
     {
