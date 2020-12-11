@@ -1,0 +1,16 @@
+2020/12/11 19:14:27<   usi：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
+2020/12/11 19:14:27  > option name 子 type check default true：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > option name USI type spin default 2 min 1 max 13：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > option name 卯 type button default うさぎ：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > option name 辰 type string default DRAGON：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > option name 巳 type filename default スネーク.html：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > id name Kifuwarane Bld13：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > id author Satoshi TAKAHASHI：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27  > usiok：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27<   setoption name USI_Ponder value false：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
+2020/12/11 19:14:27<   isready：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
+2020/12/11 19:14:27  > readyok：ReceivedData_FromShogiEngine_Async：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：187
+2020/12/11 19:14:27<   usinewgame：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
+2020/12/11 19:14:49<   quit：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
+2020/12/11 19:14:49<   quit：Send：C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_DenouT2\Sources\Gui\08_Server\ShogiEngineService.cs：257
