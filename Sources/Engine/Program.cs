@@ -1022,10 +1022,10 @@ namespace Grayscale.Kifuwarane.Engine
                                         //------------------------------------------------------------
                                         // 指し手のチョイス
                                         //------------------------------------------------------------
-                                        IMove bestSasite = SasiteRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
-                                        if (bestSasite.isEnableSfen())
+                                        IMove bestmove = MoveRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
+                                        if (bestmove.isEnableSfen())
                                         {
-                                            string sfenText = bestSasite.ToSfenText();
+                                            string sfenText = bestmove.ToSfenText();
                                             Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 

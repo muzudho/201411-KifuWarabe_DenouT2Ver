@@ -14,7 +14,7 @@ namespace Grayscale.Kifuwarane.Engine.L10_Think
     /// <summary>
     /// 指し手ルーチン
     /// </summary>
-    public class SasiteRoutine
+    public class MoveRoutine
     {
 
         /// <summary>
@@ -44,12 +44,12 @@ namespace Grayscale.Kifuwarane.Engine.L10_Think
             Logger.TraceLine(LogTags.GenMoveLog, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
-            IMove bestSasite = SasiteRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
+            IMove bestmove = MoveRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
 
             // TODO:    できれば、合法手のリストから　さらに相手番の合法手のリストを伸ばして、
             //          １手先、２手先……の局面を　ツリー構造（Kifu_Document）に蓄えたあと、
             //          末端の局面に評価値を付けて、ミニマックス原理を使って最善手を絞り込みたい☆
-            return bestSasite;
+            return bestmove;
         }
 
 
@@ -58,11 +58,11 @@ namespace Grayscale.Kifuwarane.Engine.L10_Think
         /// 選択肢の中から、指し手を１つランダムに選びます。
         /// </summary>
         /// <param name="kifu">棋譜</param>
-        /// <param name="sasiteList">指し手の一覧</param>
+        /// <param name="moveList">指し手の一覧</param>
         /// <param name="logTag">ログ</param>
         /// <returns></returns>
         private static MoveImpl Choice_Random(
-            TreeDocument kifu, ref KomaAndMasusDictionary sasiteList, ILogTag logTag)
+            TreeDocument kifu, ref KomaAndMasusDictionary moveList, ILogTag logTag)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -76,7 +76,7 @@ namespace Grayscale.Kifuwarane.Engine.L10_Think
             try
             {
                 // 変換『「駒→手」のコレクション』→『「駒、指し手」のペアのリスト』
-                List<KomaAndMasu> kmList = GameTranslator.KmDic_ToKmList(sasiteList);
+                List<KomaAndMasu> kmList = GameTranslator.KmDic_ToKmList(moveList);
 
                 //------------------------------------------------------------
                 // 合法手の手を、シャッフルした駒順に見ていきます。
@@ -124,7 +124,7 @@ namespace Grayscale.Kifuwarane.Engine.L10_Think
                         // 合法手がなかった☆
                         sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
                         sbGohosyu.AppendLine("合法手がなかった☆");
-                        sbGohosyu.AppendLine("komaAndMove.Entries.Count=" + sasiteList.Count);
+                        sbGohosyu.AppendLine("komaAndMove.Entries.Count=" + moveList.Count);
                         if (K40.Error == bestmoveKoma)
                         {
                             sbGohosyu.AppendLine("hMoveKoma=エラー駒" );
