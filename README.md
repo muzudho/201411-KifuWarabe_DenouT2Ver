@@ -6,11 +6,14 @@
 
 |               | ファイル                                                                                     |
 | ------------- | -------------------------------------------------------------------------------------------- |
-| ソース        | `Kifuwarabe_DenouT2/KifuNarabe/KifuwaraneGui.sln`                                            |
-| 設定ファイル1 | `Kifuwarabe_DenouT2\KifuNarabe\KifuNarabe\bin\Release\Grayscale.KifuwaraneEngine.exe.config` |
-| 設定ファイル2 | `Kifuwarabe_DenouT2\Profile\Engine.toml`                                                     |
+| ソース        | `Kifuwarabe_DenouT2/Kifuwarane.sln`                                            |
+| 将棋エンジン ランタイム | Kifuwarabe_DenouT2/Builds/Release/Grayscale.Kifuwarane.Engine.exe |
+| 設定ファイル1 | `Kifuwarabe_DenouT2/Biulds/Release/Grayscale.Kifuwarane.Engine.exe.config` |
+| 設定ファイル2 | `Kifuwarabe_DenouT2/Profile/Engine.toml`                                                     |
 
-設定ファイル1 の `Grayscale.KifuwaraneEngine.exe.config` の中にある `Profile` のパスを、 設定ファイル2 の親ディレクトリー `Profile` に合わせてください。  
+* `Kifuwarabe_DenouT2` のトップ・ディレクトリーに `Logs` ディレクトリーを作成してください。
+* `Kifuwarane.sln` を `Release` モードで ビルドしてください。
+* 設定ファイル1 の中にある `Profile` のパスを、 設定ファイル2 の親ディレクトリー `Profile` に合わせてください。  
 
 ## Manual
 
