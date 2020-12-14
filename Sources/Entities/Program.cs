@@ -11,11 +11,6 @@ namespace Grayscale.Kifuwarane.Entities
     public class Program
     {
         /// <summary>
-        /// ビルド番号。ソースをちょっといじったら ここを増やしておけば Exeファイルを差し替えたことが分かりやすい。
-        /// </summary>
-        public static int BuildVersion { get; private set; } = 13;
-
-        /// <summary>
         /// 棄権バージョン。形を整える。
         /// </summary>
         public const bool RETIRE_VERSION = true;

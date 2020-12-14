@@ -81,42 +81,18 @@ namespace Grayscale.Kifuwarane.Engine
 
 
                 //-------------+----------------------------------------------------------------------------------------------------------
-                // ログ書込み  |  ＜この将棋エンジン＞  製品名、バージョン番号
+                // ログ書込み  |
                 //-------------+----------------------------------------------------------------------------------------------------------
-                #region ↓詳説
                 //
                 // 図.
                 //
                 //      log.txt
                 //      ┌────────────────────────────────────────
-                //      │2014/08/02 1:04:59> v(^▽^)v ｲｪｰｲ☆ ... fugafuga 1.00.0
+                //      │2014/08/02 1:04:59> v(^▽^)v ｲｪｰｲ☆ ... Start!
                 //      │
                 //      │
                 //
-                //
-                // 製品名とバージョン番号は、次のファイルに書かれているものを使っています。
-                // 場所：  [ソリューション エクスプローラー]-[ソリューション名]-[プロジェクト名]-[Properties]-[AssemblyInfo.cs] の中の、[AssemblyProduct]と[AssemblyVersion] を参照。
-                //
-                // バージョン番号を「1.00.0」形式（メジャー番号.マイナー番号.ビルド番号)で書くのは作者の趣味です。
-                //
-                #endregion
-                string engineName;
-                string engineAuthor;
-                string versionStr;
-                {
-                    engineName = $"{toml.Get<TomlTable>("Engine").Get<string>("Name")} Bld{Grayscale.Kifuwarane.Entities.Program.BuildVersion}";
-                    engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
-
-                    // 製品名
-                    // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
-
-                    // バージョン番号
-                    Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                    versionStr = String.Format("{0}.{1}.{2}", version.Major, version.Minor.ToString("00"), version.Build);
-
-                    //seihinName += " " + versionStr;
-                }
-                Logger.TraceLine(logTag, "v(^▽^)v ｲｪｰｲ☆ ... " + engineName + " " + versionStr);
+                Logger.TraceLine(logTag, "v(^▽^)v ｲｪｰｲ☆ ... Start!");
 
 
                 //-----------+------------------------------------------------------------------------------------------------------------
@@ -243,7 +219,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // USI です！！
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -258,8 +233,35 @@ namespace Grayscale.Kifuwarane.Engine
                             // プログラム名と、作者名を送り返す必要があります。
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
-                            #endregion
-                            Program.Send($"id name {engineName}");
+                            //
+                            string engineName;
+                            string engineAuthor;
+                            Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                            {
+                                engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+                                engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
+
+                                // 製品名
+                                // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
+                            }
+
+                            //
+                            // 図.
+                            //
+                            //      log.txt
+                            //      ┌────────────────────────────────────────
+                            //      │2014/08/02 1:04:59> v(^▽^)v ｲｪｰｲ☆ ... fugafuga 1.00.0
+                            //      │
+                            //      │
+                            //
+                            //
+                            // 製品名とバージョン番号は、次のファイルに書かれているものを使っています。
+                            // 場所：  [ソリューション エクスプローラー]-[ソリューション名]-[プロジェクト名]-[Properties]-[AssemblyInfo.cs] の中の、[AssemblyProduct]と[AssemblyVersion] を参照。
+                            //
+                            // バージョン番号を「1.00.0」形式（メジャー番号.マイナー番号.ビルド番号)で書くのは作者の趣味です。
+                            //
+
+                            Program.Send($"id name {engineName} {version.Major}.{version.Minor}.{version.Build}");
                             Program.Send($"id author {engineAuthor}");
                             Program.Send("usiok");
 
