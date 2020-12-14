@@ -25,8 +25,6 @@ namespace Grayscale.Kifuwarane.Engine
 
             try
             {
-
-                #region ↑詳説
                 // 
                 // 図.
                 // 
@@ -35,7 +33,6 @@ namespace Grayscale.Kifuwarane.Engine
                 //     プログラムの終了：  この中の最終行を終えたとき、
                 //                         または途中で Environment.Exit(0); が呼ばれたときに終わります。
                 //                         また、コンソールウィンドウの[×]ボタンを押して強制終了されたときも  ぶつ切り  で突然終わります。
-                #endregion
 
                 //------+-----------------------------------------------------------------------------------------------------------------
                 // 準備 |
@@ -68,7 +65,6 @@ namespace Grayscale.Kifuwarane.Engine
                 //-------------------+----------------------------------------------------------------------------------------------------
                 // ログファイル削除  |
                 //-------------------+----------------------------------------------------------------------------------------------------
-                #region ↓詳説
                 //
                 // 図.
                 //
@@ -76,7 +72,6 @@ namespace Grayscale.Kifuwarane.Engine
                 //          ├─ Engine.KifuWarabe.exe
                 //          └─ log.txt               ←これを削除
                 //
-                #endregion
                 Logger.RemoveAllLogFile();
 
 
@@ -98,7 +93,6 @@ namespace Grayscale.Kifuwarane.Engine
                 //-----------+------------------------------------------------------------------------------------------------------------
                 // 通信開始  |
                 //-----------+------------------------------------------------------------------------------------------------------------
-                #region ↓詳説
                 //
                 // 図.
                 //
@@ -114,7 +108,6 @@ namespace Grayscale.Kifuwarane.Engine
                 //
                 // 無限ループの中に、２つの無限ループが入っています。
                 //
-                #endregion
 
 
                 //-------------+----------------------------------------------------------------------------------------------------------
@@ -234,16 +227,11 @@ namespace Grayscale.Kifuwarane.Engine
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
                             //
-                            string engineName;
-                            string engineAuthor;
+                            string engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
                             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                            {
-                                engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
-                                engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
-
-                                // 製品名
-                                // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
-                            }
+                            string engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
+                            // 製品名
+                            // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 
                             //
                             // 図.
