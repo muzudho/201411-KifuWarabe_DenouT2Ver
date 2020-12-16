@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Sources\Entitie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Sources\Engine\Engine.csproj", "{54470EEA-B69E-4DB5-99F8-0539277DBC5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCase", "Sources\UseCase\UseCase.csproj", "{E3C071CD-1194-422A-825E-9C0A62B086AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "Sources\UseCase\UseCases.csproj", "{E3C071CD-1194-422A-825E-9C0A62B086AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "Sources\Gui\Gui.csproj", "{E3A66A37-D1BD-4F6D-B459-138B58DC1A26}"
 EndProject

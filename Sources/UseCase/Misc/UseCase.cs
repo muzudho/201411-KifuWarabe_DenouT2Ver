@@ -1,6 +1,6 @@
-﻿using Grayscale.Kifuwarane.UseCase.Misc;
+﻿using Grayscale.Kifuwarane.UseCases.Misc;
 
-namespace Grayscale.Kifuwarane.UseCase
+namespace Grayscale.Kifuwarane.UseCases
 {
     public class UseCase
     {

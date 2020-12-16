@@ -1,4 +1,4 @@
-﻿namespace Grayscale.Kifuwarane.Engine
+﻿namespace Grayscale.Kifuwarane.UseCases
 {
     using System.Collections.Generic;
     using System.IO;
@@ -10,7 +10,7 @@
     /// <summary>
     /// Program クラスから邪魔なものをどけただけ☆（＾～＾）
     /// </summary>
-    public class ProgramSupport
+    public class EngineSupport
     {
         public TomlTable TomlTable { get; private set; }
         public Dictionary<string, string> SetoptionDictionary { get; private set; }
@@ -18,7 +18,7 @@
         public Dictionary<string, string> GoMateDictionary { get; private set; }
         public Dictionary<string, string> GameoverDictionary { get; private set; }
 
-        public ProgramSupport()
+        public EngineSupport()
         {
             this.SetoptionDictionary = new Dictionary<string, string>();
             this.GoDictionary = new Dictionary<string, string>();

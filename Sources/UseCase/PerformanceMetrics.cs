@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Grayscale.Kifuwarane.Engine.L01_Log
+namespace Grayscale.Kifuwarane.UseCases.Logging
 {
 
     /// <summary>

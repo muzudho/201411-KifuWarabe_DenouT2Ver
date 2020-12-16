@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using Grayscale.Kifuwarane.Engine.L01_Log;
-using Grayscale.Kifuwarane.Engine.L10_Think;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Log;
 using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.UseCases;
+using Grayscale.Kifuwarane.UseCases.Logging;
+using Grayscale.Kifuwarane.UseCases.Think;
 using Nett;
 
 namespace Grayscale.Kifuwarane.Engine
@@ -24,7 +25,7 @@ namespace Grayscale.Kifuwarane.Engine
 
             try
             {
-                var programSupport = new ProgramSupport();
+                var programSupport = new EngineSupport();
                 programSupport.PreUsiLoop(logTag);
 
                 //************************************************************************************************************************

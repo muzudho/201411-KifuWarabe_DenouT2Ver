@@ -104,9 +104,9 @@
       <Project>{aded86ba-4316-4927-9a7d-a14b70e908b4}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UseCase\UseCase.csproj">
+    <ProjectReference Include="..\UseCase\UseCases.csproj">
       <Project>{e3c071cd-1194-422a-825e-9c0a62b086ac}</Project>
-      <Name>UseCase</Name>
+      <Name>UseCases</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
