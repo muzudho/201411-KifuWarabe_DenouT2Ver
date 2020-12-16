@@ -8,6 +8,17 @@
     using Grayscale.Kifuwarane.Entities.Log;
     using Grayscale.Kifuwarane.Entities.UseCase;
     using Nett;
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    using Grayscale.Kifuwarane.Entities.ApplicatedGame;
+    using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+    using Grayscale.Kifuwarane.Entities.Log;
+    using Grayscale.Kifuwarane.Entities.UseCase;
+    using Grayscale.Kifuwarane.UseCases;
+    using Grayscale.Kifuwarane.UseCases.Logging;
+    using Grayscale.Kifuwarane.UseCases.Think;
+    using Nett;
 
     /// <summary>
     /// 指し将棋☆（＾～＾）
@@ -17,8 +28,6 @@
         public TomlTable TomlTable { get; private set; }
         public Dictionary<string, string> SetoptionDictionary { get; private set; } = new Dictionary<string, string>();
         public Dictionary<string, string> GoDictionary { get; private set; } = new Dictionary<string, string>();
-        public Dictionary<string, string> GoMateDictionary { get; private set; } = new Dictionary<string, string>();
-        public Dictionary<string, string> GameoverDictionary { get; private set; } = new Dictionary<string, string>();
         /// <summary>
         /// ポンダーに対応している将棋サーバーなら真です。
         /// </summary>
@@ -143,7 +152,6 @@
             this.GoDictionary["btime"] = "";
             this.GoDictionary["wtime"] = "";
             this.GoDictionary["byoyomi"] = "";
-            this.GoMateDictionary["mate"] = "";
             Dictionary<string, string> gameoverDictionary = new Dictionary<string, string>();
             gameoverDictionary["gameover"] = "";
         }
@@ -591,6 +599,149 @@ usiok
             //
             // (2020-12-16 wed)
             // stop を送った時に bestmove を返してください。
+        }
+
+        public void Stop()
+        {
+            //------------------------------------------------------------
+            // あなたの手番です  （すぐ指してください！）
+            //------------------------------------------------------------
+            //
+            // 図.
+            //
+            //      log.txt
+            //      ┌────────────────────────────────────────
+            //      ～
+            //      │2014/08/02 2:03:35> stop
+            //      │
+            //
+
+            // 何らかの理由で  すぐ指してほしいときに、将棋所から送られてくる文字が stop です。
+            //
+            // 理由は２つ考えることができます。
+            //  （１）１手前に、将棋エンジンが  将棋所に向かって「予想手」付きで指し手を伝えたのだが、
+            //        相手の応手が「予想手」とは違ったので、予想手にもとづく思考を  今すぐ変えて欲しいとき。
+            //
+            //  （２）「急いで指すボタン」が押されたときなどに送られてくるようです？
+            //
+            // stop するのは思考です。  stop を受け取ったら  すぐに最善手を指してください。
+
+            if (this.GoPonderNow)
+            {
+                //------------------------------------------------------------
+                // 将棋エンジン「（予想手が間違っていたって？）  △９二香 を指そうと思っていたんだが」
+                //------------------------------------------------------------
+                //
+                // 図.
+                //
+                //      log.txt
+                //      ┌────────────────────────────────────────
+                //      ～
+                //      │2014/08/02 2:36:21< bestmove 9a9b
+                //      │
+                //
+                //
+                //      １手前の指し手で、将棋エンジンが「bestmove ★ ponder ★」という形で  予想手付きで将棋所にメッセージを送っていたとき、
+                //      その予想手が外れていたならば、将棋所は「stop」を返してきます。
+                //      このとき  思考を打ち切って最善手の指し手をすぐに返信するわけですが、将棋所はこの返信を無視します☆ｗ
+                //      （この指し手は、外れていた予想手について考えていた“最善手”ですからゴミのように捨てられます）
+                //      その後、将棋所から「position」「go」が再送されてくるのだと思います。
+                //
+                //          将棋エンジン「bestmove ★ ponder ★」
+                //              ↓
+                //          将棋所      「stop」
+                //              ↓
+                //          将棋エンジン「うその指し手返信」（無視されます）←今ここ
+                //              ↓
+                //          将棋所      「position」「go」
+                //              ↓
+                //          将棋エンジン「本当の指し手」
+                //
+                //      という流れと思います。
+                // この指し手は、無視されます。（無視されますが、送る必要があります）
+                Playing.Send("bestmove 9a9b");
+            }
+            else
+            {
+                //------------------------------------------------------------
+                // じゃあ、△９二香で
+                //------------------------------------------------------------
+                //
+                // 図.
+                //
+                //      log.txt
+                //      ┌────────────────────────────────────────
+                //      ～
+                //      │2014/08/02 2:36:21< bestmove 9a9b
+                //      │
+                //
+                //
+                // 特に何もなく、すぐ指せというのですから、今考えている最善手をすぐに指します。
+                Playing.Send("bestmove 9a9b");
+            }
+        }
+
+        public void PonderHit()
+        {
+            //------------------------------------------------------------
+            // あなたの手番です  （予想通りの応手でしたよ）
+            //------------------------------------------------------------
+            //
+            // 図.
+            //
+            //      log.txt
+            //      ┌────────────────────────────────────────
+            //      ～
+            //      │2014/08/02 2:36:19> ponderhit
+            //      │
+            //
+
+            // 先読み用です。
+            // 今回のプログラムでは対応しません。
+            //
+            // １手前に指した手のとき、
+            // 将棋エンジンが  将棋所に向かって  「bestmove ★ ponder ★」という形でメッセージを送っていたとき、
+            //
+            // 将棋所は  相手が予想した手を指した後で「go」の替わりに「ponderhit」というメッセージを返してくるのだと思います。
+            // このあとの流れは go と同じだと思います。
+
+            // 投了ｗ！
+            Playing.Send("bestmove resign");
+        }
+
+        public void GameOver(string value)
+        {
+            //------------------------------------------------------------
+            // 対局が終わりました
+            //------------------------------------------------------------
+            //
+            // 図.
+            //
+            //      log.txt
+            //      ┌────────────────────────────────────────
+            //      ～
+            //      │2014/08/02 3:08:34> gameover lose
+            //      │
+            //
+
+            // 対局が終わったときに送られてくる文字が gameover です。
+
+            //------------------------------------------------------------
+            // 「あ、勝ちました」「あ、引き分けました」「あ、負けました」
+            //------------------------------------------------------------
+            //
+            // 上図のメッセージのままだと使いにくいので、
+            // あとで使いやすいように Key と Value の表に分けて持ち直します。
+            //
+            // 図.
+            //
+            //      gameoverDictionary
+            //      ┌──────┬──────┐
+            //      │Key         │Value       │
+            //      ┝━━━━━━┿━━━━━━┥
+            //      │gameover    │lose        │
+            //      └──────┴──────┘
+            //
         }
     }
 }
