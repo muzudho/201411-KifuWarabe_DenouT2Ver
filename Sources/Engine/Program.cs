@@ -317,96 +317,18 @@
                             //
                             Regex regex = new Regex(@"go btime (\d+) wtime (\d+) byoyomi (\d+)", RegexOptions.Singleline);
                             Match m = regex.Match(line);
-
                             if (m.Success)
                             {
-                                playing.GoDictionary["btime"] = (string)m.Groups[1].Value;
-                                playing.GoDictionary["wtime"] = (string)m.Groups[2].Value;
-                                playing.GoDictionary["byoyomi"] = (string)m.Groups[3].Value;
+                                playing.Go((string)m.Groups[1].Value, (string)m.Groups[2].Value, (string)m.Groups[3].Value, "", "");
                             }
                             else
                             {
-                                playing.GoDictionary["btime"] = "";
-                                playing.GoDictionary["wtime"] = "";
-                                playing.GoDictionary["byoyomi"] = "";
+                                // (2020-12-16 wed) フィッシャー・クロック・ルールに対応☆（＾～＾）
+                                regex = new Regex(@"go btime (\d+) wtime (\d+) binc (\d+) winc (\d+)", RegexOptions.Singleline);
+                                m = regex.Match(line);
+
+                                playing.Go((string)m.Groups[1].Value, (string)m.Groups[2].Value, "", (string)m.Groups[3].Value, (string)m.Groups[4].Value);
                             }
-
-
-
-                            // ┏━━━━サンプル・プログラム━━━━┓
-
-                            int latestTeme = playing.TreeD.CountTeme(playing.TreeD.Current8);//現・手目
-                            PositionKomaHouse genKyokumen = playing.TreeD.ElementAt8(latestTeme).KomaHouse;//現局面
-
-                            Logger.TraceLine(logTag, "将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　" + line);
-
-                            //------------------------------------------------------------
-                            // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
-                            //------------------------------------------------------------
-                            //
-                            //      将棋ＧＵＩ『きふならべ』用☆　将棋盤上に王さまがいないときに、本将棋で　go　コマンドが送られてくることは無いのでは☆？
-                            //
-                            if (
-                                M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu) != Okiba.ShogiBan // 先手の王さまが将棋盤上にいないとき☆
-                                || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
-                                )
-                            {
-                                Logger.TraceLine(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
-                                Logger.TraceLine(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
-                                Logger.TraceLine(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
-
-                                //------------------------------------------------------------
-                                // 投了
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:36:21< bestmove resign
-                                //      │
-                                //
-
-                                // この将棋エンジンは、後手とします。
-                                // ２０手目、投了  を決め打ちで返します。
-                                Playing.Send("bestmove resign");//投了
-                            }
-                            else // どちらの王さまも、まだまだ健在だぜ☆！
-                            {
-                                try
-                                {
-                                    //------------------------------------------------------------
-                                    // 指し手のチョイス
-                                    //------------------------------------------------------------
-                                    IMove bestmove = MoveRoutine.Sasu_Main(playing.TreeD, logTag); // たった１つの指し手（ベストムーブ）
-                                    if (bestmove.isEnableSfen())
-                                    {
-                                        string sfenText = bestmove.ToSfenText();
-                                        Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
-                                            "　先後=[" + playing.TreeD.CountSengo(playing.TreeD.CountTeme(playing.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(playing.TreeD, logTag));
-
-                                        Playing.Send("bestmove " + sfenText);//指し手を送ります。
-                                    }
-                                    else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
-                                    {
-                                        Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
-                                            "　先後=[" + playing.TreeD.CountSengo(playing.TreeD.CountTeme(playing.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(playing.TreeD, logTag));
-
-                                        // 投了ｗ！
-                                        Playing.Send("bestmove resign");
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    //>>>>> エラーが起こりました。
-
-                                    // どうにもできないので  ログだけ取って無視します。
-                                    Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
-                                }
-
-                            }
-                            // ┗━━━━サンプル・プログラム━━━━┛
                         }
                         else if (line.StartsWith("stop"))
                         {
@@ -495,14 +417,7 @@
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
-                    Logger.TraceLine(logTag, "┏━確認━━━━goDictionary━━━━━┓");
-                    foreach (KeyValuePair<string, string> pair in playing.GoDictionary)
-                    {
-                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
-                    }
-                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                 }
-
             }
             catch (Exception ex)
             {

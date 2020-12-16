@@ -4,19 +4,10 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-    using Grayscale.Kifuwarane.Entities.Log;
-    using Grayscale.Kifuwarane.Entities.UseCase;
-    using Nett;
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
     using Grayscale.Kifuwarane.Entities.Log;
     using Grayscale.Kifuwarane.Entities.UseCase;
-    using Grayscale.Kifuwarane.UseCases;
-    using Grayscale.Kifuwarane.UseCases.Logging;
     using Grayscale.Kifuwarane.UseCases.Think;
     using Nett;
 
@@ -143,17 +134,6 @@
             //
             // 無限ループの中に、２つの無限ループが入っています。
             //
-
-
-            //-------------+----------------------------------------------------------------------------------------------------------
-            // データ設計  |
-            //-------------+----------------------------------------------------------------------------------------------------------
-            // 将棋所から送られてくるデータを、一覧表に変えたものです。
-            this.GoDictionary["btime"] = "";
-            this.GoDictionary["wtime"] = "";
-            this.GoDictionary["byoyomi"] = "";
-            Dictionary<string, string> gameoverDictionary = new Dictionary<string, string>();
-            gameoverDictionary["gameover"] = "";
         }
 
         public void UsiOk(string engineName, string engineAuthor)
@@ -599,6 +579,87 @@ usiok
             //
             // (2020-12-16 wed)
             // stop を送った時に bestmove を返してください。
+        }
+
+        public void Go(string btime, string wtime, string byoyomi, string binc, string winc)
+        {
+            ILogTag logTag = LogTags.EngineRecordLog;
+
+            // ┏━━━━サンプル・プログラム━━━━┓
+
+            int latestTeme = this.TreeD.CountTeme(this.TreeD.Current8);//現・手目
+            PositionKomaHouse genKyokumen = this.TreeD.ElementAt8(latestTeme).KomaHouse;//現局面
+
+            //  + line
+            Logger.TraceLine(logTag, "将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　");
+
+            //------------------------------------------------------------
+            // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
+            //------------------------------------------------------------
+            //
+            //      将棋ＧＵＩ『きふならべ』用☆　将棋盤上に王さまがいないときに、本将棋で　go　コマンドが送られてくることは無いのでは☆？
+            //
+            if (
+                M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu) != Okiba.ShogiBan // 先手の王さまが将棋盤上にいないとき☆
+                || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
+                )
+            {
+                Logger.TraceLine(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
+                Logger.TraceLine(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
+                Logger.TraceLine(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
+
+                //------------------------------------------------------------
+                // 投了
+                //------------------------------------------------------------
+                //
+                // 図.
+                //
+                //      log.txt
+                //      ┌────────────────────────────────────────
+                //      ～
+                //      │2014/08/02 2:36:21< bestmove resign
+                //      │
+                //
+
+                // この将棋エンジンは、後手とします。
+                // ２０手目、投了  を決め打ちで返します。
+                Playing.Send("bestmove resign");//投了
+            }
+            else // どちらの王さまも、まだまだ健在だぜ☆！
+            {
+                try
+                {
+                    //------------------------------------------------------------
+                    // 指し手のチョイス
+                    //------------------------------------------------------------
+                    IMove bestmove = MoveRoutine.Sasu_Main(this.TreeD, logTag); // たった１つの指し手（ベストムーブ）
+                    if (bestmove.isEnableSfen())
+                    {
+                        string sfenText = bestmove.ToSfenText();
+                        Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
+                            "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag));
+
+                        Playing.Send("bestmove " + sfenText);//指し手を送ります。
+                    }
+                    else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
+                    {
+                        Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
+                            "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag));
+
+                        // 投了ｗ！
+                        Playing.Send("bestmove resign");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //>>>>> エラーが起こりました。
+
+                    // どうにもできないので  ログだけ取って無視します。
+                    Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
+                }
+
+            }
+            // ┗━━━━サンプル・プログラム━━━━┛
         }
 
         public void Stop()
