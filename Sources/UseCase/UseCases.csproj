@@ -50,13 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EngineSupport.cs" />
-    <Compile Include="Misc\ICommunicator.cs" />
+    <Compile Include="Playing.cs" />
     <Compile Include="MoveRoutine.cs" />
     <Compile Include="PerformanceMetrics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Misc\UseCase.cs" />
-    <Compile Include="UsiLoop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

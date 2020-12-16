@@ -8,22 +8,22 @@
     using Nett;
 
     /// <summary>
-    /// Program クラスから邪魔なものをどけただけ☆（＾～＾）
+    /// 指し将棋☆（＾～＾）
     /// </summary>
-    public class EngineSupport
+    public class Playing
     {
         public TomlTable TomlTable { get; private set; }
-        public Dictionary<string, string> SetoptionDictionary { get; private set; }
-        public Dictionary<string, string> GoDictionary { get; private set; }
-        public Dictionary<string, string> GoMateDictionary { get; private set; }
-        public Dictionary<string, string> GameoverDictionary { get; private set; }
+        public Dictionary<string, string> SetoptionDictionary { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> GoDictionary { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> GoMateDictionary { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> GameoverDictionary { get; private set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// ポンダーに対応している将棋サーバーなら真です。
+        /// </summary>
+        public bool UsiPonderEnabled { get; set; } = false;
 
-        public EngineSupport()
+        public Playing()
         {
-            this.SetoptionDictionary = new Dictionary<string, string>();
-            this.GoDictionary = new Dictionary<string, string>();
-            this.GoMateDictionary = new Dictionary<string, string>();
-            this.GameoverDictionary = new Dictionary<string, string>();
         }
 
         public void PreUsiLoop(ILogTag logTag)
@@ -123,6 +123,17 @@
             this.GoMateDictionary["mate"] = "";
             Dictionary<string, string> gameoverDictionary = new Dictionary<string, string>();
             gameoverDictionary["gameover"] = "";
+        }
+
+        public string GetEngineOption()
+        {
+            return $@"option name 子 type check default true
+option name USI type spin default 2 min 1 max 13
+option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー
+option name 卯 type button default うさぎ
+option name 辰 type string default DRAGON
+option name 巳 type filename default スネーク.html
+";
         }
     }
 }

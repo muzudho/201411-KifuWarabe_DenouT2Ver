@@ -25,38 +25,20 @@ namespace Grayscale.Kifuwarane.Engine
 
             try
             {
-                var programSupport = new EngineSupport();
-                programSupport.PreUsiLoop(logTag);
+                // まだ指し将棋をすると決まったわけではないが、とりあえず今は Playing という名前で☆（＾～＾）
+                var playing = new Playing();
+                playing.PreUsiLoop(logTag);
 
-                //************************************************************************************************************************
                 // 無限ループ（全体）
-                //************************************************************************************************************************
                 while (true)
                 {
-
-                    bool enable_usiPonder = false; // ポンダーに対応している将棋サーバーなら真です。
-
-                    //************************************************************************************************************************
                     // 無限ループ（１つ目）
-                    //************************************************************************************************************************
                     while (true)
                     {
                         // 将棋所から何かメッセージが届いていないか、見てみます。
+                        // ブロッキングIO です。
                         string line = Console.In.ReadLine();
-
-                        if (null == line)
-                        {
-                            // メッセージは届いていませんでした。
-                            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                            goto gt_NextTime1;
-                        }
-
-
-                        // メッセージが届いています！
-                        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         Logger.WriteLineR(Logger.DefaultLogRecord, line);
-
 
                         if ("usi" == line)
                         {
@@ -104,12 +86,7 @@ namespace Grayscale.Kifuwarane.Engine
                             //      ・ファイル選択テキストボックス
                             // を置くことができます。
                             //
-                            Program.Send("option name 子 type check default true");
-                            Program.Send("option name USI type spin default 2 min 1 max 13");
-                            Program.Send("option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー");
-                            Program.Send("option name 卯 type button default うさぎ");
-                            Program.Send("option name 辰 type string default DRAGON");
-                            Program.Send("option name 巳 type filename default スネーク.html");
+                            Program.Send(playing.GetEngineOption());
 
 
                             //------------------------------------------------------------
@@ -130,9 +107,9 @@ namespace Grayscale.Kifuwarane.Engine
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
                             //
-                            string engineName = programSupport.TomlTable.Get<TomlTable>("Engine").Get<string>("Name");
+                            string engineName = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Name");
                             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                            string engineAuthor = programSupport.TomlTable.Get<TomlTable>("Engine").Get<string>("Author");
+                            string engineAuthor = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Author");
                             // 製品名
                             // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 
@@ -162,7 +139,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // 設定してください
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -195,12 +171,10 @@ namespace Grayscale.Kifuwarane.Engine
                             // 将棋所から、[エンジン設定] ダイアログボックスの内容が送られてきます。
                             // このダイアログボックスは、将棋エンジンから将棋所に  ダイアログボックスを作るようにメッセージを送って作ったものです。
                             //
-                            #endregion
 
                             //------------------------------------------------------------
                             // 設定を一覧表に変えます
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 上図のメッセージのままだと使いにくいので、
                             // あとで使いやすいように Key と Value の表に分けて持ち直します。
@@ -216,7 +190,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //      │USI_Hash    │256         │
                             //      └──────┴──────┘
                             //
-                            #endregion
                             Regex regex = new Regex(@"setoption name ([^ ]+)(?: value (.*))?", RegexOptions.Singleline);
                             Match m = regex.Match(line);
 
@@ -232,26 +205,26 @@ namespace Grayscale.Kifuwarane.Engine
                                     value = (string)m.Groups[2].Value;
                                 }
 
-                                if (programSupport.SetoptionDictionary.ContainsKey(name))
+                                if (playing.SetoptionDictionary.ContainsKey(name))
                                 {
                                     // 設定を上書きします。
-                                    programSupport.SetoptionDictionary[name] = value;
+                                    playing.SetoptionDictionary[name] = value;
                                 }
                                 else
                                 {
                                     // 設定を追加します。
-                                    programSupport.SetoptionDictionary.Add(name, value);
+                                    playing.SetoptionDictionary.Add(name, value);
                                 }
                             }
 
-                            if (programSupport.SetoptionDictionary.ContainsKey("USI_ponder"))
+                            if (playing.SetoptionDictionary.ContainsKey("USI_ponder"))
                             {
-                                string value = programSupport.SetoptionDictionary["USI_ponder"];
+                                string value = playing.SetoptionDictionary["USI_ponder"];
 
                                 bool result;
                                 if (Boolean.TryParse(value, out result))
                                 {
-                                    enable_usiPonder = result;
+                                    playing.UsiPonderEnabled = result;
                                 }
                             }
                         }
@@ -277,7 +250,7 @@ namespace Grayscale.Kifuwarane.Engine
                             // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
                             //------------------------------------------------------------
                             Logger.TraceLine(logTag, "┏━━━━━設定━━━━━┓");
-                            foreach (KeyValuePair<string, string> pair in programSupport.SetoptionDictionary)
+                            foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
                             {
                                 // ここで将棋エンジンの設定を済ませておいてください。
                                 Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
@@ -667,11 +640,11 @@ namespace Grayscale.Kifuwarane.Engine
 
                                 if (m.Success)
                                 {
-                                    programSupport.GoMateDictionary["mate"] = (string)m.Groups[1].Value;
+                                    playing.GoMateDictionary["mate"] = (string)m.Groups[1].Value;
                                 }
                                 else
                                 {
-                                    programSupport.GoMateDictionary["mate"] = "";
+                                    playing.GoMateDictionary["mate"] = "";
                                 }
 
 
@@ -810,15 +783,15 @@ namespace Grayscale.Kifuwarane.Engine
 
                                 if (m.Success)
                                 {
-                                    programSupport.GoDictionary["btime"] = (string)m.Groups[1].Value;
-                                    programSupport.GoDictionary["wtime"] = (string)m.Groups[2].Value;
-                                    programSupport.GoDictionary["byoyomi"] = (string)m.Groups[3].Value;
+                                    playing.GoDictionary["btime"] = (string)m.Groups[1].Value;
+                                    playing.GoDictionary["wtime"] = (string)m.Groups[2].Value;
+                                    playing.GoDictionary["byoyomi"] = (string)m.Groups[3].Value;
                                 }
                                 else
                                 {
-                                    programSupport.GoDictionary["btime"] = "";
-                                    programSupport.GoDictionary["wtime"] = "";
-                                    programSupport.GoDictionary["byoyomi"] = "";
+                                    playing.GoDictionary["btime"] = "";
+                                    playing.GoDictionary["wtime"] = "";
+                                    playing.GoDictionary["byoyomi"] = "";
                                 }
 
 
@@ -1080,11 +1053,11 @@ namespace Grayscale.Kifuwarane.Engine
 
                                 if (m.Success)
                                 {
-                                    programSupport.GameoverDictionary["gameover"] = (string)m.Groups[1].Value;
+                                    playing.GameoverDictionary["gameover"] = (string)m.Groups[1].Value;
                                 }
                                 else
                                 {
-                                    programSupport.GameoverDictionary["gameover"] = "";
+                                    playing.GameoverDictionary["gameover"] = "";
                                 }
 
 
@@ -1164,25 +1137,25 @@ namespace Grayscale.Kifuwarane.Engine
                     //      └──────┴──────┘
                     //
                     Logger.TraceLine(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
-                    foreach (KeyValuePair<string, string> pair in programSupport.SetoptionDictionary)
+                    foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━goDictionary━━━━━┓");
-                    foreach (KeyValuePair<string, string> pair in programSupport.GoDictionary)
+                    foreach (KeyValuePair<string, string> pair in playing.GoDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━goMateDictionary━━━┓");
-                    foreach (KeyValuePair<string, string> pair in programSupport.GoMateDictionary)
+                    foreach (KeyValuePair<string, string> pair in playing.GoMateDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━gameoverDictionary━━┓");
-                    foreach (KeyValuePair<string, string> pair in programSupport.GameoverDictionary)
+                    foreach (KeyValuePair<string, string> pair in playing.GameoverDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
