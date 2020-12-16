@@ -27,7 +27,7 @@ namespace Grayscale.Kifuwarane.Engine
             {
                 // まだ指し将棋をすると決まったわけではないが、とりあえず今は Playing という名前で☆（＾～＾）
                 var playing = new Playing();
-                playing.PreUsiLoop(logTag);
+                playing.PreUsiLoop();
 
                 // 無限ループ（全体）
                 while (true)
@@ -42,69 +42,6 @@ namespace Grayscale.Kifuwarane.Engine
 
                         if ("usi" == line)
                         {
-                            //------------------------------------------------------------
-                            // あなたは USI ですか？
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 1:31:35> usi
-                            //      │
-                            //
-                            //
-                            // 将棋所で [対局(G)]-[エンジン管理...]-[追加...] でファイルを選んだときに、
-                            // 送られてくる文字が usi です。
-
-
-                            //------------------------------------------------------------
-                            // エンジン設定ダイアログボックスを作ります
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 23:40:15< option name 子 type check default true
-                            //      │2014/08/02 23:40:15< option name USI type spin default 2 min 1 max 13
-                            //      │2014/08/02 23:40:15< option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー
-                            //      │2014/08/02 23:40:15< option name 卯 type button default うさぎ
-                            //      │2014/08/02 23:40:15< option name 辰 type string default DRAGON
-                            //      │2014/08/02 23:40:15< option name 巳 type filename default スネーク.html
-                            //      │
-                            //
-                            //
-                            // 将棋所で [エンジン設定] ボタンを押したときに出てくるダイアログボックスに、
-                            //      ・チェックボックス
-                            //      ・スピン
-                            //      ・コンボボックス
-                            //      ・ボタン
-                            //      ・テキストボックス
-                            //      ・ファイル選択テキストボックス
-                            // を置くことができます。
-                            //
-
-                            //------------------------------------------------------------
-                            // USI です！！
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 2:03:33< id name fugafuga 1.00.0
-                            //      │2014/08/02 2:03:33< id author hogehoge
-                            //      │2014/08/02 2:03:33< usiok
-                            //      │
-                            //
-                            // プログラム名と、作者名を送り返す必要があります。
-                            // オプションも送り返せば、受け取ってくれます。
-                            // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
-                            //
                             string engineName = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Name");
                             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                             string engineAuthor = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Author");
@@ -118,60 +55,6 @@ namespace Grayscale.Kifuwarane.Engine
                         }
                         else if (line.StartsWith("setoption"))
                         {
-                            //------------------------------------------------------------
-                            // 設定してください
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 8:19:36> setoption name USI_Ponder value true
-                            //      │2014/08/02 8:19:36> setoption name USI_Hash value 256
-                            //      │
-                            //
-                            // ↑ゲーム開始時には、[対局]ダイアログボックスの[エンジン共通設定]の２つの内容が送られてきます。
-                            //      ・[相手の手番中に先読み] チェックボックス
-                            //      ・[ハッシュメモリ  ★　MB] スピン
-                            //
-                            // または
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 23:47:35> setoption name 卯
-                            //      │2014/08/02 23:47:35> setoption name 卯
-                            //      │2014/08/02 23:48:29> setoption name 子 value true
-                            //      │2014/08/02 23:48:29> setoption name USI value 6
-                            //      │2014/08/02 23:48:29> setoption name 寅 value 馬
-                            //      │2014/08/02 23:48:29> setoption name 辰 value DRAGONabcde
-                            //      │2014/08/02 23:48:29> setoption name 巳 value C:\Users\Takahashi\Documents\新しいビットマップ イメージ.bmp
-                            //      │
-                            //
-                            //
-                            // 将棋所から、[エンジン設定] ダイアログボックスの内容が送られてきます。
-                            // このダイアログボックスは、将棋エンジンから将棋所に  ダイアログボックスを作るようにメッセージを送って作ったものです。
-                            //
-
-                            //------------------------------------------------------------
-                            // 設定を一覧表に変えます
-                            //------------------------------------------------------------
-                            //
-                            // 上図のメッセージのままだと使いにくいので、
-                            // あとで使いやすいように Key と Value の表に分けて持ち直します。
-                            //
-                            // 図.
-                            //
-                            //      setoptionDictionary
-                            //      ┌──────┬──────┐
-                            //      │Key         │Value       │
-                            //      ┝━━━━━━┿━━━━━━┥
-                            //      │USI_Ponder  │true        │
-                            //      ├──────┼──────┤
-                            //      │USI_Hash    │256         │
-                            //      └──────┴──────┘
-                            //
                             Regex regex = new Regex(@"setoption name ([^ ]+)(?: value (.*))?", RegexOptions.Singleline);
                             Match m = regex.Match(line);
 
@@ -187,139 +70,23 @@ namespace Grayscale.Kifuwarane.Engine
                                     value = (string)m.Groups[2].Value;
                                 }
 
-                                if (playing.SetoptionDictionary.ContainsKey(name))
-                                {
-                                    // 設定を上書きします。
-                                    playing.SetoptionDictionary[name] = value;
-                                }
-                                else
-                                {
-                                    // 設定を追加します。
-                                    playing.SetoptionDictionary.Add(name, value);
-                                }
-                            }
-
-                            if (playing.SetoptionDictionary.ContainsKey("USI_ponder"))
-                            {
-                                string value = playing.SetoptionDictionary["USI_ponder"];
-
-                                bool result;
-                                if (Boolean.TryParse(value, out result))
-                                {
-                                    playing.UsiPonderEnabled = result;
-                                }
+                                playing.SetOption(name, value);
                             }
                         }
                         else if ("isready" == line)
                         {
-                            //------------------------------------------------------------
-                            // それでは定刻になりましたので……
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 1:31:35> isready
-                            //      │
-                            //
-                            //
-                            // 対局開始前に、将棋所から送られてくる文字が isready です。
-
-
-                            //------------------------------------------------------------
-                            // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
-                            //------------------------------------------------------------
-                            Logger.TraceLine(logTag, "┏━━━━━設定━━━━━┓");
-                            foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
-                            {
-                                // ここで将棋エンジンの設定を済ませておいてください。
-                                Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
-                            }
-                            Logger.TraceLine(logTag, "┗━━━━━━━━━━━━┛");
-
-
-                            //------------------------------------------------------------
-                            // よろしくお願いします(^▽^)！
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 2:03:33< readyok
-                            //      │
-                            //
-                            //
-                            // いつでも対局する準備が整っていましたら、 readyok を送り返します。
-                            Playing.Send("readyok");
+                            playing.ReadyOk();
                         }
                         else if ("usinewgame" == line)
                         {
-                            //------------------------------------------------------------
-                            // 対局時計が ポチッ とされました
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 2:03:33> usinewgame
-                            //      │
-                            //
-                            //
-                            // 対局が始まったときに送られてくる文字が usinewgame です。
-
-                            // (2020-11-14) ここから
-                            // どうも、２０２０年のわたしだぜ☆　ログ・ファイルが増え続けるのは流石にダメだろ……☆（＾～＾）
-                            // TODO usinewgame のときに ログ・ファイルを強制的に消すようにしとけばいいだろうか☆（＾～＾）
-                            // TODO ハードコーディングでいいか……☆（＾～＾）
-                            File.Delete("#log_default(System.Diagnostics.Process (Grayscale.Kifuwarane.Engine)).txt");
-                            File.Delete("#log_エラー.txt");
-                            File.Delete("#log_指し手生成ルーチン.txt");
-                            File.Delete("#log_将棋エンジン_棋譜読取.txt");
-                            // (2020-11-14) ここまで
+                            playing.UsiNewGame();
 
                             // 無限ループ（１つ目）を抜けます。無限ループ（２つ目）に進みます。
                             break;
                         }
                         else if ("quit" == line)
                         {
-                            //------------------------------------------------------------
-                            // おつかれさまでした
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 1:31:38> quit
-                            //      │
-                            //
-                            //
-                            // 将棋エンジンを止めるときに送られてくる文字が quit です。
-
-                            //------------------------------------------------------------
-                            // ﾉｼ
-                            //------------------------------------------------------------
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      ～
-                            //      │2014/08/02 3:08:34> (^-^)ﾉｼ
-                            //      │
-                            //
-                            //
-                            Logger.TraceLine(logTag, "(^-^)ﾉｼ");
-
-                            // このプログラムを終了します。
-                            Environment.Exit(0);
+                            playing.Quit();
                         }
                         else
                         {
@@ -335,9 +102,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             // ログだけ取って、スルーします。
                         }
-
-                    gt_NextTime1:
-                        ;
                     }
 
                     //************************************************************************************************************************
@@ -379,19 +143,7 @@ namespace Grayscale.Kifuwarane.Engine
                     {
                         // 将棋所から何かメッセージが届いていないか、見てみます。
                         string line = Console.In.ReadLine();
-
-                        if (null == line)
-                        {
-                            // メッセージは届いていませんでした。
-                            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                            goto gt_NextTime2;
-                        }
-
-                        // メッセージが届いています！
-                        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         Logger.WriteLineR(Logger.DefaultLogRecord, line);
-
 
                         if (line.StartsWith("position"))
                         {
