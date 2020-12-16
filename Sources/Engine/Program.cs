@@ -86,8 +86,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //      ・ファイル選択テキストボックス
                             // を置くことができます。
                             //
-                            Program.Send(playing.GetEngineOption());
-
 
                             //------------------------------------------------------------
                             // USI です！！
@@ -113,26 +111,10 @@ namespace Grayscale.Kifuwarane.Engine
                             // 製品名
                             // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 
-                            //
-                            // 図.
-                            //
-                            //      log.txt
-                            //      ┌────────────────────────────────────────
-                            //      │2014/08/02 1:04:59> v(^▽^)v ｲｪｰｲ☆ ... fugafuga 1.00.0
-                            //      │
-                            //      │
-                            //
-                            //
-                            // 製品名とバージョン番号は、次のファイルに書かれているものを使っています。
-                            // 場所：  [ソリューション エクスプローラー]-[ソリューション名]-[プロジェクト名]-[Properties]-[AssemblyInfo.cs] の中の、[AssemblyProduct]と[AssemblyVersion] を参照。
-                            //
-                            // バージョン番号を「1.00.0」形式（メジャー番号.マイナー番号.ビルド番号)で書くのは作者の趣味です。
-                            //
-
-                            Program.Send($"id name {engineName} {version.Major}.{version.Minor}.{version.Build}");
-                            Program.Send($"id author {engineAuthor}");
-                            Program.Send("usiok");
-
+                            playing.UsiOk(
+                                $"{engineName} {version.Major}.{version.Minor}.{version.Build}", // エンジン名
+                                $"{engineAuthor}" // エンジン著者名
+                                );
                         }
                         else if (line.StartsWith("setoption"))
                         {
@@ -272,7 +254,7 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             //
                             // いつでも対局する準備が整っていましたら、 readyok を送り返します。
-                            Program.Send("readyok");
+                            Playing.Send("readyok");
                         }
                         else if ("usinewgame" == line)
                         {
@@ -693,7 +675,7 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │
                                 //
                                 // 時間切れの場合 checkmate timeout を返返せばよいのだと思います。
-                                Program.Send("checkmate timeout");
+                                Playing.Send("checkmate timeout");
                             }
                             catch (Exception ex)
                             {
@@ -833,7 +815,7 @@ namespace Grayscale.Kifuwarane.Engine
 
                                     // この将棋エンジンは、後手とします。
                                     // ２０手目、投了  を決め打ちで返します。
-                                    Program.Send("bestmove resign");//投了
+                                    Playing.Send("bestmove resign");//投了
                                 }
                                 else // どちらの王さまも、まだまだ健在だぜ☆！
                                 {
@@ -849,7 +831,7 @@ namespace Grayscale.Kifuwarane.Engine
                                             Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
-                                            Program.Send("bestmove " + sfenText);//指し手を送ります。
+                                            Playing.Send("bestmove " + sfenText);//指し手を送ります。
                                         }
                                         else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                                         {
@@ -857,7 +839,7 @@ namespace Grayscale.Kifuwarane.Engine
                                                 "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
 
                                             // 投了ｗ！
-                                            Program.Send("bestmove resign");
+                                            Playing.Send("bestmove resign");
                                         }
                                     }
                                     catch (Exception ex)
@@ -942,7 +924,7 @@ namespace Grayscale.Kifuwarane.Engine
                                     //
                                     //      という流れと思います。
                                     // この指し手は、無視されます。（無視されますが、送る必要があります）
-                                    Program.Send("bestmove 9a9b");
+                                    Playing.Send("bestmove 9a9b");
                                 }
                                 else
                                 {
@@ -960,7 +942,7 @@ namespace Grayscale.Kifuwarane.Engine
                                     //
                                     //
                                     // 特に何もなく、すぐ指せというのですから、今考えている最善手をすぐに指します。
-                                    Program.Send("bestmove 9a9b");
+                                    Playing.Send("bestmove 9a9b");
                                 }
 
                             }
@@ -1002,7 +984,7 @@ namespace Grayscale.Kifuwarane.Engine
                                 // このあとの流れは go と同じだと思います。
 
                                 // 投了ｗ！
-                                Program.Send("bestmove resign");
+                                Playing.Send("bestmove resign");
                             }
                             catch (Exception ex)
                             {
@@ -1172,20 +1154,5 @@ namespace Grayscale.Kifuwarane.Engine
                 Logger.TraceLine(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
             }
         }
-
-        /// <summary>
-        /// 将棋所に向かってメッセージを送り返すとともに、
-        /// ログ・ファイルに通信を記録します。
-        /// </summary>
-        /// <param name="line"></param>
-        static void Send(string line)
-        {
-            // 将棋所に向かって、文字を送り返します。
-            Console.Out.WriteLine(line);
-
-            // ログ追記
-            Logger.WriteLineS(Logger.DefaultLogRecord, line);
-        }
-
     }
 }

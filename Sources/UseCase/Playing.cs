@@ -1,5 +1,6 @@
 ﻿namespace Grayscale.Kifuwarane.UseCases
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
@@ -24,6 +25,20 @@
 
         public Playing()
         {
+        }
+
+        /// <summary>
+        /// 将棋所に向かってメッセージを送り返すとともに、
+        /// ログ・ファイルに通信を記録します。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Send(string line)
+        {
+            // 将棋所に向かって、文字を送り返します。
+            Console.Out.WriteLine(line);
+
+            // ログ追記
+            Logger.WriteLineS(Logger.DefaultLogRecord, line);
         }
 
         public void PreUsiLoop(ILogTag logTag)
@@ -125,15 +140,65 @@
             gameoverDictionary["gameover"] = "";
         }
 
-        public string GetEngineOption()
+        public void UsiOk(string engineName, string engineAuthor)
         {
-            return $@"option name 子 type check default true
+            //------------------------------------------------------------
+            // あなたは USI ですか？
+            //------------------------------------------------------------
+            //
+            // 図.
+            //
+            //      log.txt
+            //      ┌────────────────────────────────────────
+            //      ～
+            //      │2014/08/02 1:31:35> usi
+            //      │
+            //
+            //
+            // 将棋所で [対局(G)]-[エンジン管理...]-[追加...] でファイルを選んだときに、
+            // 送られてくる文字が usi です。
+
+
+            //------------------------------------------------------------
+            // エンジン設定ダイアログボックスを作ります
+            //------------------------------------------------------------
+            //
+            // 図.
+            //
+            //      log.txt
+            //      ┌────────────────────────────────────────
+            //      ～
+            //      │2014/08/02 23:40:15< option name 子 type check default true
+            //      │2014/08/02 23:40:15< option name USI type spin default 2 min 1 max 13
+            //      │2014/08/02 23:40:15< option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー
+            //      │2014/08/02 23:40:15< option name 卯 type button default うさぎ
+            //      │2014/08/02 23:40:15< option name 辰 type string default DRAGON
+            //      │2014/08/02 23:40:15< option name 巳 type filename default スネーク.html
+            //      │
+            //
+            //
+            // 将棋所で [エンジン設定] ボタンを押したときに出てくるダイアログボックスに、
+            //      ・チェックボックス
+            //      ・スピン
+            //      ・コンボボックス
+            //      ・ボタン
+            //      ・テキストボックス
+            //      ・ファイル選択テキストボックス
+            // を置くことができます。
+            //
+
+            Playing.Send(
+                $@"option name 子 type check default true
 option name USI type spin default 2 min 1 max 13
 option name 寅 type combo default tiger var マウス var うし var tiger var ウー var 龍 var へび var 馬 var ひつじ var モンキー var バード var ドッグ var うりぼー
 option name 卯 type button default うさぎ
 option name 辰 type string default DRAGON
 option name 巳 type filename default スネーク.html
-";
+id name {engineName}
+id author {engineAuthor}
+usiok
+"
+                );
         }
     }
 }
