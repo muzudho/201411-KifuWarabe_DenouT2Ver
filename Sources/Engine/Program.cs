@@ -134,10 +134,7 @@ namespace Grayscale.Kifuwarane.Engine
                     //      └──┴─────────────┴──────┴──────┴────────────────────────────────────┘
                     //
                     int temeCount = 0;          // ｎ手目
-                    bool goPonderNow = false;   // go ponderを将棋所に伝えたなら真
                     PerformanceMetrics performanceMetrics = new PerformanceMetrics();
-
-                    TreeDocument kifuD = new TreeDocument();
 
                     while (true)
                     {
@@ -250,8 +247,8 @@ namespace Grayscale.Kifuwarane.Engine
                                 KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
                                 Logger.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
 
-                                kifuParserA_Impl.Execute_All(line, kifuD, "Program#Main(Warabe)", logTag);
-                                Logger.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD, "現局面になっているのかなんだぜ☆？　line=[" + line + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag)));
+                                kifuParserA_Impl.Execute_All(line, playing.TreeD, "Program#Main(Warabe)", logTag);
+                                playing.Position();
 
                                 //------------------------------------------------------------
                                 // じっとがまん
@@ -264,46 +261,15 @@ namespace Grayscale.Kifuwarane.Engine
                             catch (Exception ex)
                             {
                                 // エラーが起こりました。
-                                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
                                 // どうにもできないので  ログだけ取って無視します。
                                 Logger.TraceLine(logTag, "Program「position」：" + ex.GetType().Name + "：" + ex.Message);
                             }
-
                         }
                         else if (line.StartsWith("go ponder"))
                         {
                             try
                             {
-
-                                //------------------------------------------------------------
-                                // 将棋所が次に呼びかけるまで、考えていてください
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35> go ponder
-                                //      │
-                                //
-
-                                // 先読み用です。
-                                // 今回のプログラムでは対応しません。
-                                //
-                                // 将棋エンジンが  将棋所に向かって  「bestmove ★ ponder ★」といったメッセージを送ったとき、
-                                // 将棋所は「go ponder」というメッセージを返してくると思います。
-                                //
-                                // 恐らく  このメッセージを受け取っても、将棋エンジンは気にせず  考え続けていればいいのではないでしょうか。
-
-                                //------------------------------------------------------------
-                                // じっとがまん
-                                //------------------------------------------------------------
-                                //
-                                // まだ指してはいけません。
-                                // 指したら反則です。相手はまだ指していないのだ☆ｗ
-                                //
+                                playing.GoPonder();
                             }
                             catch (Exception ex)
                             {
@@ -319,115 +285,13 @@ namespace Grayscale.Kifuwarane.Engine
                         {
                             try
                             {
-                                //------------------------------------------------------------
-                                // 詰め将棋を解いてみよ！
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35> go mate 60000
-                                //      │
-                                //
-                                // または
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35> go mate 60000
-                                //      │
-                                //
-                                //
-                                // 詰め将棋用です。
-                                // このソフトでは対応しません。
-
-                                //------------------------------------------------------------
-                                // 制限時間、1分☆！
-                                //------------------------------------------------------------
-                                //
-                                // 上図のメッセージのままだと使いにくいので、
-                                // あとで使いやすいように Key と Value の表に分けて持ち直します。
-                                //
-                                // 図.
-                                //
-                                //      goMateDictionary
-                                //      ┌──────┬──────┐
-                                //      │Key         │Value       │
-                                //      ┝━━━━━━┿━━━━━━┥
-                                //      │mate        │599000      │
-                                //      └──────┴──────┘
-                                //      単位はミリ秒ですので、599000 は 59.9秒 です。
-                                //
-                                // または、
-                                //
-                                //      goMateDictionary
-                                //      ┌──────┬──────┐
-                                //      │Key         │Value       │
-                                //      ┝━━━━━━┿━━━━━━┥
-                                //      │mate        │infinite    │
-                                //      └──────┴──────┘
-                                //
                                 Regex regex = new Regex(@"go mate (.+)", RegexOptions.Singleline);
                                 Match m = regex.Match(line);
 
                                 if (m.Success)
                                 {
-                                    playing.GoMateDictionary["mate"] = (string)m.Groups[1].Value;
+                                    playing.GoMate((string)m.Groups[1].Value);
                                 }
-                                else
-                                {
-                                    playing.GoMateDictionary["mate"] = "";
-                                }
-
-
-                                //------------------------------------------------------------
-                                // 解けた
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35< checkmate
-                                //      │
-                                //
-                                // 詰みがあれば checkmate を返せばよいのだと思います。
-                                //Program.Send("checkmate");
-
-
-                                //------------------------------------------------------------
-                                // これは詰まない
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35< checkmate nomate
-                                //      │
-                                //
-                                // 詰みがなければ checkmate nomate を返返せばよいのだと思います。
-                                //Program.Send("checkmate nomate");
-
-
-                                //------------------------------------------------------------
-                                // 解けなかった☆ｗ
-                                //------------------------------------------------------------
-                                //
-                                // 図.
-                                //
-                                //      log.txt
-                                //      ┌────────────────────────────────────────
-                                //      ～
-                                //      │2014/08/02 2:03:35< checkmate timeout
-                                //      │
-                                //
-                                // 時間切れの場合 checkmate timeout を返返せばよいのだと思います。
-                                Playing.Send("checkmate timeout");
                             }
                             catch (Exception ex)
                             {
@@ -443,20 +307,7 @@ namespace Grayscale.Kifuwarane.Engine
                         {
                             try
                             {
-                                //------------------------------------------------------------
-                                // 検討中です
-                                //------------------------------------------------------------
-
-                                //------------------------------------------------------------
-                                // じっとがまん
-                                //------------------------------------------------------------
-                                //
-                                // 思考時間を無制限に設定しているというのは、
-                                //「考える時間がたっぷりある」というよりは、
-                                //「指すな」という意味合いがあると思います。
-                                //
-                                // 応答は無用です。
-                                // 将棋所では、検討中に使われていると思います。
+                                playing.GoInfinite();
                             }
                             catch (Exception ex)
                             {
@@ -532,8 +383,8 @@ namespace Grayscale.Kifuwarane.Engine
 
                                 // ┏━━━━サンプル・プログラム━━━━┓
 
-                                int latestTeme = kifuD.CountTeme(kifuD.Current8);//現・手目
-                                PositionKomaHouse genKyokumen = kifuD.ElementAt8(latestTeme).KomaHouse;//現局面
+                                int latestTeme = playing.TreeD.CountTeme(playing.TreeD.Current8);//現・手目
+                                PositionKomaHouse genKyokumen = playing.TreeD.ElementAt8(latestTeme).KomaHouse;//現局面
 
                                 Logger.TraceLine(logTag, "将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　" + line);
 
@@ -576,19 +427,19 @@ namespace Grayscale.Kifuwarane.Engine
                                         //------------------------------------------------------------
                                         // 指し手のチョイス
                                         //------------------------------------------------------------
-                                        IMove bestmove = MoveRoutine.Sasu_Main(kifuD, logTag); // たった１つの指し手（ベストムーブ）
+                                        IMove bestmove = MoveRoutine.Sasu_Main(playing.TreeD, logTag); // たった１つの指し手（ベストムーブ）
                                         if (bestmove.isEnableSfen())
                                         {
                                             string sfenText = bestmove.ToSfenText();
                                             Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
-                                                "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
+                                                "　先後=[" + playing.TreeD.CountSengo(playing.TreeD.CountTeme(playing.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(playing.TreeD, logTag));
 
                                             Playing.Send("bestmove " + sfenText);//指し手を送ります。
                                         }
                                         else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                                         {
                                             Logger.TraceLine(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
-                                                "　先後=[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag));
+                                                "　先後=[" + playing.TreeD.CountSengo(playing.TreeD.CountTeme(playing.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(playing.TreeD, logTag));
 
                                             // 投了ｗ！
                                             Playing.Send("bestmove resign");
@@ -643,7 +494,7 @@ namespace Grayscale.Kifuwarane.Engine
                                 //
                                 // stop するのは思考です。  stop を受け取ったら  すぐに最善手を指してください。
 
-                                if (goPonderNow)
+                                if (playing.GoPonderNow)
                                 {
                                     //------------------------------------------------------------
                                     // 将棋エンジン「（予想手が間違っていたって？）  △９二香 を指そうと思っていたんだが」
