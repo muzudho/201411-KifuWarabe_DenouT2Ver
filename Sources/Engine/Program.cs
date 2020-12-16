@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using Grayscale.Kifuwarane.Engine.L01_Log;
 using Grayscale.Kifuwarane.Engine.L10_Think;
@@ -25,105 +24,8 @@ namespace Grayscale.Kifuwarane.Engine
 
             try
             {
-                // 
-                // 図.
-                // 
-                //     プログラムの開始：  ここの先頭行から始まります。
-                //     プログラムの実行：  この中で、ずっと無限ループし続けています。
-                //     プログラムの終了：  この中の最終行を終えたとき、
-                //                         または途中で Environment.Exit(0); が呼ばれたときに終わります。
-                //                         また、コンソールウィンドウの[×]ボタンを押して強制終了されたときも  ぶつ切り  で突然終わります。
-
-                //------+-----------------------------------------------------------------------------------------------------------------
-                // 準備 |
-                //------+-----------------------------------------------------------------------------------------------------------------
-
-                // 道１８７
-                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-                var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-                var michi187 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Michi187"));
-                Michi187Array.Load(michi187);
-
-                // 駒の配役１８１
-                var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181"));
-                Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
-
-                // ※駒配役を生成した後で。
-                var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
-                ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
-
-                Logger.TraceLine(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
-
-                // 配役転換表
-                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
-                Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
-
-                Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
-
-
-
-                //-------------------+----------------------------------------------------------------------------------------------------
-                // ログファイル削除  |
-                //-------------------+----------------------------------------------------------------------------------------------------
-                //
-                // 図.
-                //
-                //      フォルダー
-                //          ├─ Engine.KifuWarabe.exe
-                //          └─ log.txt               ←これを削除
-                //
-                Logger.RemoveAllLogFile();
-
-
-                //-------------+----------------------------------------------------------------------------------------------------------
-                // ログ書込み  |
-                //-------------+----------------------------------------------------------------------------------------------------------
-                //
-                // 図.
-                //
-                //      log.txt
-                //      ┌────────────────────────────────────────
-                //      │2014/08/02 1:04:59> v(^▽^)v ｲｪｰｲ☆ ... Start!
-                //      │
-                //      │
-                //
-                Logger.TraceLine(logTag, "v(^▽^)v ｲｪｰｲ☆ ... Start!");
-
-
-                //-----------+------------------------------------------------------------------------------------------------------------
-                // 通信開始  |
-                //-----------+------------------------------------------------------------------------------------------------------------
-                //
-                // 図.
-                //
-                //      無限ループ（全体）
-                //          │
-                //          ├─無限ループ（１）
-                //          │                      将棋エンジンであることが認知されるまで、目で訴え続けます(^▽^)
-                //          │                      認知されると、無限ループ（２）に進みます。
-                //          │
-                //          └─無限ループ（２）
-                //                                  対局中、ずっとです。
-                //                                  対局が終わると、無限ループ（１）に戻ります。
-                //
-                // 無限ループの中に、２つの無限ループが入っています。
-                //
-
-
-                //-------------+----------------------------------------------------------------------------------------------------------
-                // データ設計  |
-                //-------------+----------------------------------------------------------------------------------------------------------
-                // 将棋所から送られてくるデータを、一覧表に変えたものです。
-                Dictionary<string, string> setoptionDictionary = new Dictionary<string, string>(); // 不定形
-                Dictionary<string, string> goDictionary = new Dictionary<string, string>();
-                goDictionary["btime"] = "";
-                goDictionary["wtime"] = "";
-                goDictionary["byoyomi"] = "";
-                Dictionary<string, string> goMateDictionary = new Dictionary<string, string>();
-                goMateDictionary["mate"] = "";
-                Dictionary<string, string> gameoverDictionary = new Dictionary<string, string>();
-                gameoverDictionary["gameover"] = "";
-
+                var programSupport = new ProgramSupport();
+                programSupport.PreUsiLoop(logTag);
 
                 //************************************************************************************************************************
                 // 無限ループ（全体）
@@ -227,9 +129,9 @@ namespace Grayscale.Kifuwarane.Engine
                             // オプションも送り返せば、受け取ってくれます。
                             // usi を受け取ってから、5秒以内に usiok を送り返して完了です。
                             //
-                            string engineName = toml.Get<TomlTable>("Engine").Get<string>("Name");
+                            string engineName = programSupport.TomlTable.Get<TomlTable>("Engine").Get<string>("Name");
                             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                            string engineAuthor = toml.Get<TomlTable>("Engine").Get<string>("Author");
+                            string engineAuthor = programSupport.TomlTable.Get<TomlTable>("Engine").Get<string>("Author");
                             // 製品名
                             // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 
@@ -329,21 +231,21 @@ namespace Grayscale.Kifuwarane.Engine
                                     value = (string)m.Groups[2].Value;
                                 }
 
-                                if (setoptionDictionary.ContainsKey(name))
+                                if (programSupport.SetoptionDictionary.ContainsKey(name))
                                 {
                                     // 設定を上書きします。
-                                    setoptionDictionary[name] = value;
+                                    programSupport.SetoptionDictionary[name] = value;
                                 }
                                 else
                                 {
                                     // 設定を追加します。
-                                    setoptionDictionary.Add(name, value);
+                                    programSupport.SetoptionDictionary.Add(name, value);
                                 }
                             }
 
-                            if (setoptionDictionary.ContainsKey("USI_ponder"))
+                            if (programSupport.SetoptionDictionary.ContainsKey("USI_ponder"))
                             {
-                                string value = setoptionDictionary["USI_ponder"];
+                                string value = programSupport.SetoptionDictionary["USI_ponder"];
 
                                 bool result;
                                 if (Boolean.TryParse(value, out result))
@@ -357,7 +259,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // それでは定刻になりましたので……
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -369,14 +270,13 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             //
                             // 対局開始前に、将棋所から送られてくる文字が isready です。
-                            #endregion
 
 
                             //------------------------------------------------------------
                             // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
                             //------------------------------------------------------------
                             Logger.TraceLine(logTag, "┏━━━━━設定━━━━━┓");
-                            foreach (KeyValuePair<string, string> pair in setoptionDictionary)
+                            foreach (KeyValuePair<string, string> pair in programSupport.SetoptionDictionary)
                             {
                                 // ここで将棋エンジンの設定を済ませておいてください。
                                 Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
@@ -387,7 +287,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // よろしくお願いします(^▽^)！
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -399,7 +298,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             //
                             // いつでも対局する準備が整っていましたら、 readyok を送り返します。
-                            #endregion
                             Program.Send("readyok");
                         }
                         else if ("usinewgame" == line)
@@ -407,7 +305,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // 対局時計が ポチッ とされました
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -419,7 +316,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             //
                             // 対局が始まったときに送られてくる文字が usinewgame です。
-                            #endregion
 
                             // (2020-11-14) ここから
                             // どうも、２０２０年のわたしだぜ☆　ログ・ファイルが増え続けるのは流石にダメだろ……☆（＾～＾）
@@ -439,7 +335,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // おつかれさまでした
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -451,13 +346,10 @@ namespace Grayscale.Kifuwarane.Engine
                             //
                             //
                             // 将棋エンジンを止めるときに送られてくる文字が quit です。
-                            #endregion
-
 
                             //------------------------------------------------------------
                             // ﾉｼ
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // 図.
                             //
@@ -468,7 +360,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //      │
                             //
                             //
-                            #endregion
                             Logger.TraceLine(logTag, "(^-^)ﾉｼ");
 
                             // このプログラムを終了します。
@@ -479,7 +370,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // ○△□×！？
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // ／(＾×＾)＼
                             //
@@ -488,18 +378,15 @@ namespace Grayscale.Kifuwarane.Engine
                             // USIプロトコルの独習を進め、対応／未対応を選んでください。
                             //
                             // ログだけ取って、スルーします。
-                            #endregion
                         }
 
                     gt_NextTime1:
                         ;
                     }
 
-
                     //************************************************************************************************************************
                     // 無限ループ（２つ目）
                     //************************************************************************************************************************
-                    #region ↓詳説  ＜n手目＞
                     //
                     // 図.
                     //
@@ -526,11 +413,9 @@ namespace Grayscale.Kifuwarane.Engine
                     //      │    │                          │            │2           │自分が指したときにはカウントを変えません。                              │
                     //      └──┴─────────────┴──────┴──────┴────────────────────────────────────┘
                     //
-                    #endregion
                     int temeCount = 0;          // ｎ手目
                     bool goPonderNow = false;   // go ponderを将棋所に伝えたなら真
                     PerformanceMetrics performanceMetrics = new PerformanceMetrics();
-
 
                     TreeDocument kifuD = new TreeDocument();
 
@@ -559,7 +444,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // これが棋譜です
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -649,8 +533,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 // このメッセージを読むと、駒の配置が分かります。
                                 //
                                 // “が”、まだ指してはいけません。
-                                #endregion
-
 
                                 Logger.TraceLine(logTag, " ...");
                                 Logger.TraceLine(logTag, "    ...");
@@ -666,13 +548,10 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // じっとがまん
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 応答は無用です。
                                 // 多分、将棋所もまだ準備ができていないのではないでしょうか（？）
                                 //
-                                #endregion
-
                             }
                             catch (Exception ex)
                             {
@@ -692,7 +571,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // 将棋所が次に呼びかけるまで、考えていてください
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -710,18 +588,14 @@ namespace Grayscale.Kifuwarane.Engine
                                 // 将棋所は「go ponder」というメッセージを返してくると思います。
                                 //
                                 // 恐らく  このメッセージを受け取っても、将棋エンジンは気にせず  考え続けていればいいのではないでしょうか。
-                                #endregion
-
 
                                 //------------------------------------------------------------
                                 // じっとがまん
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // まだ指してはいけません。
                                 // 指したら反則です。相手はまだ指していないのだ☆ｗ
                                 //
-                                #endregion
                             }
                             catch (Exception ex)
                             {
@@ -740,7 +614,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // 詰め将棋を解いてみよ！
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -761,12 +634,10 @@ namespace Grayscale.Kifuwarane.Engine
                                 //
                                 // 詰め将棋用です。
                                 // このソフトでは対応しません。
-                                #endregion
 
                                 //------------------------------------------------------------
                                 // 制限時間、1分☆！
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 上図のメッセージのままだと使いにくいので、
                                 // あとで使いやすいように Key と Value の表に分けて持ち直します。
@@ -790,24 +661,22 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │mate        │infinite    │
                                 //      └──────┴──────┘
                                 //
-                                #endregion
                                 Regex regex = new Regex(@"go mate (.+)", RegexOptions.Singleline);
                                 Match m = regex.Match(line);
 
                                 if (m.Success)
                                 {
-                                    goMateDictionary["mate"] = (string)m.Groups[1].Value;
+                                    programSupport.GoMateDictionary["mate"] = (string)m.Groups[1].Value;
                                 }
                                 else
                                 {
-                                    goMateDictionary["mate"] = "";
+                                    programSupport.GoMateDictionary["mate"] = "";
                                 }
 
 
                                 //------------------------------------------------------------
                                 // 解けた
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -818,14 +687,12 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │
                                 //
                                 // 詰みがあれば checkmate を返せばよいのだと思います。
-                                #endregion
                                 //Program.Send("checkmate");
 
 
                                 //------------------------------------------------------------
                                 // これは詰まない
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -836,14 +703,12 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │
                                 //
                                 // 詰みがなければ checkmate nomate を返返せばよいのだと思います。
-                                #endregion
                                 //Program.Send("checkmate nomate");
 
 
                                 //------------------------------------------------------------
                                 // 解けなかった☆ｗ
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -854,7 +719,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │
                                 //
                                 // 時間切れの場合 checkmate timeout を返返せばよいのだと思います。
-                                #endregion
                                 Program.Send("checkmate timeout");
                             }
                             catch (Exception ex)
@@ -878,13 +742,11 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // じっとがまん
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 思考時間を無制限に設定しているというのは、
                                 //「考える時間がたっぷりある」というよりは、
                                 //「指すな」という意味合いがあると思います。
                                 //
-                                #endregion
                                 // 応答は無用です。
                                 // 将棋所では、検討中に使われていると思います。
                             }
@@ -905,7 +767,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // あなたの手番です
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -917,7 +778,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //
                                 // もう指していいときに、将棋所から送られてくる文字が go です。
                                 //
-                                #endregion
 
                                 // ｎ手目を 2 増やします。
                                 // 相手の手番と、自分の手番の 2つが増えた、という数え方です。
@@ -926,7 +786,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // 先手 3:00  後手 0:00  記録係「50秒ぉ～」
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 上図のメッセージのままだと使いにくいので、
                                 // あとで使いやすいように Key と Value の表に分けて持ち直します。
@@ -945,21 +804,20 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      └──────┴──────┘
                                 //      単位はミリ秒ですので、599000 は 59.9秒 です。
                                 //
-                                #endregion
                                 Regex regex = new Regex(@"go btime (\d+) wtime (\d+) byoyomi (\d+)", RegexOptions.Singleline);
                                 Match m = regex.Match(line);
 
                                 if (m.Success)
                                 {
-                                    goDictionary["btime"] = (string)m.Groups[1].Value;
-                                    goDictionary["wtime"] = (string)m.Groups[2].Value;
-                                    goDictionary["byoyomi"] = (string)m.Groups[3].Value;
+                                    programSupport.GoDictionary["btime"] = (string)m.Groups[1].Value;
+                                    programSupport.GoDictionary["wtime"] = (string)m.Groups[2].Value;
+                                    programSupport.GoDictionary["byoyomi"] = (string)m.Groups[3].Value;
                                 }
                                 else
                                 {
-                                    goDictionary["btime"] = "";
-                                    goDictionary["wtime"] = "";
-                                    goDictionary["byoyomi"] = "";
+                                    programSupport.GoDictionary["btime"] = "";
+                                    programSupport.GoDictionary["wtime"] = "";
+                                    programSupport.GoDictionary["byoyomi"] = "";
                                 }
 
 
@@ -989,7 +847,6 @@ namespace Grayscale.Kifuwarane.Engine
                                     //------------------------------------------------------------
                                     // 投了
                                     //------------------------------------------------------------
-                                    #region ↓詳説
                                     //
                                     // 図.
                                     //
@@ -1002,7 +859,6 @@ namespace Grayscale.Kifuwarane.Engine
 
                                     // この将棋エンジンは、後手とします。
                                     // ２０手目、投了  を決め打ちで返します。
-                                    #endregion
                                     Program.Send("bestmove resign");//投了
                                 }
                                 else // どちらの王さまも、まだまだ健在だぜ☆！
@@ -1059,7 +915,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // あなたの手番です  （すぐ指してください！）
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -1079,14 +934,12 @@ namespace Grayscale.Kifuwarane.Engine
                                 //  （２）「急いで指すボタン」が押されたときなどに送られてくるようです？
                                 //
                                 // stop するのは思考です。  stop を受け取ったら  すぐに最善手を指してください。
-                                #endregion
 
                                 if (goPonderNow)
                                 {
                                     //------------------------------------------------------------
                                     // 将棋エンジン「（予想手が間違っていたって？）  △９二香 を指そうと思っていたんだが」
                                     //------------------------------------------------------------
-                                    #region ↓詳説
                                     //
                                     // 図.
                                     //
@@ -1114,7 +967,6 @@ namespace Grayscale.Kifuwarane.Engine
                                     //          将棋エンジン「本当の指し手」
                                     //
                                     //      という流れと思います。
-                                    #endregion
                                     // この指し手は、無視されます。（無視されますが、送る必要があります）
                                     Program.Send("bestmove 9a9b");
                                 }
@@ -1123,7 +975,6 @@ namespace Grayscale.Kifuwarane.Engine
                                     //------------------------------------------------------------
                                     // じゃあ、△９二香で
                                     //------------------------------------------------------------
-                                    #region ↓詳説
                                     //
                                     // 図.
                                     //
@@ -1135,7 +986,6 @@ namespace Grayscale.Kifuwarane.Engine
                                     //
                                     //
                                     // 特に何もなく、すぐ指せというのですから、今考えている最善手をすぐに指します。
-                                    #endregion
                                     Program.Send("bestmove 9a9b");
                                 }
 
@@ -1158,7 +1008,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // あなたの手番です  （予想通りの応手でしたよ）
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -1177,7 +1026,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //
                                 // 将棋所は  相手が予想した手を指した後で「go」の替わりに「ponderhit」というメッセージを返してくるのだと思います。
                                 // このあとの流れは go と同じだと思います。
-                                #endregion
 
                                 // 投了ｗ！
                                 Program.Send("bestmove resign");
@@ -1198,7 +1046,6 @@ namespace Grayscale.Kifuwarane.Engine
                                 //------------------------------------------------------------
                                 // 対局が終わりました
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 図.
                                 //
@@ -1210,12 +1057,10 @@ namespace Grayscale.Kifuwarane.Engine
                                 //
 
                                 // 対局が終わったときに送られてくる文字が gameover です。
-                                #endregion
 
                                 //------------------------------------------------------------
                                 // 「あ、勝ちました」「あ、引き分けました」「あ、負けました」
                                 //------------------------------------------------------------
-                                #region ↓詳説
                                 //
                                 // 上図のメッセージのままだと使いにくいので、
                                 // あとで使いやすいように Key と Value の表に分けて持ち直します。
@@ -1229,17 +1074,16 @@ namespace Grayscale.Kifuwarane.Engine
                                 //      │gameover    │lose        │
                                 //      └──────┴──────┘
                                 //
-                                #endregion
                                 Regex regex = new Regex(@"gameover (.)", RegexOptions.Singleline);
                                 Match m = regex.Match(line);
 
                                 if (m.Success)
                                 {
-                                    gameoverDictionary["gameover"] = (string)m.Groups[1].Value;
+                                    programSupport.GameoverDictionary["gameover"] = (string)m.Groups[1].Value;
                                 }
                                 else
                                 {
-                                    gameoverDictionary["gameover"] = "";
+                                    programSupport.GameoverDictionary["gameover"] = "";
                                 }
 
 
@@ -1260,7 +1104,6 @@ namespace Grayscale.Kifuwarane.Engine
                             //------------------------------------------------------------
                             // ○△□×！？
                             //------------------------------------------------------------
-                            #region ↓詳説
                             //
                             // ／(＾×＾)＼
                             //
@@ -1269,7 +1112,6 @@ namespace Grayscale.Kifuwarane.Engine
                             // USIプロトコルの独習を進め、対応／未対応を選んでください。
                             //
                             // ログだけ取って、スルーします。
-                            #endregion
                         }
 
                     gt_NextTime2:
@@ -1280,7 +1122,6 @@ namespace Grayscale.Kifuwarane.Engine
                     //-------------------+----------------------------------------------------------------------------------------------------
                     // スナップショット  |
                     //-------------------+----------------------------------------------------------------------------------------------------
-                    #region ↓詳説
                     // 対局後のタイミングで、データの中身を確認しておきます。
                     // Key と Value の表の形をしています。（順不同）
                     //
@@ -1321,27 +1162,26 @@ namespace Grayscale.Kifuwarane.Engine
                     //      │gameover    │lose        │
                     //      └──────┴──────┘
                     //
-                    #endregion
                     Logger.TraceLine(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
-                    foreach (KeyValuePair<string, string> pair in setoptionDictionary)
+                    foreach (KeyValuePair<string, string> pair in programSupport.SetoptionDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━goDictionary━━━━━┓");
-                    foreach (KeyValuePair<string, string> pair in goDictionary)
+                    foreach (KeyValuePair<string, string> pair in programSupport.GoDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━goMateDictionary━━━┓");
-                    foreach (KeyValuePair<string, string> pair in goMateDictionary)
+                    foreach (KeyValuePair<string, string> pair in programSupport.GoMateDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }
                     Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                     Logger.TraceLine(logTag, "┏━確認━━━━gameoverDictionary━━┓");
-                    foreach (KeyValuePair<string, string> pair in gameoverDictionary)
+                    foreach (KeyValuePair<string, string> pair in programSupport.GameoverDictionary)
                     {
                         Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
                     }

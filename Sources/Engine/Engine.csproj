@@ -50,6 +50,7 @@
     <Compile Include="01_Log\PerformanceMetrics.cs" />
     <Compile Include="10_Think\MoveRoutine.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
