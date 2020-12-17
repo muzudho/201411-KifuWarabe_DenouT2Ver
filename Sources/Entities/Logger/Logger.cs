@@ -91,9 +91,9 @@ namespace Grayscale.Kifuwarane.Entities.Log
         /// ログ・ファイルに記録します。失敗しても無視します。
         /// </summary>
         /// <param name="line"></param>
-        public static void TraceLine(ILogTag key, string line)
+        public static void TraceLine(ILogTag logTag, string line)
         {
-            ILogRecord record = LogMap[key];
+            ILogRecord record = LogMap[logTag];
 
             if (null == record)
             {
