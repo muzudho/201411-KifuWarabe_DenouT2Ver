@@ -8,18 +8,18 @@
         /// <summary>
         /// ファイル名。
         /// </summary>
-        public string FileName { get { return this.FileStem + this.Extension; } }
+        public string FileName { get { return $"{this.FileStem}{this.Extension}"; } }
 
         /// <summary>
         /// 拡張子抜きのファイル名。
         /// </summary>
-        public string FileStem { get { return this.fileStem; } }
-        private string fileStem;
+        public string FileStem { get; private set; }
 
         /// <summary>
         /// ドット付きの拡張子。
+        /// 拡張子は .log 固定。ファイル削除の目印にします。
         /// </summary>
-        public string Extension { get { return Logger.Extension; } }
+        public string Extension { get { return ".log"; } }
 
         /// <summary>
         /// ログ出力の有無。
@@ -29,7 +29,7 @@
 
         public LogRecord(string fileStem, bool enable)
         {
-            this.fileStem = fileStem;
+            this.FileStem = fileStem;
             this.enable = enable;
         }
 

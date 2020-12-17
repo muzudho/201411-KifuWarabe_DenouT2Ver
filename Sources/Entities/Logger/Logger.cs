@@ -41,11 +41,6 @@ namespace Grayscale.Kifuwarane.Entities.Log
 
         public const bool PrintTimestamp = false;
 
-        /// <summary>
-        /// 拡張子は .log 固定。ファイル削除の目印にします。
-        /// </summary>
-        public static string Extension { get; private set; } = ".log";
-
         public static ILogRecord DefaultLogRecord
         {
             get
