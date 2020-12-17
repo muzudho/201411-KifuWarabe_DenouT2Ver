@@ -183,7 +183,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        Logger.ErrorLine(LogTags.ErrorLog, message);
+                        Logger.ErrorLine(LogTags.Error, message);
 
                         // 追加
                         throw;
@@ -199,7 +199,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                Logger.ErrorLine(LogTags.ErrorLog, message);
+                Logger.ErrorLine(LogTags.Error, message);
             }
 
             return successful;

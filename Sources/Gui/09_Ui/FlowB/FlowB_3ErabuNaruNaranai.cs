@@ -116,7 +116,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     kifuD.AppendChildA_New(//「成る／成らない」ボタンを押したときです。
                         newNode,
                         "FlowB_3ErabuNaruNaranai#MouseleftButtonDown",
-                        LogTags.GuiRecordLog
+                        LogTags.GuiRecord
                         );
 
 

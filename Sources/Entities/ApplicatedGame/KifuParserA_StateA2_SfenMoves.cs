@@ -78,7 +78,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = this.GetType().Name + "#Execute（A）：" + ex.GetType().Name + "：" + ex.Message;
-                        Logger.ErrorLine(LogTags.ErrorLog, message);
+                        Logger.ErrorLine(LogTags.Error, message);
                     }
 
 

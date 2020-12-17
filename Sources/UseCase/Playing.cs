@@ -49,7 +49,7 @@
 
         public void PreUsiLoop()
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             // 
             // 図.
@@ -295,7 +295,7 @@ usiok
 
         public void ReadyOk()
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             //------------------------------------------------------------
             // それでは定刻になりましたので……
@@ -376,7 +376,7 @@ usiok
 
         public void Quit()
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             //------------------------------------------------------------
             // おつかれさまでした
@@ -414,7 +414,7 @@ usiok
 
         public void Position()
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             // line=[" + line + "]
             Logger.TraceLine(logTag, this.TreeD.DebugText_Kyokumen7(this.TreeD, "現局面になっているのかなんだぜ☆？　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag)));
@@ -583,7 +583,7 @@ usiok
 
         public void Go(string btime, string wtime, string byoyomi, string binc, string winc)
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             // ┏━━━━サンプル・プログラム━━━━┓
 

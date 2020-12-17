@@ -356,7 +356,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
@@ -405,7 +405,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
 
 
             this.setteiFile = new SetteiFile();
@@ -529,7 +529,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -557,7 +557,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -607,7 +607,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -697,7 +697,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiRecordLog));
+                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiRecord));
                         break;
                     case SyuturyokuKirikae.Sfen:
                         this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));

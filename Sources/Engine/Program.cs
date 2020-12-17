@@ -20,7 +20,7 @@
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            ILogTag logTag = LogTags.EngineRecordLog;
+            ILogTag logTag = LogTags.Engine;
 
             try
             {

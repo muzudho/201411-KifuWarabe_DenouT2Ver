@@ -200,7 +200,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         "配役転換表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount2 + "]\n" +
                         "columnCount=[" + columnCount + "]\n";
-                        Logger.ErrorLine(LogTags.ErrorLog, message);
+                        Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
 

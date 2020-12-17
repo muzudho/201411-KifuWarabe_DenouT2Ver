@@ -25,17 +25,17 @@ namespace Grayscale.Kifuwarane.Entities.Log
 
             Logger.AddLog(LogTags.OutputForcePromotion, LogEntry(profilePath, toml, "OutputForcePromotion", true,false));
             Logger.AddLog(LogTags.OutputPieceTypeToHaiyaku, LogEntry(profilePath, toml, "OutputPieceTypeToHaiyaku", true, false));
-            Logger.AddLog(LogTags.GenMoveLog, LogEntry(profilePath, toml, "GenMoveLog", true, false));
-            Logger.AddLog(LogTags.GuiRecordLog, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
-            Logger.AddLog(LogTags.LibLog, LogEntry(profilePath, toml, "LibLog", true, false));
-            Logger.AddLog(LogTags.LinkedListLog, LogEntry(profilePath, toml, "LinkedListLog", true, false));
-            Logger.AddLog(LogTags.ErrorLog, LogEntry(profilePath, toml, "ErrorLog", true, false));
-            Logger.AddLog(LogTags.LegalMoveLog, LogEntry(profilePath, toml, "LegalMoveLog", true, false));
-            Logger.AddLog(LogTags.LegalMoveEvasionLog, LogEntry(profilePath, toml, "LegalMoveEvasionLog", true, false));
+            Logger.AddLog(LogTags.GenMove, LogEntry(profilePath, toml, "GenMoveLog", true, false));
+            Logger.AddLog(LogTags.GuiRecord, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
+            Logger.AddLog(LogTags.Library, LogEntry(profilePath, toml, "LibLog", true, false));
+            Logger.AddLog(LogTags.LinkedList, LogEntry(profilePath, toml, "LinkedListLog", true, false));
+            Logger.AddLog(LogTags.Error, LogEntry(profilePath, toml, "ErrorLog", true, false));
+            Logger.AddLog(LogTags.LegalMove, LogEntry(profilePath, toml, "LegalMoveLog", true, false));
+            Logger.AddLog(LogTags.LegalMoveEvasion, LogEntry(profilePath, toml, "LegalMoveEvasionLog", true, false));
             Logger.AddLog(LogTags.HaichiTenkanHyoOnlyDataLog, LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog", true, false));
             Logger.AddLog(LogTags.HaichiTenkanHyoAllLog, LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog", true, false));
 
-            Logger.AddLog(LogTags.EngineRecordLog, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
+            Logger.AddLog(LogTags.Engine, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
             Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true, false));
         }
 
@@ -211,7 +211,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
 
                 // どうにもできないので  ログだけ取って　無視します。
                 string message = $"WriteLineR：{ex.Message}";
-                Logger.ErrorLine(LogTags.ErrorLog, message);
+                Logger.ErrorLine(LogTags.Error, message);
             }
         }
 
@@ -242,7 +242,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
 
                 // どうにもできないので  ログだけ取って　無視します。
                 string message = $"WriteLineS：{ex.Message}";
-                Logger.ErrorLine(LogTags.ErrorLog, message);
+                Logger.ErrorLine(LogTags.Error, message);
             }
         }
 
@@ -268,8 +268,8 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って　無視します。
-                string message = $"#RemoveFile：{ex.Message}";
-                Logger.ErrorLine(LogTags.ErrorLog, message);
+                string message = $"#RemoveAllLogFile：{ex.Message}";
+                Logger.ErrorLine(LogTags.Error, message);
             }
         }
     }

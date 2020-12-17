@@ -265,7 +265,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
                 }
 
-                Logger.WriteFile(LogTags.LegalMoveEvasionLog, sbOhteDebug.ToString());
+                Logger.WriteFile(LogTags.LegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------

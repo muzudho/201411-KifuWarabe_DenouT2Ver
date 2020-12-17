@@ -19,7 +19,7 @@ namespace Grayscale.Kifuwarane.Gui
         [STAThread]
         static void Main()
         {
-            ILogTag logTag = LogTags.GuiRecordLog;
+            ILogTag logTag = LogTags.GuiRecord;
             Logger.TraceLine(logTag, "乱数のたね＝[" + RandomLib.Seed + "]");
 
             // 道１８７

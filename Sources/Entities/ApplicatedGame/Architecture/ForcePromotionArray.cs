@@ -89,7 +89,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         "強制転成表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount + "]\n" +
                         "masuHandle=[" + masuHandle + "]\n";
-                        Logger.ErrorLine(LogTags.ErrorLog, message);
+                        Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
 
