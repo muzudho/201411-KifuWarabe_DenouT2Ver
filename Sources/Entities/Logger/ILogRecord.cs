@@ -24,5 +24,10 @@
         /// ログ出力の有無。
         /// </summary>
         bool Enable { get; }
+
+        /// <summary>
+        /// タイムスタンプの有無。
+        /// </summary>
+        bool TimeStampPrintable { get; }
     }
 }

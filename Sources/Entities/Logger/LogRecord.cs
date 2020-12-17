@@ -27,10 +27,16 @@
         public bool Enable { get { return this.enable; } }
         private bool enable;
 
-        public LogRecord(string fileStem, bool enable)
+        /// <summary>
+        /// タイムスタンプの有無。
+        /// </summary>
+        public bool TimeStampPrintable { get; private set; } = false;
+
+        public LogRecord(string fileStem, bool enable, bool timeStampPrintable)
         {
             this.FileStem = fileStem;
             this.enable = enable;
+            this.TimeStampPrintable = timeStampPrintable;
         }
 
         public override bool Equals(System.Object obj)

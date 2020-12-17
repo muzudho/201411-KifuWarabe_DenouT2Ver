@@ -13,9 +13,9 @@ namespace Grayscale.Kifuwarane.Entities.Log
     /// </summary>
     public static class Logger
     {
-        static ILogRecord LogEntry(string profilePath, TomlTable toml, string resourceKey, bool enabled)
+        static ILogRecord LogEntry(string profilePath, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
         {
-            return new LogRecord(Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey)), enabled);
+            return new LogRecord(Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey)), enabled, timeStampPrintable);
         } 
 
         static Logger()
@@ -23,23 +23,21 @@ namespace Grayscale.Kifuwarane.Entities.Log
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
 
-            Logger.AddLog(LogTags.OutputForcePromotion, LogEntry(profilePath, toml, "OutputForcePromotion", true));
-            Logger.AddLog(LogTags.OutputPieceTypeToHaiyaku, LogEntry(profilePath, toml, "OutputPieceTypeToHaiyaku", true));
-            Logger.AddLog(LogTags.GenMoveLog, LogEntry(profilePath, toml, "GenMoveLog", true));
-            Logger.AddLog(LogTags.GuiRecordLog, LogEntry(profilePath, toml, "GuiRecordLog", true));
-            Logger.AddLog(LogTags.LibLog, LogEntry(profilePath, toml, "LibLog", true));
-            Logger.AddLog(LogTags.LinkedListLog, LogEntry(profilePath, toml, "LinkedListLog", true));
-            Logger.AddLog(LogTags.ErrorLog, LogEntry(profilePath, toml, "ErrorLog", true));
-            Logger.AddLog(LogTags.LegalMoveLog, LogEntry(profilePath, toml, "LegalMoveLog", true));
-            Logger.AddLog(LogTags.LegalMoveEvasionLog, LogEntry(profilePath, toml, "LegalMoveEvasionLog", true));
-            Logger.AddLog(LogTags.HaichiTenkanHyoOnlyDataLog, LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog", true));
-            Logger.AddLog(LogTags.HaichiTenkanHyoAllLog, LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog", true));
+            Logger.AddLog(LogTags.OutputForcePromotion, LogEntry(profilePath, toml, "OutputForcePromotion", true,false));
+            Logger.AddLog(LogTags.OutputPieceTypeToHaiyaku, LogEntry(profilePath, toml, "OutputPieceTypeToHaiyaku", true, false));
+            Logger.AddLog(LogTags.GenMoveLog, LogEntry(profilePath, toml, "GenMoveLog", true, false));
+            Logger.AddLog(LogTags.GuiRecordLog, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
+            Logger.AddLog(LogTags.LibLog, LogEntry(profilePath, toml, "LibLog", true, false));
+            Logger.AddLog(LogTags.LinkedListLog, LogEntry(profilePath, toml, "LinkedListLog", true, false));
+            Logger.AddLog(LogTags.ErrorLog, LogEntry(profilePath, toml, "ErrorLog", true, false));
+            Logger.AddLog(LogTags.LegalMoveLog, LogEntry(profilePath, toml, "LegalMoveLog", true, false));
+            Logger.AddLog(LogTags.LegalMoveEvasionLog, LogEntry(profilePath, toml, "LegalMoveEvasionLog", true, false));
+            Logger.AddLog(LogTags.HaichiTenkanHyoOnlyDataLog, LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog", true, false));
+            Logger.AddLog(LogTags.HaichiTenkanHyoAllLog, LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog", true, false));
 
-            Logger.AddLog(LogTags.EngineRecordLog, LogEntry(profilePath, toml, "EngineRecordLog", true));
-            Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true));
+            Logger.AddLog(LogTags.EngineRecordLog, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
+            Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true, false));
         }
-
-        public const bool PrintTimestamp = false;
 
         public static ILogRecord DefaultLogRecord
         {
@@ -47,7 +45,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
             {
                 if (null == Logger.defaultLogRecord)
                 {
-                    Logger.defaultLogRecord = new LogRecord($"default({System.Diagnostics.Process.GetCurrentProcess().ProcessName})", true);
+                    Logger.defaultLogRecord = new LogRecord($"default({System.Diagnostics.Process.GetCurrentProcess().ProcessName})", true, false);
                 }
 
                 return Logger.defaultLogRecord;
@@ -95,14 +93,14 @@ namespace Grayscale.Kifuwarane.Entities.Log
         /// <param name="line"></param>
         public static void TraceLine(ILogTag key, string line)
         {
-            ILogRecord address = LogMap[key];
+            ILogRecord record = LogMap[key];
 
-            if (null == address)
+            if (null == record)
             {
-                address = Logger.defaultLogRecord;
+                record = Logger.defaultLogRecord;
             }
 
-            if (!address.Enable)
+            if (!record.Enable)
             {
                 // ログ出力オフ
                 goto gt_EndMethod;
@@ -114,7 +112,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 StringBuilder sb = new StringBuilder();
 
                 // タイムスタンプ
-                if (Logger.PrintTimestamp)
+                if (record.TimeStampPrintable)
                 {
                     sb.Append(DateTime.Now.ToString());
                     sb.Append(" : ");
@@ -123,7 +121,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 sb.Append(line);
                 sb.AppendLine();
 
-                System.IO.File.AppendAllText(address.FileName, sb.ToString());
+                System.IO.File.AppendAllText(record.FileName, sb.ToString());
             }
             catch (Exception)
             {
@@ -142,14 +140,14 @@ namespace Grayscale.Kifuwarane.Entities.Log
         /// <param name="line"></param>
         public static void ErrorLine(ILogTag key, string line)
         {
-            ILogRecord address = LogMap[key];
+            ILogRecord record = LogMap[key];
 
-            if (null == address)
+            if (null == record)
             {
-                address = Logger.defaultLogRecord;
+                record = Logger.defaultLogRecord;
             }
 
-            if (!address.Enable)
+            if (!record.Enable)
             {
                 // ログ出力オフ
                 goto gt_EndMethod;
@@ -161,7 +159,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 StringBuilder sb = new StringBuilder();
 
                 // タイムスタンプ
-                if (Logger.PrintTimestamp)
+                if (record.TimeStampPrintable)
                 {
                     sb.Append(DateTime.Now.ToString());
                     sb.Append(" : ");
@@ -173,7 +171,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 string message = sb.ToString();
                 // MessageBox.Show(message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                System.IO.File.AppendAllText(address.FileName, message);
+                System.IO.File.AppendAllText(record.FileName, message);
             }
             catch (Exception)
             {
