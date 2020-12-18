@@ -1,6 +1,6 @@
 ﻿using System;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
@@ -47,7 +47,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 {
                     //>>>>> 棋譜が始まります。
 
-                    Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
+                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
 
                     inputLine = inputLine.Substring("moves".Length);
                     inputLine = inputLine.Trim();
@@ -57,7 +57,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 }
                 else
                 {
-                    Logger.Logger.TraceLine(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
+                    Logging.Logger.Trace(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
                     toBreak = true;
                 }
             }
@@ -68,7 +68,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
             }
 
             return inputLine;

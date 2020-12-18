@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Grayscale.Kifuwarane.Entities.UseCase;
 
@@ -40,7 +40,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            Logger.TraceLine(LogTags.GenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            Logger.Trace(LogTags.GenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestmove = MoveRoutine.Choice_Random(kifu, ref gohosyuList, logTag);
@@ -106,7 +106,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
+                Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(60)：");
             }
 
             try
@@ -143,7 +143,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
+                        Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(65)：");
                     }
 
 
@@ -167,13 +167,13 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                         //>>>>> エラーが起こりました。
 
                         // どうにもできないので  ログだけ取って無視します。
-                        Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
+                        Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(70)：");
                     }
 
 
                 }
 
-                Logger.WriteFile(LogTags.LegalMove, sbGohosyu.ToString());
+                Logger.WriteFile(LogFiles.LegalMove, sbGohosyu.ToString());
 
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
+                Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(74)：");
             }
 
 
@@ -211,7 +211,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.TraceLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
+                Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(100)：");
             }
 
             return result;

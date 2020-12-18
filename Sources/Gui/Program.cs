@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Nett;
 using System.Windows.Forms;
@@ -19,8 +19,8 @@ namespace Grayscale.Kifuwarane.Gui
         [STAThread]
         static void Main()
         {
-            ILogTag logTag = LogTags.GuiRecord;
-            Logger.TraceLine(logTag, "乱数のたね＝[" + RandomLib.Seed + "]");
+            ILogTag logTag = LogTags.GuiDefault;
+            Logger.Trace(logTag, "乱数のたね＝[" + RandomLib.Seed + "]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
@@ -43,7 +43,7 @@ namespace Grayscale.Kifuwarane.Gui
 
                 //System.Console.Write(ForcePromotionArray.DebugString());
 
-                Logger.WriteFile(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(LogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
             //------------------------------
@@ -56,7 +56,7 @@ namespace Grayscale.Kifuwarane.Gui
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(LogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 

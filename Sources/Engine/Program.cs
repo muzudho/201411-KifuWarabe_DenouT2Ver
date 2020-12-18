@@ -5,7 +5,7 @@
     using System.Text.RegularExpressions;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-    using Grayscale.Kifuwarane.Entities.Logger;
+    using Grayscale.Kifuwarane.Entities.Logging;
     using Grayscale.Kifuwarane.Entities.UseCase;
     using Grayscale.Kifuwarane.UseCases;
     using Grayscale.Kifuwarane.UseCases.Logging;
@@ -236,13 +236,13 @@
                             //
                             // “が”、まだ指してはいけません。
 
-                            Logger.TraceLine(logTag, " ...");
-                            Logger.TraceLine(logTag, "    ...");
-                            Logger.TraceLine(logTag, "       ...");
-                            Logger.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！");
+                            Logger.Trace(logTag, " ...");
+                            Logger.Trace(logTag, "    ...");
+                            Logger.Trace(logTag, "       ...");
+                            Logger.Trace(logTag, "（＾△＾）positionきたｺﾚ！");
 
                             KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-                            Logger.TraceLine(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
+                            Logger.Trace(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
 
                             kifuParserA_Impl.Execute_All(line, playing.TreeD, "Program#Main(Warabe)", logTag);
                             playing.Position();
@@ -411,19 +411,19 @@
                     //      │gameover    │lose        │
                     //      └──────┴──────┘
                     //
-                    Logger.TraceLine(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
+                    Logger.Trace(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
                     foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
                     {
-                        Logger.TraceLine(logTag, pair.Key + "=" + pair.Value);
+                        Logger.Trace(logTag, pair.Key + "=" + pair.Value);
                     }
-                    Logger.TraceLine(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.Trace(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
                 }
             }
             catch (Exception ex)
             {
                 // エラーが起こりました。
                 // どうにもできないので  ログだけ取って、 `quit` を投げて終了します。
-                Logger.TraceLine(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                Logger.Trace(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
                 Playing.Send("quit");
                 throw;
             }

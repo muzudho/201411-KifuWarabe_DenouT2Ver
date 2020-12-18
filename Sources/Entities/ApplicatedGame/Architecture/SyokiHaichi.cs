@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
@@ -126,7 +126,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
 
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
-            Logger.Logger.TraceLine(logTag, "平手局面にセットしたぜ☆");
+            Logging.Logger.Trace(logTag, "平手局面にセットしたぜ☆");
         }
 
 

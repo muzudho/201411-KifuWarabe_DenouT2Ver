@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
@@ -104,8 +104,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         {
             try
             {
-                Logger.Logger.TraceLine(logTag, "┏━━━━━┓");
-                Logger.Logger.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logging.Logger.Trace(logTag, "┏━━━━━┓");
+                Logging.Logger.Trace(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState;
                 inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
@@ -120,7 +120,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
             }
 
             return inputLine;
@@ -145,8 +145,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         {
             try
             {
-                Logger.Logger.TraceLine(logTag, "┏━━━━━━━━━━┓");
-                Logger.Logger.TraceLine(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logging.Logger.Trace(logTag, "┏━━━━━━━━━━┓");
+                Logging.Logger.Trace(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
                 IKifuParserAState nextState = this.State;
 
@@ -166,7 +166,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
             }
 
 

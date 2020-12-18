@@ -1,6 +1,6 @@
 ﻿using System;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
@@ -64,7 +64,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                             {
                                 //「6g6f」形式でもなかった☆
 
-                                Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
+                                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
                                 toBreak = true;
                                 goto gt_EndMethod;
                             }
@@ -78,7 +78,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = this.GetType().Name + "#Execute（A）：" + ex.GetType().Name + "：" + ex.Message;
-                        Logger.Logger.ErrorLine(LogTags.Error, message);
+                        Logging.Logger.Error(LogTags.Error, message);
                     }
 
 
@@ -110,7 +110,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                             //------------------------------
 
                             //LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag) + "　：　hint=" + hint);
-                            Logger.Logger.TraceLine(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
+                            Logging.Logger.Trace(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」");
                             bool isBack = false;
                             KifuIO.Ittesasi3(
                                 teProcess,
@@ -121,7 +121,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                                 out underKoma,
                                 logTag
                                 );
-                            Logger.Logger.TraceLine(logTag, kifuD.DebugText_Kyokumen7(kifuD, "一手指し終了"));
+                            Logging.Logger.Trace(logTag, kifuD.DebugText_Kyokumen7(kifuD, "一手指し終了"));
 
                         }
                         catch (Exception ex)
@@ -131,7 +131,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（B）：" + ex.GetType().Name + "：" + ex.Message;
-                            Logger.Logger.ErrorLine(logTag, message);
+                            Logging.Logger.Error(logTag, message);
                         }
 
                         try
@@ -153,7 +153,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                             // どうにもできないので  ログだけ取って無視します。
                             string message = this.GetType().Name + "#Execute（C）：" + ex.GetType().Name + "：" + ex.Message;
-                            Logger.Logger.ErrorLine(logTag, message);
+                            Logging.Logger.Error(logTag, message);
                         }
 
 
@@ -164,13 +164,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     {
                         toBreak = true;
                         string message = "＼（＾ｏ＾）／teProcessオブジェクトがない☆！　inputLine=[" + inputLine + "]";
-                        Logger.Logger.ErrorLine(logTag, message);
+                        Logging.Logger.Error(logTag, message);
                         throw new Exception(message);
                     }
                 }
                 else
                 {
-                    Logger.Logger.TraceLine(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD, "棋譜パース"));
+                    Logging.Logger.Trace(logTag, "（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD, "棋譜パース"));
                     toBreak = true;
                 }
             }
@@ -181,7 +181,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Logger.ErrorLine(logTag, message);
+                Logging.Logger.Error(logTag, message);
             }
 
         gt_EndMethod:

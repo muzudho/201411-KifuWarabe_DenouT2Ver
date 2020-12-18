@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Gui.L07_Shape
 {

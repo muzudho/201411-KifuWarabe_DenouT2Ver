@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Sfen;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
@@ -183,7 +183,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                         // どうにもできないので  ログだけ取って無視します。
                         string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        Logger.Logger.ErrorLine(LogTags.Error, message);
+                        Logging.Logger.Error(LogTags.Error, message);
 
                         // 追加
                         throw;
@@ -199,7 +199,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
             }
 
             return successful;

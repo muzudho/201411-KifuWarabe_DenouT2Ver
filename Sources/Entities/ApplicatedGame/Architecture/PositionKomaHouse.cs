@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
@@ -27,7 +27,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             else if (this.stars.Count+1 <= starIndex)
             {
                 string message = this.GetType().Name + "#SetStarPos：　リストの要素より2多いインデックスを指定されましたので、追加しません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
             else
@@ -50,7 +50,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#SetKomaPos：　駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -69,7 +69,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (K40.Error == koma)
             {
                 string message = this.GetType().Name + "#KomaPosAt：駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -87,7 +87,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             else
             {
                 string message = this.GetType().Name + "#StarAt：　リストの要素より多いインデックスを指定されましたので、取得できません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 

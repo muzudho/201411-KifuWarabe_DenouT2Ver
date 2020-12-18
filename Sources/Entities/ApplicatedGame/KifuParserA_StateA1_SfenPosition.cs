@@ -1,6 +1,6 @@
 ﻿using System;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
@@ -47,7 +47,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     // 平手の初期配置です。
                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                    Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
+                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
 
                     inputLine = inputLine.Substring("startpos".Length);
                     inputLine = inputLine.Trim();
@@ -59,7 +59,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 }
                 else
                 {
-                    Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
+                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
                     nextState = KifuParserA_StateA1b_SfenLnsgkgsnl.GetInstance();
                 }
             }
@@ -70,7 +70,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Logger.ErrorLine(LogTags.Error, message);
+                Logging.Logger.Error(LogTags.Error, message);
             }
 
             return inputLine;

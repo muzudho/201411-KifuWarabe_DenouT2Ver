@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Nett;
 
-namespace Grayscale.Kifuwarane.Entities.Logger
+namespace Grayscale.Kifuwarane.Entities.Logging
 {
     /// <summary>
     /// TODO 非同期で書き込むと、同じファイルに同時に書き込もうとするはず。対応できないか？ 現状何も考えていない。
@@ -16,25 +16,18 @@ namespace Grayscale.Kifuwarane.Entities.Logger
         static ILogRecord LogEntry(string profilePath, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
         {
             return new LogRecord(Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey)), enabled, timeStampPrintable);
-        } 
+        }
 
         static Logger()
         {
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
 
-            Logger.AddLog(LogTags.OutputForcePromotion, LogEntry(profilePath, toml, "OutputForcePromotion", true,false));
-            Logger.AddLog(LogTags.OutputPieceTypeToHaiyaku, LogEntry(profilePath, toml, "OutputPieceTypeToHaiyaku", true, false));
             Logger.AddLog(LogTags.GenMove, LogEntry(profilePath, toml, "GenMoveLog", true, false));
-            Logger.AddLog(LogTags.GuiRecord, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
+            Logger.AddLog(LogTags.GuiDefault, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
             Logger.AddLog(LogTags.Library, LogEntry(profilePath, toml, "LibLog", true, false));
             Logger.AddLog(LogTags.LinkedList, LogEntry(profilePath, toml, "LinkedListLog", true, false));
             Logger.AddLog(LogTags.Error, LogEntry(profilePath, toml, "ErrorLog", true, false));
-            Logger.AddLog(LogTags.LegalMove, LogEntry(profilePath, toml, "LegalMoveLog", true, false));
-            Logger.AddLog(LogTags.LegalMoveEvasion, LogEntry(profilePath, toml, "LegalMoveEvasionLog", true, false));
-            Logger.AddLog(LogTags.HaichiTenkanHyoOnlyDataLog, LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog", true, false));
-            Logger.AddLog(LogTags.HaichiTenkanHyoAllLog, LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog", true, false));
-
             Logger.AddLog(LogTags.Engine, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
             Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true, false));
         }
@@ -74,83 +67,110 @@ namespace Grayscale.Kifuwarane.Entities.Logger
             Logger.LogMap.Add(key, value);
         }
 
+        public static ILogRecord GetRecord(ILogTag logTag)
+        {
+            try
+            {
+                return LogMap[logTag];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"エラー: GetRecord(). [{logTag.Name}] {ex.Message}");
+                throw;
+            }
+        }
+
         /// <summary>
         /// テキストをそのまま、ファイルへ出力するためのものです。
         /// </summary>
         /// <param name="path"></param>
         /// <param name="contents"></param>
-        public static void WriteFile(ILogTag key, string contents)
+        public static void WriteFile(ILogFile logFile, string contents)
         {
-            ILogRecord address = Logger.LogMap[key];
-
-            File.WriteAllText(address.FileName, contents);
+            File.WriteAllText(logFile.Name, contents);
             // MessageBox.Show("ファイルを出力しました。\n[" + path + "]");
         }
 
         /// <summary>
-        /// ログ・ファイルに記録します。失敗しても無視します。
+        /// トレース・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void TraceLine(ILogTag logTag, string line)
+        public static void Trace(ILogTag logTag, string line, ILogFile targetOrNull = null)
         {
-            ILogRecord record = LogMap[logTag];
+            Logger.XLine(logTag, "Trace", line, targetOrNull);
+        }
 
-            if (null == record)
-            {
-                record = Logger.defaultLogRecord;
-            }
+        /// <summary>
+        /// デバッグ・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Debug(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        {
+            Logger.XLine(logTag, "Debug", line, targetOrNull);
+        }
 
-            if (!record.Enabled)
-            {
-                // ログ出力オフ
-                goto gt_EndMethod;
-            }
+        /// <summary>
+        /// インフォ・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Info(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        {
+            Logger.XLine(logTag, "Info", line, targetOrNull);
+        }
 
-            // ログ追記
-            try
-            {
-                StringBuilder sb = new StringBuilder();
+        /// <summary>
+        /// ノティス・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Notice(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        {
+            Logger.XLine(logTag, "Notice", line, targetOrNull);
+        }
 
-                // タイムスタンプ
-                if (record.TimeStampPrintable)
-                {
-                    sb.Append(DateTime.Now.ToString());
-                    sb.Append(" : ");
-                }
+        /// <summary>
+        /// ワーン・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Warn(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        {
+            Logger.XLine(logTag, "Warn", line, targetOrNull);
+        }
 
-                sb.Append(line);
-                sb.AppendLine();
+        /// <summary>
+        /// エラー・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Error(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        {
+            Logger.XLine(logTag, "Error", line, targetOrNull);
+        }
 
-                System.IO.File.AppendAllText(record.FileName, sb.ToString());
-            }
-            catch (Exception)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので  無視します。
-            }
-
-        gt_EndMethod:
-            ;
+        /// <summary>
+        /// ファータル・レベル。
+        /// </summary>
+        /// <param name="line"></param>
+        public static void Fatal(ILogTag logTag, string line, ILogFile targetOrNull =null)
+        {
+            Logger.XLine(logTag, "Fatal", line, targetOrNull);
         }
 
         /// <summary>
         /// ログ・ファイルに記録します。失敗しても無視します。
         /// </summary>
         /// <param name="line"></param>
-        public static void ErrorLine(ILogTag key, string line)
+        static void XLine(ILogTag key, string level, string line, ILogFile targetOrNull)
         {
-            ILogRecord record = LogMap[key];
+            ILogRecord record = GetRecord(key);
 
             if (null == record)
             {
                 record = Logger.defaultLogRecord;
             }
 
+            // ログ出力オフ
             if (!record.Enabled)
             {
-                // ログ出力オフ
-                goto gt_EndMethod;
+                return;
             }
 
             // ログ追記
@@ -161,17 +181,22 @@ namespace Grayscale.Kifuwarane.Entities.Logger
                 // タイムスタンプ
                 if (record.TimeStampPrintable)
                 {
-                    sb.Append(DateTime.Now.ToString());
-                    sb.Append(" : ");
+                    sb.Append($"[{DateTime.Now.ToString()}] ");
                 }
 
-                sb.Append(line);
+                sb.Append($"{level} {line}");
                 sb.AppendLine();
 
                 string message = sb.ToString();
-                // MessageBox.Show(message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                System.IO.File.AppendAllText(record.FileName, message);
+                if (targetOrNull != null)
+                {
+                    System.IO.File.AppendAllText(targetOrNull.Name, message);
+                }
+                else
+                {
+                    System.IO.File.AppendAllText(record.LogFile.Name, message);
+                }
             }
             catch (Exception)
             {
@@ -179,9 +204,6 @@ namespace Grayscale.Kifuwarane.Entities.Logger
 
                 // どうにもできないので 無視します。
             }
-
-        gt_EndMethod:
-            ;
         }
 
         /// <summary>
@@ -203,7 +225,7 @@ namespace Grayscale.Kifuwarane.Entities.Logger
                 sb.Append($"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
                 sb.AppendLine();
 
-                System.IO.File.AppendAllText(address.FileName, sb.ToString());
+                System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
             }
             catch (Exception ex)
             {
@@ -211,7 +233,7 @@ namespace Grayscale.Kifuwarane.Entities.Logger
 
                 // どうにもできないので  ログだけ取って　無視します。
                 string message = $"WriteLineR：{ex.Message}";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Error(LogTags.Error, message);
             }
         }
 
@@ -234,7 +256,7 @@ namespace Grayscale.Kifuwarane.Entities.Logger
                 sb.Append($"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
                 sb.AppendLine();
 
-                System.IO.File.AppendAllText(address.FileName, sb.ToString());
+                System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
             }
             catch (Exception ex)
             {
@@ -242,7 +264,7 @@ namespace Grayscale.Kifuwarane.Entities.Logger
 
                 // どうにもできないので  ログだけ取って　無視します。
                 string message = $"WriteLineS：{ex.Message}";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Error(LogTags.Error, message);
             }
         }
 
@@ -255,12 +277,12 @@ namespace Grayscale.Kifuwarane.Entities.Logger
             {
                 if (Logger.defaultLogRecord != null)
                 {
-                    System.IO.File.Delete(Logger.defaultLogRecord.FileName);
+                    System.IO.File.Delete(Logger.defaultLogRecord.LogFile.Name);
                 }
 
                 foreach (KeyValuePair<ILogTag, ILogRecord> entry in Logger.logMap)
                 {
-                    System.IO.File.Delete(entry.Value.FileName);
+                    System.IO.File.Delete(entry.Value.LogFile.Name);
                 }
             }
             catch (Exception ex)
@@ -269,7 +291,7 @@ namespace Grayscale.Kifuwarane.Entities.Logger
 
                 // どうにもできないので  ログだけ取って　無視します。
                 string message = $"#RemoveAllLogFile：{ex.Message}";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Error(LogTags.Error, message);
             }
         }
     }

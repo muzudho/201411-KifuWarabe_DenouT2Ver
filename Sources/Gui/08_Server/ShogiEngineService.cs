@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
 
@@ -237,7 +237,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    Logger.TraceLine(LogTags.GuiRecord, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.Trace(LogTags.GuiDefault, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
                 }
                 else
                 {

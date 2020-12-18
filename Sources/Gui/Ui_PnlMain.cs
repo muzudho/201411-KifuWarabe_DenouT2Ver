@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Gui.L01_Log;
@@ -356,14 +356,14 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecord;
+            ILogTag logTag = LogTags.GuiDefault;
 
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
             {
 
                 //System.Console.WriteLine("timer input99=[" + input99 + "]");
-                Logger.TraceLine(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
+                Logger.Trace(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
 
                 this.AppendInput1Text(Ui_PnlMain.input99);
                 Ui_PnlMain.input99 = "";
@@ -405,7 +405,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecord;
+            ILogTag logTag = LogTags.GuiDefault;
 
 
             this.setteiFile = new SetteiFile();
@@ -529,7 +529,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecord;
+            ILogTag logTag = LogTags.GuiDefault;
 
             if (null != this.Shape_PnlTaikyoku)
             {
@@ -557,7 +557,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecord;
+            ILogTag logTag = LogTags.GuiDefault;
 
             if (null != shape_PnlTaikyoku)
             {
@@ -607,7 +607,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiRecord;
+            ILogTag logTag = LogTags.GuiDefault;
 
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
@@ -697,7 +697,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiRecord));
+                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiDefault));
                         break;
                     case SyuturyokuKirikae.Sfen:
                         this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));
@@ -708,7 +708,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 }
 
                 // ログ
-                Logger.TraceLine(logTag, this.txtOutput1.Text);
+                Logger.Trace(logTag, this.txtOutput1.Text);
             }
             else if (requestForMain.RequestClearTxtOutput)
             {
@@ -716,8 +716,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 this.WriteLine("");
 
                 // ログ
-                Logger.TraceLine(logTag, "");
-                Logger.TraceLine(logTag, "");
+                Logger.Trace(logTag, "");
+                Logger.Trace(logTag, "");
             }
 
             //------------------------------

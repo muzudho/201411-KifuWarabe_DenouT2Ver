@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 using Grayscale.Kifuwarane.Gui.L08_Server;
 
@@ -116,7 +116,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     kifuD.AppendChildA_New(//「成る／成らない」ボタンを押したときです。
                         newNode,
                         "FlowB_3ErabuNaruNaranai#MouseleftButtonDown",
-                        LogTags.GuiRecord
+                        LogTags.GuiDefault
                         );
 
 

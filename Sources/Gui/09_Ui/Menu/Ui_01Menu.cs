@@ -3,7 +3,7 @@ using System.Text;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Gui.L02_DammyConsole;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
@@ -79,7 +79,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 out movedKoma,
                 //out tottaKoma,
                 out underKoma,
-                LogTags.GuiRecord
+                LogTags.GuiDefault
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();
@@ -157,7 +157,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             Ui_01MenuB ui_01MenuB = new Ui_01MenuB(requestForMain, shape_PnlTaikyoku);
             bool toBreak = false;
 
-            Logger.TraceLine(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logger.Trace(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
             bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
 
             // 再描画1

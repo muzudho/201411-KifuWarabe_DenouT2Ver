@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.JapaneseView;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
 {
@@ -79,7 +79,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.Logger.TraceLine(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
+                Logging.Logger.Trace(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
             }
 
 

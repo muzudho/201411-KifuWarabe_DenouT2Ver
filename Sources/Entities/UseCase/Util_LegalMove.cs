@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
 {
@@ -265,7 +265,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
                 }
 
-                Logger.Logger.WriteFile(LogTags.LegalMoveEvasion, sbOhteDebug.ToString());
+                Logging.Logger.WriteFile(LogFiles.LegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------
@@ -344,7 +344,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.Logger.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
+                Logging.Logger.Error(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
                 throw;
             }
 
@@ -380,7 +380,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //>>>>> エラーが起こりました。
 
                 // どうにもできないので  ログだけ取って無視します。
-                Logger.Logger.ErrorLine(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
+                Logging.Logger.Error(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
                 throw;
             }
         }

@@ -2,7 +2,7 @@
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logger;
+using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 using Grayscale.Kifuwarane.Gui.L08_Server;
 
@@ -294,7 +294,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                             kifuD.AppendChildA_New(//マウスの左ボタンを放したときです。
                                 newNode,
                                 "FlowB_2OkuKoma#MouseLeftButtonUp",
-                                LogTags.GuiRecord
+                                LogTags.GuiDefault
                                 );
 
 
