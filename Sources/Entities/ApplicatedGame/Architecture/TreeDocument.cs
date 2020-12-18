@@ -48,8 +48,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (this.Current8 is TreeRoot6)
             {
                 // やってはいけない操作は、例外を返すようにします。
-                string message = "ルート局面を削除しようとしました。";
-                throw new Exception(message);
+                throw new Exception("ルート局面を削除しようとしました。");
 
                 //// ルート局面は削除させません。
                 //goto gt_EndMethod;
@@ -114,8 +113,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     break;
 
                 default:
-                    string message = "先後エラー";
-                    throw new Exception(message);
+                    throw new Exception("先後エラー");
             }
 
 
@@ -593,8 +591,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             if (null == newHouse)
             {
-                string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                throw new Exception(message);
+                throw new Exception("ノードを追加しようとしましたが、指定されたnewHouseがヌルです。");
             }
 
             return new TreeNode6(item, newHouse);
@@ -664,8 +661,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             if (null == newHouse)
             {
-                string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                throw new Exception(message);
+                throw new Exception("ノードを追加しようとしましたが、指定されたnewHouseがヌルです。");
             }
 
             TreeNode6 newNode = new TreeNode6(item, newHouse);//, Converter04.AlternateSengo(this.Current2.Sengo)
@@ -705,8 +701,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                 if (null == cur)
                 {
-                    string message = "ルートに遡ろうとしたら、ヌルでした。";
-                    throw new Exception(message);
+                    throw new Exception("ルートに遡ろうとしたら、ヌルでした。");
                 }
             }
 
@@ -732,8 +727,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             if (-1 == countTeme)
             {
-                string message = "手目を調べるのに失敗しました。\n[0]初期局面 は必ず入っているので、ループが１回も回らないということはないはずですが、-1手目になりました。";
-                throw new Exception(message);
+                throw new Exception("手目を調べるのに失敗しました。\n[0]初期局面 は必ず入っているので、ループが１回も回らないということはないはずですが、-1手目になりました。");
             }
 
             // ログ出すぎ
@@ -757,8 +751,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             if (null == found6)
             {
-                string message = "[" + teme1 + "]の局面ノード6はヌルでした。";
-                throw new Exception(message);
+                throw new Exception($"[{teme1}]の局面ノード6はヌルでした。");
             }
 
             return found6;

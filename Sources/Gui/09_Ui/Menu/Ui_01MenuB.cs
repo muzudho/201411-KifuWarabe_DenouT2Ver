@@ -110,7 +110,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             }
             //else
             //{
-            //    throw new Exception("棋譜パーサーＡのステータス異常です。　kifuParserA_Impl.GetType().Name=[" + kifuParserA_Impl.GetType().Name + "]");
+            //    throw new Exception($"棋譜パーサーＡのステータス異常です。　kifuParserA_Impl.GetType().Name=[{kifuParserA_Impl.GetType().Name}]");
             //}
 
 

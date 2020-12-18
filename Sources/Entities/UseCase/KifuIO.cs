@@ -362,10 +362,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                                     // エラー：　駒台に空きスペースがありませんでした。
                                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                                    StringBuilder sb = new StringBuilder();
-                                    sb.AppendLine("エラー：　駒台に空きスペースがありませんでした。");
-                                    sb.AppendLine("駒台=" + Okiba.Gote_Komadai);
-                                    throw new Exception(sb.ToString());
+                                    throw new Exception($@"エラー：　駒台に空きスペースがありませんでした。
+駒台={Okiba.Gote_Komadai}");
                                 }
                                 break;
                             }
@@ -406,10 +404,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                                     // エラー：　駒台に空きスペースがありませんでした。
                                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                                    StringBuilder sb = new StringBuilder();
-                                    sb.AppendLine("エラー：　駒台に空きスペースがありませんでした。");
-                                    sb.AppendLine("駒台=" + Okiba.Gote_Komadai);
-                                    throw new Exception(sb.ToString());
+                                    throw new Exception($@"エラー：　駒台に空きスペースがありませんでした。
+駒台={Okiba.Gote_Komadai}");
                                 }
                                 break;
                             }
@@ -418,10 +414,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                             {
                                 //>>>>> エラー：　先後がおかしいです。
 
-                                StringBuilder sb = new StringBuilder();
-                                sb.AppendLine("エラー：　先後がおかしいです。");
-                                sb.AppendLine("dst.Sengo=" + dst.Star.Sengo);
-                                throw new Exception(sb.ToString());
+                                throw new Exception($@"エラー：　先後がおかしいです。
+dst.Sengo={dst.Star.Sengo}");
                             }
                     }
 

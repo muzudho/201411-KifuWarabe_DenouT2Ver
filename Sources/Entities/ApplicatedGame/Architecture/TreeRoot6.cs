@@ -26,8 +26,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             if (!(this is TreeRoot6))
             {
-                string message = "Kifu_Rootクラスではないのに、SetSengo_Rootメソッドを使用しました。\n this.GetType().Name=[" + this.GetType().Name + "]";
-                throw new Exception(message);
+                throw new Exception($@"Kifu_Rootクラスではないのに、SetSengo_Rootメソッドを使用しました。
+this.GetType().Name=[{this.GetType().Name}]");
             }
 
             this.sengo = sengo;

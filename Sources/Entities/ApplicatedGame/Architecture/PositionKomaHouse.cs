@@ -26,8 +26,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
             else if (this.stars.Count+1 <= starIndex)
             {
-                string message = this.GetType().Name + "#SetStarPos：　リストの要素より2多いインデックスを指定されましたので、追加しません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                throw new Exception(message);
+                throw new Exception($"{this.GetType().Name}#SetStarPos：　リストの要素より2多いインデックスを指定されましたので、追加しません。starIndex=[{starIndex}] / this.stars.Count=[{this.stars.Count}]");
             }
             else
             {
@@ -48,8 +47,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             if (K40.Error == koma)
             {
-                string message = this.GetType().Name + "#SetKomaPos：　駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                throw new Exception(message);
+                throw new Exception($"{this.GetType().Name}#SetKomaPos：　駒番号isエラー　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }
 
             this.SetStarPos(kifuD, (int)koma, komaP); //this.Stars[(int)koma] = komaP;
@@ -66,8 +64,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             if (K40.Error == koma)
             {
-                string message = this.GetType().Name + "#KomaPosAt：駒番号isエラー　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                throw new Exception(message);
+                throw new Exception($"{this.GetType().Name}#KomaPosAt：駒番号isエラー　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }
 
             return this.StarAt((int)koma);// this.Stars[(int)koma];
@@ -83,8 +80,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
             else
             {
-                string message = this.GetType().Name + "#StarAt：　リストの要素より多いインデックスを指定されましたので、取得できません。starIndex=[" + starIndex + "] / this.stars.Count=[" + this.stars.Count + "]";
-                throw new Exception(message);
+                throw new Exception($"{this.GetType().Name}#StarAt：　リストの要素より多いインデックスを指定されましたので、取得できません。starIndex=[{starIndex}] / this.stars.Count=[{this.stars.Count}]");
             }
 
             return found;

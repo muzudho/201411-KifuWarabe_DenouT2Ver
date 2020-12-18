@@ -274,8 +274,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 case 8: return "h";
                 case 9: return "i";
                 default:
-                    string message = "筋[" + num + "]をアルファベットに変えることはできませんでした。";
-                    throw new Exception(message);
+                    throw new Exception($"筋[{num}]をアルファベットに変えることはできませんでした。");
             }
         }
 

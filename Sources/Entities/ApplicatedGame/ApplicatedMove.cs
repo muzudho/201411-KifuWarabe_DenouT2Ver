@@ -59,9 +59,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                         dropPT);
                     if (K40.Error == dropP)
                     {
-                        string message = "TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[" + dropPT + "]の駒を掴もうとしましたが、エラーでした。";
-                        Logger.Error(logTag, message, LogFiles.Error);
-                        throw new Exception(message);
+                        throw new Exception($"TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[{dropPT}]の駒を掴もうとしましたが、エラーでした。");
                     }
 
 
@@ -98,9 +96,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                             sb.Append(house1.Log_Kyokumen(kifuD, i, "エラー駒になったとき(見直し)"));
                         }
 
-                        string message = sb.ToString();
-                        Logger.Error(logTag, message, LogFiles.Error);
-                        throw new Exception(message);
+                        throw new Exception(sb.ToString());
                     }
                 }
 

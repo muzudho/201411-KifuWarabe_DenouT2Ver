@@ -150,9 +150,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     else
                     {
                         toBreak = true;
-                        string message = "＼（＾ｏ＾）／teProcessオブジェクトがない☆！　inputLine=[" + inputLine + "]";
-                        Logging.Logger.Error(logTag, message);
-                        throw new Exception(message);
+                        throw new Exception($"＼（＾ｏ＾）／teProcessオブジェクトがない☆！　inputLine=[{inputLine}]");
                     }
                 }
                 else

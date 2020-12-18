@@ -85,11 +85,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     int haiyakuHandle_target;
                     if(!int.TryParse(column, out haiyakuHandle_target))
                     {
-                        string message = "エラー。\n path=[" + path + "]\n" +
-                        "強制転成表に、int型数値でないものが指定されていました。\n" +
-                        "rowCount=[" + rowCount + "]\n" +
-                        "masuHandle=[" + masuHandle + "]\n";
-                        throw new Exception(message);
+                        throw new Exception($@"エラー。 path=[{path}
+強制転成表に、int型数値でないものが指定されていました。
+rowCount=[{rowCount}]
+masuHandle=[{masuHandle}]");
                     }
 
                     map2.Add(masuHandle, Kh185Array.Items[ haiyakuHandle_target]);

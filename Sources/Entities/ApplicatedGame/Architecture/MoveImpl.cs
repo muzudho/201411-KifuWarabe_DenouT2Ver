@@ -248,15 +248,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             int srcDan = Mh201Util.MasuToDan(this.SrcStar.Masu);
             if (-1 == srcDan)
             {
-                string message = "指定の元マス[" + this.SrcStar.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                throw new Exception(message);
+                throw new Exception($"指定の元マス[{this.SrcStar.Masu}]は、段に変換できません。　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }
 
             int dan = Mh201Util.MasuToDan(this.Star.Masu);
             if (-1 == dan)
             {
-                string message = "指定の先マス[" + this.Star.Masu + "]は、段に変換できません。　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber;
-                throw new Exception(message);
+                throw new Exception($"指定の先マス[{this.Star.Masu}]は、段に変換できません。　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }
 
 

@@ -196,11 +196,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     int cellValue;
                     if (!int.TryParse(column, out cellValue))
                     {
-                        string message = "エラー。\n path=[" + path + "]\n" +
-                        "配役転換表に、int型数値でないものが指定されていました。\n" +
-                        "rowCount=[" + rowCount2 + "]\n" +
-                        "columnCount=[" + columnCount + "]\n";
-                        throw new Exception(message);
+                        throw new Exception($@"エラー。 path=[{path}]
+配役転換表に、int型数値でないものが指定されていました。
+rowCount=[{rowCount2}]
+columnCount=[{columnCount}]");
                     }
 
                     int masuHandle = (8 - columnCount) * 9 + (rowCount2 % 9);//0～80
