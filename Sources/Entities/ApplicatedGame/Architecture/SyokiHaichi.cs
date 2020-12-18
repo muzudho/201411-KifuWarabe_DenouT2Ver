@@ -125,7 +125,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
 
 
-            //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
+            //LarabeLogger.GetInstance().WriteLineMemo(kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
             Logging.Logger.Trace(logTag, "平手局面にセットしたぜ☆");
         }
 
@@ -141,14 +141,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <returns></returns>
         public static void ByStartpos(
             SfenStartpos sfenStartpos,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             //------------------------------
             // 駒を駒袋に移動
             //------------------------------
-            kifuD.SetKyokumen_ToKomabukuro3(kifuD, logTag);
+            kifuD.SetKyokumen_ToKomabukuro3(kifuD);
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
 
@@ -226,8 +225,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                             kifuD,
                             Okiba.KomaBukuro,
                             sengo,
-                            KomaSyurui14Array.FunariCaseHandle(syurui),
-                            logTag
+                            KomaSyurui14Array.FunariCaseHandle(syurui)
                             );
                         System.Console.WriteLine("　　　　hKomas.Count=" + komas.Count);
 

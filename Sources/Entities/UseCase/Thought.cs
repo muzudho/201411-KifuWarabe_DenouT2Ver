@@ -10,7 +10,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
     {
         public static KomaAndMasusDictionary GetPotentialMovesByKoma(
             IKifuElement siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            List<K40> komas, ILogTag logTag)
+            List<K40> komas)
         {
             KomaAndMasusDictionary komaAndMove = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
 
@@ -48,8 +48,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
             Sengo selfSengo,
             Okiba okiba,
-            StringBuilder sbGohosyu,
-            ILogTag logTag
+            StringBuilder sbGohosyu
             )
         {
             //------------------------------------------------------------
@@ -57,7 +56,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             //------------------------------------------------------------
             IMasus hMasus_Self = new Masus_Set();
             {
-                foreach (K40 koma in Util_KyokumenReader.Komas_BySengo(siteiNode, selfSengo, logTag))// 自分の駒だけを抽出。
+                foreach (K40 koma in Util_KyokumenReader.Komas_BySengo(siteiNode, selfSengo))// 自分の駒だけを抽出。
                 {
 
                     if (K40Util.OnKoma((int)koma))//エラーは除外

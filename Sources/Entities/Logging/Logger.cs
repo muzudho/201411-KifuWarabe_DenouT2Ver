@@ -23,11 +23,9 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
 
-            Logger.AddLog(LogTags.GenMove, LogEntry(profilePath, toml, "GenMoveLog", true, false));
             Logger.AddLog(LogTags.GuiDefault, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
             Logger.AddLog(LogTags.Library, LogEntry(profilePath, toml, "LibLog", true, false));
             Logger.AddLog(LogTags.LinkedList, LogEntry(profilePath, toml, "LinkedListLog", true, false));
-            Logger.AddLog(LogTags.Error, LogEntry(profilePath, toml, "ErrorLog", true, false));
             Logger.AddLog(LogTags.Engine, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
             Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true, false));
         }
@@ -149,7 +147,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// ファータル・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Fatal(ILogTag logTag, string line, ILogFile targetOrNull =null)
+        public static void Fatal(ILogTag logTag, string line, ILogFile targetOrNull = null)
         {
             Logger.XLine(logTag, "Fatal", line, targetOrNull);
         }
@@ -219,22 +217,11 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             )
         {
             // ログ追記
-            try
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
-                sb.AppendLine();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
+            sb.AppendLine();
 
-                System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
-            }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので  ログだけ取って　無視します。
-                string message = $"WriteLineR：{ex.Message}";
-                Logger.Error(LogTags.Error, message);
-            }
+            System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
         }
 
         /// <summary>
@@ -250,22 +237,11 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             )
         {
             // ログ追記
-            try
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
-                sb.AppendLine();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
+            sb.AppendLine();
 
-                System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
-            }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので  ログだけ取って　無視します。
-                string message = $"WriteLineS：{ex.Message}";
-                Logger.Error(LogTags.Error, message);
-            }
+            System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
         }
 
         /// <summary>
@@ -273,25 +249,14 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         public static void RemoveAllLogFile()
         {
-            try
+            if (Logger.defaultLogRecord != null)
             {
-                if (Logger.defaultLogRecord != null)
-                {
-                    System.IO.File.Delete(Logger.defaultLogRecord.LogFile.Name);
-                }
-
-                foreach (KeyValuePair<ILogTag, ILogRecord> entry in Logger.logMap)
-                {
-                    System.IO.File.Delete(entry.Value.LogFile.Name);
-                }
+                System.IO.File.Delete(Logger.defaultLogRecord.LogFile.Name);
             }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
 
-                // どうにもできないので  ログだけ取って　無視します。
-                string message = $"#RemoveAllLogFile：{ex.Message}";
-                Logger.Error(LogTags.Error, message);
+            foreach (KeyValuePair<ILogTag, ILogRecord> entry in Logger.logMap)
+            {
+                System.IO.File.Delete(entry.Value.LogFile.Name);
             }
         }
     }

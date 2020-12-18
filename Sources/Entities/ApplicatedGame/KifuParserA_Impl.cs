@@ -120,7 +120,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                Logging.Logger.Error(LogTags.Error, message);
+                Logger.Error(logTag, message, LogFiles.Error);
             }
 
             return inputLine;
@@ -166,11 +166,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                Logging.Logger.Error(LogTags.Error, message);
+                Logger.Error(logTag, message, LogFiles.Error);
             }
-
-
         }
-
     }
 }

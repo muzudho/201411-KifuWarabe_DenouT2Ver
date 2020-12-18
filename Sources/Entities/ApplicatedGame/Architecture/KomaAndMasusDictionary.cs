@@ -2,6 +2,7 @@
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
@@ -216,7 +217,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 // 駒の動ける升全て
                 int starIndex=0;
                 foreach (M201 masu in entry.Value.Elements) {
-                    kyokumen.SetStarPos(kifu, starIndex, RO_KomaPos.Reset(new RO_Star(sengo, masu, Data_HaiyakuTransition.ToHaiyaku(syurui, (int)masu))));
+                    kyokumen.SetStarPos(
+                        kifu,
+                        starIndex,
+                        RO_KomaPos.Reset(new RO_Star(sengo, masu, Data_HaiyakuTransition.ToHaiyaku(syurui, (int)masu)))
+                    );
                     starIndex++;
                 }
                 sb1.AppendLine(kyokumen.Log_Kyokumen(kifu, teme, "駒=" + KomaSyurui14Array.ToGaiji(syurui, sengo)));// 局面をテキストで作成

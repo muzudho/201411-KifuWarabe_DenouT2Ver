@@ -288,7 +288,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             }
         }
-        
+
 
         /// <summary>
         /// 自軍の駒の移動可能升。
@@ -310,10 +310,10 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             List<K40> jiKomas_OnDai = null;
 
             // 自駒（将棋盤上）
-            IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu);
 
             // 敵駒（将棋盤上）
-            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, GameTranslator.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu, logTag);
+            IMasus tekiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, GameTranslator.AlternateSengo(selfSengo), Okiba.ShogiBan, sbGohosyu);
 
 
             // 自駒の移動候補（将棋盤上）
@@ -321,32 +321,21 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             // 自駒の移動候補（駒台上）
             KomaAndMasusDictionary ido_OnDai = null;
 
-            try
-            {
-                // 自分の駒だけを抽出。
-                jiKomas_OnBan = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, selfSengo, logTag);
-                jiKomas_OnDai = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.Sente_Komadai | Okiba.Gote_Komadai, selfSengo, logTag);
+            // 自分の駒だけを抽出。
+            jiKomas_OnBan = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, selfSengo);
+            jiKomas_OnDai = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.Sente_Komadai | Okiba.Gote_Komadai, selfSengo);
 
 
-                ido_onBan = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnBan, logTag);
-                ido_OnDai = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnDai, logTag);
+            ido_onBan = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnBan);
+            ido_OnDai = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnDai);
 
-                sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(将棋盤Set)");
-                sbGohosyu.AppendLine(ido_onBan.LogString_Set());
-                sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(将棋盤Set)");
+            sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(将棋盤Set)");
+            sbGohosyu.AppendLine(ido_onBan.LogString_Set());
+            sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(将棋盤Set)");
 
-                sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(駒台Set)");
-                sbGohosyu.AppendLine(ido_onBan.LogString_Set());
-                sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(駒台Set)");
-            }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので  ログだけ取って無視します。
-                Logging.Logger.Error(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(25)：");
-                throw;
-            }
+            sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(駒台Set)");
+            sbGohosyu.AppendLine(ido_onBan.LogString_Set());
+            sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(駒台Set)");
 
 
             try
@@ -356,7 +345,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //------------------------------------------------------------
 
                 // 盤上の自駒の移動候補から、 自駒がある枡を除外します。
-                ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan, logTag);
+                ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan);
                 //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
 
                 // そこから、敵駒がある枡「以降」を更に除外します。
@@ -366,7 +355,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
 
                 // 自駒台の移動候補から、敵駒がある升を除外します。
-                ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan, logTag);
+                ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan);
                 //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
 
                 // 移動候補　＝　盤上の移動駒　＋　駒台の打駒

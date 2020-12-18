@@ -49,7 +49,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             {
                 // やってはいけない操作は、例外を返すようにします。
                 string message = "ルート局面を削除しようとしました。";
-                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
 
                 //// ルート局面は削除させません。
@@ -116,7 +115,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                 default:
                     string message = "先後エラー";
-                    Logging.Logger.Error(LogTags.Error, message);
                     throw new Exception(message);
             }
 
@@ -132,7 +130,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 
         /// 駒袋には、不成にして入れておきます。
         /// </summary>
-        public void SetKyokumen_ToKomabukuro3(TreeDocument kifuD, ILogTag logTag)
+        public void SetKyokumen_ToKomabukuro3(TreeDocument kifuD)
         {
             this.ClearA();//this.Clear8();
 
@@ -159,7 +157,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <summary>
         /// [ここから採譜]機能
         /// </summary>
-        public void SetStartpos_KokokaraSaifu(TreeDocument kifuD, Sengo sengo, ILogTag logTag)
+        public void SetStartpos_KokokaraSaifu(TreeDocument kifuD, Sengo sengo)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -171,8 +169,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 {
                     // 将棋盤上のどこかにある駒？
                     K40 hKoma = Util_KyokumenReader.Koma_AtMasu(kifuD,
-                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, suji, dan),
-                        logTag
+                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, suji, dan)
                         );
 
                     if (K40.Error != hKoma)
@@ -252,7 +249,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
                 // 先手
-                List<K40> komasS = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Sente_Komadai, logTag);
+                List<K40> komasS = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Sente_Komadai);
                 foreach (K40 koma in komasS)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
@@ -298,7 +295,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 }
 
                 // 後手
-                List<K40> komasG = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Gote_Komadai, logTag);
+                List<K40> komasG = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Gote_Komadai);
                 foreach (K40 koma in komasG)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
@@ -597,7 +594,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (null == newHouse)
             {
                 string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -666,11 +662,9 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 tottaSyurui//ここを差替えます。
                 );
 
-
             if (null == newHouse)
             {
                 string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -712,7 +706,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 if (null == cur)
                 {
                     string message = "ルートに遡ろうとしたら、ヌルでした。";
-                    Logging.Logger.Error(LogTags.Error, message);
                     throw new Exception(message);
                 }
             }
@@ -740,7 +733,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (-1 == countTeme)
             {
                 string message = "手目を調べるのに失敗しました。\n[0]初期局面 は必ず入っているので、ループが１回も回らないということはないはずですが、-1手目になりました。";
-                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -766,7 +758,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (null == found6)
             {
                 string message = "[" + teme1 + "]の局面ノード6はヌルでした。";
-                Logging.Logger.Error(LogTags.Error, message);
                 throw new Exception(message);
             }
 

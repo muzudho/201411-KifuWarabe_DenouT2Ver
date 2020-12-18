@@ -145,7 +145,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             ILogTag logTag
             )
         {
-            SyokiHaichi.ByStartpos(sfenStartpos, kifuD, logTag);
+            SyokiHaichi.ByStartpos(sfenStartpos, kifuD);
 
             // 駒袋に表示されている駒を、駒台に表示させます。
             Ui_02Action.Refresh_KomabukuroToKomadai(sfenStartpos, shape_PnlTaikyoku, kifuD, logTag);
@@ -193,7 +193,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
 
 
-            FugoJ fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, kifuD, logTag);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
+            FugoJ fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, kifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
             string fugoJStr = fugoJ.ToText_UseDou(node6);
             //MessageBox.Show("一手指し符号＝" + fugoJStr, "デバッグ");
             shape_PnlTaikyoku.SetFugo(fugoJStr);

@@ -176,7 +176,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             TreeNode6 siteiNode = (TreeNode6)this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
 
-            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente, logTag))
+            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente))
             {
                 IKifuElement dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
                 PositionKomaHouse house5 = dammyNode4.KomaHouse;
@@ -203,7 +203,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             // 先手駒の利きを表にします。
             bool[] kikiGTable = new bool[Ui_PnlMain.NSQUARE];
 
-            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote, logTag))
+            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote))
             {
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 PositionKomaHouse house5 = dammyNode5.KomaHouse;
@@ -224,7 +224,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             string tuginoItte = "▲９九王嘘";
 
 
-            List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)), logTag);
+            List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)));
             if (0<komas.Count)
             {
                 K40 koma = komas[ RandomLib.Random.Next(komas.Count)];//ランダムに１つ。
@@ -310,7 +310,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 }
 
 
-                FugoJ fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(tuginoItteData.SrcStar.Haiyaku)](tuginoItteData, this.Kifu_Document, logTag);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
+                FugoJ fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(tuginoItteData.SrcStar.Haiyaku)](tuginoItteData, this.Kifu_Document);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
 
                 //RO_TeProcess last;
                 //{

@@ -124,7 +124,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     // 符号表示
                     //------------------------------
                     FugoJ fugoJ;
-                    fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(process.SrcStar.Haiyaku)](process, kifuD, logTag);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
+                    fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(process.SrcStar.Haiyaku)](process, kifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
 
                     shape_PnlTaikyoku.SetFugo(fugoJ.ToText_UseDou(kifuD.Current8));//, previousProcess
 

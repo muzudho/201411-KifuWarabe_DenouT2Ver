@@ -86,7 +86,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        public bool NeverOnaji(TreeDocument kifuD, ILogTag logTag, params List<K40>[] komaGroupArgs)
+        public bool NeverOnaji(TreeDocument kifuD, params List<K40>[] komaGroupArgs)
         {
             bool unmatched = true;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -227,14 +227,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// </summary>
         /// <param name="masu2Arr"></param>
         /// <returns></returns>
-        public bool ExistsIn(IMasus masu2Arr, TreeDocument kifuD, ILogTag logTag)
+        public bool ExistsIn(IMasus masu2Arr, TreeDocument kifuD)
         {
             bool matched = false;
 
             foreach (M201 masu in masu2Arr.Elements)
             {
 
-                K40 hKoma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, this.Star.Sengo, masu, logTag);
+                K40 hKoma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, this.Star.Sengo, masu);
 
                 if (
                     hKoma != K40.Error  //2014-07-21 先後も見るように追記。//this.MatchSengo(m)

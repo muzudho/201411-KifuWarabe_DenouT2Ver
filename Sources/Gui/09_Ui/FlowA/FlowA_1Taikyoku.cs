@@ -267,7 +267,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             if (shape_PnlTaikyoku.BtnFugo_Zenkesi.HitByMouse(e.Location.X, e.Location.Y)) { requestForMain.RequestInputTextString = ""; }
             if (shape_PnlTaikyoku.BtnFugo_KokokaraSaifu.HitByMouse(e.Location.X, e.Location.Y))
             {
-                kifuD.SetStartpos_KokokaraSaifu(kifuD, kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)), logTag);
+                kifuD.SetStartpos_KokokaraSaifu(kifuD, kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)));
                 requestForMain.RequestOutputKifu = true;
             }
 

@@ -21,6 +21,8 @@
             LegalMoveEvasion = LogEntry(profilePath, toml, "LegalMoveEvasionLog");
             HaichiTenkanHyoOnlyDataLog = LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog");
             HaichiTenkanHyoAllLog = LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog");
+            GenMove = LogEntry(profilePath, toml, "GenMoveLog");
+            Error = LogEntry(profilePath, toml, "ErrorLog");
         }
 
         public static ILogFile OutputForcePromotion { get; private set; }
@@ -29,5 +31,13 @@
         public static ILogFile LegalMoveEvasion { get; private set; }
         public static ILogFile HaichiTenkanHyoOnlyDataLog { get; private set; }
         public static ILogFile HaichiTenkanHyoAllLog { get; private set; }
+        /// <summary>
+        /// 指し手生成だけ別ファイルにログを取りたいとき。
+        /// </summary>
+        public static ILogFile GenMove { get; private set; }
+        /// <summary>
+        /// エラーだけ別ファイルに分けたいとき。
+        /// </summary>
+        public static ILogFile Error { get; private set; }
     }
 }

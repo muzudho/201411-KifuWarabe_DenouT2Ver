@@ -40,7 +40,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList, logTag);
 
             // ログ出力
-            Logger.Trace(LogTags.GenMove, gohosyuList.Log_AllKomaMasus(kifu));// ログ出力
+            Logger.Trace(logTag,  gohosyuList.Log_AllKomaMasus(kifu), LogFiles.GenMove);// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestmove = MoveRoutine.Choice_Random(kifu, ref gohosyuList, logTag);

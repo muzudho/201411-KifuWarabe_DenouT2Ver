@@ -53,12 +53,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                     // 駒台から、打った種類の駒を取得
                     dropP = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD,
-                        GameTranslator.Sengo_ToKomadai(kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))),//Okiba.Sente_Komadai,//FIXME:
-                        dropPT, logTag);
+                        GameTranslator.Sengo_ToKomadai(
+                            kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))
+                        ),//Okiba.Sente_Komadai,//FIXME:
+                        dropPT);
                     if (K40.Error == dropP)
                     {
                         string message = "TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[" + dropPT + "]の駒を掴もうとしましたが、エラーでした。";
-                        Logging.Logger.Error(LogTags.Error, message);
+                        Logger.Error(logTag, message, LogFiles.Error);
                         throw new Exception(message);
                     }
 
@@ -74,8 +76,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     //>>>>> 打ではないとき
                     dropP = Util_KyokumenReader.Koma_AtMasu(
                         kifuD,
-                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcFile, srcRank),
-                        logTag
+                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcFile, srcRank)
                         );
 
                     if (K40.Error == dropP)
@@ -98,7 +99,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                         }
 
                         string message = sb.ToString();
-                        Logging.Logger.Error(LogTags.Error, message);
+                        Logger.Error(logTag, message, LogFiles.Error);
                         throw new Exception(message);
                     }
                 }
@@ -131,7 +132,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                             break;
                     }
 
-                    K40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT, logTag);
+                    K40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT);
                     srcSq = house2.KomaPosAt(srcKoma).Star.Masu;// M201Util.OkibaSujiDanToMasu(srcOkiba, srcSuji, srcDan);
                 }
                 else
@@ -182,7 +183,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので 落とします。
                 string message = ex.GetType().Name + "：" + ex.Message + "　in　TuginoItte_Sfen.GetData_FromTextSub（A）　str1=「" + sfen.Chars[0] + "」　str2=「" + sfen.Chars[1] + "」　str3=「" + sfen.Chars[2] + "」　str4=「" + sfen.Chars[3] + "」　strNari=「" + sfen.Chars[4] + "」　";
-                Logging.Logger.Error(LogTags.Error, message);
+                Logger.Error(logTag, message, LogFiles.Error);
                 throw;
             }
         }

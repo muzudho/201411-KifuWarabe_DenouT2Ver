@@ -116,8 +116,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 // 将棋盤
                 movedKoma = Util_KyokumenReader.Koma_AtMasu_Shogiban( kifuD,
                     teProcess.Star.Sengo,
-                    teProcess.Star.Masu,//戻るときは、先位置が　駒の居場所。
-                    logTag
+                    teProcess.Star.Masu//戻るときは、先位置が　駒の居場所。
                     );
             }
             else
@@ -147,8 +146,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                     movedKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase( kifuD,
                         M201Util.GetOkiba(teProcess.SrcStar.Masu),
-                        Haiyaku184Array.Syurui(teProcess.Star.Haiyaku),
-                        logTag
+                        Haiyaku184Array.Syurui(teProcess.Star.Haiyaku)
                         );
                 }
                 else
@@ -162,8 +160,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                         M201Util.OkibaSujiDanToMasu(
                             M201Util.GetOkiba(M201Array.Items_All[(int)teProcess.Star.Masu]),
                             (int)teProcess.SrcStar.Masu
-                            ),
-                            logTag
+                            )
                             );
                 }
             }
@@ -310,7 +307,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 // 将棋盤上のその場所に駒はあるか
                 //----------
                 tottaKomaSyurui = Ks14.H00_Null;//ひとまずクリアー
-                underKoma = Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu, logTag);//盤上
+                underKoma = Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu);//盤上
 
                 if (K40.Error != underKoma)
                 {
@@ -526,7 +523,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     }
 
                     // 取った駒は、種類が同じなら、駒台のどの駒でも同じです。
-                    K40 tottaKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, okiba, teProcess.TottaSyurui, logTag);
+                    K40 tottaKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, okiba, teProcess.TottaSyurui);
                     if (K40.Error != tottaKoma)
                     {
                         kifuD.ElementAt8(lastTeme).KomaHouse.SetKomaPos(

@@ -48,13 +48,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// </summary>
         /// <param name="km"></param>
         /// <returns></returns>
-        public static List<K40> KomaHandles_EachSrc(TreeDocument kifuD, Sengo sengo, IKomaPos itaru, IMasus srcList, ILogTag logTag)
+        public static List<K40> KomaHandles_EachSrc(TreeDocument kifuD, Sengo sengo, IKomaPos itaru, IMasus srcList)
         {
             List<K40> komaHandleList = new List<K40>();
 
             foreach (M201 srcHandle in srcList.Elements)
             {
-                K40 koma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, sengo, srcHandle, logTag);
+                K40 koma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, sengo, srcHandle);
                 if (K40Util.OnKoma((int)koma))
                 {
                     // 指定の升に駒がありました。
@@ -91,7 +91,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="syurui"></param>
         /// <param name="uc_Main"></param>
         /// <returns>無ければ -1</returns>
-        public static K40 Koma_BySyuruiIgnoreCase(TreeDocument kifuD, Okiba okiba, Ks14 syurui, ILogTag logTag)
+        public static K40 Koma_BySyuruiIgnoreCase(TreeDocument kifuD, Okiba okiba, Ks14 syurui)
         {
             K40 found = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -138,7 +138,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="masu">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu(TreeDocument kifuD, M201 masu, ILogTag logTag)
+        public static K40 Koma_AtMasu(TreeDocument kifuD, M201 masu)
         {
             K40 komaFound = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -181,7 +181,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="masu1">筋、段</param>
         /// <param name="uc_Main">メインパネル</param>
         /// <returns>駒。無ければヌル。</returns>
-        public static K40 Koma_AtMasu_Shogiban(TreeDocument kifuD, Sengo sengo, M201 masu1, ILogTag logTag)
+        public static K40 Koma_AtMasu_Shogiban(TreeDocument kifuD, Sengo sengo, M201 masu1)
         {
             K40 foundKoma = K40.Error;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -235,7 +235,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="syurui"></param>
         /// <param name="hKomas"></param>
         /// <returns></returns>
-        public List<K40> Komas_BySyurui(TreeDocument kifuD, Ks14 syurui, ILogTag logTag)
+        public List<K40> Komas_BySyurui(TreeDocument kifuD, Ks14 syurui)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -279,7 +279,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         public static List<K40> Komas_BySengo(
             //Kifu_Document kifuD,
             IKifuElement siteiNode,// = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Sengo sengo, ILogTag logTag)
+            Sengo sengo)
         {
             List<K40> komas = new List<K40>();
 
@@ -303,7 +303,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSyurui(TreeDocument kifuD, Okiba okiba, Ks14 syurui, ILogTag logTag)
+        public static List<K40> Komas_ByOkibaSyurui(TreeDocument kifuD, Okiba okiba, Ks14 syurui)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -348,7 +348,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="syurui"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkibaSengoSyurui(TreeDocument kifuD, Okiba okiba, Sengo sengo, Ks14 syurui, ILogTag logTag)
+        public static List<K40> Komas_ByOkibaSengoSyurui(TreeDocument kifuD, Okiba okiba, Sengo sengo, Ks14 syurui)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -393,7 +393,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="kifuD"></param>
         /// <param name="okiba"></param>
         /// <returns></returns>
-        public static List<K40> Komas_ByOkiba(TreeDocument kifuD, Okiba okiba, ILogTag logTag)
+        public static List<K40> Komas_ByOkiba(TreeDocument kifuD, Okiba okiba)
         {
             List<K40> komas = new List<K40>();
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -432,7 +432,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         public static List<K40> Komas_ByOkibaSengo(
             //Kifu_Document kifuD,
             TreeNode6 siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            Okiba okiba, Sengo sengo, ILogTag logTag)
+            Okiba okiba, Sengo sengo)
         {
             List<K40> komas = new List<K40>();
 

@@ -49,37 +49,24 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     IMove teProcess = MoveImpl.NULL_OBJECT;
                     string restText;
 
-                    try
+                    //「6g6f」形式と想定して、１手だけ読込み
+                    if (!TuginoItte_Sfen.GetData_FromText(
+                        inputLine, out restText, out teProcess, kifuD, logTag))
                     {
+                        //>>>>> 「6g6f」形式ではなかった☆
 
-                        //「6g6f」形式と想定して、１手だけ読込み
-                        if (!TuginoItte_Sfen.GetData_FromText(
+                        //「▲６六歩」形式と想定して、１手だけ読込み
+                        if (!TuginoItte_JapanFugo.GetData_FromText(
                             inputLine, out restText, out teProcess, kifuD, logTag))
                         {
-                            //>>>>> 「6g6f」形式ではなかった☆
+                            //「6g6f」形式でもなかった☆
 
-                            //「▲６六歩」形式と想定して、１手だけ読込み
-                            if (!TuginoItte_JapanFugo.GetData_FromText(
-                                inputLine, out restText, out teProcess, kifuD, logTag))
-                            {
-                                //「6g6f」形式でもなかった☆
-
-                                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
-                                toBreak = true;
-                                goto gt_EndMethod;
-                            }
+                            Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　！？　次の一手が読めない☆　inputLine=[" + inputLine + "]");
+                            toBreak = true;
+                            goto gt_EndMethod;
                         }
-                        inputLine = restText;
                     }
-                    catch (Exception ex)
-                    {
-                        // エラーが起こりました。
-                        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                        // どうにもできないので  ログだけ取って無視します。
-                        string message = this.GetType().Name + "#Execute（A）：" + ex.GetType().Name + "：" + ex.Message;
-                        Logging.Logger.Error(LogTags.Error, message);
-                    }
+                    inputLine = restText;
 
 
 

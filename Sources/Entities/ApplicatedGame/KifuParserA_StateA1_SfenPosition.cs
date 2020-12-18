@@ -40,37 +40,25 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         {
             nextState = this;
 
-            try
+            if (inputLine.StartsWith("startpos"))
             {
-                if (inputLine.StartsWith("startpos"))
-                {
-                    // 平手の初期配置です。
-                    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
-
-                    inputLine = inputLine.Substring("startpos".Length);
-                    inputLine = inputLine.Trim();
-
-
-                    SyokiHaichi.ToHirate(kifuD, logTag);
-
-                    nextState = KifuParserA_StateA1a_SfenStartpos.GetInstance();
-                }
-                else
-                {
-                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
-                    nextState = KifuParserA_StateA1b_SfenLnsgkgsnl.GetInstance();
-                }
-            }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
+                // 平手の初期配置です。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                // どうにもできないので  ログだけ取って無視します。
-                string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logging.Logger.Error(LogTags.Error, message);
+                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
+
+                inputLine = inputLine.Substring("startpos".Length);
+                inputLine = inputLine.Trim();
+
+
+                SyokiHaichi.ToHirate(kifuD, logTag);
+
+                nextState = KifuParserA_StateA1a_SfenStartpos.GetInstance();
+            }
+            else
+            {
+                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
+                nextState = KifuParserA_StateA1b_SfenLnsgkgsnl.GetInstance();
             }
 
             return inputLine;

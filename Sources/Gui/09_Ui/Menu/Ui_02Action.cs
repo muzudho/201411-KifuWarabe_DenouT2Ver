@@ -76,7 +76,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             tottaKomaSyurui = Ks14.H00_Null;
             Shape_BtnKoma btnKoma_Under = Converter09.KomaToBtn(
-                Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu, logTag),
+                Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu),
                 shape_PnlTaikyoku);//盤上
             if (null != btnKoma_Under)
             {
@@ -537,7 +537,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------
                 // 駒を、駒袋から駒台に移動させます。
                 //------------------------------
-                List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSyurui(kifuD, Okiba.KomaBukuro, syuruiList[i], logTag);
+                List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSyurui(kifuD, Okiba.KomaBukuro, syuruiList[i]);
                 int moved = 1;
                 foreach (K40 koma in komas)
                 {

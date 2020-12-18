@@ -52,7 +52,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //
             // そこで戻るボタンでは、移動前の駒に従って、「進んできた動きとは逆の動き」を行います。
 
-            string fugoJStr = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(removeeLeaf.TeProcess.SrcStar.Haiyaku)](removeeLeaf.TeProcess, kifuD, logTag).ToText_UseDou(removeeLeaf);
+            string fugoJStr = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(removeeLeaf.TeProcess.SrcStar.Haiyaku)](removeeLeaf.TeProcess, kifuD).ToText_UseDou(removeeLeaf);
             //MessageBox.Show("戻る符号＝" + fugoJStr, "デバッグ");
 
             // 入力欄

@@ -16,8 +16,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <param name="logTag"></param>
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
-            IMasus b,
-            ILogTag logTag
+            IMasus b
             )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
@@ -55,9 +54,9 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                Logging.Logger.Trace(LogTags.Error, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                Logging.Logger.Trace(LogTags.Error, "差し替える前");
-                Logging.Logger.Trace(LogTags.Error, c.LogString_Set());
+                Logging.Logger.Trace(logTag, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                Logging.Logger.Trace(logTag, "差し替える前");
+                Logging.Logger.Trace(logTag, c.LogString_Set());
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -66,8 +65,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                Logging.Logger.Trace(LogTags.Error, "差し替えた後");
-                Logging.Logger.Trace(LogTags.Error, c.LogString_Set());
+                Logging.Logger.Trace(logTag, "差し替えた後");
+                Logging.Logger.Trace(logTag, c.LogString_Set());
             }
 
             return c;

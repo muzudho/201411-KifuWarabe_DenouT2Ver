@@ -133,74 +133,47 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             //System.Console.WriteLine("TuginoItte_Sfen.GetData_FromText:text=[" + text + "]");
 
-            try
+            // Sfenの指し手解析
+            Regex regex = new Regex(
+                @"^\s*([123456789PLNSGKRB])([abcdefghi\*])([123456789])([abcdefghi])(\+)?",
+                RegexOptions.Singleline
+            );
+
+            MatchCollection mc = regex.Matches(text);
+            foreach (Match m in mc)
             {
-                // Sfenの指し手解析
-                Regex regex = new Regex(
-                    @"^\s*([123456789PLNSGKRB])([abcdefghi\*])([123456789])([abcdefghi])(\+)?",
-                    RegexOptions.Singleline
-                );
-
-                MatchCollection mc = regex.Matches(text);
-                foreach (Match m in mc)
+                if (0 < m.Groups.Count)
                 {
-                    try
+                    successful = true;
+
+                    // 残りのテキスト
+                    restText = text.Substring(0, m.Index) + text.Substring(m.Index + m.Length, text.Length - (m.Index + m.Length));
+
+                    var moveB = new SfenMoveBuilder()
                     {
-                        if (0 < m.Groups.Count)
-                        {
-                            successful = true;
-
-                            // 残りのテキスト
-                            restText = text.Substring(0, m.Index) + text.Substring(m.Index + m.Length, text.Length - (m.Index + m.Length));
-
-                            var moveB = new SfenMoveBuilder()
-                            {
-                                Str1st = m.Groups[1].Value.ToCharArray()[0], // 123456789 か、 PLNSGKRB
-                                Str2nd = m.Groups[2].Value.ToCharArray()[0], // abcdefghi か、 *
-                                Str3rd = m.Groups[3].Value.ToCharArray()[0], // 123456789
-                                Str4th = m.Groups[4].Value.ToCharArray()[0], // abcdefghi
-                            };
-                            if ("+" == m.Groups[5].Value) // + か、無し。
-                            {
-                                moveB.Str5th = m.Groups[5].Value.ToCharArray()[0];
-                            }
-
-                            ApplicatedMove.GetData_FromTextSub(
-                                moveB.Build(),
-                                out move,
-                                kifuD,
-                                logTag
-                                );
-                        }
-
-                        // 最初の１件だけ処理して終わります。
-                        break;
-                    }
-                    catch (Exception ex)
+                        Str1st = m.Groups[1].Value.ToCharArray()[0], // 123456789 か、 PLNSGKRB
+                        Str2nd = m.Groups[2].Value.ToCharArray()[0], // abcdefghi か、 *
+                        Str3rd = m.Groups[3].Value.ToCharArray()[0], // 123456789
+                        Str4th = m.Groups[4].Value.ToCharArray()[0], // abcdefghi
+                    };
+                    if ("+" == m.Groups[5].Value) // + か、無し。
                     {
-                        // エラーが起こりました。
-                        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                        // どうにもできないので  ログだけ取って無視します。
-                        string message = "TuginoItte_Sfen.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」　m.Groups.Count=「" + m.Groups.Count + "」";
-                        Logging.Logger.Error(LogTags.Error, message);
-
-                        // 追加
-                        throw;
+                        moveB.Str5th = m.Groups[5].Value.ToCharArray()[0];
                     }
+
+                    ApplicatedMove.GetData_FromTextSub(
+                        moveB.Build(),
+                        out move,
+                        kifuD,
+                        logTag
+                        );
                 }
 
-                restText = restText.Trim();
+                // 最初の１件だけ処理して終わります。
+                break;
             }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                // どうにもできないので  ログだけ取って無視します。
-                string message = "TuginoItte_Sfen.GetData_FromText（B）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」";
-                Logging.Logger.Error(LogTags.Error, message);
-            }
+            restText = restText.Trim();
 
             return successful;
         }

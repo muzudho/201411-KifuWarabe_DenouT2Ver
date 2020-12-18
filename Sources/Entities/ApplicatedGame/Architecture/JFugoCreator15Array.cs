@@ -11,7 +11,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
     /// </summary>
     public abstract class JFugoCreator15Array
     {
-        public delegate FugoJ DELEGATE_CreateJFugo(IMove teProcess, TreeDocument kifuD, ILogTag logTag);
+        public delegate FugoJ DELEGATE_CreateJFugo(IMove teProcess, TreeDocument kifuD);
 
         public static DELEGATE_CreateJFugo[] ItemMethods
         {
@@ -46,7 +46,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         }
 
 
-        public static FugoJ CreateNullKoma(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateNullKoma(IMove process, TreeDocument kifuD)
         {
             // エラー
             MigiHidari migiHidari = MigiHidari.No_Print;
@@ -85,7 +85,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="process">移動先、移動元、両方のマス番号</param>
         /// <param name="kyokumen"></param>
         /// <returns></returns>
-        public static FugoJ CreateFu(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateFu(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 歩
@@ -111,7 +111,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 棋譜の現局面：競合駒
             //----------
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
 
             if (process.IsDaAction)
             {
@@ -122,7 +122,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 // Ｅにいた
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -142,7 +142,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmE)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmE)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -171,7 +171,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateKyo(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateKyo(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 香
@@ -206,7 +206,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
 
             if (process.IsDaAction)
             {
@@ -217,7 +217,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 //----------
                 // 移動前はＥだった
@@ -241,7 +241,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             // 「寄」解除： 香に寄はありません。
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmE)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmE)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -270,7 +270,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateKei(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateKei(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 桂
@@ -301,8 +301,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmI = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcI, logTag);
-            List<K40> kmJ = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcJ, logTag);
+            List<K40> kmI = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcI);
+            List<K40> kmJ = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcJ);
 
             if (process.IsDaAction)
             {
@@ -313,7 +313,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcI, kifuD, logTag))
+            else if (src.ExistsIn(srcI, kifuD))
             {
                 //----------
                 // 移動前はＩだった
@@ -321,7 +321,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.No_Print;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcJ, kifuD, logTag))
+            else if (src.ExistsIn(srcJ, kifuD))
             {
                 //----------
                 // 移動前はＪだった
@@ -339,13 +339,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「右」解除： Ｊに競合駒がなければ。
-            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD, logTag, kmJ)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD,  kmJ)) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： Ｉに競合駒がなければ。
-            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD, logTag, kmI)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD,  kmI)) { migiHidari = MigiHidari.No_Print; }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmI, kmJ)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmI, kmJ)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -374,7 +374,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateGin(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateGin(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 銀
@@ -404,11 +404,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB, logTag);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD, logTag);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF, logTag);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH, logTag);
+            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
             if (process.IsDaAction)
             {
@@ -419,7 +419,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcB, kifuD, logTag))
+            else if (src.ExistsIn(srcB, kifuD))
             {
                 // 移動前はＢだった
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -427,7 +427,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcD, kifuD, logTag))
+            else if (src.ExistsIn(srcD, kifuD))
             {
                 // 移動前はＤだった
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -435,7 +435,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 // 移動前はＥだった
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -443,7 +443,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Sugu;
             }
-            else if (src.ExistsIn(srcF, kifuD, logTag))
+            else if (src.ExistsIn(srcF, kifuD))
             {
                 // 移動前はＦだった
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -451,7 +451,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcH, kifuD, logTag))
+            else if (src.ExistsIn(srcH, kifuD))
             {
                 // 移動前はＨだった
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -472,25 +472,25 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //              ②Ｈに競合駒がなく引があるなら。
             //              ③Ｅ、Ｆに競合駒がなく上があるなら。
             if (migiHidari == MigiHidari.Migi && (
-                process.NeverOnaji(kifuD, logTag, kmE, kmF, kmH)
-                || (process.NeverOnaji(kifuD, logTag, kmH) && agaruHiku == AgaruHiku.Hiku)
-                || (process.NeverOnaji(kifuD, logTag, kmE, kmF) && agaruHiku == AgaruHiku.Agaru)
+                process.NeverOnaji(kifuD,  kmE, kmF, kmH)
+                || (process.NeverOnaji(kifuD,  kmH) && agaruHiku == AgaruHiku.Hiku)
+                || (process.NeverOnaji(kifuD,  kmE, kmF) && agaruHiku == AgaruHiku.Agaru)
                 )) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： ①Ｂ、Ｄ、Ｅのどこにも競合駒がなければ。
             //              ②Ｂに競合駒がなく引があるなら。
             //              ③Ｄ、Ｅに競合駒がなく上があるなら。
             if (migiHidari == MigiHidari.Hidari && (
-                process.NeverOnaji(kifuD, logTag, kmB, kmD, kmE)
-                || (process.NeverOnaji(kifuD, logTag, kmB) && agaruHiku == AgaruHiku.Hiku)
-                || (process.NeverOnaji(kifuD, logTag, kmD, kmE) && agaruHiku == AgaruHiku.Agaru)
+                process.NeverOnaji(kifuD,  kmB, kmD, kmE)
+                || (process.NeverOnaji(kifuD,  kmB) && agaruHiku == AgaruHiku.Hiku)
+                || (process.NeverOnaji(kifuD,  kmD, kmE) && agaruHiku == AgaruHiku.Agaru)
                 )) { migiHidari = MigiHidari.No_Print; }
 
             // 「直」解除： Ｄ、Ｆのどちらにも競合駒がなければ。
-            if (migiHidari == MigiHidari.Sugu && process.NeverOnaji(kifuD, logTag, kmD, kmF)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Sugu && process.NeverOnaji(kifuD,  kmD, kmF)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： Ｂ、Ｈのどこにも競合駒がなければ。また、直があるなら。
-            if (agaruHiku == AgaruHiku.Agaru && (process.NeverOnaji(kifuD, logTag, kmB, kmH) || migiHidari == MigiHidari.Sugu)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Agaru && (process.NeverOnaji(kifuD,  kmB, kmH) || migiHidari == MigiHidari.Sugu)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： ①Ｂ、Ｄ、Ｅ、Ｆのどこにも競合駒がなければ。
             //              ②Ｄ、Ｅ、Ｆ、Ｈのどこにも競合駒がなければ。
@@ -498,16 +498,16 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //              ④Ｆに競合駒がなく、左があるなら。
             if (agaruHiku == AgaruHiku.Hiku &&
                 (
-                process.NeverOnaji(kifuD, logTag, kmB, kmD, kmE, kmF)
-                || process.NeverOnaji(kifuD, logTag, kmD, kmE, kmF, kmH)
-                || (process.NeverOnaji(kifuD, logTag, kmD) && migiHidari == MigiHidari.Migi)
-                || (process.NeverOnaji(kifuD, logTag, kmF) && migiHidari == MigiHidari.Hidari)
+                process.NeverOnaji(kifuD,  kmB, kmD, kmE, kmF)
+                || process.NeverOnaji(kifuD,  kmD, kmE, kmF, kmH)
+                || (process.NeverOnaji(kifuD,  kmD) && migiHidari == MigiHidari.Migi)
+                || (process.NeverOnaji(kifuD,  kmF) && migiHidari == MigiHidari.Hidari)
                 )) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： 銀は寄れません。
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmB, kmD, kmE, kmF, kmH)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmB, kmD, kmE, kmF, kmH)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -536,14 +536,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateKin(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateKin(IMove process, TreeDocument kifuD)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
             NariFunari nari;
             DaHyoji daHyoji;
 
-            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji, logTag);
+            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji);
 
             FugoJ fugo = new FugoJ(
                 Haiyaku184Array.Syurui(process.SrcStar.Haiyaku),//「▲２二角成」のとき、dstだと馬になってしまう。srcの角を使う。
@@ -558,8 +558,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         public static void CreateKin_static(
             IMove process,//移動先、移動元、両方のマス番号
             TreeDocument kifuD,
-            out MigiHidari migiHidari, out AgaruHiku agaruHiku, out NariFunari nari, out DaHyoji daHyoji,
-            ILogTag logTag
+            out MigiHidari migiHidari, out AgaruHiku agaruHiku, out NariFunari nari, out DaHyoji daHyoji
             )
         {
             //************************************************************
@@ -588,12 +587,12 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA, logTag);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC, logTag);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD, logTag);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF, logTag);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG, logTag);
+            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
 
 
             if (process.IsDaAction)
@@ -605,7 +604,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcA, kifuD, logTag))
+            else if (src.ExistsIn(srcA, kifuD))
             {
                 //----------
                 // 移動前はＡだった
@@ -615,7 +614,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 //// 打
                 //if (process.IsDaAction) { daHyoji = DaHyoji.Visible; }
             }
-            else if (src.ExistsIn(srcC, kifuD, logTag))
+            else if (src.ExistsIn(srcC, kifuD))
             {
                 //----------
                 // 移動前はＣだった
@@ -625,7 +624,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 //// 打
                 //if (process.IsDaAction) { daHyoji = DaHyoji.Visible; }
             }
-            else if (src.ExistsIn(srcF, kifuD, logTag))
+            else if (src.ExistsIn(srcF, kifuD))
             {
                 //----------
                 // 移動前はＤだった
@@ -635,7 +634,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 //// 打
                 //if (process.IsDaAction) { daHyoji = DaHyoji.Visible; }
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 //----------
                 // 移動前はＥだった
@@ -645,7 +644,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 //// 打
                 //if (process.IsDaAction) { daHyoji = DaHyoji.Visible; }
             }
-            else if (src.ExistsIn(srcD, kifuD, logTag))
+            else if (src.ExistsIn(srcD, kifuD))
             {
                 //----------
                 // 移動前はＦだった
@@ -655,7 +654,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 //// 打
                 //if (process.IsDaAction) { daHyoji = DaHyoji.Visible; }
             }
-            else if (src.ExistsIn(srcG, kifuD, logTag))
+            else if (src.ExistsIn(srcG, kifuD))
             {
                 //----------
                 // 移動前はＧだった
@@ -679,22 +678,22 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //              ②Ｇに競合駒がなく、寄があるなら。
             //              ③上があり、Ｅ、Ｆのどちらにも競合駒がなければ。
             if (migiHidari == MigiHidari.Migi && (
-                process.NeverOnaji(kifuD, logTag, kmE, kmF, kmG)
-                || (process.NeverOnaji(kifuD, logTag, kmG) && agaruHiku == AgaruHiku.Yoru)
-                || (AgaruHiku.Agaru == agaruHiku && process.NeverOnaji(kifuD, logTag, kmE, kmF))
+                process.NeverOnaji(kifuD,  kmE, kmF, kmG)
+                || (process.NeverOnaji(kifuD,  kmG) && agaruHiku == AgaruHiku.Yoru)
+                || (AgaruHiku.Agaru == agaruHiku && process.NeverOnaji(kifuD,  kmE, kmF))
                 )) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： ①Ｃ、Ｄ、Ｅのどちらにも競合駒がなければ。
             //              ②Ｃに競合駒がなく、寄があるなら。
             //              ③上があり、Ｄ、Ｅのどちらにも競合駒がなければ。
             if (migiHidari == MigiHidari.Hidari && (
-                process.NeverOnaji(kifuD, logTag, kmC, kmD, kmE)
-                || (process.NeverOnaji(kifuD, logTag, kmC) && agaruHiku == AgaruHiku.Yoru)
-                || (AgaruHiku.Agaru == agaruHiku && process.NeverOnaji(kifuD, logTag, kmD, kmE))
+                process.NeverOnaji(kifuD,  kmC, kmD, kmE)
+                || (process.NeverOnaji(kifuD,  kmC) && agaruHiku == AgaruHiku.Yoru)
+                || (AgaruHiku.Agaru == agaruHiku && process.NeverOnaji(kifuD,  kmD, kmE))
                 )) { migiHidari = MigiHidari.No_Print; }
 
             // 「直」解除： Ｄ、Ｆのどちらにも競合駒がなければ。
-            if (migiHidari == MigiHidari.Sugu && process.NeverOnaji(kifuD, logTag, kmD, kmF)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Sugu && process.NeverOnaji(kifuD,  kmD, kmF)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： ①Ａ、Ｃ、Ｇのどこにも競合駒がなければ。
             //              ②直があるなら。
@@ -702,21 +701,21 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //              ④Ｇに競合駒がなく、左があるなら。
             if (agaruHiku == AgaruHiku.Agaru &&
                 (
-                process.NeverOnaji(kifuD, logTag, kmA, kmC, kmG)
+                process.NeverOnaji(kifuD,  kmA, kmC, kmG)
                 || migiHidari == MigiHidari.Sugu
-                || process.NeverOnaji(kifuD, logTag, kmC) && migiHidari == MigiHidari.Migi
-                || process.NeverOnaji(kifuD, logTag, kmG) && migiHidari == MigiHidari.Hidari
+                || process.NeverOnaji(kifuD,  kmC) && migiHidari == MigiHidari.Migi
+                || process.NeverOnaji(kifuD,  kmG) && migiHidari == MigiHidari.Hidari
                 )
                 ) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： Ｃ、Ｄ、Ｅ、Ｆ、Ｇのどこにも競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD, logTag, kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD,  kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： ①Ａ、Ｄ、Ｅ、Ｆのどこにも競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD, logTag, kmA, kmD, kmE, kmF)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD,  kmA, kmD, kmE, kmF)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmA, kmC, kmD, kmE, kmF, kmG)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmA, kmC, kmD, kmE, kmF, kmG)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成れません
@@ -724,7 +723,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             nari = NariFunari.CTRL_SONOMAMA;
         }
 
-        public static FugoJ CreateOh(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateOh(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 王
@@ -763,7 +762,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateHisya(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateHisya(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 飛
@@ -820,10 +819,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 棋譜の現局面：競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA, logTag);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC, logTag);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG, logTag);
+            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
 
             if (process.IsDaAction)
             {
@@ -834,7 +833,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcA, kifuD, logTag))
+            else if (src.ExistsIn(srcA, kifuD))
             {
                 //----------
                 // Ａにいた
@@ -842,7 +841,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcC, kifuD, logTag))
+            else if (src.ExistsIn(srcC, kifuD))
             {
                 //----------
                 // Ｃにいた
@@ -850,7 +849,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Yoru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 //----------
                 // Ｅにいた
@@ -858,7 +857,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcG, kifuD, logTag))
+            else if (src.ExistsIn(srcG, kifuD))
             {
                 //----------
                 // Ｇにいた
@@ -876,24 +875,24 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「右」解除： Ｇに競合駒がなければ。
-            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD, logTag, kmG)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD,  kmG)) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： Ｃに競合駒がなければ。
-            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD, logTag, kmC)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD,  kmC)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： Ａ、Ｃ、Ｇに競合駒がなければ。
             //if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kmA) && process.NeverOnaji(kmC) && process.NeverOnaji(kmG)) { agaruHiku = AgaruHiku.None; }
-            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD, logTag, kmA, kmC, kmG)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD,  kmA, kmC, kmG)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： Ｃ、Ｅ、Ｇに競合駒がなければ。
             //if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kmC) && process.NeverOnaji(kmE) && process.NeverOnaji(kmG)) { agaruHiku = AgaruHiku.None; }
-            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD, logTag, kmC, kmE, kmG)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD,  kmC, kmE, kmG)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： Ａ、Ｅに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD, logTag, kmA) && process.NeverOnaji(kifuD, logTag, kmE)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD,  kmA) && process.NeverOnaji(kifuD,  kmE)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmA, kmC, kmE, kmG)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmA, kmC, kmE, kmG)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -922,7 +921,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateKaku(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateKaku(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 角
@@ -979,10 +978,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB, logTag);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD, logTag);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF, logTag);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH, logTag);
+            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
 
             if (process.IsDaAction)
@@ -994,7 +993,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcB, kifuD, logTag))
+            else if (src.ExistsIn(srcB, kifuD))
             {
                 //----------
                 // 移動前はＢだった
@@ -1002,7 +1001,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcD, kifuD, logTag))
+            else if (src.ExistsIn(srcD, kifuD))
             {
                 //----------
                 // 移動前はＤだった
@@ -1010,7 +1009,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcF, kifuD, logTag))
+            else if (src.ExistsIn(srcF, kifuD))
             {
                 //----------
                 // 移動前はＦだった
@@ -1018,7 +1017,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcH, kifuD, logTag))
+            else if (src.ExistsIn(srcH, kifuD))
             {
                 //----------
                 // 移動前はＨだった
@@ -1036,21 +1035,21 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「右」解除： Ｆ、Ｈに競合駒がなければ。
-            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD, logTag, kmF, kmH)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD,  kmF, kmH)) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： Ｂ、Ｄに競合駒がなければ。
-            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD, logTag, kmB, kmD)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD,  kmB, kmD)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： Ｂ、Ｈに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD, logTag, kmB, kmH)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD,  kmB, kmH)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： Ｄ、Ｆに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD, logTag, kmD, kmF)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD,  kmD, kmF)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： 角は寄れません。
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmB, kmD, kmF, kmH)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmB, kmD, kmF, kmH)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成
@@ -1079,7 +1078,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateRyu(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateRyu(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 竜
@@ -1140,14 +1139,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA, logTag);
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB, logTag);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC, logTag);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD, logTag);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF, logTag);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG, logTag);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH, logTag);
+            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
 
             if (process.IsDaAction)
@@ -1159,7 +1158,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcA, kifuD, logTag))
+            else if (src.ExistsIn(srcA, kifuD))
             {
                 //----------
                 // 移動前はＡだった
@@ -1167,7 +1166,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcB, kifuD, logTag))
+            else if (src.ExistsIn(srcB, kifuD))
             {
                 //----------
                 // 移動前はＢだった
@@ -1175,7 +1174,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcC, kifuD, logTag))
+            else if (src.ExistsIn(srcC, kifuD))
             {
                 //----------
                 // 移動前はＣだった
@@ -1183,7 +1182,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Yoru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcD, kifuD, logTag))
+            else if (src.ExistsIn(srcD, kifuD))
             {
                 //----------
                 // 移動前はＤだった
@@ -1191,7 +1190,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 //----------
                 // 移動前はＥだった
@@ -1199,7 +1198,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcF, kifuD, logTag))
+            else if (src.ExistsIn(srcF, kifuD))
             {
                 //----------
                 // 移動前はＦだった
@@ -1207,7 +1206,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcG, kifuD, logTag))
+            else if (src.ExistsIn(srcG, kifuD))
             {
                 //----------
                 // 移動前はＧだった
@@ -1215,7 +1214,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Yoru;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcH, kifuD, logTag))
+            else if (src.ExistsIn(srcH, kifuD))
             {
                 //----------
                 // 移動前はＨだった
@@ -1233,22 +1232,22 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「右」解除： Ａ、Ｅ、Ｆ、Ｇ、Ｈに１つも競合駒がなければ。
-            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD, logTag, kmA, kmE, kmF, kmG, kmH)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD,  kmA, kmE, kmF, kmG, kmH)) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： Ａ、Ｂ、Ｃ、Ｄ、Ｅに１つも競合駒がなければ。
-            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmD, kmE)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmD, kmE)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： Ａ、Ｂ、Ｃ、Ｇ、Ｈに１つも競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmG, kmH)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmG, kmH)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： Ｃ、Ｄ、Ｅ、Ｆ、Ｇに１つも競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD, logTag, kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD,  kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： Ａ、Ｂ、Ｄ、Ｅ、Ｆ、Ｈに１つも競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmD, kmE, kmF, kmH)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD,  kmA, kmB, kmD, kmE, kmF, kmH)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmD, kmE, kmF, kmG, kmH)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmD, kmE, kmF, kmG, kmH)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成れません
@@ -1265,7 +1264,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateUma(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateUma(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // 馬
@@ -1326,14 +1325,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA, logTag);
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB, logTag);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC, logTag);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD, logTag);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE, logTag);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF, logTag);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG, logTag);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH, logTag);
+            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
             if (process.IsDaAction)
             {
@@ -1344,7 +1343,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 migiHidari = MigiHidari.No_Print;
                 daHyoji = DaHyoji.Visible;
             }
-            else if (src.ExistsIn(srcB, kifuD, logTag))
+            else if (src.ExistsIn(srcB, kifuD))
             {
                 //----------
                 // 移動前はＢだった
@@ -1352,7 +1351,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcD, kifuD, logTag))
+            else if (src.ExistsIn(srcD, kifuD))
             {
                 //----------
                 // 移動前はＤだった
@@ -1360,7 +1359,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcF, kifuD, logTag))
+            else if (src.ExistsIn(srcF, kifuD))
             {
                 //----------
                 // 移動前はＦだった
@@ -1368,7 +1367,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcH, kifuD, logTag))
+            else if (src.ExistsIn(srcH, kifuD))
             {
                 //----------
                 // 移動前はＨだった
@@ -1376,7 +1375,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.Hidari;
             }
-            else if (src.ExistsIn(srcA, kifuD, logTag))
+            else if (src.ExistsIn(srcA, kifuD))
             {
                 //----------
                 // 移動前はＡだった
@@ -1384,7 +1383,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Hiku;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcC, kifuD, logTag))
+            else if (src.ExistsIn(srcC, kifuD))
             {
                 //----------
                 // 移動前はＣだった
@@ -1392,7 +1391,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Yoru;
                 migiHidari = MigiHidari.Migi;
             }
-            else if (src.ExistsIn(srcE, kifuD, logTag))
+            else if (src.ExistsIn(srcE, kifuD))
             {
                 //----------
                 // 移動前はＥだった
@@ -1400,7 +1399,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 agaruHiku = AgaruHiku.Agaru;
                 migiHidari = MigiHidari.No_Print;
             }
-            else if (src.ExistsIn(srcG, kifuD, logTag))
+            else if (src.ExistsIn(srcG, kifuD))
             {
                 //----------
                 // 移動前はＧだった
@@ -1418,22 +1417,22 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // 「右」解除： Ａ、Ｅ、Ｆ、Ｇ、Ｈに競合駒がなければ。
-            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD, logTag, kmA, kmE, kmF, kmG, kmH)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Migi && process.NeverOnaji(kifuD,  kmA, kmE, kmF, kmG, kmH)) { migiHidari = MigiHidari.No_Print; }
 
             // 「左」解除： Ａ、Ｂ、Ｃ、Ｄ、Ｅに競合駒がなければ。
-            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmD, kmE)) { migiHidari = MigiHidari.No_Print; }
+            if (migiHidari == MigiHidari.Hidari && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmD, kmE)) { migiHidari = MigiHidari.No_Print; }
 
             // 「上」解除： Ａ、Ｂ、Ｃ、Ｇ、Ｈに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmG, kmH)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Agaru && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmG, kmH)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「引」解除： Ｃ、Ｄ、Ｅ、Ｆ、Ｇに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD, logTag, kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Hiku && process.NeverOnaji(kifuD,  kmC, kmD, kmE, kmF, kmG)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「寄」解除： Ａ、Ｂ、Ｄ、Ｅ、Ｆ、Ｈに競合駒がなければ。
-            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmD, kmE, kmF, kmH)) { agaruHiku = AgaruHiku.No_Print; }
+            if (agaruHiku == AgaruHiku.Yoru && process.NeverOnaji(kifuD,  kmA, kmB, kmD, kmE, kmF, kmH)) { agaruHiku = AgaruHiku.No_Print; }
 
             // 「打」解除： 競合範囲全てに競合駒がなければ。
-            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD, logTag, kmA, kmB, kmC, kmD, kmE, kmF, kmG, kmH)) { daHyoji = DaHyoji.No_Print; }
+            if (daHyoji == DaHyoji.Visible && process.NeverOnaji(kifuD,  kmA, kmB, kmC, kmD, kmE, kmF, kmG, kmH)) { daHyoji = DaHyoji.No_Print; }
 
             //----------
             // 成れません
@@ -1450,14 +1449,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateTokin(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateTokin(IMove process, TreeDocument kifuD)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
             NariFunari nari;
             DaHyoji daHyoji;
 
-            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji, logTag);
+            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji);
 
             FugoJ fugo = new FugoJ(
                 Haiyaku184Array.Syurui(process.SrcStar.Haiyaku),//「▲２二角成」のとき、dstだと馬になってしまう。srcの角を使う。
@@ -1469,14 +1468,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateNariKyo(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateNariKyo(IMove process, TreeDocument kifuD)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
             NariFunari nari;
             DaHyoji daHyoji;
 
-            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji, logTag);
+            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji);
 
             FugoJ fugo = new FugoJ(
                 Haiyaku184Array.Syurui(process.SrcStar.Haiyaku),//「▲２二角成」のとき、dstだと馬になってしまう。srcの角を使う。
@@ -1488,7 +1487,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateNariKei(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateNariKei(IMove process, TreeDocument kifuD)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
@@ -1496,7 +1495,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             DaHyoji daHyoji;
 
 
-            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji, logTag);
+            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji);
 
             FugoJ fugo = new FugoJ(
                 Haiyaku184Array.Syurui(process.SrcStar.Haiyaku),//「▲２二角成」のとき、dstだと馬になってしまう。srcの角を使う。
@@ -1508,14 +1507,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateNariGin(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateNariGin(IMove process, TreeDocument kifuD)
         {
             MigiHidari migiHidari;
             AgaruHiku agaruHiku;
             NariFunari nari;
             DaHyoji daHyoji;
 
-            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji, logTag);
+            JFugoCreator15Array.CreateKin_static(process, kifuD, out migiHidari, out agaruHiku, out nari, out daHyoji);
 
             FugoJ fugo = new FugoJ(
                 Haiyaku184Array.Syurui(process.SrcStar.Haiyaku),//「▲２二角成」のとき、dstだと馬になってしまう。srcの角を使う。
@@ -1527,7 +1526,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             return fugo;
         }
 
-        public static FugoJ CreateErrorKoma(IMove process, TreeDocument kifuD, ILogTag logTag)
+        public static FugoJ CreateErrorKoma(IMove process, TreeDocument kifuD)
         {
             //************************************************************
             // エラー

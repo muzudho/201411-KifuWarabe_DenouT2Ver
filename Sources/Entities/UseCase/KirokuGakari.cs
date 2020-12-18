@@ -73,7 +73,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     logTag
                     );
 
-                fugo = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, saifuKifuD, logTag);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
+                fugo = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, saifuKifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
                 //Ks14 temp = Haiyaku184Array.Syurui(process.SrcHaiyaku);
                 //JFugoCreator15Array.DELEGATE_CreateJFugo delegate_CreateJFugo = JFugoCreator15Array.ItemMethods[(int)temp];
                 //fugo = delegate_CreateJFugo(process, saifuKifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。

@@ -983,7 +983,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
-                    srcOkiba1, sengo, srcSyurui, logTag);
+                    srcOkiba1, sengo, srcSyurui);
 
                 if (0 < komas.Count)
                 {
@@ -1041,7 +1041,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
 
                 List<K40> komaHandles = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
-                    srcOkiba1, sengo, srcSyurui, logTag);//(2014-10-04 12:46)変更
+                    srcOkiba1, sengo, srcSyurui);//(2014-10-04 12:46)変更
                 // 1個はヒットするはず
                 K40 hitKoma = komaHandles[0];//▲！コマ送りボタンを連打すると、エラーになります。
 
