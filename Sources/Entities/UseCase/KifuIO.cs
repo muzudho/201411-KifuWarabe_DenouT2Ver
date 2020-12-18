@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
 {
@@ -77,7 +77,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
-            Logger.TraceLine(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
+            Logger.Logger.TraceLine(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 

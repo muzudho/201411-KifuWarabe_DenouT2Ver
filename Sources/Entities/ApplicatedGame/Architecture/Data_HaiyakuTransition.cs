@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.Misc;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
@@ -151,7 +151,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     sb.AppendLine();
                 }
 
-                Logger.WriteFile(LogTags.HaichiTenkanHyoOnlyDataLog, sb.ToString());
+                Logger.Logger.WriteFile(LogTags.HaichiTenkanHyoOnlyDataLog, sb.ToString());
             }
 
 
@@ -200,7 +200,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         "配役転換表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount2 + "]\n" +
                         "columnCount=[" + columnCount + "]\n";
-                        Logger.ErrorLine(LogTags.Error, message);
+                        Logger.Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
 
@@ -218,7 +218,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
         gt_EndMethod:
-            Logger.WriteFile(LogTags.HaichiTenkanHyoAllLog, sbDebug.ToString());
+            Logger.Logger.WriteFile(LogTags.HaichiTenkanHyoAllLog, sbDebug.ToString());
 
             return rows;
         }

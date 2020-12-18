@@ -3,7 +3,7 @@ using System.Drawing;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 

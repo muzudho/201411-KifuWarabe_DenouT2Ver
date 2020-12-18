@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.JapaneseView;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
@@ -275,7 +275,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 case 9: return "i";
                 default:
                     string message = "筋[" + num + "]をアルファベットに変えることはできませんでした。";
-                    Logger.ErrorLine(LogTags.Error, message);
+                    Logger.Logger.ErrorLine(LogTags.Error, message);
                     throw new Exception(message);
             }
         }

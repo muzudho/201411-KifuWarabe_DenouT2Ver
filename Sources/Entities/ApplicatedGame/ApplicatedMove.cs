@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.Sfen;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
@@ -58,7 +58,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     if (K40.Error == dropP)
                     {
                         string message = "TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[" + dropPT + "]の駒を掴もうとしましたが、エラーでした。";
-                        Logger.ErrorLine(LogTags.Error, message);
+                        Logger.Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
 
@@ -98,7 +98,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                         }
 
                         string message = sb.ToString();
-                        Logger.ErrorLine(LogTags.Error, message);
+                        Logger.Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
                 }
@@ -182,7 +182,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので 落とします。
                 string message = ex.GetType().Name + "：" + ex.Message + "　in　TuginoItte_Sfen.GetData_FromTextSub（A）　str1=「" + sfen.Chars[0] + "」　str2=「" + sfen.Chars[1] + "」　str3=「" + sfen.Chars[2] + "」　str4=「" + sfen.Chars[3] + "」　strNari=「" + sfen.Chars[4] + "」　";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw;
             }
         }

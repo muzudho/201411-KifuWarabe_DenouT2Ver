@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Nett;
 using System.Windows.Forms;

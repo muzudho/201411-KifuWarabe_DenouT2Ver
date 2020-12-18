@@ -1,4 +1,4 @@
-﻿namespace Grayscale.Kifuwarane.Entities.Log
+﻿namespace Grayscale.Kifuwarane.Entities.Logger
 {
     /// <summary>
     /// ログの書き込み先情報。
@@ -24,7 +24,7 @@
         /// <summary>
         /// ログ出力の有無。
         /// </summary>
-        public bool Enable { get { return this.enable; } }
+        public bool Enabled { get { return this.enable; } }
         private bool enable;
 
         /// <summary>

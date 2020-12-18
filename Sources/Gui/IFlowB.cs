@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
 

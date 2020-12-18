@@ -2,7 +2,7 @@
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Nett;
 
@@ -38,12 +38,12 @@ namespace Grayscale.Kifuwarane.Entities
             // 駒配役を生成した後で。
             var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
             ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
-            Logger.WriteFile(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+            Logger.Logger.WriteFile(LogTags.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
             // 配役転換表
             var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
             Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
-            Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+            Logger.Logger.WriteFile(LogTags.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
             #region リンクトリスト・テスト ※配役等の設定後に
@@ -108,7 +108,7 @@ namespace Grayscale.Kifuwarane.Entities
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logger.Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(New)");
@@ -184,7 +184,7 @@ namespace Grayscale.Kifuwarane.Entities
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logger.Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(Next)");
@@ -285,7 +285,7 @@ namespace Grayscale.Kifuwarane.Entities
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logger.Logger.TraceLine(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 {
                     // ▲２六歩

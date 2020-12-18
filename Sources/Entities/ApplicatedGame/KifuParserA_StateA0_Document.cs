@@ -1,6 +1,6 @@
 ﻿using System;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
@@ -57,7 +57,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     //          *1…初期配置を作るということです。
                     // 
 
-                    Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... SFEN形式か...☆");
+                    Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... SFEN形式か...☆");
                     inputLine = inputLine.Substring("position".Length);
                     inputLine = inputLine.Trim();
 
@@ -66,7 +66,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 }
                 else
                 {
-                    Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... positionじゃなかったぜ☆　日本式か☆？　SFENでmovesを読んだあとのプログラムに合流させるぜ☆　：　先後＝[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　hint=" + hint);
+                    Logger.Logger.TraceLine(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... positionじゃなかったぜ☆　日本式か☆？　SFENでmovesを読んだあとのプログラムに合流させるぜ☆　：　先後＝[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　hint=" + hint);
                     nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
                 }
 
@@ -78,7 +78,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
                 // どうにもできないので  ログだけ取って無視します。
                 string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
             }
 
 

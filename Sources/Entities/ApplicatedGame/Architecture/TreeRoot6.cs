@@ -1,5 +1,5 @@
 ﻿using System;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
@@ -27,7 +27,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (!(this is TreeRoot6))
             {
                 string message = "Kifu_Rootクラスではないのに、SetSengo_Rootメソッドを使用しました。\n this.GetType().Name=[" + this.GetType().Name + "]";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
             }
 

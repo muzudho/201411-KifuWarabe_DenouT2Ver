@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.UseCase;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
@@ -23,7 +23,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             this.current8 = new TreeRoot6();
 
-            Logger.TraceLine(LogTags.LinkedList, "リンクトリストは作られた"+this.DebugText_Kyokumen7(this, "ルートが追加されたはずだぜ☆"));
+            Logger.Logger.TraceLine(LogTags.LinkedList, "リンクトリストは作られた"+this.DebugText_Kyokumen7(this, "ルートが追加されたはずだぜ☆"));
         }
 
 
@@ -49,7 +49,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             {
                 // やってはいけない操作は、例外を返すようにします。
                 string message = "ルート局面を削除しようとしました。";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
 
                 //// ルート局面は削除させません。
@@ -67,7 +67,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             this.current8 = deleteeElement.Previous;
 
 
-            Logger.TraceLine(LogTags.LinkedList, "リンクトリストの最後の要素が削除された");
+            Logger.Logger.TraceLine(LogTags.LinkedList, "リンクトリストの最後の要素が削除された");
 
         // gt_EndMethod:
             return deleteeElement;
@@ -116,7 +116,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                 default:
                     string message = "先後エラー";
-                    Logger.ErrorLine(LogTags.Error, message);
+                    Logger.Logger.ErrorLine(LogTags.Error, message);
                     throw new Exception(message);
             }
 
@@ -559,7 +559,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //OldLinkedList.logger.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, "リンクトリストに、ノードは追加された item=[" + item.ToSfenText() + "] memberName=["+memberName+"] sourceFilePath=["+sourceFilePath+"] sourceLineNumber=["+sourceLineNumber+"]");
             //Kifu_Document.KOMA_DOORS_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, kifuD.DebugText_Kyokumen("ノードが追加されたぜ☆ hint=[" + hint+"]"));
 
-            Logger.TraceLine(LogTags.LinkedList, "ノードが１つ追加されたぜ☆ｗｗ　：　[" + kifuD.CountTeme(kifuD.Current8) + "]手目　：　hint=[" + hint + "]");
+            Logger.Logger.TraceLine(LogTags.LinkedList, "ノードが１つ追加されたぜ☆ｗｗ　：　[" + kifuD.CountTeme(kifuD.Current8) + "]手目　：　hint=[" + hint + "]");
             //　：　棋譜＝"+ KirokuGakari.ToJapaneseKifuText(kifuD, logTag)
             //　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber
         }
@@ -582,7 +582,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                 newHouse = new PositionKomaHouse(latestHouse.Stars);
 
-                Logger.TraceLine(LogTags.LinkedList, newHouse.Log_Kyokumen(this, this.CountTeme(this.Current8), "増えたニュー局面"));
+                Logger.Logger.TraceLine(LogTags.LinkedList, newHouse.Log_Kyokumen(this, this.CountTeme(this.Current8), "増えたニュー局面"));
             }
 
 
@@ -597,7 +597,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (null == newHouse)
             {
                 string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -631,7 +631,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             this.AppendChild_Main(this, newNode, hint + "：Kifu_Document.cs_Kifu_Document#Add_Old3a", logTag);
 
-            Logger.TraceLine(LogTags.LinkedList, "リンクトリストに、ノードは追加された hint=[" + hint + "] te=[" + newNode.TeProcess.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]");
+            Logger.Logger.TraceLine(LogTags.LinkedList, "リンクトリストに、ノードは追加された hint=[" + hint + "] te=[" + newNode.TeProcess.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]");
         }
 
         /// <summary>
@@ -670,7 +670,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (null == newHouse)
             {
                 string message = "ノードを追加しようとしましたが、指定されたnewHouseがヌルです。";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -678,7 +678,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             this.AppendChild_Main(this, newNode, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead", logTag);
             //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead", logTag);
 
-            Logger.TraceLine(logTag, "リンクトリストの、最終ノードは差し替えられた hint=[" + hint + "] item=[" + item.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]");
+            Logger.Logger.TraceLine(logTag, "リンクトリストの、最終ノードは差し替えられた hint=[" + hint + "] item=[" + item.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]");
 
         gt_EndMethod:
             ;
@@ -698,7 +698,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             // ルートの次の手を全クリアーします。
             this.Current8.Next2.Clear();
 
-            Logger.TraceLine(LogTags.LinkedList, "リンクトリストは、クリアーされた");
+            Logger.Logger.TraceLine(LogTags.LinkedList, "リンクトリストは、クリアーされた");
         }
 
         public TreeRoot6 GetRoot8()
@@ -712,7 +712,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 if (null == cur)
                 {
                     string message = "ルートに遡ろうとしたら、ヌルでした。";
-                    Logger.ErrorLine(LogTags.Error, message);
+                    Logger.Logger.ErrorLine(LogTags.Error, message);
                     throw new Exception(message);
                 }
             }
@@ -740,7 +740,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (-1 == countTeme)
             {
                 string message = "手目を調べるのに失敗しました。\n[0]初期局面 は必ず入っているので、ループが１回も回らないということはないはずですが、-1手目になりました。";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
             }
 
@@ -766,7 +766,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             if (null == found6)
             {
                 string message = "[" + teme1 + "]の局面ノード6はヌルでした。";
-                Logger.ErrorLine(LogTags.Error, message);
+                Logger.Logger.ErrorLine(LogTags.Error, message);
                 throw new Exception(message);
             }
 

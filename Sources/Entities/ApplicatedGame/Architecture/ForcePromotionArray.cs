@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Entities.Misc;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
@@ -89,7 +89,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         "強制転成表に、int型数値でないものが指定されていました。\n" +
                         "rowCount=[" + rowCount + "]\n" +
                         "masuHandle=[" + masuHandle + "]\n";
-                        Logger.ErrorLine(LogTags.Error, message);
+                        Logger.Logger.ErrorLine(LogTags.Error, message);
                         throw new Exception(message);
                     }
 

@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Nett;
 
-namespace Grayscale.Kifuwarane.Entities.Log
+namespace Grayscale.Kifuwarane.Entities.Logger
 {
     /// <summary>
     /// TODO 非同期で書き込むと、同じファイルに同時に書き込もうとするはず。対応できないか？ 現状何も考えていない。
@@ -100,7 +100,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 record = Logger.defaultLogRecord;
             }
 
-            if (!record.Enable)
+            if (!record.Enabled)
             {
                 // ログ出力オフ
                 goto gt_EndMethod;
@@ -147,7 +147,7 @@ namespace Grayscale.Kifuwarane.Entities.Log
                 record = Logger.defaultLogRecord;
             }
 
-            if (!record.Enable)
+            if (!record.Enabled)
             {
                 // ログ出力オフ
                 goto gt_EndMethod;

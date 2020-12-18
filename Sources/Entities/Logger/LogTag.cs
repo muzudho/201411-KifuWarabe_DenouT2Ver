@@ -1,4 +1,4 @@
-﻿namespace Grayscale.Kifuwarane.Entities.Log
+﻿namespace Grayscale.Kifuwarane.Entities.Logger
 {
     /// <summary>
     /// ログのタグ。

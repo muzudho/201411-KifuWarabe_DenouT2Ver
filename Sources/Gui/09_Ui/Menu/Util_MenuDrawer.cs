@@ -1,5 +1,5 @@
 ﻿using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 
 namespace Grayscale.Kifuwarane.Gui.L09_Ui

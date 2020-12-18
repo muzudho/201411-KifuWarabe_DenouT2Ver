@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Log;
+using Grayscale.Kifuwarane.Entities.Logger;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
 {
@@ -55,9 +55,9 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                Logger.TraceLine(LogTags.Error, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                Logger.TraceLine(LogTags.Error, "差し替える前");
-                Logger.TraceLine(LogTags.Error, c.LogString_Set());
+                Logger.Logger.TraceLine(LogTags.Error, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                Logger.Logger.TraceLine(LogTags.Error, "差し替える前");
+                Logger.Logger.TraceLine(LogTags.Error, c.LogString_Set());
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -66,8 +66,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                Logger.TraceLine(LogTags.Error, "差し替えた後");
-                Logger.TraceLine(LogTags.Error, c.LogString_Set());
+                Logger.Logger.TraceLine(LogTags.Error, "差し替えた後");
+                Logger.Logger.TraceLine(LogTags.Error, c.LogString_Set());
             }
 
             return c;

@@ -5,7 +5,7 @@
     using System.Text.RegularExpressions;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-    using Grayscale.Kifuwarane.Entities.Log;
+    using Grayscale.Kifuwarane.Entities.Logger;
     using Grayscale.Kifuwarane.Entities.UseCase;
     using Grayscale.Kifuwarane.UseCases;
     using Grayscale.Kifuwarane.UseCases.Logging;
