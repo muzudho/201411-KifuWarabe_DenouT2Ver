@@ -24,7 +24,6 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
             Logger.AddLog(LogTags.GuiDefault, LogEntry(logDirectory, toml, "GuiRecordLog", true, false));
-            Logger.AddLog(LogTags.Library, LogEntry(logDirectory, toml, "LibLog", true, false));
             Logger.AddLog(LogTags.LinkedList, LogEntry(logDirectory, toml, "LinkedListLog", true, false));
             Logger.AddLog(LogTags.Engine, LogEntry(logDirectory, toml, "EngineRecordLog", true, false));
             Logger.AddLog(LogTags.GuiPaint, LogEntry(logDirectory, toml, "GuiPaint", true, false));

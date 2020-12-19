@@ -1,4 +1,6 @@
-﻿namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
+﻿using Grayscale.Kifuwarane.Entities.Features;
+
+namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
     /// <summary>
     /// 駒の種類１５個ごとの、「周りに障害物がないときに、ルール上移動可能なマス」。
@@ -70,7 +72,7 @@
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
-                if (Program.RETIRE_VERSION)
+                if (EntitiesOption.RETIRE_VERSION)
                 {
                     // 貫通を修正することができなかったので、１歩ずつ進むようにします。
                     dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
@@ -213,7 +215,7 @@
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
-                if (Program.RETIRE_VERSION)
+                if (EntitiesOption.RETIRE_VERSION)
                 {
                     // 貫通を修正することができなかったので、１歩ずつ進むようにします。
                     dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
@@ -248,7 +250,7 @@
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
-                if (Program.RETIRE_VERSION)
+                if (EntitiesOption.RETIRE_VERSION)
                 {
                     // 貫通を修正することができなかったので、１歩ずつ進むようにします。
                     dst.AddSupersets(KomanoKidou.DstIppo_昇(sengo, masu_ji));
@@ -285,7 +287,7 @@
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
-                if (Program.RETIRE_VERSION)
+                if (EntitiesOption.RETIRE_VERSION)
                 {
                     // 貫通を修正することができなかったので、１歩ずつ進むようにします。
                     dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));
@@ -329,7 +331,7 @@
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(masu_ji))
             {
-                if (Program.RETIRE_VERSION)
+                if (EntitiesOption.RETIRE_VERSION)
                 {
                     // 貫通を修正することができなかったので、１歩ずつ進むようにします。
                     dst.AddSupersets(KomanoKidou.DstIppo_上(sengo, masu_ji));

@@ -96,6 +96,14 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Ui_Form1.resx">
+      <DependentUpon>Ui_Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ui_PnlMain.resx">
+      <DependentUpon>Ui_PnlMain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj">
       <Project>{54470eea-b69e-4db5-99f8-0539277dbc5b}</Project>
       <Name>Engine</Name>
@@ -108,14 +116,6 @@
       <Project>{e3c071cd-1194-422a-825e-9c0a62b086ac}</Project>
       <Name>UseCases</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Ui_Form1.resx">
-      <DependentUpon>Ui_Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ui_PnlMain.resx">
-      <DependentUpon>Ui_PnlMain.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

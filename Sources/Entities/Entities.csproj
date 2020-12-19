@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ADED86BA-4316-4927-9A7D-A14B70E908B4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Grayscale.Kifuwarane.Entities</RootNamespace>
     <AssemblyName>Grayscale.Kifuwarane.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -34,6 +34,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nett, Version=0.15.0.0, Culture=neutral, PublicKeyToken=605dcfe7a1d3365b, processorArchitecture=MSIL">
@@ -108,6 +111,7 @@
     <Compile Include="Features\ApplicatedGame\Okiba.cs" />
     <Compile Include="Features\ApplicatedGame\Sengo.cs" />
     <Compile Include="Features\ApplicatedGame\Sengo2Array.cs" />
+    <Compile Include="Features\EntitiesOption.cs" />
     <Compile Include="Features\JapaneseView\AgaruHiku.cs" />
     <Compile Include="Features\JapaneseView\DaHyoji.cs" />
     <Compile Include="Features\JapaneseView\MigiHidari.cs" />
@@ -124,7 +128,6 @@
     <Compile Include="Features\Misc\CsvLineParserImpl.cs" />
     <Compile Include="Features\Misc\RandomLib.cs" />
     <Compile Include="Features\Misc\ShuffleLib.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\Sfen\SfenMove.cs" />
     <Compile Include="Features\Sfen\SfenMoveBuilder.cs" />

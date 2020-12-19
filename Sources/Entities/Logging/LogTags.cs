@@ -11,11 +11,6 @@
         public static readonly ILogTag GuiDefault = new LogTag("GuiDefault");
 
         /// <summary>
-        /// ライブラリの出すログだけ別ファイルに分けたいとき。
-        /// </summary>
-        public static readonly ILogTag Library = new LogTag("Library");
-
-        /// <summary>
         /// 棋譜ツリーの作成だけ別ファイルに分けたいとき。
         /// </summary>
         public static readonly ILogTag LinkedList = new LogTag("LinkedList");
