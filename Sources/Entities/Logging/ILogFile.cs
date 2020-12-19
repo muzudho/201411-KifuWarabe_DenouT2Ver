@@ -10,6 +10,7 @@
         /// </summary>
         string Name { get; }
 
+        /*
         /// <summary>
         /// 拡張子を除くファイル名。
         /// </summary>
@@ -19,5 +20,6 @@
         /// ドットを含む拡張子。
         /// </summary>
         string Extension { get; }
+        */
     }
 }

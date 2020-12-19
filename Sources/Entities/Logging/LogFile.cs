@@ -1,4 +1,6 @@
-﻿namespace Grayscale.Kifuwarane.Entities.Logging
+﻿using System.IO;
+
+namespace Grayscale.Kifuwarane.Entities.Logging
 {
     /// <summary>
     /// ログの書き込み先情報。
@@ -7,23 +9,22 @@
     {
         /// <summary>
         /// ファイル名。
-        /// </summary>
-        public string Name { get { return $"{this.Stem}{this.Extension}"; } }
-
-        /// <summary>
-        /// 拡張子抜きのファイル名。
-        /// </summary>
-        public string Stem { get; private set; }
-
-        /// <summary>
-        /// ドット付きの拡張子。
         /// 拡張子は .log 固定。ファイル削除の目印にします。
         /// </summary>
-        public string Extension { get { return ".log"; } }
+        public string Name { get; private set; }
 
-        public LogFile(string fileStem)
+        public static ILogFile AsData(string logDirectory, string fileName)
         {
-            this.Stem = fileStem;
+            return new LogFile(Path.Combine(logDirectory, $"{fileName}"));
+        }
+        public static ILogFile AsLog(string logDirectory, string fileStem)
+        {
+            return new LogFile(Path.Combine(logDirectory, $"[{Logger.Unique}]{fileStem}.log"));
+        }
+
+        LogFile(string name)
+        {
+            this.Name = name;
         }
     }
 }

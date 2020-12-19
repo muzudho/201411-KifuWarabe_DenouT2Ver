@@ -21,9 +21,9 @@
         /// </summary>
         public bool TimeStampPrintable { get; private set; } = false;
 
-        public LogRecord(string fileStem, bool enabled, bool timeStampPrintable)
+        public LogRecord(ILogFile logFile, bool autoId, bool enabled, bool timeStampPrintable)
         {
-            this.LogFile = new LogFile(fileStem);
+            this.LogFile = logFile;
             this.enabled = enabled;
             this.TimeStampPrintable = timeStampPrintable;
         }

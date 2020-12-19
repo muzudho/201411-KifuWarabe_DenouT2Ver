@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using Nett;
 
 namespace Grayscale.Kifuwarane.Entities.Logging
@@ -13,21 +14,26 @@ namespace Grayscale.Kifuwarane.Entities.Logging
     /// </summary>
     public static class Logger
     {
-        static ILogRecord LogEntry(string profilePath, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
-        {
-            return new LogRecord(Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey)), enabled, timeStampPrintable);
-        }
+        private static readonly Guid unique = Guid.NewGuid();
+        public static Guid Unique { get { return unique; } }
 
         static Logger()
         {
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+            var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            Logger.AddLog(LogTags.GuiDefault, LogEntry(profilePath, toml, "GuiRecordLog", true, false));
-            Logger.AddLog(LogTags.Library, LogEntry(profilePath, toml, "LibLog", true, false));
-            Logger.AddLog(LogTags.LinkedList, LogEntry(profilePath, toml, "LinkedListLog", true, false));
-            Logger.AddLog(LogTags.Engine, LogEntry(profilePath, toml, "EngineRecordLog", true, false));
-            Logger.AddLog(LogTags.GuiPaint, LogEntry(profilePath, toml, "GuiPaint", true, false));
+            Logger.AddLog(LogTags.GuiDefault, LogEntry(logDirectory, toml, "GuiRecordLog", true, false));
+            Logger.AddLog(LogTags.Library, LogEntry(logDirectory, toml, "LibLog", true, false));
+            Logger.AddLog(LogTags.LinkedList, LogEntry(logDirectory, toml, "LinkedListLog", true, false));
+            Logger.AddLog(LogTags.Engine, LogEntry(logDirectory, toml, "EngineRecordLog", true, false));
+            Logger.AddLog(LogTags.GuiPaint, LogEntry(logDirectory, toml, "GuiPaint", true, false));
+        }
+
+        static ILogRecord LogEntry(string logDirectory, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
+        {
+            var logFile = LogFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
+            return new LogRecord(logFile, true, enabled, timeStampPrintable);
         }
 
         public static ILogRecord DefaultLogRecord
@@ -36,7 +42,12 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             {
                 if (null == Logger.defaultLogRecord)
                 {
-                    Logger.defaultLogRecord = new LogRecord($"default({System.Diagnostics.Process.GetCurrentProcess().ProcessName})", true, false);
+                    var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+                    var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+                    var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
+                    Logger.defaultLogRecord = new LogRecord(LogFile.AsLog(logDirectory, "default"), true, true, false);
+
+                    // Logger.defaultLogRecord = new LogRecord($"default({System.Diagnostics.Process.GetCurrentProcess().ProcessName})", true, false);
                 }
 
                 return Logger.defaultLogRecord;
@@ -229,7 +240,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         /// <param name="line"></param>
         public static void WriteLineS(
-            ILogRecord address,
+            ILogRecord record,
             string line,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -237,11 +248,8 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             )
         {
             // ログ追記
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
-            sb.AppendLine();
-
-            System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
+            System.IO.File.AppendAllText(record.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
+");
         }
 
         /// <summary>
@@ -249,14 +257,22 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         public static void RemoveAllLogFile()
         {
-            if (Logger.defaultLogRecord != null)
-            {
-                System.IO.File.Delete(Logger.defaultLogRecord.LogFile.Name);
-            }
+            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+            var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+            var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            foreach (KeyValuePair<ILogTag, ILogRecord> entry in Logger.logMap)
+            var re = new Regex("(\\[[0-9A-Fa-f-]+\\])?.+\\.log");
+
+            DirectoryInfo dir = new System.IO.DirectoryInfo(logDirectory);
+            FileInfo[] files = dir.GetFiles(".log");
+            foreach (FileInfo f in files)
             {
-                System.IO.File.Delete(entry.Value.LogFile.Name);
+                //正規表現のパターンを使用して一つずつファイルを調べる
+                if (re.IsMatch(f.FullName))
+                {
+                    Console.WriteLine(f.FullName);
+                    // File.Delete(f.FullName);
+                }
             }
         }
     }

@@ -5,24 +5,30 @@
 
     public static class LogFiles
     {
-        static ILogFile LogEntry(string profilePath, TomlTable toml, string resourceKey)
-        {
-            return new LogFile(Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey)));
-        }
-
         static LogFiles()
         {
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+            var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            OutputForcePromotion = LogEntry(profilePath, toml, "OutputForcePromotion");
-            OutputPieceTypeToHaiyaku = LogEntry(profilePath, toml, "OutputPieceTypeToHaiyaku");
-            LegalMove = LogEntry(profilePath, toml, "LegalMoveLog");
-            LegalMoveEvasion = LogEntry(profilePath, toml, "LegalMoveEvasionLog");
-            HaichiTenkanHyoOnlyDataLog = LogEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog");
-            HaichiTenkanHyoAllLog = LogEntry(profilePath, toml, "HaichiTenkanHyoAllLog");
-            GenMove = LogEntry(profilePath, toml, "GenMoveLog");
-            Error = LogEntry(profilePath, toml, "ErrorLog");
+            OutputForcePromotion = DataEntry(profilePath, toml, "OutputForcePromotion");
+            OutputPieceTypeToHaiyaku = DataEntry(profilePath, toml, "OutputPieceTypeToHaiyaku");
+            HaichiTenkanHyoOnlyDataLog = DataEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog");
+            HaichiTenkanHyoAllLog = DataEntry(profilePath, toml, "HaichiTenkanHyoAllLog");
+
+            LegalMove = LogEntry(logDirectory, toml, "LegalMoveLog");
+            LegalMoveEvasion = LogEntry(logDirectory, toml, "LegalMoveEvasionLog");
+            GenMove = LogEntry(logDirectory, toml, "GenMoveLog");
+            Error = LogEntry(logDirectory, toml, "ErrorLog");
+        }
+
+        static ILogFile LogEntry(string logDirectory, TomlTable toml, string resourceKey)
+        {
+            return LogFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
+        }
+        static ILogFile DataEntry(string profilePath, TomlTable toml, string resourceKey)
+        {
+            return LogFile.AsData(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey));
         }
 
         public static ILogFile OutputForcePromotion { get; private set; }
