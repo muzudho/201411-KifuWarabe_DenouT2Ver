@@ -78,7 +78,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             }
 
             Logging.Logger.Trace( "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　", logFile);
-            //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
+            //LarabeLogger.GetInstance().WriteLineMemo(kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 
 

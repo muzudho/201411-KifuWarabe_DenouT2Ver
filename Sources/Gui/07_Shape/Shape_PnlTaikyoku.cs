@@ -929,7 +929,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             System.Console.WriteLine("つまんでいる駒を放します。(1)");
             this.SetHTumandeiruKoma(-1);
             this.SetHMovedKoma(K40.Error);
-            
+
             //----------
             // 出力切替
             //----------
@@ -944,7 +944,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             //----------
             // 将ボタン
             //----------
-            this.SetBtnKomaDoors( new Shape_BtnKoma[]{
+            this.SetBtnKomaDoors(new Shape_BtnKoma[]{
 
                 new Shape_BtnKoma(K40.SenteOh),//[0]
                 new Shape_BtnKoma(K40.GoteOh),
@@ -1005,8 +1005,8 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             // 駒置き
             //----------
             this.KomadaiArr = new Shape_PnlKomadai[3];
-            this.KomadaiArr[0] = new Shape_PnlKomadai( Okiba.Sente_Komadai, 610, 220, Sengo.Sente);
-            this.KomadaiArr[1] = new Shape_PnlKomadai( Okiba.Gote_Komadai, 10, 170, Sengo.Gote);
+            this.KomadaiArr[0] = new Shape_PnlKomadai(Okiba.Sente_Komadai, 610, 220, Sengo.Sente);
+            this.KomadaiArr[1] = new Shape_PnlKomadai(Okiba.Gote_Komadai, 10, 170, Sengo.Gote);
             this.KomadaiArr[2] = new Shape_PnlKomadai(Okiba.KomaBukuro, 810, 220, Sengo.Sente);
 
             //----------
@@ -1141,9 +1141,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Paint(
-            object sender, PaintEventArgs e, TreeDocument kifuD, ILogTag logTag
-            )
+        public void Paint(object sender, PaintEventArgs e, TreeDocument kifuD)
         {
             if (!this.Visible)
             {
@@ -1158,10 +1156,10 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             //----------
             // 駒置き、駒袋
             //----------
-            for (int i = 0; i < this.KomadaiArr.Length;i++ )
+            for (int i = 0; i < this.KomadaiArr.Length; i++)
             {
                 Shape_PnlKomadai k = this.KomadaiArr[i];
-                k.Paint( e.Graphics);
+                k.Paint(e.Graphics);
             }
 
             //----------
@@ -1169,7 +1167,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             //----------
             foreach (Shape_BtnKoma koma in this.BtnKomaDoors)
             {
-                koma.Paint(e.Graphics, this, kifuD, logTag);
+                koma.Paint(e.Graphics, this, kifuD);
             }
 
             //----------

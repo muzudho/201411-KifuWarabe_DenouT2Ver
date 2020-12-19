@@ -530,7 +530,6 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="kifuD"></param>
         /// <param name="item"></param>
         /// <param name="hint"></param>
-        /// <param name="logTag"></param>
         public void AppendChild_Main(
             TreeDocument kifuD,
             //TeProcess item,
@@ -554,7 +553,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //Kifu_Document.KOMA_DOORS_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, kifuD.DebugText_Kyokumen("ノードが追加されたぜ☆ hint=[" + hint+"]"));
 
             Logging.Logger.Trace( "ノードが１つ追加されたぜ☆ｗｗ　：　[" + kifuD.CountTeme(kifuD.Current8) + "]手目　：　hint=[" + hint + "]", SpecifyLogFiles.LinkedList);
-            //　：　棋譜＝"+ KirokuGakari.ToJapaneseKifuText(kifuD, logTag)
+            //　：　棋譜＝"+ KirokuGakari.ToJapaneseKifuText(kifuD)
             //　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber
         }
 
@@ -663,7 +662,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             TreeNode6 newNode = new TreeNode6(item, newHouse);//, Converter04.AlternateSengo(this.Current2.Sengo)
             this.AppendChild_Main(this, newNode, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
-            //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead", logTag);
+            //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
 
             Logging.Logger.Trace( "リンクトリストの、最終ノードは差し替えられた hint=[" + hint + "] item=[" + item.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]", logFile);
 

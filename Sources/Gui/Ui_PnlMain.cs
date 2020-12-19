@@ -128,7 +128,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public string ReadLine2(ILogTag logTag)
+        public string ReadLine2()
         {
             int lastTeme = this.Kifu_Document.CountTeme(this.Kifu_Document.Current8);
 
@@ -505,7 +505,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // 画面の描画です。
             //------------------------------
-            this.Shape_PnlTaikyoku.Paint(sender, e, this.Kifu_Document, LogTags.GuiPaint);
+            this.Shape_PnlTaikyoku.Paint(sender, e, this.Kifu_Document);
 
         gt_EndMethod:
             ;

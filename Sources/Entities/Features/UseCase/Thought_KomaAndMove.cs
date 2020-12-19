@@ -13,7 +13,6 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="sbGohosyu"></param>
-        /// <param name="logTag"></param>
         public static KomaAndMasusDictionary MinusMasus(
             KomaAndMasusDictionary a1,
             IMasus b

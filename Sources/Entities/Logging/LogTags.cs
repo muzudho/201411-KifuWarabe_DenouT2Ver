@@ -33,15 +33,5 @@
         /// 
         /// </summary>
         public static readonly ILogTag Fatal = new LogTag("Fatal");
-
-        /// <summary>
-        /// 棋譜ツリーの作成だけ別ファイルに分けたいとき。
-        /// </summary>
-        public static readonly ILogTag LinkedList = new LogTag("LinkedList");
-
-        /// <summary>
-        /// GUIの描画部分のログだけ別ファイルに分けたいとき。
-        /// </summary>
-        public static readonly ILogTag GuiPaint = new LogTag("GuiPaint");
     }
 }

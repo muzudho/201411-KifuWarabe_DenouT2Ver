@@ -91,7 +91,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     // ★棋譜読込専用  駒移動
                     //------------------------------
 
-                    //LarabeLogger.GetInstance().WriteLineMemo(logTag, "一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD, logTag) + "　：　hint=" + hint);
+                    //LarabeLogger.GetInstance().WriteLineMemo("一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD) + "　：　hint=" + hint);
                     Logging.Logger.Trace("一手指し開始　：　残りの符号つ「" + inputLine + "」");
                     bool isBack = false;
                     KifuIO.Ittesasi3(

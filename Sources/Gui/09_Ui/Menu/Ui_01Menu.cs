@@ -97,7 +97,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             //if (null != btn_tottaKoma)
             //{
-            //    Ui_02Action.Refresh_KomaLocation(btn_tottaKoma.Koma, shape_PnlTaikyoku, kifuD, logTag);
+            //    Ui_02Action.Refresh_KomaLocation(btn_tottaKoma.Koma, shape_PnlTaikyoku, kifuD);
             //}
 
             if (null != btn_underKoma)

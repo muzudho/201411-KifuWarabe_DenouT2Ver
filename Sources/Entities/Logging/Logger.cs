@@ -23,13 +23,13 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            Logger.AddLog(LogTags.Trace, LogEntry(logDirectory, toml, "Trace", true, true));
-            Logger.AddLog(LogTags.Debug, LogEntry(logDirectory, toml, "Debug", true, true));
-            Logger.AddLog(LogTags.Info, LogEntry(logDirectory, toml, "Info", true, true));
-            Logger.AddLog(LogTags.Notice, LogEntry(logDirectory, toml, "Notice", true, true));
-            Logger.AddLog(LogTags.Warn, LogEntry(logDirectory, toml, "Warn", true, true));
-            Logger.AddLog(LogTags.Error, LogEntry(logDirectory, toml, "Error", true, true));
-            Logger.AddLog(LogTags.Fatal, LogEntry(logDirectory, toml, "Fatal", true, true));
+            TraceRecord = LogEntry(logDirectory, toml, "Trace", true, true);
+            DebugRecord =  LogEntry(logDirectory, toml, "Debug", true, true);
+            InfoRecord = LogEntry(logDirectory, toml, "Info", true, true);
+            NoticeRecord = LogEntry(logDirectory, toml, "Notice", true, true);
+            WarnRecord = LogEntry(logDirectory, toml, "Warn", true, true);
+            ErrorRecord = LogEntry(logDirectory, toml, "Error", true, true);
+            FatalRecord = LogEntry(logDirectory, toml, "Fatal", true, true);
         }
 
         static ILogRecord LogEntry(string logDirectory, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
@@ -38,39 +38,13 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             return new LogRecord(logFile, true, enabled, timeStampPrintable);
         }
 
-        /// <summary>
-        /// アドレスの登録。ログ・ファイルのリムーブに使用。
-        /// </summary>
-        public static Dictionary<ILogTag, ILogRecord> LogMap
-        {
-            get
-            {
-                if (Logger.logMap == null)
-                {
-                    Logger.logMap = new Dictionary<ILogTag, ILogRecord>();
-                }
-                return Logger.logMap;
-            }
-        }
-        private static Dictionary<ILogTag, ILogRecord> logMap;
-
-        public static void AddLog(ILogTag key, ILogRecord value)
-        {
-            Logger.LogMap.Add(key, value);
-        }
-
-        public static ILogRecord GetRecord(ILogTag logTag)
-        {
-            try
-            {
-                return LogMap[logTag];
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"エラー: GetRecord(). [{logTag.Name}] {ex.Message}");
-                throw;
-            }
-        }
+        static readonly ILogRecord TraceRecord;
+        static readonly ILogRecord DebugRecord;
+        static readonly ILogRecord InfoRecord;
+        static readonly ILogRecord NoticeRecord;
+        static readonly ILogRecord WarnRecord;
+        static readonly ILogRecord ErrorRecord;
+        static readonly ILogRecord FatalRecord;
 
         /// <summary>
         /// テキストをそのまま、ファイルへ出力するためのものです。
@@ -89,7 +63,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Trace(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Trace), "Trace", line, targetOrNull);
+            Logger.XLine(TraceRecord, "Trace", line, targetOrNull);
         }
 
         /// <summary>
@@ -98,7 +72,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Debug(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Debug), "Debug", line, targetOrNull);
+            Logger.XLine(DebugRecord, "Debug", line, targetOrNull);
         }
 
         /// <summary>
@@ -107,7 +81,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Info(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Info), "Info", line, targetOrNull);
+            Logger.XLine(InfoRecord, "Info", line, targetOrNull);
         }
 
         /// <summary>
@@ -116,7 +90,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Notice(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Notice), "Notice", line, targetOrNull);
+            Logger.XLine(NoticeRecord, "Notice", line, targetOrNull);
         }
 
         /// <summary>
@@ -125,7 +99,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Warn(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Warn), "Warn", line, targetOrNull);
+            Logger.XLine(WarnRecord, "Warn", line, targetOrNull);
         }
 
         /// <summary>
@@ -134,7 +108,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Error(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Error), "Error", line, targetOrNull);
+            Logger.XLine(ErrorRecord, "Error", line, targetOrNull);
         }
 
         /// <summary>
@@ -143,7 +117,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// <param name="line"></param>
         public static void Fatal(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(GetRecord(LogTags.Fatal), "Fatal", line, targetOrNull);
+            Logger.XLine(FatalRecord, "Fatal", line, targetOrNull);
         }
 
         /// <summary>
@@ -202,14 +176,9 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            ILogRecord address = GetRecord(LogTags.Notice);
-
             // ログ追記
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
-            sb.AppendLine();
-
-            System.IO.File.AppendAllText(address.LogFile.Name, sb.ToString());
+            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
+");
         }
 
         /// <summary>
@@ -223,10 +192,8 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            ILogRecord record = GetRecord(LogTags.Notice);
-
             // ログ追記
-            System.IO.File.AppendAllText(record.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
+            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
 ");
         }
 

@@ -131,7 +131,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
             //------------------------------------------------------------
             // デバッグログ
             //------------------------------------------------------------
-            //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("チェンジターン"));
+            //LarabeLogger.GetInstance().WriteLineMemo(kifuD.DebugText_Kyokumen("チェンジターン"));
 
 
 
