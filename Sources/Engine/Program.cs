@@ -419,7 +419,7 @@
             {
                 // エラーが起こりました。
                 // どうにもできないので  ログだけ取って、 `quit` を投げて終了します。
-                Logger.Trace( "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                Logger.Error( "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
                 Playing.Send("quit");
                 throw;
             }
