@@ -260,18 +260,20 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
+            // Console.WriteLine($"logDirectory={logDirectory}");
 
-            var re = new Regex("(\\[[0-9A-Fa-f-]+\\])?.+\\.log");
+            var re = new Regex("^(\\[[0-9A-Fa-f-]+\\])?.+\\.log$");
 
             DirectoryInfo dir = new System.IO.DirectoryInfo(logDirectory);
-            FileInfo[] files = dir.GetFiles(".log");
+            FileInfo[] files = dir.GetFiles("*.log");
             foreach (FileInfo f in files)
             {
+                // Console.WriteLine($"f-full-name={f.FullName}");
                 //正規表現のパターンを使用して一つずつファイルを調べる
-                if (re.IsMatch(f.FullName))
+                if (re.IsMatch(f.Name))
                 {
-                    Console.WriteLine(f.FullName);
-                    // File.Delete(f.FullName);
+                    // Console.WriteLine($"Remove={f.FullName}");
+                    File.Delete(f.FullName);
                 }
             }
         }
