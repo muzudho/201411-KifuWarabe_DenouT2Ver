@@ -118,12 +118,9 @@
     <Compile Include="Features\JapaneseView\NariFunari.cs" />
     <Compile Include="Logging\ILogFile.cs" />
     <Compile Include="Logging\ILogRecord.cs" />
-    <Compile Include="Logging\ILogTag.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogFile.cs" />
     <Compile Include="Logging\LogRecord.cs" />
-    <Compile Include="Logging\LogTag.cs" />
-    <Compile Include="Logging\LogTags.cs" />
     <Compile Include="Logging\SpecifyLogFiles.cs" />
     <Compile Include="Features\Misc\CsvLineParserImpl.cs" />
     <Compile Include="Features\Misc\RandomLib.cs" />
