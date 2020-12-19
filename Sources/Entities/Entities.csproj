@@ -124,7 +124,7 @@
     <Compile Include="Logging\LogRecord.cs" />
     <Compile Include="Logging\LogTag.cs" />
     <Compile Include="Logging\LogTags.cs" />
-    <Compile Include="Logging\LogFiles.cs" />
+    <Compile Include="Logging\SpecifyLogFiles.cs" />
     <Compile Include="Features\Misc\CsvLineParserImpl.cs" />
     <Compile Include="Features\Misc\RandomLib.cs" />
     <Compile Include="Features\Misc\ShuffleLib.cs" />

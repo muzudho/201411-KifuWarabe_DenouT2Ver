@@ -68,10 +68,10 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             }
         }
 
-        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public void SetFlowB(FlowB flowB, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             this.flowB = flowB;
-            this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+            this.flowB.Arrive(this, ref requestForMain, shape_PnlTaikyoku, kifuD);
         }
 
         private FlowB flowB;
@@ -356,14 +356,12 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiDefault;
-
             // 将棋エンジンからの入力が、input99 に溜まるものとします。
             if (0 < Ui_PnlMain.input99.Length)
             {
 
                 //System.Console.WriteLine("timer input99=[" + input99 + "]");
-                Logger.Trace(logTag, "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
+                Logger.Trace( "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
 
                 this.AppendInput1Text(Ui_PnlMain.input99);
                 Ui_PnlMain.input99 = "";
@@ -372,7 +370,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 // 入力欄を空っぽにします。
                 RequestForMain requestForMain = new RequestForMain();
                 requestForMain.SetAppendInputTextString(Ui_PnlMain.input99);
-                this.Response(requestForMain, logTag);
+                this.Response(requestForMain);
 
 
                 // ＧＵＩをコマ送りします。
@@ -382,12 +380,11 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     this.Kifu_Document,
                     Util_MenuDrawer.DrawKomaokuri1,
                     Util_MenuDrawer.DrawKomaokuri2,
-                    "Ui_PnlMain#timer1_Tick",
-                    logTag
-                    );
+                    "Ui_PnlMain#timer1_Tick"
+                                        );
 
                 // 反映させます。
-                this.Response(requestForMain, logTag);
+                this.Response(requestForMain);
             }
 
         }
@@ -405,9 +402,6 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
-            ILogTag logTag = LogTags.GuiDefault;
-
-
             this.setteiFile = new SetteiFile();
             if (!this.SetteiFile.Exists())
             {
@@ -450,11 +444,11 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //
             //      平手に並べます。
             //
-            SyokiHaichi.ToHirate(this.Kifu_Document,logTag);
+            SyokiHaichi.ToHirate(this.Kifu_Document);
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
             {
-                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, this.Kifu_Document);
             }
 
             //----------
@@ -462,7 +456,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             this.SetFlowA(new FlowA_1Taikyoku());
             RequestForMain requestForMain = new RequestForMain();
-            this.SetFlowB(new FlowB_1TumamitaiKoma(), ref requestForMain, this.Shape_PnlTaikyoku, this.Kifu_Document, logTag);
+            this.SetFlowB(new FlowB_1TumamitaiKoma(), ref requestForMain, this.Shape_PnlTaikyoku, this.Kifu_Document);
 
             //----------
             // 監視
@@ -529,19 +523,17 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseMove(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiDefault;
-
             if (null != this.Shape_PnlTaikyoku)
             {
                 // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
                 RequestForMain requestForMain = new RequestForMain();
 
-                this.FlowB.MouseMove(this, ref requestForMain, e, this.Shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                this.FlowB.MouseMove(this, ref requestForMain, e, this.Shape_PnlTaikyoku, this.Kifu_Document);
 
                 //------------------------------
                 // このメインパネルの反応
                 //------------------------------
-                this.Response(requestForMain,logTag);
+                this.Response(requestForMain);
             }
         }
 
@@ -557,8 +549,6 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseDown(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiDefault;
-
             if (null != shape_PnlTaikyoku)
             {
                 // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
@@ -570,7 +560,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     //------------------------------------------------------------
                     // 左ボタン
                     //------------------------------------------------------------
-                    IFlowA nextPhase = this.FlowA.MouseLeftButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                    IFlowA nextPhase = this.FlowA.MouseLeftButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document);
 
                     if (null != nextPhase)
                     {
@@ -582,7 +572,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     //------------------------------------------------------------
                     // 右ボタン
                     //------------------------------------------------------------
-                    IFlowA nextPhase = this.FlowA.MouseRightButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                    IFlowA nextPhase = this.FlowA.MouseRightButtonDown(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document);
 
                     if (null != nextPhase)
                     {
@@ -594,7 +584,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------
                 // このメインパネルの反応
                 //------------------------------
-                this.Response(requestForMain,logTag);
+                this.Response(requestForMain);
             }
         }
 
@@ -607,8 +597,6 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_MouseUp(object sender, MouseEventArgs e)
         {
-            ILogTag logTag = LogTags.GuiDefault;
-
             // このメインパネルに、何かして欲しいという要求は、ここに入れられます。
             RequestForMain requestForMain = new RequestForMain();
 
@@ -620,7 +608,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------------------------------------
                 // 左ボタン
                 //------------------------------------------------------------
-                IFlowA nextPhaseA = this.FlowA.MouseLeftButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                IFlowA nextPhaseA = this.FlowA.MouseLeftButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document);
 
                 if (null != nextPhaseA)
                 {
@@ -633,7 +621,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------------------------------------
                 // 右ボタン
                 //------------------------------------------------------------
-                IFlowA nextPhaseA = this.FlowA.MouseRightButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document, logTag);
+                IFlowA nextPhaseA = this.FlowA.MouseRightButtonUp(this, ref requestForMain, e, shape_PnlTaikyoku, this.Kifu_Document);
 
                 if (null != nextPhaseA)
                 {
@@ -645,7 +633,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // このメインパネルの反応
             //------------------------------
-            this.Response(requestForMain,logTag);
+            this.Response(requestForMain);
         }
 
         private void SetInput1Text(string value)
@@ -672,7 +660,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// </summary>
         /// <param name="requestForMain"></param>
         public void Response(
-            RequestForMain requestForMain, ILogTag logTag)
+            RequestForMain requestForMain)
         {
             //------------------------------
             // 入力欄の表示
@@ -697,7 +685,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document, LogTags.GuiDefault));
+                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document));
                         break;
                     case SyuturyokuKirikae.Sfen:
                         this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));
@@ -708,7 +696,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 }
 
                 // ログ
-                Logger.Trace(logTag, this.txtOutput1.Text);
+                Logger.Trace( this.txtOutput1.Text);
             }
             else if (requestForMain.RequestClearTxtOutput)
             {
@@ -716,8 +704,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 this.WriteLine("");
 
                 // ログ
-                Logger.Trace(logTag, "");
-                Logger.Trace(logTag, "");
+                Logger.Trace( "");
+                Logger.Trace( "");
             }
 
             //------------------------------

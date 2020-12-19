@@ -38,45 +38,31 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             out IKifuParserAState nextState,
             IKifuParserA owner,
             ref bool toBreak,
-            string hint,
-            ILogTag logTag
+            string hint
             )
         {
             nextState = this;
 
-            try
+            string restText;
+            SfenStartpos sfenStartpos;
+
+            if (!TuginoItte_Sfen.GetDataStartpos_FromText(inputLine, out restText, out sfenStartpos))
             {
-                string restText;
-                SfenStartpos sfenStartpos;
-
-                if (!TuginoItte_Sfen.GetDataStartpos_FromText(inputLine, out restText, out sfenStartpos))
-                {
-                    // 解析に失敗しました。
-                    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    toBreak = true;
-                }
-                else
-                {
-                    inputLine = restText;
-
-                    owner.OnRefreshShiteiKyokumen(
-                        kifuD,
-                        ref inputLine,
-                        sfenStartpos,
-                        logTag
-                        );
-
-                    nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
-                }
-            }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
+                // 解析に失敗しました。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                toBreak = true;
+            }
+            else
+            {
+                inputLine = restText;
 
-                // どうにもできないので  ログだけ取って無視します。
-                string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Error(logTag, message, LogFiles.Error);
+                owner.OnRefreshShiteiKyokumen(
+                    kifuD,
+                    ref inputLine,
+                    sfenStartpos
+                    );
+
+                nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
             }
 
             return inputLine;

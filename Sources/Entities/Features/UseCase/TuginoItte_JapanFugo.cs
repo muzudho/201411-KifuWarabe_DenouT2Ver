@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
@@ -24,64 +23,51 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// </summary>
         /// <returns></returns>
         public static bool GetData_FromText(
-            string text, out string restText, out IMove process, TreeDocument kifuD, ILogTag logTag)
+            string text, out string restText, out IMove process, TreeDocument kifuD)
         {
             process = null;
             bool successful = false;
             restText = text;
 
 
-            try
+            //------------------------------------------------------------
+            // リスト作成
+            //------------------------------------------------------------
+            Regex regex = new Regex(
+                @"^\s*([▲△]?)(?:([123456789１２３４５６７８９])([123456789１２３４５６７８９一二三四五六七八九]))?(同)?[\s　]*(歩|香|桂|銀|金|飛|角|王|玉|と|成香|成桂|成銀|竜|龍|馬)(右|左|直)?(寄|引|上)?(成|不成)?(打?)",
+                RegexOptions.Singleline
+            );
+
+            MatchCollection mc = regex.Matches(text);
+            foreach (Match m in mc)
             {
-                //------------------------------------------------------------
-                // リスト作成
-                //------------------------------------------------------------
-                Regex regex = new Regex(
-                    @"^\s*([▲△]?)(?:([123456789１２３４５６７８９])([123456789１２３４５６７８９一二三四五六七八九]))?(同)?[\s　]*(歩|香|桂|銀|金|飛|角|王|玉|と|成香|成桂|成銀|竜|龍|馬)(右|左|直)?(寄|引|上)?(成|不成)?(打?)",
-                    RegexOptions.Singleline
-                );
-
-                MatchCollection mc = regex.Matches(text);
-                foreach (Match m in mc)
+                if (0 < m.Groups.Count)
                 {
-                    if (0 < m.Groups.Count)
-                    {
-                        successful = true;
+                    successful = true;
 
-                        // 残りのテキスト
-                        restText = text.Substring(0, m.Index) + text.Substring(m.Index + m.Length, text.Length - (m.Index + m.Length));
+                    // 残りのテキスト
+                    restText = text.Substring(0, m.Index) + text.Substring(m.Index + m.Length, text.Length - (m.Index + m.Length));
 
-                        TuginoItte_JapanFugo.GetData_FromTextSub(
-                            m.Groups[1].Value,  //▲△
-                            m.Groups[2].Value,  //123…9、１２３…９、一二三…九
-                            m.Groups[3].Value,  //123…9、１２３…９、一二三…九
-                            m.Groups[4].Value,  // “同”
-                            m.Groups[5].Value,  //(歩|香|桂|…
-                            m.Groups[6].Value,           // 右|左…
-                            m.Groups[7].Value,  // 上|引
-                            m.Groups[8].Value, //成|不成
-                            m.Groups[9].Value,  //打
-                            out process,
-                            kifuD,
-                            logTag
-                            );
-                    }
-
-                    // 最初の１件だけ処理して終わります。
-                    break;
+                    TuginoItte_JapanFugo.GetData_FromTextSub(
+                        m.Groups[1].Value,  //▲△
+                        m.Groups[2].Value,  //123…9、１２３…９、一二三…九
+                        m.Groups[3].Value,  //123…9、１２３…９、一二三…九
+                        m.Groups[4].Value,  // “同”
+                        m.Groups[5].Value,  //(歩|香|桂|…
+                        m.Groups[6].Value,           // 右|左…
+                        m.Groups[7].Value,  // 上|引
+                        m.Groups[8].Value, //成|不成
+                        m.Groups[9].Value,  //打
+                        out process,
+                        kifuD
+                        );
                 }
 
-                restText = restText.Trim();
-            }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                // どうにもできないので  ログだけ取って無視します。
-                Logging.Logger.Trace(logTag, "TuginoItte_JapanFugo.GetData_FromText（A）：" + ex.GetType().Name + "：" + ex.Message + "：text=「" + text + "」");
+                // 最初の１件だけ処理して終わります。
+                break;
             }
 
+            restText = restText.Trim();
 
             return successful;
         }
@@ -106,8 +92,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             string strNariFunari, //成|不成
             string strDaHyoji, //打
             out IMove process,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -180,7 +165,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 goto gt_EndShogiban;
             }
 
-            if (Ks14.H01_Fu== srcSyurui)
+            if (Ks14.H01_Fu == srcSyurui)
             {
                 #region 歩
                 //************************************************************
@@ -202,14 +187,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 IMasus srcAll = new Masus_Set();
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し引(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H07_Hisya==srcSyurui)
+            else if (Ks14.H07_Hisya == srcSyurui)
             {
                 #region 飛
                 //************************************************************
@@ -301,14 +286,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し引(sengo, dst1)); }
                 if (isG) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し滑(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H08_Kaku==srcSyurui)
+            else if (Ks14.H08_Kaku == srcSyurui)
             {
                 #region 角
                 //************************************************************
@@ -400,14 +385,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //----------
                 // 候補マスＢ
                 //----------
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H02_Kyo==srcSyurui)
+            else if (Ks14.H02_Kyo == srcSyurui)
             {
                 #region 香
                 //************************************************************
@@ -440,14 +425,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 IMasus srcAll = new Masus_Set();
                 if (isE) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し引(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H03_Kei==srcSyurui)
+            else if (Ks14.H03_Kei == srcSyurui)
             {
                 #region 桂
                 //************************************************************
@@ -502,14 +487,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isI) { srcAll.AddSupersets(KomanoKidou.SrcKeimatobi_巻戻し跳(sengo, dst1)); }
                 if (isJ) { srcAll.AddSupersets(KomanoKidou.SrcKeimatobi_巻戻し駆(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H04_Gin==srcSyurui)
+            else if (Ks14.H04_Gin == srcSyurui)
             {
                 #region 銀
                 //************************************************************
@@ -578,7 +563,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isF) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し降(sengo, dst1)); }
                 if (isH) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し浮(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
@@ -586,11 +571,11 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 #endregion
             }
             else if (
-                Ks14.H05_Kin==srcSyurui
-                || Ks14.H11_Tokin==srcSyurui
-                || Ks14.H12_NariKyo== srcSyurui
-                || Ks14.H13_NariKei== srcSyurui
-                || Ks14.H14_NariGin== srcSyurui
+                Ks14.H05_Kin == srcSyurui
+                || Ks14.H11_Tokin == srcSyurui
+                || Ks14.H12_NariKyo == srcSyurui
+                || Ks14.H13_NariKei == srcSyurui
+                || Ks14.H14_NariGin == srcSyurui
                 )
             {
                 #region △金、△と金、△成香、△成桂、△成銀
@@ -667,14 +652,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isF) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し降(sengo, dst1)); }
                 if (isG) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し滑(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H06_Oh==srcSyurui)
+            else if (Ks14.H06_Oh == srcSyurui)
             {
                 #region 王
                 //************************************************************
@@ -711,14 +696,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isH) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し浮(sengo, dst1)); }
 
                 // 王は１つです。
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H09_Ryu==srcSyurui)
+            else if (Ks14.H09_Ryu == srcSyurui)
             {
                 #region 竜
                 //************************************************************
@@ -835,14 +820,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isG) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し滑(sengo, dst1)); }
                 if (isH) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し浮(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
                 }
                 #endregion
             }
-            else if (Ks14.H10_Uma==srcSyurui)
+            else if (Ks14.H10_Uma == srcSyurui)
             {
                 #region 馬
                 //************************************************************
@@ -958,7 +943,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 if (isG) { srcAll.AddSupersets(KomanoKidou.SrcIppo_巻戻し滑(sengo, dst1)); }
                 if (isH) { srcAll.AddSupersets(KomanoKidou.SrcKantu_巻戻し浮(sengo, dst1)); }
 
-                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma, logTag))
+                if (TuginoItte_JapanFugo.Hit(sengo, srcSyurui, srcAll, kifuD, out foundKoma))
                 {
                     srcOkiba1 = Okiba.ShogiBan;
                     goto gt_EndSyurui;
@@ -1091,7 +1076,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, TreeDocument kifuD, out K40 foundKoma, ILogTag logTag)
+            Sengo sengo, Ks14 syurui, IMasus srcAll, TreeDocument kifuD, out K40 foundKoma)
         {
             bool hit = false;
             foundKoma = K40.Error;
@@ -1100,7 +1085,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             foreach (M201 masu1 in srcAll.Elements)//筋・段。（先後、種類は入っていません）
             {
-                foreach(K40 koma in K40Array.Items_KomaOnly)
+                foreach (K40 koma in K40Array.Items_KomaOnly)
                 {
                     IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house4 = dammyNode6.KomaHouse;

@@ -151,7 +151,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     sb.AppendLine();
                 }
 
-                Logging.Logger.WriteFile(LogFiles.HaichiTenkanHyoOnlyDataLog, sb.ToString());
+                Logging.Logger.WriteFile(SpecifyLogFiles.HaichiTenkanHyoOnlyDataLog, sb.ToString());
             }
 
 
@@ -216,7 +216,7 @@ columnCount=[{columnCount}]");
             }
 
         gt_EndMethod:
-            Logging.Logger.WriteFile(LogFiles.HaichiTenkanHyoAllLog, sbDebug.ToString());
+            Logging.Logger.WriteFile(SpecifyLogFiles.HaichiTenkanHyoAllLog, sbDebug.ToString());
 
             return rows;
         }

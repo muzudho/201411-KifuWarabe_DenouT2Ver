@@ -34,8 +34,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             out IKifuParserAState nextState,
             IKifuParserA owner,
             ref bool toBreak,
-            string hint,
-            ILogTag logTag
+            string hint
             )
         {
             nextState = this;
@@ -45,19 +44,19 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 // 平手の初期配置です。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　平手のようなんだぜ☆");
+                Logging.Logger.Trace("（＾△＾）「{ inputLine }」vs【{ this.GetType().Name }】　：　平手のようなんだぜ☆");
 
                 inputLine = inputLine.Substring("startpos".Length);
                 inputLine = inputLine.Trim();
 
 
-                SyokiHaichi.ToHirate(kifuD, logTag);
+                SyokiHaichi.ToHirate(kifuD);
 
                 nextState = KifuParserA_StateA1a_SfenStartpos.GetInstance();
             }
             else
             {
-                Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　局面の指定のようなんだぜ☆");
+                Logging.Logger.Trace("（＾△＾）「{ inputLine }」vs【{ this.GetType().Name }】　：　局面の指定のようなんだぜ☆");
                 nextState = KifuParserA_StateA1b_SfenLnsgkgsnl.GetInstance();
             }
 

@@ -17,8 +17,6 @@ namespace Grayscale.Kifuwarane.Entities
         /// <returns></returns>
         public static int Test(string[] args)
         {
-            ILogTag logTag = LogTags.Engine;
-
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
 
@@ -33,12 +31,12 @@ namespace Grayscale.Kifuwarane.Entities
             // 駒配役を生成した後で。
             var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
             ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
-            Logging.Logger.WriteFile(LogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+            Logging.Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
             // 配役転換表
             var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
             Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
-            Logging.Logger.WriteFile(LogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+            Logging.Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
             #region リンクトリスト・テスト ※配役等の設定後に
@@ -103,7 +101,7 @@ namespace Grayscale.Kifuwarane.Entities
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logging.Logger.Trace(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logging.Logger.Trace( kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(New)");
@@ -121,7 +119,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     System.Console.WriteLine("先手、飛車先の歩を突く");
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), Ks14.H00_Null), null);
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -130,7 +128,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -139,7 +137,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -148,7 +146,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -157,7 +155,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
@@ -166,20 +164,19 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText());
                 }
             }
             #endregion
 
-            #region
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logging.Logger.Trace(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logging.Logger.Trace( kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 // 最初
                 System.Console.WriteLine("最初(Next)");
@@ -198,7 +195,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -207,7 +204,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -216,7 +213,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、飛車先の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -225,7 +222,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、角頭の歩を突く");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -234,7 +231,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, Ks14.H07_Hisya), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H07_Hisya), Ks14.H00_Null), null);
                     System.Console.WriteLine("先手、同飛");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -243,7 +240,7 @@ namespace Grayscale.Kifuwarane.Entities
                 {
                     TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), Ks14.H00_Null), null);
                     System.Console.WriteLine("後手、２三歩打");
-                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ", LogTags.Engine);
+                    kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     System.Console.Write("高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
@@ -272,7 +269,6 @@ namespace Grayscale.Kifuwarane.Entities
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
             }
-            #endregion
 
             #region
             if (false)
@@ -280,7 +276,7 @@ namespace Grayscale.Kifuwarane.Entities
                 System.Console.WriteLine("──────────────────────────────");
                 TreeDocument kifuD_dammy = new TreeDocument();
 
-                Logging.Logger.Trace(logTag, kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
+                Logging.Logger.Trace( kifuD_dammy.DebugText_Kyokumen7(kifuD_dammy, "ルートが追加されたはずだぜ☆"));
 
                 {
                     // ▲２六歩
@@ -291,8 +287,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -318,8 +313,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -345,8 +339,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -372,8 +365,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -399,8 +391,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -426,8 +417,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -453,8 +443,7 @@ namespace Grayscale.Kifuwarane.Entities
                     kifuParserA.Execute_All(
                         sfenText,
                         kifuD_dammy,
-                        "Program",
-                        logTag
+                        "Program"
                         );
 
                     // 最初
@@ -474,7 +463,6 @@ namespace Grayscale.Kifuwarane.Entities
             #endregion
 
 
-            #region
             if (false)
             {
                 System.Console.WriteLine("──────────────────────────────");
@@ -504,8 +492,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -533,8 +520,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -562,8 +548,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -591,8 +576,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -620,8 +604,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -649,8 +632,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -678,8 +660,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isForward,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -695,8 +676,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -712,8 +692,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -729,8 +708,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -746,8 +724,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -763,8 +740,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -780,8 +756,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -797,8 +772,7 @@ namespace Grayscale.Kifuwarane.Entities
                         kifuD_dammy,
                         isBack,
                         out dammyKoma,
-                        out dammyKoma,
-                        logTag
+                        out dammyKoma
                     );
 
                     System.Console.Write("　　　　高さ=" + kifuD_dammy.CountTeme(kifuD_dammy.Current8));
@@ -806,7 +780,6 @@ namespace Grayscale.Kifuwarane.Entities
                     System.Console.WriteLine("　Last手=" + kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma());
                 }
             }
-            #endregion
 
 
             #region マイナス1

@@ -35,40 +35,27 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             out IKifuParserAState nextState,
             IKifuParserA owner,
             ref bool toBreak,
-            string hint,
-            ILogTag logTag
+            string hint
             )
         {
             nextState = this;
 
-            try
+            if (inputLine.StartsWith("moves"))
             {
-                if (inputLine.StartsWith("moves"))
-                {
-                    //>>>>> 棋譜が始まります。
+                //>>>>> 棋譜が始まります。
 
-                    Logging.Logger.Trace(logTag, "（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ｳﾑ☆　moves 分かるぜ☆");
+                Logging.Logger.Trace($"（＾△＾）「{ inputLine }」vs【{this.GetType().Name }】　：　ｳﾑ☆　moves 分かるぜ☆");
 
-                    inputLine = inputLine.Substring("moves".Length);
-                    inputLine = inputLine.Trim();
+                inputLine = inputLine.Substring("moves".Length);
+                inputLine = inputLine.Trim();
 
 
-                    nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
-                }
-                else
-                {
-                    Logging.Logger.Trace(logTag, "＼（＾ｏ＾）／「" + inputLine + "」vs【" + this.GetType().Name + "】　：　movesがない☆！　終わるぜ☆");
-                    toBreak = true;
-                }
+                nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
             }
-            catch (Exception ex)
+            else
             {
-                // エラーが起こりました。
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                // どうにもできないので  ログだけ取って無視します。
-                string message = this.GetType().Name + "#Execute：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Error(logTag, message, LogFiles.Error);
+                Logging.Logger.Trace($"＼（＾ｏ＾）／「{ inputLine }」vs【{ this.GetType().Name }】　：　movesがない☆！　終わるぜ☆");
+                toBreak = true;
             }
 
             return inputLine;

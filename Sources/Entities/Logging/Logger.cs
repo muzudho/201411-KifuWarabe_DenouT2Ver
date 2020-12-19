@@ -23,10 +23,13 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            Logger.AddLog(LogTags.GuiDefault, LogEntry(logDirectory, toml, "GuiRecordLog", true, false));
-            Logger.AddLog(LogTags.LinkedList, LogEntry(logDirectory, toml, "LinkedListLog", true, false));
-            Logger.AddLog(LogTags.Engine, LogEntry(logDirectory, toml, "EngineRecordLog", true, false));
-            Logger.AddLog(LogTags.GuiPaint, LogEntry(logDirectory, toml, "GuiPaint", true, false));
+            Logger.AddLog(LogTags.Trace, LogEntry(logDirectory, toml, "Trace", true, true));
+            Logger.AddLog(LogTags.Debug, LogEntry(logDirectory, toml, "Debug", true, true));
+            Logger.AddLog(LogTags.Info, LogEntry(logDirectory, toml, "Info", true, true));
+            Logger.AddLog(LogTags.Notice, LogEntry(logDirectory, toml, "Notice", true, true));
+            Logger.AddLog(LogTags.Warn, LogEntry(logDirectory, toml, "Warn", true, true));
+            Logger.AddLog(LogTags.Error, LogEntry(logDirectory, toml, "Error", true, true));
+            Logger.AddLog(LogTags.Fatal, LogEntry(logDirectory, toml, "Fatal", true, true));
         }
 
         static ILogRecord LogEntry(string logDirectory, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
@@ -34,25 +37,6 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var logFile = LogFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
             return new LogRecord(logFile, true, enabled, timeStampPrintable);
         }
-
-        public static ILogRecord DefaultLogRecord
-        {
-            get
-            {
-                if (null == Logger.defaultLogRecord)
-                {
-                    var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-                    var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-                    var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
-                    Logger.defaultLogRecord = new LogRecord(LogFile.AsLog(logDirectory, "default"), true, true, false);
-
-                    // Logger.defaultLogRecord = new LogRecord($"default({System.Diagnostics.Process.GetCurrentProcess().ProcessName})", true, false);
-                }
-
-                return Logger.defaultLogRecord;
-            }
-        }
-        private static ILogRecord defaultLogRecord;
 
         /// <summary>
         /// アドレスの登録。ログ・ファイルのリムーブに使用。
@@ -103,78 +87,71 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// トレース・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Trace(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Trace(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Trace", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Trace), "Trace", line, targetOrNull);
         }
 
         /// <summary>
         /// デバッグ・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Debug(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Debug(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Debug", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Debug), "Debug", line, targetOrNull);
         }
 
         /// <summary>
         /// インフォ・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Info(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Info(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Info", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Info), "Info", line, targetOrNull);
         }
 
         /// <summary>
         /// ノティス・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Notice(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Notice(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Notice", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Notice), "Notice", line, targetOrNull);
         }
 
         /// <summary>
         /// ワーン・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Warn(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Warn(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Warn", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Warn), "Warn", line, targetOrNull);
         }
 
         /// <summary>
         /// エラー・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Error(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Error(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Error", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Error), "Error", line, targetOrNull);
         }
 
         /// <summary>
         /// ファータル・レベル。
         /// </summary>
         /// <param name="line"></param>
-        public static void Fatal(ILogTag logTag, string line, ILogFile targetOrNull = null)
+        public static void Fatal(string line, ILogFile targetOrNull = null)
         {
-            Logger.XLine(logTag, "Fatal", line, targetOrNull);
+            Logger.XLine(GetRecord(LogTags.Fatal), "Fatal", line, targetOrNull);
         }
 
         /// <summary>
         /// ログ・ファイルに記録します。失敗しても無視します。
         /// </summary>
         /// <param name="line"></param>
-        static void XLine(ILogTag key, string level, string line, ILogFile targetOrNull)
+        static void XLine(ILogRecord record, string level, string line, ILogFile targetOrNull)
         {
-            ILogRecord record = GetRecord(key);
-
-            if (null == record)
-            {
-                record = Logger.defaultLogRecord;
-            }
-
             // ログ出力オフ
             if (!record.Enabled)
             {
@@ -219,13 +196,14 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         /// <param name="line"></param>
         public static void WriteLineR(
-            ILogRecord address,
             string line,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
+            ILogRecord address = GetRecord(LogTags.Notice);
+
             // ログ追記
             StringBuilder sb = new StringBuilder();
             sb.Append($"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}");
@@ -239,13 +217,14 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         /// <param name="line"></param>
         public static void WriteLineS(
-            ILogRecord record,
             string line,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
+            ILogRecord record = GetRecord(LogTags.Notice);
+
             // ログ追記
             System.IO.File.AppendAllText(record.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
 ");

@@ -20,10 +20,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// 
         /// </summary>
         /// <param name="fugoList"></param>
-        public static string ToJapaneseKifuText(
-            TreeDocument kifuD,
-            ILogTag logTag
-            )
+        public static string ToJapaneseKifuText(TreeDocument kifuD)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -39,12 +36,12 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             house1.SetStartpos(house1.Startpos);
 
             // 初期配置
-            SyokiHaichi.ToHirate(saifuKifuD,logTag);
+            SyokiHaichi.ToHirate(saifuKifuD);
 
 
             kifuD.ForeachA(kifuD.Current8, (int teme, PositionKomaHouse house, TreeNode6 node6, ref bool toBreak) =>
             {
-                if(0==teme)
+                if (0 == teme)
                 {
                     goto gt_EndLoop;
                 }
@@ -67,11 +64,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     node6.TeProcess.Star,
                     node6.TeProcess.TottaSyurui
                     );
-                saifuKifuD.AppendChildA_New(
-                    newNode,
-                    "KirokuGakari_ToJapaneseKifuText",
-                    logTag
-                    );
+                saifuKifuD.AppendChildA_New(newNode, "KirokuGakari_ToJapaneseKifuText");
 
                 fugo = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, saifuKifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
                 //Ks14 temp = Haiyaku184Array.Syurui(process.SrcHaiyaku);
@@ -80,18 +73,18 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
                 sb.Append(fugo.ToText_UseDou(node6));
 
-                //// TODO:デバッグ用
-                //switch (process.TottaKoma)
-                //{
-                //    case KomaSyurui.UNKNOWN:
-                //    case KomaSyurui.TOTTA_KOMA_NASI:
-                //        break;
-                //    default:
-                //        sb.Append("（");
-                //        sb.Append(Converter.SyuruiToFugo(process.TottaKoma));
-                //        sb.Append("取り）");
-                //        break;
-                //}
+            //// TODO:デバッグ用
+            //switch (process.TottaKoma)
+            //{
+            //    case KomaSyurui.UNKNOWN:
+            //    case KomaSyurui.TOTTA_KOMA_NASI:
+            //        break;
+            //    default:
+            //        sb.Append("（");
+            //        sb.Append(Converter.SyuruiToFugo(process.TottaKoma));
+            //        sb.Append("取り）");
+            //        break;
+            //}
             gt_EndLoop:
                 ;
             });

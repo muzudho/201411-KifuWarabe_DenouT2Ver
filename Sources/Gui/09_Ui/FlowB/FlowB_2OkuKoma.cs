@@ -18,7 +18,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
     public class FlowB_2OkuKoma : FlowB
     {
 
-        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public void Arrive(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
         }
 
@@ -31,7 +31,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public FlowB MouseMove(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             FlowB nextPhase = null;
 
@@ -45,7 +45,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD1"></param>
-        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD1, ILogTag logTag)
+        public FlowB MouseLeftButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD1)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD1.CountTeme(kifuD1.Current8);
@@ -174,7 +174,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     ui_PnlMain.Shape_PnlTaikyoku.BtnNaranai.Visible = false;
 
                     // 駒を動かします。
-                    Ui_02Action.Komamove1a(btnTumandeiruKoma, btnSasitaiMasu, shape_PnlTaikyoku, kifuD1, logTag);
+                    Ui_02Action.Komamove1a(btnTumandeiruKoma, btnSasitaiMasu, shape_PnlTaikyoku, kifuD1);
                     nextPhase = new FlowB_1TumamitaiKoma();
                 }
 
@@ -198,7 +198,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
 
 
-                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnTumandeiruKoma.Koma], shape_PnlTaikyoku, kifuD1, logTag);
+                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnTumandeiruKoma.Koma], shape_PnlTaikyoku, kifuD1);
                 requestForMain.RequestRefresh = true;
             }
 
@@ -216,7 +216,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public FlowB MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             FlowB nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -293,8 +293,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                                 );
                             kifuD.AppendChildA_New(//マウスの左ボタンを放したときです。
                                 newNode,
-                                "FlowB_2OkuKoma#MouseLeftButtonUp",
-                                LogTags.GuiDefault
+                                "FlowB_2OkuKoma#MouseLeftButtonUp"
                                 );
 
 
@@ -316,7 +315,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                             {
                                 System.Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
                                 //RO_TeProcess last = kifuD.Current8_Te;
-                                ShogiEngineService.Message_ChangeTurn(kifuD,logTag);//マウス左ボタンを放したのでチェンジターンします。
+                                ShogiEngineService.Message_ChangeTurn(kifuD);//マウス左ボタンを放したのでチェンジターンします。
                             }
 
                             requestForMain.RequestOutputKifu = true; //棋譜出力要求
@@ -341,7 +340,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public FlowB MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             FlowB nextPhase = null;
 
@@ -367,7 +366,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public FlowB MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             FlowB nextPhase = null;
 

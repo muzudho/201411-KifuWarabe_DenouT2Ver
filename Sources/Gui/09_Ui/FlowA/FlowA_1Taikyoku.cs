@@ -23,17 +23,17 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         public IFlowA MouseLeftButtonDown(
-            Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+            Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             IFlowA nextPhase = null;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
 
-            FlowB nextPhaseA = ui_PnlMain.FlowB.MouseLeftButtonDown(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD, logTag);
+            FlowB nextPhaseA = ui_PnlMain.FlowB.MouseLeftButtonDown(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD);
 
             if (null != nextPhaseA)
             {
-                ui_PnlMain.SetFlowB(nextPhaseA, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+                ui_PnlMain.SetFlowB(nextPhaseA, ref requestForMain, shape_PnlTaikyoku, kifuD);
             }
 
 
@@ -124,11 +124,11 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             if (shape_PnlTaikyoku.BtnSyokihaichi.HitByMouse(e.Location.X, e.Location.Y))
             {
-                SyokiHaichi.ToHirate(kifuD, logTag);
+                SyokiHaichi.ToHirate(kifuD);
                 // 再描画
                 foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
                 {
-                    Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD, logTag);
+                    Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD);
                 }
 
                 requestForMain.RequestClearTxtOutput = true;
@@ -146,7 +146,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------
                 foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
                 {
-                    Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD, logTag);
+                    Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD);
                 }
 
                 requestForMain.RequestClearTxtOutput = true;
@@ -160,7 +160,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             {
                 // 内部でループ
                 // ref requestOutputKifu, ref requestRefresh,
-                Ui_01MenuLoop.Saisei(ui_PnlMain, shape_PnlTaikyoku, kifuD, logTag);
+                Ui_01MenuLoop.Saisei(ui_PnlMain, shape_PnlTaikyoku, kifuD);
                 goto gt_EndMethod;
             }
 
@@ -175,8 +175,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     kifuD,
                     Util_MenuDrawer.DrawKomaokuri1,
                     Util_MenuDrawer.DrawKomaokuri2,
-                    "FlowA_1Taikyoku#MouseLeftButtonDown",
-                    logTag
+                    "FlowA_1Taikyoku#MouseLeftButtonDown"
                     );
             }
 
@@ -186,7 +185,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             if (shape_PnlTaikyoku.BtnBackward.HitByMouse(e.Location.X, e.Location.Y))
             {
                 string backedInputText;
-                Ui_01Menu.Modoru(shape_PnlTaikyoku, kifuD, out backedInputText, logTag);
+                Ui_01Menu.Modoru(shape_PnlTaikyoku, kifuD, out backedInputText);
 
                 requestForMain.RequestInputTextString = backedInputText;
                 requestForMain.RequestOutputKifu = true;
@@ -287,16 +286,16 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public IFlowA MouseLeftButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             IFlowA nextPhaseA = null;
 
             {
-                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseLeftButtonUp(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD, logTag);
+                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseLeftButtonUp(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD);
 
                 if (null != nextPhaseB)
                 {
-                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD);
                 }
             }
 
@@ -314,16 +313,16 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public IFlowA MouseRightButtonDown(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             IFlowA nextPhase = null;
 
             {
-                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseRightButtonDown(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD, logTag);
+                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseRightButtonDown(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD);
 
                 if (null != nextPhaseB)
                 {
-                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD);
                 }
             }
 
@@ -341,16 +340,16 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="shape_PnlTaikyoku"></param>
         /// <param name="kifuD"></param>
         /// <returns></returns>
-        public IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public IFlowA MouseRightButtonUp(Ui_PnlMain ui_PnlMain, ref RequestForMain requestForMain, MouseEventArgs e, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             IFlowA nextPhase = null;
 
             {
-                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseRightButtonUp(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD, logTag);
+                FlowB nextPhaseB = ui_PnlMain.FlowB.MouseRightButtonUp(ui_PnlMain, ref requestForMain, e, shape_PnlTaikyoku, kifuD);
 
                 if (null != nextPhaseB)
                 {
-                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+                    ui_PnlMain.SetFlowB(nextPhaseB, ref requestForMain, shape_PnlTaikyoku, kifuD);
                 }
             }
 

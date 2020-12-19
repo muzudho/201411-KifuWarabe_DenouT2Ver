@@ -24,7 +24,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             bool isBack,
             out K40 movedKoma,
             out K40 underKoma,
-            ILogTag logTag
+            ILogFile logFile = null
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -39,7 +39,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 teProcess,
                 kifuD,
                 isBack,
-                logTag
+                logFile
                 );
 
 
@@ -64,7 +64,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 teProcess, 
                 kifuD,
                 isBack,
-                logTag
+                logFile
                 );
 
 
@@ -77,7 +77,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //System.Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
             }
 
-            Logging.Logger.Trace(logTag, "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
+            Logging.Logger.Trace( "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　", logFile);
             //LarabeLogger.GetInstance().WriteLineMemo(logTag, kifuD.DebugText_Kyokumen("一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　" + memberName + "." + sourceFilePath + "." + sourceLineNumber + "：Ittesasi"));
         }
 
@@ -94,7 +94,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             IMove teProcess,
             TreeDocument kifuD,
             bool isBack,
-            ILogTag logTag
+            ILogFile logFile
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -134,8 +134,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     );
                 kifuD.AppendChildA_New(
                     newNode,
-                    memberName +"."+sourceFilePath+"."+sourceLineNumber+"：KifuIO_Kifusasi25",
-                    logTag
+                    memberName +"."+sourceFilePath+"."+sourceLineNumber+"：KifuIO_Kifusasi25"
                 );
 
                 if (teProcess.IsDaAction)
@@ -287,7 +286,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             IMove teProcess,
             TreeDocument kifuD,
             bool back,
-            ILogTag logTag
+            ILogFile logFile
             )
         {
             underKoma = K40.Error;
@@ -474,7 +473,7 @@ dst.Sengo={dst.Star.Sengo}");
                         tottaKomaSyurui,
                         house9,
                         "KifuIO_Kifusasi52",
-                        logTag
+                        logFile
                     );
                     //}
                 }

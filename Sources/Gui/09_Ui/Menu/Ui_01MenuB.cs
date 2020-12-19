@@ -54,9 +54,9 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             {
                 // 最初はここ
 
-                Logger.Trace(LogTags.GuiDefault, "... ...");
-                Logger.Trace(LogTags.GuiDefault, "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu", LogTags.GuiDefault);
+                Logger.Trace( "... ...");
+                Logger.Trace( "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -75,8 +75,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //          *1…初期配置を作るということです。
                 // 
 
-                Logger.Trace(LogTags.GuiDefault, "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい", LogTags.GuiDefault);
+                Logger.Trace( "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -84,8 +84,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 // 「startpos コマンド（平手局面）」または「指定局面」を処理しました。
 
 
-                Logger.Trace(LogTags.GuiDefault, "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい", LogTags.GuiDefault);
+                Logger.Trace( "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -100,8 +100,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             if (kifuParserA_Impl.State is KifuParserA_StateA2_SfenMoves)
             {
-                Logger.Trace(LogTags.GuiDefault, "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい", LogTags.GuiDefault);//, LarabeLogger.INSTANCE
+                Logger.Trace( "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい");//, LarabeLogger.INSTANCE
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -125,12 +125,12 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         }
 
 
-        public void RefreshHirate(TreeDocument kifuD, ILogTag logTag)
+        public void RefreshHirate(TreeDocument kifuD)
         {
             // 再描画
             foreach (Shape_BtnKoma btnKoma in shape_PnlTaikyoku.BtnKomaDoors)
             {
-                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD, logTag);
+                Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma.Koma], shape_PnlTaikyoku, kifuD);
             }
 
             requestForMain.RequestClearTxtOutput = true;
@@ -141,21 +141,20 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         public void RefreshShiteiKyokumen(
             TreeDocument kifuD,
             ref string restText,
-            SfenStartpos sfenStartpos,
-            ILogTag logTag
+            SfenStartpos sfenStartpos
             )
         {
             SyokiHaichi.ByStartpos(sfenStartpos, kifuD);
 
             // 駒袋に表示されている駒を、駒台に表示させます。
-            Ui_02Action.Refresh_KomabukuroToKomadai(sfenStartpos, shape_PnlTaikyoku, kifuD, logTag);
+            Ui_02Action.Refresh_KomabukuroToKomadai(sfenStartpos, shape_PnlTaikyoku, kifuD);
 
             //------------------------------
             // 持ち駒が動いているので、全駒、再描画
             //------------------------------
             foreach(K40 koma in K40Array.Items_KomaOnly)
             {
-                Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD, logTag);
+                Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD);
             }
 
             requestForMain.RequestClearTxtOutput = true;
@@ -169,8 +168,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             K40 movedKoma,
             //K40 tottaKoma2,
             K40 underKoma,
-            IKifuElement node6,
-            ILogTag logTag
+            IKifuElement node6
             )
         {
             if (K40Util.OnKoma((int)movedKoma))

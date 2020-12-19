@@ -44,13 +44,11 @@
             Console.Out.WriteLine(line);
 
             // ログ追記
-            Logger.WriteLineS(Logger.DefaultLogRecord, line);
+            Logger.WriteLineS(line);
         }
 
         public void PreUsiLoop()
         {
-            ILogTag logTag = LogTags.Engine;
-
             //-------------------+----------------------------------------------------------------------------------------------------
             // ログファイル削除  |
             //-------------------+----------------------------------------------------------------------------------------------------
@@ -90,13 +88,13 @@
             var inputForcePromotion = Path.Combine(profilePath, this.TomlTable.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
             ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-            Logger.WriteFile(LogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+            Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
             // 配役転換表
             var inputPieceTypeToHaiyaku = Path.Combine(profilePath, this.TomlTable.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
             Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-            Logger.WriteFile(LogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+            Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 
@@ -114,7 +112,7 @@
             //      │
             //      │
             //
-            Logger.Trace(logTag, "v(^▽^)v ｲｪｰｲ☆ ... Start!");
+            Logger.Trace("v(^▽^)v ｲｪｰｲ☆ ... Start!");
 
 
             //-----------+------------------------------------------------------------------------------------------------------------
@@ -296,8 +294,6 @@ usiok
 
         public void ReadyOk()
         {
-            ILogTag logTag = LogTags.Engine;
-
             //------------------------------------------------------------
             // それでは定刻になりましたので……
             //------------------------------------------------------------
@@ -317,13 +313,13 @@ usiok
             //------------------------------------------------------------
             // 将棋エンジン「おっおっ、設定を終わらせておかなければ（汗、汗…）」
             //------------------------------------------------------------
-            Logger.Trace(logTag, "┏━━━━━設定━━━━━┓");
+            Logger.Trace("┏━━━━━設定━━━━━┓");
             foreach (KeyValuePair<string, string> pair in this.SetoptionDictionary)
             {
                 // ここで将棋エンジンの設定を済ませておいてください。
-                Logger.Trace(logTag, pair.Key + "=" + pair.Value);
+                Logger.Trace(pair.Key + "=" + pair.Value);
             }
-            Logger.Trace(logTag, "┗━━━━━━━━━━━━┛");
+            Logger.Trace("┗━━━━━━━━━━━━┛");
 
 
             //------------------------------------------------------------
@@ -377,8 +373,6 @@ usiok
 
         public void Quit()
         {
-            ILogTag logTag = LogTags.Engine;
-
             //------------------------------------------------------------
             // おつかれさまでした
             //------------------------------------------------------------
@@ -407,7 +401,7 @@ usiok
             //      │
             //
             //
-            Logger.Trace(logTag, "(^-^)ﾉｼ");
+            Logger.Trace("(^-^)ﾉｼ");
 
             // このプログラムを終了します。
             Environment.Exit(0);
@@ -415,10 +409,8 @@ usiok
 
         public void Position()
         {
-            ILogTag logTag = LogTags.Engine;
-
             // line=[" + line + "]
-            Logger.Trace(logTag, this.TreeD.DebugText_Kyokumen7(this.TreeD, "現局面になっているのかなんだぜ☆？　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag)));
+            Logger.Trace(this.TreeD.DebugText_Kyokumen7(this.TreeD, "現局面になっているのかなんだぜ☆？　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD)));
         }
 
         public void GoPonder()
@@ -584,15 +576,13 @@ usiok
 
         public void Go(string btime, string wtime, string byoyomi, string binc, string winc)
         {
-            ILogTag logTag = LogTags.Engine;
-
             // ┏━━━━サンプル・プログラム━━━━┓
 
             int latestTeme = this.TreeD.CountTeme(this.TreeD.Current8);//現・手目
             PositionKomaHouse genKyokumen = this.TreeD.ElementAt8(latestTeme).KomaHouse;//現局面
 
             //  + line
-            Logger.Trace(logTag, "将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　");
+            Logger.Trace("将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　");
 
             //------------------------------------------------------------
             // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
@@ -605,9 +595,9 @@ usiok
                 || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
                 )
             {
-                Logger.Trace(logTag, "将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
-                Logger.Trace(logTag, "▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
-                Logger.Trace(logTag, "△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
+                Logger.Trace("将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
+                Logger.Trace("▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
+                Logger.Trace("△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
 
                 //------------------------------------------------------------
                 // 投了
@@ -628,35 +618,25 @@ usiok
             }
             else // どちらの王さまも、まだまだ健在だぜ☆！
             {
-                try
+                //------------------------------------------------------------
+                // 指し手のチョイス
+                //------------------------------------------------------------
+                IMove bestmove = MoveRoutine.Sasu_Main(this.TreeD); // たった１つの指し手（ベストムーブ）
+                if (bestmove.isEnableSfen())
                 {
-                    //------------------------------------------------------------
-                    // 指し手のチョイス
-                    //------------------------------------------------------------
-                    IMove bestmove = MoveRoutine.Sasu_Main(this.TreeD, logTag); // たった１つの指し手（ベストムーブ）
-                    if (bestmove.isEnableSfen())
-                    {
-                        string sfenText = bestmove.ToSfenText();
-                        Logger.Trace(logTag, "(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
-                            "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag));
+                    string sfenText = bestmove.ToSfenText();
+                    Logger.Trace("(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
+                        "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD));
 
-                        Playing.Send("bestmove " + sfenText);//指し手を送ります。
-                    }
-                    else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
-                    {
-                        Logger.Trace(logTag, "(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
-                            "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD, logTag));
-
-                        // 投了ｗ！
-                        Playing.Send("bestmove resign");
-                    }
+                    Playing.Send("bestmove " + sfenText);//指し手を送ります。
                 }
-                catch (Exception ex)
+                else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                 {
-                    //>>>>> エラーが起こりました。
+                    Logger.Trace("(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
+                        "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD));
 
-                    // どうにもできないので  ログだけ取って無視します。
-                    Logger.Trace(logTag, ex.GetType().Name + " " + ex.Message + "：指し手のチョイスをしたときです。：");
+                    // 投了ｗ！
+                    Playing.Send("bestmove resign");
                 }
 
             }

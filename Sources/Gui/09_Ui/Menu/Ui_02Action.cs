@@ -27,8 +27,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             Shape_BtnKoma btnKoma_Selected,
             Shape_BtnMasu btnMasu,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -131,7 +130,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                                 ));
                         }
 
-                        Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Under.Koma], shape_PnlTaikyoku, kifuD, logTag);
+                        Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Under.Koma], shape_PnlTaikyoku, kifuD);
                         break;
 
                     case Sengo.Sente://thru
@@ -177,7 +176,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                                 ));
                         }
 
-                        Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Under.Koma], shape_PnlTaikyoku, kifuD, logTag);
+                        Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Under.Koma], shape_PnlTaikyoku, kifuD);
                         break;
                 }
 
@@ -256,7 +255,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             house7.SetKomaPos(kifuD, btnKoma_Selected.Koma, dst);
 
 
-            Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Selected.Koma], shape_PnlTaikyoku, kifuD, logTag);
+            Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Selected.Koma], shape_PnlTaikyoku, kifuD);
         }
 
 
@@ -272,8 +271,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         public static void Refresh_KomabukuroToKomadai(
             SfenStartpos sfenStartpos,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
         )
         {
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
@@ -583,8 +581,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         public static void Refresh_KomaLocation(
             K40 koma,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             int curHou = kifuD.CountTeme(kifuD.Current8);

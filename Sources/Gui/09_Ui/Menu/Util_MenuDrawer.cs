@@ -8,7 +8,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
     {
 
 
-        public static void DrawKomaokuri1(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public static void DrawKomaokuri1(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             //------------------------------------------------------------
             // 駒・再描画
@@ -19,19 +19,19 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
                 //if (K40Util.OnKoma((int)koma))
                 //{
-                Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD, logTag);
+                Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD);
                 //}
             }
             requestForMain.RequestRefresh_Komas.Clear();
         }
 
 
-        public static void DrawKomaokuri2(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag)
+        public static void DrawKomaokuri2(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD)
         {
             //------------------------------
             // メナス
             //------------------------------
-            FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+            FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD);
         }
 
 

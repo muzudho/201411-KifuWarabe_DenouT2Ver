@@ -16,8 +16,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             TreeNode6 siteiNode,
             Sengo selfSengo,
             IKifuElement node1,//調べたい局面
-            StringBuilder sbGohosyu,
-            ILogTag logTag
+            StringBuilder sbGohosyu
             )
         {
 
@@ -25,7 +24,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             KomaAndMasusDictionary komaAndMove_Enemy;// 相手の駒の移動可能範囲
             Util_LegalMove.GetAvailableMove(
                 siteiNode,
-                GameTranslator.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu, logTag);
+                GameTranslator.AlternateSengo(selfSengo), out komaAndMove_Enemy, sbGohosyu);
 
             // 自分の王の座標
             M201 kingMasu;
@@ -75,11 +74,9 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <param name="kifuD">ツリー構造の棋譜です。</param>
         /// <param name="kmDic_Self">自軍の各駒の移動できる升セット</param>
         /// <param name="sbGohosyu"></param>
-        /// <param name="logTag"></param>
         public static void GetLegalMove(
             TreeDocument kifuD,
-            out KomaAndMasusDictionary kmDic_Self,
-            ILogTag logTag)
+            out KomaAndMasusDictionary kmDic_Self)
         {
             StringBuilder sbGohosyu = new StringBuilder();
 
@@ -92,13 +89,13 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             // 自分の駒の移動可能範囲
             Util_LegalMove.GetAvailableMove(
                 siteiNode_genzai,
-                sengo_comp, out kmDic_Self, sbGohosyu, logTag);
+                sengo_comp, out kmDic_Self, sbGohosyu);
 
             //------------------------------------------------------------
             // 自玉が王手されているかどうかの確認
             //------------------------------------------------------------
 
-            bool mate = Util_LegalMove.Is_Mate(siteiNode_genzai, sengo_comp, siteiNode_genzai, sbGohosyu, logTag);
+            bool mate = Util_LegalMove.Is_Mate(siteiNode_genzai, sengo_comp, siteiNode_genzai, sbGohosyu);
 
 
 
@@ -178,8 +175,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                             nextNode,
                             GameTranslator.AlternateSengo(sengo_comp),
                             nextNode,
-                            sbGohosyu,
-                            logTag
+                            sbGohosyu
                             );
 
                         if (!mate2)
@@ -218,8 +214,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 {
                     kifuD.AppendChildA_New(
                         nextNode,
-                        "王手回避したい",
-                        logTag
+                        "王手回避したい"
                         );
 
                     // カレントが進んでいるので、戻す。
@@ -265,7 +260,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
                 }
 
-                Logging.Logger.WriteFile(LogFiles.LegalMoveEvasion, sbOhteDebug.ToString());
+                Logging.Logger.WriteFile(SpecifyLogFiles.LegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------
@@ -300,8 +295,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             TreeNode6 siteiNode,
             Sengo selfSengo,
             out KomaAndMasusDictionary kouho,
-            StringBuilder sbGohosyu,
-            ILogTag logTag
+            StringBuilder sbGohosyu
             )
         {
             // 自駒（将棋盤上）
@@ -337,41 +331,28 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             sbGohosyu.AppendLine(ido_onBan.LogString_Set());
             sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(駒台Set)");
 
+            //------------------------------------------------------------
+            // 調べたい側の駒がある枡。
+            //------------------------------------------------------------
 
-            try
-            {
-                //------------------------------------------------------------
-                // 調べたい側の駒がある枡。
-                //------------------------------------------------------------
+            // 盤上の自駒の移動候補から、 自駒がある枡を除外します。
+            ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan);
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
 
-                // 盤上の自駒の移動候補から、 自駒がある枡を除外します。
-                ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan);
-                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
-
-                // そこから、敵駒がある枡「以降」を更に除外します。
-                // FIXME:
-                ido_onBan = Thought_KomaAndMove.Minus_OverThereMasus(ido_onBan, tekiMasus_OnBan, logTag);
-                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(②邪魔敵後)　盤＝" + ido_onBan.DebugString_Set());
+            // そこから、敵駒がある枡「以降」を更に除外します。
+            // FIXME:
+            ido_onBan = Thought_KomaAndMove.Minus_OverThereMasus(ido_onBan, tekiMasus_OnBan);
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(②邪魔敵後)　盤＝" + ido_onBan.DebugString_Set());
 
 
-                // 自駒台の移動候補から、敵駒がある升を除外します。
-                ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan);
-                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
+            // 自駒台の移動候補から、敵駒がある升を除外します。
+            ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan);
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
 
-                // 移動候補　＝　盤上の移動駒　＋　駒台の打駒
-                kouho = ido_onBan;
-                kouho.Merge(ido_OnDai);
-                //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(④盤・台マージ後)　候補＝" + kouho.DebugString_Set());
-
-            }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので  ログだけ取って無視します。
-                Logging.Logger.Error(logTag, ex.GetType().Name + " " + ex.Message + "：ランダムチョイス(50)：");
-                throw;
-            }
+            // 移動候補　＝　盤上の移動駒　＋　駒台の打駒
+            kouho = ido_onBan;
+            kouho.Merge(ido_OnDai);
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(④盤・台マージ後)　候補＝" + kouho.DebugString_Set());
         }
 
 

@@ -123,8 +123,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             string text,
             out string restText,
             out IMove move,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             bool successful = false;
@@ -164,8 +163,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     ApplicatedMove.GetData_FromTextSub(
                         moveB.Build(),
                         out move,
-                        kifuD,
-                        logTag
+                        kifuD
                         );
                 }
 

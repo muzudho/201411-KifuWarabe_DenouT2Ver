@@ -43,20 +43,18 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="sbGohosyu"></param>
-        /// <param name="logTag"></param>
         public static KomaAndMasusDictionary Minus_OverThereMasus(
             KomaAndMasusDictionary a1,
-            IMasus b,
-            ILogTag logTag
+            IMasus b
         )
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
 
             foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
-                Logging.Logger.Trace(logTag, "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                Logging.Logger.Trace(logTag, "差し替える前");
-                Logging.Logger.Trace(logTag, c.LogString_Set());
+                Logger.Trace($@"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+差し替える前
+{c.LogString_Set()}");
 
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -65,8 +63,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 // 差替え
                 c.AddReplace(selfKoma, minusedMasus, false);//差分に差替えます。もともと無い駒なら何もしません。
 
-                Logging.Logger.Trace(logTag, "差し替えた後");
-                Logging.Logger.Trace(logTag, c.LogString_Set());
+                Logger.Trace( $@"差し替えた後
+{c.LogString_Set()}");
             }
 
             return c;

@@ -26,7 +26,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// </summary>
         public static bool Modoru(
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            TreeDocument kifuD, out string backedInputText, ILogTag logTag)
+            TreeDocument kifuD, out string backedInputText)
         {
             bool successful = false;
             backedInputText = DammyConsole.DefaultDammyConsole.ReadLine1().Trim();
@@ -78,8 +78,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 isBack,
                 out movedKoma,
                 //out tottaKoma,
-                out underKoma,
-                LogTags.GuiDefault
+                out underKoma
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();
@@ -93,7 +92,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------------------------------------
             if (null != btn_movedKoma)
             {
-                Ui_02Action.Refresh_KomaLocation(btn_movedKoma.Koma, shape_PnlTaikyoku, kifuD, logTag);
+                Ui_02Action.Refresh_KomaLocation(btn_movedKoma.Koma, shape_PnlTaikyoku, kifuD);
             }
 
             //if (null != btn_tottaKoma)
@@ -103,7 +102,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             if (null != btn_underKoma)
             {
-                Ui_02Action.Refresh_KomaLocation(btn_underKoma.Koma, shape_PnlTaikyoku, kifuD, logTag);
+                Ui_02Action.Refresh_KomaLocation(btn_underKoma.Koma, shape_PnlTaikyoku, kifuD);
             }
 
 
@@ -111,7 +110,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // チェンジターン
             //------------------------------
-            ShogiEngineService.Message_ChangeTurn(kifuD,logTag);//[戻る]ボタンを押したあと
+            ShogiEngineService.Message_ChangeTurn(kifuD);//[戻る]ボタンを押したあと
 
             successful = true;
 
@@ -119,7 +118,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             // メナス
             //------------------------------
             RequestForMain requestForMain = new RequestForMain();
-            FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+            FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD);
 
 
         gt_EndMethod:
@@ -127,7 +126,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         }
 
 
-        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD, ILogTag logTag);
+        public delegate void DELEGATE_DrawKomaokuri(ref RequestForMain requestForMain, Shape_PnlTaikyoku shape_PnlTaikyoku, TreeDocument kifuD);
 
 
         /// <summary>
@@ -139,8 +138,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             TreeDocument kifuD,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri1,
             DELEGATE_DrawKomaokuri delegate_DrawKomaokuri2,
-            string hint,
-            ILogTag logTag
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -157,11 +155,11 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             Ui_01MenuB ui_01MenuB = new Ui_01MenuB(requestForMain, shape_PnlTaikyoku);
             bool toBreak = false;
 
-            Logger.Trace(logTag, "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logger.Trace( "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
             bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
 
             // 再描画1
-            delegate_DrawKomaokuri1(ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+            delegate_DrawKomaokuri1(ref requestForMain, shape_PnlTaikyoku, kifuD);
 
 
             //------------------------------
@@ -169,12 +167,12 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             if (requestForMain.ChangedTurn)
             {
-                ShogiEngineService.Message_ChangeTurn(kifuD,logTag);
+                ShogiEngineService.Message_ChangeTurn(kifuD);
             }
 
 
             // 再描画2
-            delegate_DrawKomaokuri2(ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+            delegate_DrawKomaokuri2(ref requestForMain, shape_PnlTaikyoku, kifuD);
 
             return successful;
         }

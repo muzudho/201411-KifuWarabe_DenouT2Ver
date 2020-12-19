@@ -6,23 +6,15 @@ using Grayscale.Kifuwarane.Entities.UseCase;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
-    public delegate void RefreshHirateDelegate(
-        TreeDocument kifuD, ILogTag logTag
-    );
-    public delegate void RefreshShiteiKyokumenDelegate(
-        TreeDocument kifuD,
-        ref string restText,
-        SfenStartpos sfenStartpos,
-        ILogTag logTag
-    );
+    public delegate void RefreshHirateDelegate(TreeDocument kifuD);
+    public delegate void RefreshShiteiKyokumenDelegate(TreeDocument kifuD, ref string restText, SfenStartpos sfenStartpos);
     public delegate void IttesasiPaintDelegate(
         TreeDocument kifuD,
         string restText,
         K40 movedKoma,
         //K40 tottaKoma,
         K40 underKoma,
-        IKifuElement node6, //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
-        ILogTag logTag
+        IKifuElement node6 //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
     );
 
     /// <summary>
@@ -55,18 +47,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         }
 
 
-        private void Dammy_RefreshHirate(
-            TreeDocument kifuD,
-            ILogTag logTag)
+        private void Dammy_RefreshHirate(TreeDocument kifuD)
         {
         }
 
-        private void Dammy_RefreshShiteiKyokumen(
-            TreeDocument kifuD,
-            ref string restText,
-            SfenStartpos sfenStartpos,
-            ILogTag logTag
-            )
+        private void Dammy_RefreshShiteiKyokumen(TreeDocument kifuD, ref string restText, SfenStartpos sfenStartpos)
         {
         }
 
@@ -76,8 +61,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             K40 movedKoma,
             //K40 tottaKoma,
             K40 underKoma,
-            IKifuElement node6, //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
-            ILogTag logTag
+            IKifuElement node6 //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
             )
         {
         }
@@ -94,34 +78,20 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             string inputLine,
             TreeDocument kifuD,
             ref bool isBreak,
-            string hint,
-            ILogTag logTag
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            try
-            {
-                Logging.Logger.Trace(logTag, "┏━━━━━┓");
-                Logging.Logger.Trace(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logging.Logger.Trace("┏━━━━━┓");
+            Logging.Logger.Trace("わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
 
-                IKifuParserAState nextState;
-                inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
-                    hint + ":KifuParserA_Impl#Execute_Step", logTag);
-                this.State = nextState;
-
-            }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                // どうにもできないので  ログだけ取って無視します。
-                string message = this.GetType().Name + "#Execute_Step：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Error(logTag, message, LogFiles.Error);
-            }
+            IKifuParserAState nextState;
+            inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
+                hint + ":KifuParserA_Impl#Execute_Step");
+            this.State = nextState;
 
             return inputLine;
         }
@@ -135,38 +105,25 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         public void Execute_All(
             string inputLine,
             TreeDocument kifuD,
-            string hint,
-            ILogTag logTag
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            try
+            Logging.Logger.Trace("┏━━━━━━━━━━┓");
+            Logging.Logger.Trace("わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+
+            IKifuParserAState nextState = this.State;
+
+            bool toBreak = false;
+
+            while (!toBreak)
             {
-                Logging.Logger.Trace(logTag, "┏━━━━━━━━━━┓");
-                Logging.Logger.Trace(logTag, "わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
-
-                IKifuParserAState nextState = this.State;
-
-                bool toBreak = false;
-
-                while (!toBreak)
-                {
-                    inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref toBreak,
-                        hint + ":KifuParserA_Impl#Execute_All", logTag);
-                    this.State = nextState;
-                }
-            }
-            catch (Exception ex)
-            {
-                // エラーが起こりました。
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-                // どうにもできないので  ログだけ取って無視します。
-                string message = this.GetType().Name + "#Execute_All：" + ex.GetType().Name + "：" + ex.Message;
-                Logger.Error(logTag, message, LogFiles.Error);
+                inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref toBreak,
+                    hint + ":KifuParserA_Impl#Execute_All");
+                this.State = nextState;
             }
         }
     }

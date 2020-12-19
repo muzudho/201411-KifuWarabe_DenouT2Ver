@@ -18,8 +18,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         public static void Saisei(
             Ui_PnlMain ui_PnlMain,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             RequestForMain requestForMain = new RequestForMain();
@@ -54,7 +53,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
                     if (K40Util.OnKoma( (int)koma))
                     {
-                        Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD, logTag);
+                        Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD);
                     }
                 }
                 requestForMain.RequestRefresh_Komas.Clear();
@@ -64,19 +63,19 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------
                 if (requestForMain.ChangedTurn)
                 {
-                    ShogiEngineService.Message_ChangeTurn(kifuD,logTag);
+                    ShogiEngineService.Message_ChangeTurn(kifuD);
                 }
 
                 //------------------------------
                 // メナス
                 //------------------------------
-                FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD, logTag);
+                FlowB_1TumamitaiKoma.Menace(ref requestForMain, shape_PnlTaikyoku, kifuD);
 
 
                 //------------------------------------------------------------
                 // パネル
                 //------------------------------------------------------------
-                ui_PnlMain.Response(requestForMain, logTag);
+                ui_PnlMain.Response(requestForMain);
 
 
                 //

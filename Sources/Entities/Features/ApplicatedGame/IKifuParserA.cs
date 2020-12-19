@@ -28,8 +28,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             string inputLine,
             TreeDocument kifuD,
             ref bool isBreak,
-            string hint,
-            ILogTag logTag
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -45,8 +44,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         void Execute_All(
             string inputLine,
             TreeDocument kifuD,
-            string hint,
-            ILogTag logTag
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",

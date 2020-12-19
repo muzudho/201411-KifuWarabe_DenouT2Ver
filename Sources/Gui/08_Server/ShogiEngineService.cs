@@ -124,7 +124,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         /// <summary>
         /// 手番が替わったときの挙動を、ここに書きます。
         /// </summary>
-        public static void Message_ChangeTurn(TreeDocument kifuD, ILogTag logTag)
+        public static void Message_ChangeTurn(TreeDocument kifuD)
         {
 
 
@@ -184,7 +184,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
             else
             {
                 //>>>>>>>>>> メッセージを受け取りました。
-                Logger.WriteLineR(Logger.DefaultLogRecord, line);
+                Logger.WriteLineR(line);
 
                 if (line.StartsWith("option"))
                 {
@@ -237,7 +237,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
 
                     Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
 
-                    Logger.Trace(LogTags.GuiDefault, "USI受信：bestmove input99=[" + Ui_PnlMain.input99 + "]");
+                    Logger.Trace($"USI受信：bestmove input99=[{Ui_PnlMain.input99}]", SpecifyLogFiles.GuiDefault);
                 }
                 else
                 {
@@ -254,7 +254,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         {
             ShogiEngineService.shogiEngineProcess.StandardInput.WriteLine(line);
 
-            Logger.WriteLineS(Logger.DefaultLogRecord,line);
+            Logger.WriteLineS(line);
         }
 
     }

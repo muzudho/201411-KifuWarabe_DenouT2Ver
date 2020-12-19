@@ -17,171 +17,158 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         public static void GetData_FromTextSub(
             SfenMove sfen,
             out IMove move,
-            TreeDocument kifuD,
-            ILogTag logTag
+            TreeDocument kifuD
             )
         {
             move = MoveImpl.NULL_OBJECT;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
-            try
+            // 筋と段。
+            int srcFile = sfen.SrcFile;
+            if (srcFile == 0)
             {
-                // 筋と段。
-                int srcFile = sfen.SrcFile;
-                if(srcFile == 0)
+                srcFile = MoveImpl.CTRL_NOTHING_PROPERTY_SUJI;
+            }
+
+            int srcRank = sfen.SrcRank;
+            if (srcRank == 0)
+            {
+                srcRank = MoveImpl.CTRL_NOTHING_PROPERTY_DAN;
+            }
+
+            // 打った駒の種類(Piece Type)
+            Ks14 dropPT = GameTranslator.SfenUttaSyurui(sfen.Chars[0]);
+
+            int dstFile = sfen.DstFile;
+            int destRank = sfen.DstRank;
+
+            K40 dropP; // 打った種類の駒(Piece)。
+
+            if (sfen.Dropped)
+            {
+                //>>>>> 「打」でした。
+
+                // 駒台から、打った種類の駒を取得
+                dropP = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD,
+                    GameTranslator.Sengo_ToKomadai(
+                        kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))
+                    ),//Okiba.Sente_Komadai,//FIXME:
+                    dropPT);
+                if (K40.Error == dropP)
                 {
-                    srcFile = MoveImpl.CTRL_NOTHING_PROPERTY_SUJI;
+                    throw new Exception($"TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[{dropPT}]の駒を掴もうとしましたが、エラーでした。");
                 }
 
-                int srcRank = sfen.SrcRank;
-                if (srcRank==0)
+
+                //// FIXME: 打のとき、srcSuji、srcDan が Int.Min
+                //koma = Util_KyokumenReader.Koma_AtMasu(
+                //    kifuD,
+                //    M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcSuji, srcDan)
+                //    );
+            }
+            else
+            {
+                //>>>>> 打ではないとき
+                dropP = Util_KyokumenReader.Koma_AtMasu(
+                    kifuD,
+                    M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcFile, srcRank)
+                    );
+
+                if (K40.Error == dropP)
                 {
-                    srcRank = MoveImpl.CTRL_NOTHING_PROPERTY_DAN;
-                }
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("TuginoItte_Sfen#GetData_FromTextSub：将棋盤から [");
+                    sb.Append(srcFile);
+                    sb.Append("]筋、[");
+                    sb.Append(srcRank);
+                    sb.Append("]段 にある駒を掴もうとしましたが、エラーでした。");
+                    sb.AppendLine();
+                    sb.Append(kifuD.DebugText_Kyokumen7(kifuD, "エラー駒になったとき"));
 
-                // 打った駒の種類(Piece Type)
-                Ks14 dropPT = GameTranslator.SfenUttaSyurui(sfen.Chars[0]);
-
-                int dstFile = sfen.DstFile;
-                int destRank = sfen.DstRank;
-
-                K40 dropP; // 打った種類の駒(Piece)。
-
-                if (sfen.Dropped)
-                {
-                    //>>>>> 「打」でした。
-
-                    // 駒台から、打った種類の駒を取得
-                    dropP = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD,
-                        GameTranslator.Sengo_ToKomadai(
-                            kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))
-                        ),//Okiba.Sente_Komadai,//FIXME:
-                        dropPT);
-                    if (K40.Error == dropP)
+                    for (int i = 0; i <= kifuD.CountTeme(kifuD.Current8); i++)
                     {
-                        throw new Exception($"TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[{dropPT}]の駒を掴もうとしましたが、エラーでした。");
+                        IKifuElement dammyNode2 = kifuD.ElementAt8(i);
+                        PositionKomaHouse house1 = dammyNode2.KomaHouse;
+
+                        sb.Append(house1.Log_Kyokumen(kifuD, i, "エラー駒になったとき(見直し)"));
                     }
 
-
-                    //// FIXME: 打のとき、srcSuji、srcDan が Int.Min
-                    //koma = Util_KyokumenReader.Koma_AtMasu(
-                    //    kifuD,
-                    //    M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcSuji, srcDan)
-                    //    );
+                    throw new Exception(sb.ToString());
                 }
-                else
+            }
+
+
+            Ks14 dstPT; // 駒種類(PieceType)
+            Ks14 srcPT;
+            Okiba srcOkiba;
+            M201 srcSq;
+
+            IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
+            PositionKomaHouse house2 = dammyNode3.KomaHouse;
+
+            if (sfen.Dropped)
+            {
+                //>>>>> 打った駒の場合
+
+                dstPT = dropPT;
+                srcPT = dropPT;
+                switch (kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)))
                 {
-                    //>>>>> 打ではないとき
-                    dropP = Util_KyokumenReader.Koma_AtMasu(
-                        kifuD,
-                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcFile, srcRank)
-                        );
-
-                    if (K40.Error == dropP)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("TuginoItte_Sfen#GetData_FromTextSub：将棋盤から [");
-                        sb.Append(srcFile);
-                        sb.Append("]筋、[");
-                        sb.Append(srcRank);
-                        sb.Append("]段 にある駒を掴もうとしましたが、エラーでした。");
-                        sb.AppendLine();
-                        sb.Append(kifuD.DebugText_Kyokumen7(kifuD, "エラー駒になったとき"));
-
-                        for (int i = 0; i <= kifuD.CountTeme(kifuD.Current8); i++)
-                        {
-                            IKifuElement dammyNode2 = kifuD.ElementAt8(i);
-                            PositionKomaHouse house1 = dammyNode2.KomaHouse;
-
-                            sb.Append(house1.Log_Kyokumen(kifuD, i, "エラー駒になったとき(見直し)"));
-                        }
-
-                        throw new Exception(sb.ToString());
-                    }
+                    case Sengo.Gote:
+                        srcOkiba = Okiba.Gote_Komadai;
+                        break;
+                    case Sengo.Sente:
+                        srcOkiba = Okiba.Sente_Komadai;
+                        break;
+                    default:
+                        srcOkiba = Okiba.Empty;
+                        break;
                 }
 
+                K40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT);
+                srcSq = house2.KomaPosAt(srcKoma).Star.Masu;// M201Util.OkibaSujiDanToMasu(srcOkiba, srcSuji, srcDan);
+            }
+            else
+            {
+                //>>>>> 盤上の駒を指した場合
 
-                Ks14 dstPT; // 駒種類(PieceType)
-                Ks14 srcPT;
-                Okiba srcOkiba;
-                M201 srcSq;
-
-                IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
-                PositionKomaHouse house2 = dammyNode3.KomaHouse;
-
-                if (sfen.Dropped)
-                {
-                    //>>>>> 打った駒の場合
-
-                    dstPT = dropPT;
-                    srcPT = dropPT;
-                    switch (kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)))
-                    {
-                        case Sengo.Gote:
-                            srcOkiba = Okiba.Gote_Komadai;
-                            break;
-                        case Sengo.Sente:
-                            srcOkiba = Okiba.Sente_Komadai;
-                            break;
-                        default:
-                            srcOkiba = Okiba.Empty;
-                            break;
-                    }
-
-                    K40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT);
-                    srcSq = house2.KomaPosAt(srcKoma).Star.Masu;// M201Util.OkibaSujiDanToMasu(srcOkiba, srcSuji, srcDan);
-                }
-                else
-                {
-                    //>>>>> 盤上の駒を指した場合
-
-                    dstPT = Haiyaku184Array.Syurui(house2.KomaPosAt(dropP).Star.Haiyaku);
-                    srcPT = Haiyaku184Array.Syurui(house2.KomaPosAt(dropP).Star.Haiyaku); //駒は「元・種類」を記憶していませんので、「現・種類」を指定します。
-                    srcOkiba = Okiba.ShogiBan;
-                    srcSq = M201Util.OkibaSujiDanToMasu(srcOkiba, srcFile, srcRank);
-                }
+                dstPT = Haiyaku184Array.Syurui(house2.KomaPosAt(dropP).Star.Haiyaku);
+                srcPT = Haiyaku184Array.Syurui(house2.KomaPosAt(dropP).Star.Haiyaku); //駒は「元・種類」を記憶していませんので、「現・種類」を指定します。
+                srcOkiba = Okiba.ShogiBan;
+                srcSq = M201Util.OkibaSujiDanToMasu(srcOkiba, srcFile, srcRank);
+            }
 
 
-                //------------------------------
-                // 5
-                //------------------------------
-                if (sfen.Promoted)
-                {
-                    // 成りました
-                    dstPT = KomaSyurui14Array.NariCaseHandle[(int)dstPT];
-                }
+            //------------------------------
+            // 5
+            //------------------------------
+            if (sfen.Promoted)
+            {
+                // 成りました
+                dstPT = KomaSyurui14Array.NariCaseHandle[(int)dstPT];
+            }
 
 
-                //------------------------------
-                // 結果
-                //------------------------------
-                // 棋譜
-                move = MoveImpl.Next3(
+            //------------------------------
+            // 結果
+            //------------------------------
+            // 棋譜
+            move = MoveImpl.Next3(
 
-                    new RO_StarManual(
-                        kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)),
-                        srcSq,//FIXME:升ハンドルにしたい
-                        srcPT
+                new RO_StarManual(
+                    kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)),
+                    srcSq,//FIXME:升ハンドルにしたい
+                    srcPT
+                ),
+
+                new RO_StarManual(
+                    kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)),
+                    M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, dstFile, destRank),//符号は将棋盤の升目です。 FIXME:升ハンドルにしたい
+                    dstPT
                     ),
 
-                    new RO_StarManual(
-                        kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)),
-                        M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, dstFile, destRank),//符号は将棋盤の升目です。 FIXME:升ハンドルにしたい
-                        dstPT
-                        ),
-
-                    Ks14.H00_Null//符号からは、取った駒は分からない
-                );
-            }
-            catch (Exception ex)
-            {
-                //>>>>> エラーが起こりました。
-
-                // どうにもできないので 落とします。
-                string message = ex.GetType().Name + "：" + ex.Message + "　in　TuginoItte_Sfen.GetData_FromTextSub（A）　str1=「" + sfen.Chars[0] + "」　str2=「" + sfen.Chars[1] + "」　str3=「" + sfen.Chars[2] + "」　str4=「" + sfen.Chars[3] + "」　strNari=「" + sfen.Chars[4] + "」　";
-                Logger.Error(logTag, message, LogFiles.Error);
-                throw;
-            }
+                Ks14.H00_Null//符号からは、取った駒は分からない
+            );
         }
 
         /// <summary>

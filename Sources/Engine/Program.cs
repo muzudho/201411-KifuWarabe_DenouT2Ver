@@ -17,8 +17,6 @@
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            ILogTag logTag = LogTags.Engine;
-
             try
             {
                 // まだ指し将棋をすると決まったわけではないが、とりあえず今は Playing という名前で☆（＾～＾）
@@ -34,7 +32,7 @@
                         // 将棋所から何かメッセージが届いていないか、見てみます。
                         // ブロッキングIO です。
                         string line = Console.In.ReadLine();
-                        Logger.WriteLineR(Logger.DefaultLogRecord, line);
+                        Logger.WriteLineR(line);
 
                         if ("usi" == line)
                         {
@@ -137,7 +135,7 @@
                     {
                         // 将棋所から何かメッセージが届いていないか、見てみます。
                         string line = Console.In.ReadLine();
-                        Logger.WriteLineR(Logger.DefaultLogRecord, line);
+                        Logger.WriteLineR(line);
 
                         if (line.StartsWith("position"))
                         {
@@ -234,15 +232,15 @@
                             //
                             // “が”、まだ指してはいけません。
 
-                            Logger.Trace(logTag, " ...");
-                            Logger.Trace(logTag, "    ...");
-                            Logger.Trace(logTag, "       ...");
-                            Logger.Trace(logTag, "（＾△＾）positionきたｺﾚ！");
+                            Logger.Trace( " ...");
+                            Logger.Trace( "    ...");
+                            Logger.Trace( "       ...");
+                            Logger.Trace( "（＾△＾）positionきたｺﾚ！");
 
                             KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-                            Logger.Trace(logTag, "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
+                            Logger.Trace( "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
 
-                            kifuParserA_Impl.Execute_All(line, playing.TreeD, "Program#Main(Warabe)", logTag);
+                            kifuParserA_Impl.Execute_All(line, playing.TreeD, "Program#Main(Warabe)");
                             playing.Position();
 
                             //------------------------------------------------------------
@@ -409,19 +407,19 @@
                     //      │gameover    │lose        │
                     //      └──────┴──────┘
                     //
-                    Logger.Trace(logTag, "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
+                    Logger.Trace( "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
                     foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
                     {
-                        Logger.Trace(logTag, pair.Key + "=" + pair.Value);
+                        Logger.Trace( pair.Key + "=" + pair.Value);
                     }
-                    Logger.Trace(logTag, "┗━━━━━━━━━━━━━━━━━━┛");
+                    Logger.Trace( "┗━━━━━━━━━━━━━━━━━━┛");
                 }
             }
             catch (Exception ex)
             {
                 // エラーが起こりました。
                 // どうにもできないので  ログだけ取って、 `quit` を投げて終了します。
-                Logger.Trace(logTag, "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                Logger.Trace( "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
                 Playing.Send("quit");
                 throw;
             }

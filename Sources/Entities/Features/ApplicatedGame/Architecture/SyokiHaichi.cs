@@ -10,10 +10,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <summary>
         /// 駒を、平手の初期配置に並べます。
         /// </summary>
-        public static void ToHirate(TreeDocument kifuD, ILogTag logTag)
+        public static void ToHirate(TreeDocument kifuD)
         {
-
-
             kifuD.ClearA();// 棋譜を空っぽにします。
 
             IKifuElement node1 = kifuD.ElementAt8(kifuD.Root7_Teme);
@@ -124,9 +122,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             k40 = K40.Fu18;
             house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
 
-
-            //LarabeLogger.GetInstance().WriteLineMemo(kifuD.DebugText_Kyokumen("平手局面にセットしたぜ☆"));
-            Logging.Logger.Trace(logTag, "平手局面にセットしたぜ☆");
+            Logger.Trace("平手局面にセットしたぜ☆");
         }
 
 
