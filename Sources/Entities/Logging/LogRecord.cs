@@ -5,6 +5,13 @@
     /// </summary>
     public class LogRecord : ILogRecord
     {
+        public LogRecord(ILogFile logFile, bool enabled, bool timeStampPrintable)
+        {
+            this.LogFile = logFile;
+            this.Enabled = enabled;
+            this.TimeStampPrintable = timeStampPrintable;
+        }
+
         /// <summary>
         /// 出力先ファイル。
         /// </summary>
@@ -13,19 +20,11 @@
         /// <summary>
         /// ログ出力の有無。
         /// </summary>
-        public bool Enabled { get { return this.enabled; } }
-        private bool enabled;
+        public bool Enabled { get; private set;}
 
         /// <summary>
         /// タイムスタンプの有無。
         /// </summary>
-        public bool TimeStampPrintable { get; private set; } = false;
-
-        public LogRecord(ILogFile logFile, bool autoId, bool enabled, bool timeStampPrintable)
-        {
-            this.LogFile = logFile;
-            this.enabled = enabled;
-            this.TimeStampPrintable = timeStampPrintable;
-        }
+        public bool TimeStampPrintable { get; private set; }
     }
 }

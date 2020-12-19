@@ -35,7 +35,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         static ILogRecord LogEntry(string logDirectory, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
         {
             var logFile = LogFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
-            return new LogRecord(logFile, true, enabled, timeStampPrintable);
+            return new LogRecord(logFile, enabled, timeStampPrintable);
         }
 
         static readonly ILogRecord TraceRecord;
@@ -170,14 +170,18 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         /// <param name="line"></param>
         public static void WriteLineR(
-            string line,
+            string line
+            /*
+            ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
+            */
             )
         {
             // ログ追記
-            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}  > {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
+            // ：{memberName}：{sourceFilePath}：{sourceLineNumber}
+            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}  > {line}
 ");
         }
 
@@ -186,19 +190,23 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// </summary>
         /// <param name="line"></param>
         public static void WriteLineS(
-            string line,
+            string line
+            /*
+            ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
+            */
             )
         {
             // ログ追記
-            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}：{memberName}：{sourceFilePath}：{sourceLineNumber}
+            // ：{memberName}：{sourceFilePath}：{sourceLineNumber}
+            File.AppendAllText(NoticeRecord.LogFile.Name, $@"{DateTime.Now.ToString()}<   {line}
 ");
         }
 
         /// <summary>
-        /// ログファイルを削除します。(連番がなければ)
+        /// ログ・ディレクトリー直下の *.log ファイルを削除します。
         /// </summary>
         public static void RemoveAllLogFile()
         {
@@ -207,7 +215,8 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
             // Console.WriteLine($"logDirectory={logDirectory}");
 
-            var re = new Regex("^(\\[[0-9A-Fa-f-]+\\])?.+\\.log$");
+            // [GUID]name.log
+            // var re = new Regex("^(\\[[0-9A-Fa-f-]+\\])?.+\\.log$");
 
             DirectoryInfo dir = new System.IO.DirectoryInfo(logDirectory);
             FileInfo[] files = dir.GetFiles("*.log");
@@ -215,11 +224,11 @@ namespace Grayscale.Kifuwarane.Entities.Logging
             {
                 // Console.WriteLine($"f-full-name={f.FullName}");
                 //正規表現のパターンを使用して一つずつファイルを調べる
-                if (re.IsMatch(f.Name))
-                {
+                // if (re.IsMatch(f.Name))
+                // {
                     // Console.WriteLine($"Remove={f.FullName}");
                     File.Delete(f.FullName);
-                }
+                // }
             }
         }
     }

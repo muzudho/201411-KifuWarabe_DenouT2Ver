@@ -49,8 +49,6 @@ Engine = "./Grayscale.Kifuwarane.Engine.exe"
 HaichiTenkanHyoOnlyDataLog = "../Logs/Debug_配役転換表Load(1)_データ行のみ"
 HaichiTenkanHyoAllLog = "../Logs/Debug_配役転換表Load(2)"
 
-# Data file stem.
-
 #
 # Resources.LogDirectory からの相対パスだぜ☆（＾～＾） 拡張子は付けるなだぜ☆（＾～＾）
 #

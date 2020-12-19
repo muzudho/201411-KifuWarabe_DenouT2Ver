@@ -1,7 +1,7 @@
-﻿using System.IO;
-
-namespace Grayscale.Kifuwarane.Entities.Logging
+﻿namespace Grayscale.Kifuwarane.Entities.Logging
 {
+    using System.IO;
+
     /// <summary>
     /// ログの書き込み先情報。
     /// </summary>
