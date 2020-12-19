@@ -4,12 +4,9 @@
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
-    using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
     using Grayscale.Kifuwarane.Entities.Logging;
-    using Grayscale.Kifuwarane.Entities.UseCase;
     using Grayscale.Kifuwarane.UseCases;
     using Grayscale.Kifuwarane.UseCases.Logging;
-    using Grayscale.Kifuwarane.UseCases.Think;
     using Nett;
 
     class Program
@@ -86,6 +83,7 @@
                         else if ("quit" == line)
                         {
                             playing.Quit();
+                            return;
                         }
                         else
                         {

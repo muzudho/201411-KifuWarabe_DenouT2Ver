@@ -51,8 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Playing.cs" />
-    <Compile Include="MoveRoutine.cs" />
-    <Compile Include="PerformanceMetrics.cs" />
+    <Compile Include="Features\MoveRoutine.cs" />
+    <Compile Include="Features\PerformanceMetrics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
