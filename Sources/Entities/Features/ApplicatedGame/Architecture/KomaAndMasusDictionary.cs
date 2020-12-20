@@ -224,7 +224,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     );
                     starIndex++;
                 }
-                sb1.AppendLine(kyokumen.Log_Kyokumen(kifu, teme, "駒=" + KomaSyurui14Array.ToGaiji(syurui, sengo)));// 局面をテキストで作成
+                sb1.AppendLine(kyokumen.Log_Kyokumen(kifu, teme, $"駒={ KomaSyurui14Array.ToGaiji(syurui, sengo)}"));// 局面をテキストで作成
             });
 
             return sb1.ToString();

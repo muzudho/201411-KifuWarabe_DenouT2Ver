@@ -34,7 +34,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // 棋譜から１手削ります
             //------------------------------
-            //Console.WriteLine("ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
+            //Console.WriteLine($"ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
             IKifuElement removeeLeaf = kifuD.Current8;
 
             if (removeeLeaf is TreeRoot6)
@@ -53,10 +53,10 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             // そこで戻るボタンでは、移動前の駒に従って、「進んできた動きとは逆の動き」を行います。
 
             string fugoJStr = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(removeeLeaf.TeProcess.SrcStar.Haiyaku)](removeeLeaf.TeProcess, kifuD).ToText_UseDou(removeeLeaf);
-            //MessageBox.Show("戻る符号＝" + fugoJStr, "デバッグ");
+            //MessageBox.Show($"戻る符号＝{ fugoJStr}", "デバッグ");
 
             // 入力欄
-            backedInputText = fugoJStr + " " + backedInputText;
+            backedInputText = $"{fugoJStr} {backedInputText}";
             // 符号表示
             shape_PnlTaikyoku.SetFugo(fugoJStr);
 
@@ -70,7 +70,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             K40 underKoma = K40.Error;
             bool isBack = true;
 
-            //MessageBox.Show("戻る符号＝" + removeeLeaf.TeProcess.ToSfenText(), "デバッグ");
+            //MessageBox.Show($"戻る符号＝{ removeeLeaf.TeProcess.ToSfenText()}", "デバッグ");
 
             KifuIO.Ittesasi3(
                 removeeLeaf.TeProcess,
@@ -82,7 +82,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();
-            ////Console.WriteLine("ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[" + kifuD.CountTeme(kifuD.Current8) + "]");
+            ////Console.WriteLine($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
 
             Shape_BtnKoma btn_movedKoma = Converter09.KomaToBtn(movedKoma, shape_PnlTaikyoku);
             //Shape_BtnKoma btn_tottaKoma = Converter09.KomaToBtn(tottaKoma, shape_PnlTaikyoku);
@@ -155,7 +155,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             Ui_01MenuB ui_01MenuB = new Ui_01MenuB(requestForMain, shape_PnlTaikyoku);
             bool toBreak = false;
 
-            Logger.Trace( "[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logger.Trace( $"[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{ sourceLineNumber }");
             bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
 
             // 再描画1

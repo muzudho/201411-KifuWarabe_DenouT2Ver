@@ -280,16 +280,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             if (null != memo && "" != memo.Trim())
             {
-                sb.Append("　：　");
-                sb.Append(memo);
+                sb.Append($"　：　{memo}");
             }
-            sb.Append("　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
-            sb.AppendLine();
+            sb.AppendLine($@"　：　{ memberName }.{ sourceFilePath }.{ sourceLineNumber}
+[{ arrayIndex }]データ目　葉＝[{ kifuD.CountTeme(kifuD.Current8) }]手目");
 
-            sb.AppendLine("[" + arrayIndex + "]データ目　葉＝[" + kifuD.CountTeme(kifuD.Current8) + "]手目");
-
-            sb.AppendLine("　９　８　７　６　５　４　３　２　１");
-            sb.AppendLine("┏━┯━┯━┯━┯━┯━┯━┯━┯━┓");
+            sb.AppendLine($@"　９　８　７　６　５　４　３　２　１
+┏━┯━┯━┯━┯━┯━┯━┯━┯━┓");
             for (int dan = 0; dan < 9; dan++)
             {
                 sb.Append("┃");
@@ -307,8 +304,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                     if (suji == 0)//１筋が最後だぜ☆
                     {
-                        sb.Append("┃");
-                        sb.AppendLine(GameTranslator.IntToJapanese(dan + 1));
+                        sb.Append($"┃{GameTranslator.IntToJapanese(dan + 1)}");
                     }
                     else
                     {
@@ -342,10 +338,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             {
                 sb.Append(masu.ToGaiji());
             }
-            sb.AppendLine();
-            sb.AppendLine("...(^▽^)ﾄﾞｳﾀﾞｯﾀｶﾅ～☆");
-            sb.AppendLine();//空行
+            sb.AppendLine($@"
+...(^▽^)ﾄﾞｳﾀﾞｯﾀｶﾅ～☆
 
+");
 
             return sb.ToString();
         }

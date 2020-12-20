@@ -229,7 +229,7 @@ usiok
             foreach (KeyValuePair<string, string> pair in this.SetoptionDictionary)
             {
                 // ここで将棋エンジンの設定を済ませておいてください。
-                Logger.Trace(pair.Key + "=" + pair.Value);
+                Logger.Trace($"{pair.Key}={pair.Value}");
             }
             Logger.Trace("┗━━━━━━━━━━━━┛");
 
@@ -409,8 +409,7 @@ usiok
             //      └─┴─┴─┴─┴─┴─┴─┴─┴─┘             └─┴─┴─┴─┴─┴─┴─┴─┴─┘
             //
 
-            // line=[" + line + "]
-            Logger.Trace(this.TreeD.DebugText_Kyokumen7(this.TreeD, "現局面になっているのかなんだぜ☆？　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD)));
+            Logger.Trace(this.TreeD.DebugText_Kyokumen7(this.TreeD, $"現局面になっているのかなんだぜ☆？　棋譜＝{ KirokuGakari.ToJapaneseKifuText(this.TreeD)}"));
         }
 
         public void GoPonder()
@@ -581,8 +580,7 @@ usiok
             int latestTeme = this.TreeD.CountTeme(this.TreeD.Current8);//現・手目
             PositionKomaHouse genKyokumen = this.TreeD.ElementAt8(latestTeme).KomaHouse;//現局面
 
-            //  + line
-            Logger.Trace("将棋サーバー「" + latestTeme + "手目、きふわらべ　さんの手番ですよ！」　");
+            Logger.Trace($"将棋サーバー「{ latestTeme }手目、きふわらべ　さんの手番ですよ！」　");
 
             //------------------------------------------------------------
             // わたしの手番のとき、王様が　将棋盤上からいなくなっていれば、投了します。
@@ -595,9 +593,9 @@ usiok
                 || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
                 )
             {
-                Logger.Trace("将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」");
-                Logger.Trace("▲王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu));
-                Logger.Trace("△王の置き場＝" + M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu));
+                Logger.Trace($@"将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」
+▲王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu)}
+△王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu)}");
 
                 //------------------------------------------------------------
                 // 投了
@@ -625,15 +623,13 @@ usiok
                 if (bestmove.isEnableSfen())
                 {
                     string sfenText = bestmove.ToSfenText();
-                    Logger.Trace("(Warabe)指し手のチョイス： bestmove＝[" + sfenText + "]" +
-                        "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD));
+                    Logger.Trace($"(Warabe)指し手のチョイス： bestmove＝[{ sfenText }]　先後=[{ this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) }]　棋譜＝{ KirokuGakari.ToJapaneseKifuText(this.TreeD) }");
 
-                    Playing.Send("bestmove " + sfenText);//指し手を送ります。
+                    Playing.Send($"bestmove {sfenText}");//指し手を送ります。
                 }
                 else // 指し手がないときは、SFENが書けない☆　投了だぜ☆
                 {
-                    Logger.Trace("(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）" +
-                        "　先後=[" + this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) + "]　棋譜＝" + KirokuGakari.ToJapaneseKifuText(this.TreeD));
+                    Logger.Trace($"(Warabe)指し手のチョイス： 指し手がないときは、SFENが書けない☆　投了だぜ☆ｗｗ（＞＿＜）　先後=[{ this.TreeD.CountSengo(this.TreeD.CountTeme(this.TreeD.Current8)) }]　棋譜＝{ KirokuGakari.ToJapaneseKifuText(this.TreeD) }");
 
                     // 投了ｗ！
                     Playing.Send("bestmove resign");

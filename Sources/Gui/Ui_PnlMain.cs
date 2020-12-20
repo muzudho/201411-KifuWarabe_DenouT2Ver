@@ -360,8 +360,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             if (0 < Ui_PnlMain.input99.Length)
             {
 
-                //Console.WriteLine("timer input99=[" + input99 + "]");
-                Logger.Trace( "timer入力 input99=[" + Ui_PnlMain.input99 + "]");
+                //Console.WriteLine($"timer input99=[{ input99 }]");
+                Logger.Trace( $"timer入力 input99=[{ Ui_PnlMain.input99 }]");
 
                 this.AppendInput1Text(Ui_PnlMain.input99);
                 Ui_PnlMain.input99 = "";
@@ -638,13 +638,13 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
         private void SetInput1Text(string value)
         {
-            //Console.WriteLine("☆セット：" + value);
+            //Console.WriteLine($"☆セット：{ value}");
             this.txtInput1.Text = value;
         }
 
         private void AppendInput1Text(string value,[CallerMemberName] string memberName = "")
         {
-            Console.WriteLine("☆アペンド(" + memberName + ")：" + value);
+            Console.WriteLine($"☆アペンド({ memberName })：{ value}");
             this.txtInput1.Text += value;
         }
 

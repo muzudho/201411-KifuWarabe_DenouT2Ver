@@ -105,20 +105,20 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                 PositionKomaHouse house1 = dammyNode6.KomaHouse;
 
                 // 合法手がなかった☆
-                sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
-                sbGohosyu.AppendLine("合法手がなかった☆");
-                sbGohosyu.AppendLine("komaAndMove.Entries.Count=" + moveList.Count);
+                sbGohosyu.AppendLine($@"┏━━━━━━━━━━┓選択手
+合法手がなかった☆
+komaAndMove.Entries.Count={ moveList.Count}");
                 if (K40.Error == bestmoveKoma)
                 {
-                    sbGohosyu.AppendLine("hMoveKoma=エラー駒");
-                    sbGohosyu.AppendLine("bestmoveMasuSrc=" + bestmoveMasuSrc);
-                    sbGohosyu.AppendLine("bestmoveMasuDst=" + bestmoveMasuDst);
+                    sbGohosyu.AppendLine($@"hMoveKoma=エラー駒
+bestmoveMasuSrc={ bestmoveMasuSrc}
+bestmoveMasuDst={ bestmoveMasuDst}");
                 }
                 else
                 {
-                    sbGohosyu.AppendLine("hMoveKoma=" + KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]);
-                    sbGohosyu.AppendLine("hSrc=" + GameTranslator.SqToJapanese((int)bestmoveMasuSrc));
-                    sbGohosyu.AppendLine("hDst=" + GameTranslator.SqToJapanese((int)bestmoveMasuDst));
+                    sbGohosyu.AppendLine($@"hMoveKoma={ KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]}
+hSrc={ GameTranslator.SqToJapanese((int)bestmoveMasuSrc) }
+hDst={ GameTranslator.SqToJapanese((int)bestmoveMasuDst) }");
                 }
                 sbGohosyu.AppendLine("┗━━━━━━━━━━┛選択手");
 
@@ -129,11 +129,11 @@ namespace Grayscale.Kifuwarane.UseCases.Think
                 IKifuElement dammyNode6 = kifu.ElementAt8(thisTeme);
                 PositionKomaHouse house1 = dammyNode6.KomaHouse;
 
-                sbGohosyu.AppendLine("┏━━━━━━━━━━┓選択手");
-                sbGohosyu.AppendLine("hMoveKoma=" + KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]);
-                sbGohosyu.AppendLine("hSrc=" + GameTranslator.SqToJapanese((int)bestmoveMasuSrc));
-                sbGohosyu.AppendLine("hDst=" + GameTranslator.SqToJapanese((int)bestmoveMasuDst));
-                sbGohosyu.AppendLine("┗━━━━━━━━━━┛選択手");
+                sbGohosyu.AppendLine($@"┏━━━━━━━━━━┓選択手
+hMoveKoma={ KomaSyurui14Array.Ichimoji[(int)Haiyaku184Array.Syurui(house1.KomaPosAt(bestmoveKoma).Star.Haiyaku)]}
+hSrc={ GameTranslator.SqToJapanese((int)bestmoveMasuSrc) }
+hDst={ GameTranslator.SqToJapanese((int)bestmoveMasuDst) }
+┗━━━━━━━━━━┛選択手");
 
 
             }

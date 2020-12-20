@@ -34,66 +34,53 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         /// </summary>
         public static void StartShogiEngine(string shogiEngineFileName)
         {
-            try
+            if (ShogiEngineService.IsLiveShogiEngine())
             {
-                if (ShogiEngineService.IsLiveShogiEngine())
-                {
-                    Console.WriteLine("将棋エンジンサービスは終了していません。");
-                    goto gt_EndMethod;
-                }
-
-                //------------------------------
-                // ログファイルを削除します。
-                //------------------------------
-                Logger.RemoveAllLogFiles();
-
-
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-
-                startInfo.FileName = shogiEngineFileName; // 実行するファイル名決め打ち
-                //startInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-                startInfo.UseShellExecute = false; // シェル機能を使用しない
-                startInfo.RedirectStandardInput = true;//標準入力をリダイレクト
-                startInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-
-                ShogiEngineService.shogiEngineProcess = Process.Start(startInfo); // アプリの実行開始
-
-                //  OutputDataReceivedイベントハンドラを追加
-                ShogiEngineService.shogiEngineProcess.OutputDataReceived += ShogiEngineService.ReceivedData_FromShogiEngine_Async;
-                ShogiEngineService.shogiEngineProcess.Exited += ShogiEngineService.ShogiEngineService_Exited;
-
-                // 非同期受信スタート☆！
-                ShogiEngineService.shogiEngineProcess.BeginOutputReadLine();
-
-                // 「usi」
-                ShogiEngineService.Send("usi");
-
-
-                // エンジン設定
-                // 「setoption」
-                //Server.shogiEngineProcess.StandardInput.WriteLine("setoption");
-
-
-                //
-                // サーバー・スレッドはここで終了しますが、
-                // 代わりに、Server.shogiEngineProcess プロセスが動き続け、
-                // ReceivedData_FromShogiEngine メソッドが非同期に呼び出され続けます。
-                //
-
-                //this.thread = new Thread(new ThreadStart(Server.Main2));
-                //this.thread.IsBackground = true;
-                //this.thread.Start();
-
+                Console.WriteLine("将棋エンジンサービスは終了していません。");
+                goto gt_EndMethod;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name + "：" + ex.Message);
-                Console.WriteLine($"shogiEngineFileName: {shogiEngineFileName}");
-                
 
-                // 追加。トレース情報が欲しい。
-                throw;
-            }
+            //------------------------------
+            // ログファイルを削除します。
+            //------------------------------
+            Logger.RemoveAllLogFiles();
+
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+
+            startInfo.FileName = shogiEngineFileName; // 実行するファイル名決め打ち
+                                                      //startInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            startInfo.UseShellExecute = false; // シェル機能を使用しない
+            startInfo.RedirectStandardInput = true;//標準入力をリダイレクト
+            startInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+
+            ShogiEngineService.shogiEngineProcess = Process.Start(startInfo); // アプリの実行開始
+
+            //  OutputDataReceivedイベントハンドラを追加
+            ShogiEngineService.shogiEngineProcess.OutputDataReceived += ShogiEngineService.ReceivedData_FromShogiEngine_Async;
+            ShogiEngineService.shogiEngineProcess.Exited += ShogiEngineService.ShogiEngineService_Exited;
+
+            // 非同期受信スタート☆！
+            ShogiEngineService.shogiEngineProcess.BeginOutputReadLine();
+
+            // 「usi」
+            ShogiEngineService.Send("usi");
+
+
+        // エンジン設定
+        // 「setoption」
+        //Server.shogiEngineProcess.StandardInput.WriteLine("setoption");
+
+
+        //
+        // サーバー・スレッドはここで終了しますが、
+        // 代わりに、Server.shogiEngineProcess プロセスが動き続け、
+        // ReceivedData_FromShogiEngine メソッドが非同期に呼び出され続けます。
+        //
+
+        //this.thread = new Thread(new ThreadStart(Server.Main2));
+        //this.thread.IsBackground = true;
+        //this.thread.Start();
 
         gt_EndMethod:
             ;
@@ -235,7 +222,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
                     // 将棋エンジンが、手を指されました。
                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                    Ui_PnlMain.input99 += line.Substring("bestmove".Length+"".Length);
+                    Ui_PnlMain.input99 += line.Substring("bestmove".Length + "".Length);
 
                     Logger.Trace($"USI受信：bestmove input99=[{Ui_PnlMain.input99}]", SpecifyLogFiles.GuiDefault);
                 }

@@ -55,7 +55,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 // 最初はここ
 
                 Logger.Trace( "... ...");
-                Logger.Trace( "ｻｲｼｮﾊｺｺ☆　：　" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+                Logger.Trace( $"ｻｲｼｮﾊｺｺ☆　：　{ memberName }.{ sourceFilePath }.{ sourceLineNumber}");
                 inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu");
                 if (toBreak)
                 {
@@ -193,7 +193,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             FugoJ fugoJ = JFugoCreator15Array.ItemMethods[(int)Haiyaku184Array.Syurui(node6.TeProcess.SrcStar.Haiyaku)](node6.TeProcess, kifuD);//「▲２二角成」なら、馬（dst）ではなくて角（src）。
             string fugoJStr = fugoJ.ToText_UseDou(node6);
-            //MessageBox.Show("一手指し符号＝" + fugoJStr, "デバッグ");
+            //MessageBox.Show($"一手指し符号＝{ fugoJStr}", "デバッグ");
             shape_PnlTaikyoku.SetFugo(fugoJStr);
 
             requestForMain.RequestOutputKifu = true;   // 棋譜出力要求

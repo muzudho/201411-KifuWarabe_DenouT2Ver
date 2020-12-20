@@ -61,13 +61,13 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
         public void DebugWrite()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("設定ファイル          : " + this.SetteiFileName);
-            sb.AppendLine("設定ファイルVer       : " + this.SetteiFileVer);
-            sb.AppendLine("将棋エンジン          : " + this.ShogiEngineName);
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            sb.AppendLine($@"設定ファイル          : { this.SetteiFileName}
+設定ファイルVer       : { this.SetteiFileVer}
+将棋エンジン          : { this.ShogiEngineName}
+
+
+
+");
         }
 
         public bool Exists()
@@ -97,11 +97,11 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
                     break;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // エラー
                 successfule = false;
-                Console.WriteLine(ex.GetType().Name+"　"+ex.Message);
+                Console.WriteLine(ex.GetType().Name + "　" + ex.Message);
             }
 
             return successfule;
@@ -118,36 +118,26 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             XmlProcessingInstruction xPi = xDoc.CreateProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
             xDoc.AppendChild(xPi);
 
+            // ルート要素 <kifunarabe> を作成
+            XmlElement xKifunarabe = xDoc.CreateElement("kifunarabe");
+            xDoc.AppendChild(xKifunarabe);
 
-            try
-            {
-                // ルート要素 <kifunarabe> を作成
-                XmlElement xKifunarabe = xDoc.CreateElement("kifunarabe");
-                xDoc.AppendChild(xKifunarabe);
+            // setteiFileVer="1.00.0"
+            xKifunarabe.SetAttribute("setteiFileVer", this.SetteiFileVer);
 
-                // setteiFileVer="1.00.0"
-                xKifunarabe.SetAttribute("setteiFileVer", this.SetteiFileVer);
+            // コメント
+            xKifunarabe.AppendChild(xDoc.CreateComment("v(^-^)vｲｪｰｲ☆ 『将棋ＧＵＩ きふならべ』の設定ファイルなんだぜ☆！ 今は一番上に書いてある ＜shogiEngine＞ を見に行くぜ☆"));
 
-                // コメント
-                xKifunarabe.AppendChild(xDoc.CreateComment("v(^-^)vｲｪｰｲ☆ 『将棋ＧＵＩ きふならべ』の設定ファイルなんだぜ☆！ 今は一番上に書いてある ＜shogiEngine＞ を見に行くぜ☆"));
+            // <shogiEngine>
+            XmlElement xShogiEngine = xDoc.CreateElement("shogiEngine");
 
-                // <shogiEngine>
-                XmlElement xShogiEngine = xDoc.CreateElement("shogiEngine");
+            // name="The将棋エンジン"
+            xShogiEngine.SetAttribute("file", this.ShogiEngineName);
 
-                // name="The将棋エンジン"
-                xShogiEngine.SetAttribute("file", this.ShogiEngineName);
+            xKifunarabe.AppendChild(xShogiEngine);
 
-                xKifunarabe.AppendChild(xShogiEngine);
-
-                // .xmlファイルを保存
-                xDoc.Save(this.SetteiFileName);
-            }
-            catch (Exception ex)
-            {
-                // エラー
-                successfule = false;
-                Console.WriteLine(ex.GetType().Name + "　" + ex.Message);
-            }
+            // .xmlファイルを保存
+            xDoc.Save(this.SetteiFileName);
 
             return successfule;
         }

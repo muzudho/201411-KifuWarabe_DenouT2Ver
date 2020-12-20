@@ -33,13 +33,13 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             {
                 // 後手
                 kingMasu = node1.KomaHouse.KomaPosAt(K40.GoteOh).Star.Masu;
-                sbGohosyu.AppendLine("後手王＝[" + kingMasu + "]");
+                sbGohosyu.AppendLine($"後手王＝[{ kingMasu }]");
             }
             else
             {
                 // 先手
                 kingMasu = node1.KomaHouse.KomaPosAt(K40.SenteOh).Star.Masu;
-                sbGohosyu.AppendLine("先手王＝[" + kingMasu + "]");
+                sbGohosyu.AppendLine($"先手王＝[{ kingMasu }]");
             }
 
 
@@ -199,16 +199,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 }
 
 
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                sbOhteDebug.AppendLine("■デバッグ出力(b)enable_teMap");
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                sbOhteDebug.AppendLine(@"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■デバッグ出力(b)enable_teMap
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(b)
                 foreach (KeyValuePair<K40, IMove> entry1 in enable_teMap)
                 {
-                    sbOhteDebug.AppendLine("(b)" + entry1.Key + "=" + entry1.Value);
+                    sbOhteDebug.AppendLine($"(b){ entry1.Key }={ entry1.Value}");
                 }
-
-
 
                 foreach (TreeNode6 nextNode in enable_nextNodes)
                 {
@@ -240,24 +238,24 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     }
                 }
 
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                sbOhteDebug.AppendLine("■デバッグ出力(c)作り直しkomaAndMove_Self");
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                sbOhteDebug.AppendLine(@"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■デバッグ出力(c)作り直しkomaAndMove_Self
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(c)
                 kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry2, ref bool toBreak) =>
                 {
-                    sbOhteDebug.AppendLine("(c)" + entry2.Key + "=" + entry2.Value);
+                    sbOhteDebug.AppendLine($"(c){ entry2.Key }={ entry2.Value}");
                 }
                 );
 
 
 
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                sbOhteDebug.AppendLine("■デバッグ出力(d)enable_nextNodes");
-                sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                sbOhteDebug.AppendLine(@"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■デバッグ出力(d)enable_nextNodes
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 foreach (TreeNode6 nextNode in enable_nextNodes)
                 {
-                    sbOhteDebug.AppendLine("(d)" + nextNode.TeProcess.ToSfenText());
+                    sbOhteDebug.AppendLine($"(d){ nextNode.TeProcess.ToSfenText()}");
                 }
 
                 Logging.Logger.WriteFile(SpecifyLogFiles.LegalMoveEvasion, sbOhteDebug.ToString());
@@ -323,13 +321,13 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             ido_onBan = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnBan);
             ido_OnDai = Thought.GetPotentialMovesByKoma(siteiNode, jiKomas_OnDai);
 
-            sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(将棋盤Set)");
-            sbGohosyu.AppendLine(ido_onBan.LogString_Set());
-            sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(将棋盤Set)");
+            sbGohosyu.AppendLine($@"┏━━━━━━━━━━┓自分の駒の動き(将棋盤Set)
+{ido_onBan.LogString_Set()}
+┗━━━━━━━━━━┛自分の駒の動き(将棋盤Set)");
 
-            sbGohosyu.AppendLine("┏━━━━━━━━━━┓自分の駒の動き(駒台Set)");
-            sbGohosyu.AppendLine(ido_onBan.LogString_Set());
-            sbGohosyu.AppendLine("┗━━━━━━━━━━┛自分の駒の動き(駒台Set)");
+            sbGohosyu.AppendLine($@"┏━━━━━━━━━━┓自分の駒の動き(駒台Set)
+{ido_onBan.LogString_Set()}
+┗━━━━━━━━━━┛自分の駒の動き(駒台Set)");
 
             //------------------------------------------------------------
             // 調べたい側の駒がある枡。
@@ -337,22 +335,22 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
 
             // 盤上の自駒の移動候補から、 自駒がある枡を除外します。
             ido_onBan = Thought_KomaAndMove.MinusMasus(ido_onBan, jiMasus_OnBan);
-            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(①自駒升除去)　盤＝" + ido_onBan.DebugString_Set());
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, $"(①自駒升除去)　盤＝{ ido_onBan.DebugString_Set()}");
 
             // そこから、敵駒がある枡「以降」を更に除外します。
             // FIXME:
             ido_onBan = Thought_KomaAndMove.Minus_OverThereMasus(ido_onBan, tekiMasus_OnBan);
-            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(②邪魔敵後)　盤＝" + ido_onBan.DebugString_Set());
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, $"(②邪魔敵後)　盤＝{ ido_onBan.DebugString_Set()}");
 
 
             // 自駒台の移動候補から、敵駒がある升を除外します。
             ido_OnDai = Thought_KomaAndMove.MinusMasus(ido_OnDai, tekiMasus_OnBan);
-            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(③打)　台＝" + ido_OnDai.DebugString_Set());
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, $"(③打)　台＝{ ido_OnDai.DebugString_Set()}");
 
             // 移動候補　＝　盤上の移動駒　＋　駒台の打駒
             kouho = ido_onBan;
             kouho.Merge(ido_OnDai);
-            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, "(④盤・台マージ後)　候補＝" + kouho.DebugString_Set());
+            //LarabeLogger.GetInstance().WriteLineError(LibLoggerAddresses.ERROR, $"(④盤・台マージ後)　候補＝{ kouho.DebugString_Set()}");
         }
 
 

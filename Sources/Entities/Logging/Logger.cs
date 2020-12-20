@@ -51,7 +51,8 @@
         public static void WriteFile(ILogFile logFile, string contents)
         {
             File.WriteAllText(logFile.Name, contents);
-            // MessageBox.Show("ファイルを出力しました。\n[" + path + "]");
+            // MessageBox.Show($a"ファイルを出力しました。
+            //{path}");
         }
 
         /// <summary>

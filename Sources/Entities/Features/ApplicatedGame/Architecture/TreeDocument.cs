@@ -549,12 +549,12 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             // ここでノードが追加されますが、局面は進んでいません。
             // ログは、Ittesasiの最後に取ってください。
-            //OldLinkedList.logger.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, "リンクトリストに、ノードは追加された item=[" + item.ToSfenText() + "] memberName=["+memberName+"] sourceFilePath=["+sourceFilePath+"] sourceLineNumber=["+sourceLineNumber+"]");
-            //Kifu_Document.KOMA_DOORS_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, kifuD.DebugText_Kyokumen("ノードが追加されたぜ☆ hint=[" + hint+"]"));
+            //OldLinkedList.logger.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, $"リンクトリストに、ノードは追加された item=[{ item.ToSfenText() }] memberName=[{memberName}] sourceFilePath=[{sourceFilePath}] sourceLineNumber=[{sourceLineNumber}]");
+            //Kifu_Document.KOMA_DOORS_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, kifuD.DebugText_Kyokumen($"ノードが追加されたぜ☆ hint=[{ hint }"));
 
-            Logging.Logger.Trace( "ノードが１つ追加されたぜ☆ｗｗ　：　[" + kifuD.CountTeme(kifuD.Current8) + "]手目　：　hint=[" + hint + "]", SpecifyLogFiles.LinkedList);
-            //　：　棋譜＝"+ KirokuGakari.ToJapaneseKifuText(kifuD)
-            //　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber
+            Logging.Logger.Trace( $"ノードが１つ追加されたぜ☆ｗｗ　：　[{ kifuD.CountTeme(kifuD.Current8) }]手目　：　hint=[{ hint }]", SpecifyLogFiles.LinkedList);
+            //　：　棋譜＝{ KirokuGakari.ToJapaneseKifuText(kifuD) }"
+            //　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{ sourceLineNumber }"
         }
 
 
@@ -620,7 +620,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             this.AppendChild_Main(this, newNode, hint + "：Kifu_Document.cs_Kifu_Document#Add_Old3a");
 
-            Logging.Logger.Trace( "リンクトリストに、ノードは追加された hint=[" + hint + "] te=[" + newNode.TeProcess.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]", SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace( $"リンクトリストに、ノードは追加された hint=[{ hint }] te=[{ newNode.TeProcess.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", SpecifyLogFiles.LinkedList);
         }
 
         /// <summary>
@@ -664,7 +664,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             this.AppendChild_Main(this, newNode, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
             //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
 
-            Logging.Logger.Trace( "リンクトリストの、最終ノードは差し替えられた hint=[" + hint + "] item=[" + item.ToSfenText() + "] memberName=[" + memberName + "] sourceFilePath=[" + sourceFilePath + "] sourceLineNumber=[" + sourceLineNumber + "]", logFile);
+            Logging.Logger.Trace( $"リンクトリストの、最終ノードは差し替えられた hint=[{ hint }] item=[{ item.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", logFile);
 
         gt_EndMethod:
             ;
@@ -727,7 +727,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             }
 
             // ログ出すぎ
-            //Kifu_Document.TREE_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, "リンクトリストの高さを調べられた Count=[" + count + "]");
+            //Kifu_Document.TREE_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, $"リンクトリストの高さを調べられた Count=[{ count }]");
             return countTeme;
         }
 

@@ -89,7 +89,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 ;
             });
 
-            //Console.WriteLine("size(" + fugoList.Count+")"+sb.ToString());
+            //Console.WriteLine($"size({ fugoList.Count }) {sb}");
 
             return sb.ToString();
         }
@@ -157,7 +157,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             });
 
 
-            //Console.WriteLine("size(" + fugoList.Count+")"+sb.ToString());
+            //Console.WriteLine($"size({ fugoList.Count }){ sb }");
 
             return sb.ToString();
         }

@@ -18,7 +18,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <returns></returns>
         public static bool GetDataStartpos_FromText(string text, out string restText, out SfenStartpos sfenStartpos)
         {
-            Console.WriteLine("TranslateSfenStartpos: text=" + text);
+            Console.WriteLine($"TranslateSfenStartpos: text={ text}");
 
             bool successful = false;
             sfenStartpos = null;

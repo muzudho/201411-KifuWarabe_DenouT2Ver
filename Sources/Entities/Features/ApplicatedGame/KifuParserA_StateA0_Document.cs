@@ -54,7 +54,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 //          *1…初期配置を作るということです。
                 // 
 
-                Logging.Logger.Trace("（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... SFEN形式か...☆");
+                Logging.Logger.Trace($"（＾△＾）「{ inputLine }」vs【{ this.GetType().Name }】　：　ﾌﾑﾌﾑ... SFEN形式か...☆");
                 inputLine = inputLine.Substring("position".Length);
                 inputLine = inputLine.Trim();
 
@@ -63,7 +63,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             }
             else
             {
-                Logging.Logger.Trace("（＾△＾）「" + inputLine + "」vs【" + this.GetType().Name + "】　：　ﾌﾑﾌﾑ... positionじゃなかったぜ☆　日本式か☆？　SFENでmovesを読んだあとのプログラムに合流させるぜ☆　：　先後＝[" + kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) + "]　hint=" + hint);
+                Logging.Logger.Trace($"（＾△＾）「{ inputLine }」vs【{ this.GetType().Name }】　：　ﾌﾑﾌﾑ... positionじゃなかったぜ☆　日本式か☆？　SFENでmovesを読んだあとのプログラムに合流させるぜ☆　：　先後＝[{ kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8)) }]　hint={ hint }");
                 nextState = KifuParserA_StateA2_SfenMoves.GetInstance();
             }
 

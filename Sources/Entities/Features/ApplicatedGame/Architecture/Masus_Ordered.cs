@@ -358,13 +358,13 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             // クローンを作成します。
             IMasus c = this.Clone();
-            //Console.WriteLine(this.GetType().Name + "#Minus_OverThere：　★c＝" + c.DebugString_Set());
+            //Console.WriteLine($"{this.GetType().Name }#Minus_OverThere：　★c＝{ c.DebugString_Set()}");
 
             foreach (M201 b in bMasus.Elements)
             {
                 // bを含まない、それより後ろの要素を丸ごと削除します。
                 c.RemoveElement_OverThere(b);
-                //Console.WriteLine(this.GetType().Name + "#Minus_OverThere：　★c＝" + c.DebugString_Set());
+                //Console.WriteLine($"{this.GetType().Name }#Minus_OverThere：　★c＝{ c.DebugString_Set()}");
             }
 
             return c;

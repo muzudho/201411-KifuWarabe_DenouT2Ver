@@ -19,7 +19,7 @@ namespace Grayscale.Kifuwarane.Gui
         [STAThread]
         static void Main()
         {
-            Logger.Trace( "乱数のたね＝[" + RandomLib.Seed + "]");
+            Logger.Trace( $"乱数のたね＝[{ RandomLib.Seed }]");
 
             // 道１８７
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];

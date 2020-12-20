@@ -204,7 +204,7 @@ columnCount=[{columnCount}]");
 
                     int masuHandle = (8 - columnCount) * 9 + (rowCount2 % 9);//0～80
 
-                    sbDebug.AppendLine("(" + rowCount2 + "," + columnCount + ")[" + masuHandle + "]" + cellValue);
+                    sbDebug.AppendLine($"({ rowCount2 },{ columnCount })[{ masuHandle }]{ cellValue}");
 
                     table81[masuHandle] = Kh185Array.Items[cellValue];
 

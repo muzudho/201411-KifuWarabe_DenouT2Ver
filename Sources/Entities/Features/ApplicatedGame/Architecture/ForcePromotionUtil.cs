@@ -41,11 +41,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     sbDebug.Append(File.ReadAllText("#強制転成デバッグ.txt"));
                 }
 
-                sbDebug.AppendLine();
-                sbDebug.AppendLine(hint);
-                sbDebug.AppendLine("　現在の配役=[" + currentHaiyaku + "]");
-                sbDebug.AppendLine("　masuHandle=[" + masuHandle + "]");
-                sbDebug.AppendLine("　強制転成後の配役=[" + result + "]");
+                sbDebug.AppendLine($@"
+{hint}
+　現在の配役=[{ currentHaiyaku }]
+　masuHandle=[{ masuHandle }]
+　強制転成後の配役=[{ result }]");
                 File.WriteAllText("#強制転成デバッグ.txt", sbDebug.ToString());
             }
 

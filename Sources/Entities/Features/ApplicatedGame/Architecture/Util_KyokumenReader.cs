@@ -26,16 +26,16 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 dotZukei = Rule01_PotentialMove_15Array.ItemMethods[(int)Haiyaku184Array.Syurui(koma.Star.Haiyaku)](koma.Star.Sengo, koma.Star.Masu);
 
 
-                //Console.WriteLine("masuList.Count=" + masuList.Count);
+                //Console.WriteLine($"masuList.Count={ masuList.Count}");
                 //foreach (Masu masu in masuList)
                 //{
-                //    Console.WriteLine("masu.Sengo=" + masu.Sengo + "　masu.Suji=" + masu.Suji + "　masu.Dan=" + masu.Dan);
+                //    Console.WriteLine($"masu.Sengo={ masu.Sengo }　masu.Suji={ masu.Suji }　masu.Dan={ masu.Dan }");
                 //}
 
                 //dotZukei.AddMasuHandleRange(Converter04.MasuToHandle(dotZukei.ToMasuList()));
                 //foreach (int kikiMasu in kikiMasuList)
                 //{
-                //    Console.WriteLine("kikiMasu=" + kikiMasu);
+                //    Console.WriteLine($"kikiMasu={ kikiMasu }");
                 //}
             }
 

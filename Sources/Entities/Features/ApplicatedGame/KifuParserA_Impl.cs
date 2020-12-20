@@ -86,7 +86,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             )
         {
             Logging.Logger.Trace("┏━━━━━┓");
-            Logging.Logger.Trace("わたしは　" + this.State.GetType().Name + "　の　Execute_Step　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logging.Logger.Trace($"わたしは　{ this.State.GetType().Name }　の　Execute_Step　だぜ☆　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{+ sourceLineNumber }");
 
             IKifuParserAState nextState;
             inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
@@ -113,7 +113,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             )
         {
             Logging.Logger.Trace("┏━━━━━━━━━━┓");
-            Logging.Logger.Trace("わたしは　" + this.State.GetType().Name + "　の　Execute_All　だぜ☆　：　呼出箇所＝" + memberName + "." + sourceFilePath + "." + sourceLineNumber);
+            Logging.Logger.Trace($"わたしは　{ this.State.GetType().Name }　の　Execute_All　だぜ☆　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{ sourceLineNumber}");
 
             IKifuParserAState nextState = this.State;
 

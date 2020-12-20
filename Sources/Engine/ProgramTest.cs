@@ -873,7 +873,7 @@ namespace Grayscale.Kifuwarane.Entities
             //    {
             //        int banchi = koma40.Koma111.Move_RandomChoice();
 
-            //        Console.WriteLine("banchi = " + banchi);
+            //        Console.WriteLine($"banchi = { banchi}");
             //    }
             //}
 

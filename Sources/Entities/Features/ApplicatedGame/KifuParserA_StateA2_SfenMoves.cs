@@ -41,7 +41,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
             if (0 < inputLine.Trim().Length)
             {
-                //MessageBox.Show("一手指し開始　：　今回の符号つ「" + inputLine + "」\n"+kifuD.Old_KomaHouses.DebugText_Kyokumen(kifuD,"一手指し前"), "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($@"一手指し開始　：　今回の符号つ「{ inputLine }」
+                //{kifuD.Old_KomaHouses.DebugText_Kyokumen(kifuD,"一手指し前")}", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 IMove teProcess = MoveImpl.NULL_OBJECT;
                 string restText;
@@ -91,8 +92,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     // ★棋譜読込専用  駒移動
                     //------------------------------
 
-                    //LarabeLogger.GetInstance().WriteLineMemo("一手指し開始　：　残りの符号つ「" + inputLine + "」　記録係＝" + KirokuGakari.ToJapaneseKifuText(kifuD) + "　：　hint=" + hint);
-                    Logging.Logger.Trace("一手指し開始　：　残りの符号つ「" + inputLine + "」");
+                    //LarabeLogger.GetInstance().WriteLineMemo($"一手指し開始　：　残りの符号つ「{ inputLine }」　記録係＝{ KirokuGakari.ToJapaneseKifuText(kifuD) }　：　hint={ hint}");
+                    Logging.Logger.Trace($"一手指し開始　：　残りの符号つ「{ inputLine }」");
                     bool isBack = false;
                     KifuIO.Ittesasi3(
                         teProcess,
@@ -125,7 +126,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             }
             else
             {
-                Logging.Logger.Trace("（＾△＾）現局面まで進んだのかだぜ☆？\n" + kifuD.DebugText_Kyokumen7(kifuD, "棋譜パース"));
+                Logging.Logger.Trace($@"（＾△＾）現局面まで進んだのかだぜ☆？
+{ kifuD.DebugText_Kyokumen7(kifuD, "棋譜パース")}");
                 toBreak = true;
             }
 
