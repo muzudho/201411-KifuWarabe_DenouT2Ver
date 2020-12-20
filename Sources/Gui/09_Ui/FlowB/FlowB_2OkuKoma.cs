@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
@@ -50,7 +51,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             FlowB nextPhase = null;
             int lastTeme = kifuD1.CountTeme(kifuD1.Current8);
 
-            System.Console.WriteLine("B2マウスダウン");
+            Console.WriteLine("B2マウスダウン");
 
             //----------
             // つまんでいる駒
@@ -58,7 +59,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             Shape_BtnKoma btnTumandeiruKoma = shape_PnlTaikyoku.Btn_TumandeiruKoma(shape_PnlTaikyoku);
             if (null == btnTumandeiruKoma)
             {
-                System.Console.WriteLine("つまんでいる駒なし");
+                Console.WriteLine("つまんでいる駒なし");
                 goto gt_EndMethod;
             }
 
@@ -105,7 +106,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                             if (koma.Star.Masu == btnSasitaiMasu2.Zahyo)
                             {
                                 //>>>>> そこに駒が置いてあった。
-                                System.Console.WriteLine("駒が置いてあった");
+                                Console.WriteLine("駒が置いてあった");
                                 match = true;
                                 toBreak = true;
                             }
@@ -124,7 +125,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             if (null == btnSasitaiMasu)
             {
-                //System.Console.WriteLine("指したいマスなし");
+                //Console.WriteLine("指したいマスなし");
                 goto gt_EndMethod;
             }
             //else
@@ -140,7 +141,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             if (Okiba.ShogiBan == GameTranslator.Masu_ToOkiba(btnSasitaiMasu.Zahyo))//>>>>> 将棋盤：升目   ＜移動先など＞
             {
-                System.Console.WriteLine("将棋盤上");
+                Console.WriteLine("将棋盤上");
 
                 //------------------------------
                 // 成る／成らない
@@ -182,7 +183,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             }
             else if (M201Util.GetOkiba(btnSasitaiMasu.Zahyo).HasFlag(Okiba.Sente_Komadai | Okiba.Gote_Komadai))//>>>>> 駒置き：升目
             {
-                System.Console.WriteLine("駒台上");
+                Console.WriteLine("駒台上");
 
                 IKifuElement dammyNode5 = kifuD1.ElementAt8(lastTeme);
                 PositionKomaHouse house5 = dammyNode5.KomaHouse;
@@ -244,7 +245,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                         if (Okiba.ShogiBan == M201Util.GetOkiba(house6.KomaPosAt(btnKoma.Koma).Star.Masu))
                         {
                             //>>>>> 将棋盤の上に置いてあった駒から、指を放しました
-                            System.Console.WriteLine("つまんでいる駒を放します。(4)");
+                            Console.WriteLine("つまんでいる駒を放します。(4)");
                             shape_PnlTaikyoku.SetHTumandeiruKoma(-1);
 
 
@@ -313,7 +314,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                             //------------------------------
                             if (!shape_PnlTaikyoku.Requested_NaruDialogToShow)
                             {
-                                System.Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
+                                Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
                                 //RO_TeProcess last = kifuD.Current8_Te;
                                 ShogiEngineService.Message_ChangeTurn(kifuD);//マウス左ボタンを放したのでチェンジターンします。
                             }
@@ -345,7 +346,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             FlowB nextPhase = null;
 
             // 各駒の、移動済フラグを解除
-            System.Console.WriteLine("つまんでいる駒を放します。(5)");
+            Console.WriteLine("つまんでいる駒を放します。(5)");
             shape_PnlTaikyoku.SetHTumandeiruKoma(-1);
             shape_PnlTaikyoku.SelectFirstTouch = false;
 

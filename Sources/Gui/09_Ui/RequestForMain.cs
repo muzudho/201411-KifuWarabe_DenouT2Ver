@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 
@@ -84,7 +85,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 this.canAppendInputTextFlag = true;
             }
 
-            System.Console.WriteLine("☆セットアペンド("+memberName+")："+value);
+            Console.WriteLine("☆セットアペンド("+memberName+")："+value);
             this.requestAppendInputTextString = value;
         }
         private string requestAppendInputTextString;

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
@@ -134,14 +135,14 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     //------------------------------
                     if (!shape_PnlTaikyoku.Requested_NaruDialogToShow)
                     {
-                        System.Console.WriteLine("マウス左ボタンを押したのでチェンジターンします。");
+                        Console.WriteLine("マウス左ボタンを押したのでチェンジターンします。");
                         ShogiEngineService.Message_ChangeTurn(kifuD);
                     }
                 }
 
 
                 Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Selected.Koma], shape_PnlTaikyoku, kifuD);
-                System.Console.WriteLine("つまんでいる駒を放します。(6)");
+                Console.WriteLine("つまんでいる駒を放します。(6)");
                 shape_PnlTaikyoku.SetHTumandeiruKoma(-1);//駒を放した扱いです。
 
                 shape_PnlTaikyoku.SetNaruMasu(null);

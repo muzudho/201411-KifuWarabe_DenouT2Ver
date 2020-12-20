@@ -322,7 +322,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             // 順序がないので、Minus無印と同じです。
             IMasus c = this.Minus(targetMasus);
-            //System.Console.WriteLine(this.GetType().Name + "#Minus_OverThere：　★c＝" + c.DebugString_Set());
+            //Console.WriteLine(this.GetType().Name + "#Minus_OverThere：　★c＝" + c.DebugString_Set());
 
             return c;
         }

@@ -38,14 +38,14 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
             {
                 if (ShogiEngineService.IsLiveShogiEngine())
                 {
-                    System.Console.WriteLine("将棋エンジンサービスは終了していません。");
+                    Console.WriteLine("将棋エンジンサービスは終了していません。");
                     goto gt_EndMethod;
                 }
 
                 //------------------------------
                 // ログファイルを削除します。
                 //------------------------------
-                Logger.RemoveAllLogFile();
+                Logger.RemoveAllLogFiles();
 
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -87,8 +87,8 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.GetType().Name + "：" + ex.Message);
-                System.Console.WriteLine($"shogiEngineFileName: {shogiEngineFileName}");
+                Console.WriteLine(ex.GetType().Name + "：" + ex.Message);
+                Console.WriteLine($"shogiEngineFileName: {shogiEngineFileName}");
                 
 
                 // 追加。トレース情報が欲しい。

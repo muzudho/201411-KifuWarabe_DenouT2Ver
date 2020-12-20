@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
@@ -297,7 +298,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mK=" + sfenStartpos.MK);
+            Console.WriteLine("mK=" + sfenStartpos.MK);
 
             //------------------------------
             // ▲飛
@@ -311,7 +312,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mR=" + sfenStartpos.MR);
+            Console.WriteLine("mR=" + sfenStartpos.MR);
 
             //------------------------------
             // ▲角
@@ -325,7 +326,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mB=" + sfenStartpos.MB);
+            Console.WriteLine("mB=" + sfenStartpos.MB);
 
             //------------------------------
             // ▲金
@@ -339,7 +340,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mG=" + sfenStartpos.MG);
+            Console.WriteLine("mG=" + sfenStartpos.MG);
 
             //------------------------------
             // ▲銀
@@ -353,7 +354,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mS=" + sfenStartpos.MS);
+            Console.WriteLine("mS=" + sfenStartpos.MS);
 
             //------------------------------
             // ▲桂
@@ -367,7 +368,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mN=" + sfenStartpos.MN);
+            Console.WriteLine("mN=" + sfenStartpos.MN);
 
             //------------------------------
             // ▲香
@@ -381,7 +382,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mL=" + sfenStartpos.ML);
+            Console.WriteLine("mL=" + sfenStartpos.ML);
 
             //------------------------------
             // ▲歩
@@ -395,7 +396,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Sente);
                 }
             }
-            System.Console.WriteLine("mP=" + sfenStartpos.MP);
+            Console.WriteLine("mP=" + sfenStartpos.MP);
 
             //------------------------------
             // △王
@@ -409,7 +410,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mk=" + sfenStartpos.Mk);
+            Console.WriteLine("mk=" + sfenStartpos.Mk);
 
             //------------------------------
             // △飛
@@ -423,7 +424,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mr=" + sfenStartpos.Mr);
+            Console.WriteLine("mr=" + sfenStartpos.Mr);
 
             //------------------------------
             // △角
@@ -437,7 +438,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mb=" + sfenStartpos.Mb);
+            Console.WriteLine("mb=" + sfenStartpos.Mb);
 
             //------------------------------
             // △金
@@ -451,7 +452,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mg=" + sfenStartpos.Mg);
+            Console.WriteLine("mg=" + sfenStartpos.Mg);
 
             //------------------------------
             // △銀
@@ -465,7 +466,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("ms=" + sfenStartpos.Ms);
+            Console.WriteLine("ms=" + sfenStartpos.Ms);
 
             //------------------------------
             // △桂
@@ -479,7 +480,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mn=" + sfenStartpos.Mn);
+            Console.WriteLine("mn=" + sfenStartpos.Mn);
 
             //------------------------------
             // △香
@@ -493,7 +494,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("ml=" + sfenStartpos.Ml);
+            Console.WriteLine("ml=" + sfenStartpos.Ml);
 
             //------------------------------
             // △歩
@@ -507,7 +508,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     sengoList.Add(Sengo.Gote);
                 }
             }
-            System.Console.WriteLine("mp=" + sfenStartpos.Mp);
+            Console.WriteLine("mp=" + sfenStartpos.Mp);
 
 
             //------------------------------------------------------------------------------------------------------------------------

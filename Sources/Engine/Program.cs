@@ -35,7 +35,7 @@
                 //          ├─ Engine.KifuWarabe.exe
                 //          └─ log.txt               ←これを削除
                 //
-                Logger.RemoveAllLogFile();
+                Logger.RemoveAllLogFiles();
 
                 // 
                 // 図.
@@ -227,13 +227,15 @@
                             //
                             // “が”、まだ指してはいけません。
 
+                            /*
                             Logger.Trace( " ...");
                             Logger.Trace( "    ...");
                             Logger.Trace( "       ...");
                             Logger.Trace( "（＾△＾）positionきたｺﾚ！");
+                            */
 
                             KifuParserA_Impl kifuParserA_Impl = new KifuParserA_Impl();
-                            Logger.Trace( "（＾△＾）positionきたｺﾚ！　line=[" + line + "]");
+                            Logger.Trace( $"（＾△＾）positionきたｺﾚ！　line=[{ line }]");
 
                             kifuParserA_Impl.Execute_All(line, playing.TreeD, "Program#Main(Warabe)");
                             playing.Position();
@@ -403,7 +405,7 @@
                     Logger.Trace( "KifuParserA_Impl.LOGGING_BY_ENGINE, ┏━確認━━━━setoptionDictionary ━┓");
                     foreach (KeyValuePair<string, string> pair in playing.SetoptionDictionary)
                     {
-                        Logger.Trace( pair.Key + "=" + pair.Value);
+                        Logger.Trace( $"{pair.Key}={pair.Value}");
                     }
                     Logger.Trace( "┗━━━━━━━━━━━━━━━━━━┛");
                 }
@@ -411,8 +413,7 @@
             catch (Exception ex)
             {
                 // エラーが起こりました。
-                // どうにもできないので  ログだけ取って、 `quit` を投げて終了します。
-                Logger.Error( "Program「大外枠でキャッチ」：" + ex.GetType().Name + " " + ex.Message);
+                Logger.Error( $"Program「大外枠でキャッチ」：{ex}");
                 Playing.Send("bestmove resign");
                 throw;
             }

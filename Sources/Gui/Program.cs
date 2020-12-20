@@ -34,13 +34,13 @@ namespace Grayscale.Kifuwarane.Gui
             {
                 // 駒配役を生成した後で。
 
-                System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputForcePromotionFileName = toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion");
-                System.Console.WriteLine(inputForcePromotionFileName);
+                Console.WriteLine(inputForcePromotionFileName);
                 var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName);
                 List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                //System.Console.Write(ForcePromotionArray.DebugString());
+                //Console.Write(ForcePromotionArray.DebugString());
 
                 Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
@@ -49,9 +49,9 @@ namespace Grayscale.Kifuwarane.Gui
             // 配役転換表
             //------------------------------
             {
-                System.Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputPieceTypeToHaiyakuFileName = toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku");
-                System.Console.WriteLine(inputPieceTypeToHaiyakuFileName);
+                Console.WriteLine(inputPieceTypeToHaiyakuFileName);
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 

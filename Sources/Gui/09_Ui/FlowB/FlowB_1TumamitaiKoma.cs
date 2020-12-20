@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities;
@@ -344,7 +345,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     {
                         //>>>>>>>>>> 既に選択されている駒があります。
 
-                        System.Console.WriteLine("★成ろうとしたとき、取られる相手の駒かも。");
+                        Console.WriteLine("★成ろうとしたとき、取られる相手の駒かも。");
                     }
                     else
                     {
@@ -362,7 +363,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
                         if (btnKoma.HitByMouse(e.Location.X, e.Location.Y)) //>>>>> 駒をつまみました。
                         {
-                            System.Console.WriteLine("駒をつまみます。(2)");
+                            Console.WriteLine("駒をつまみます。(2)");
                             shape_PnlTaikyoku.SetHTumandeiruKoma((int)btnKoma.Koma);
                             shape_PnlTaikyoku.SelectFirstTouch = true;
 
@@ -467,7 +468,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 if (btnKoma.HitByMouse(e.Location.X, e.Location.Y))
                 {
                     //>>>>> つまみたい駒から、指を放しました
-                    System.Console.WriteLine("つまんでいる駒を放します。(3)");
+                    Console.WriteLine("つまんでいる駒を放します。(3)");
                     shape_PnlTaikyoku.SetHTumandeiruKoma(-1);
 
                     IKifuElement dammyNode7 = kifuD.ElementAt8(lastTeme);
@@ -543,7 +544,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                         //------------------------------
                         if (!shape_PnlTaikyoku.Requested_NaruDialogToShow)
                         {
-                            System.Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
+                            Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
                             //RO_TeProcess last = kifuD.Current8_Te;
                             ShogiEngineService.Message_ChangeTurn(kifuD);//マウス左ボタンを放したのでチェンジターンします。
                         }

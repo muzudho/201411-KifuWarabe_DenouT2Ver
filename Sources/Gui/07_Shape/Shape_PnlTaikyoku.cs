@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Grayscale.Kifuwarane.Entities;
@@ -231,7 +232,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         {
             this.lblFugo.Text = fugo;
 
-            //System.Console.WriteLine("符号："+fugo+"："+memberName);
+            //Console.WriteLine("符号："+fugo+"："+memberName);
         }
         private Shape_LblBox lblFugo;
 
@@ -926,7 +927,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         public Shape_PnlTaikyoku()
         {
             // 初期化
-            System.Console.WriteLine("つまんでいる駒を放します。(1)");
+            Console.WriteLine("つまんでいる駒を放します。(1)");
             this.SetHTumandeiruKoma(-1);
             this.SetHMovedKoma(K40.Error);
 

@@ -64,10 +64,10 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             sb.AppendLine("設定ファイル          : " + this.SetteiFileName);
             sb.AppendLine("設定ファイルVer       : " + this.SetteiFileVer);
             sb.AppendLine("将棋エンジン          : " + this.ShogiEngineName);
-            System.Console.WriteLine();
-            System.Console.WriteLine();
-            System.Console.WriteLine();
-            System.Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public bool Exists()
@@ -101,7 +101,7 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             {
                 // エラー
                 successfule = false;
-                System.Console.WriteLine(ex.GetType().Name+"　"+ex.Message);
+                Console.WriteLine(ex.GetType().Name+"　"+ex.Message);
             }
 
             return successfule;
@@ -146,7 +146,7 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             {
                 // エラー
                 successfule = false;
-                System.Console.WriteLine(ex.GetType().Name + "　" + ex.Message);
+                Console.WriteLine(ex.GetType().Name + "　" + ex.Message);
             }
 
             return successfule;
