@@ -40,7 +40,7 @@ namespace Grayscale.Kifuwarane.Gui
                 var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName);
                 List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                //Console.Write(ForcePromotionArray.DebugString());
+                //Logger.Trace(ForcePromotionArray.DebugString());
 
                 Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }

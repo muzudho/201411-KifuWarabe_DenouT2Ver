@@ -5,13 +5,13 @@
     /// 引数を受け取らず、１行の文字列を返すだけのメソッド型です。
     /// </summary>
     /// <returns></returns>
-    public delegate string ReadLineMethod();
+    public delegate string ReadTextLine();
 
     /// <summary>
     /// 引数として１行のテキストを１つ受け取り、何も返さないメソッド型メンバーです。
     /// </summary>
     /// <returns></returns>
-    public delegate void WriteLineMethod(string text);
+    public delegate void WriteTextLine(string text);
 
     /// <summary>
     /// ************************************************************************************************************************
@@ -43,11 +43,11 @@
         }
 
         public static void SetShogiEngine(
-            ReadLineMethod readLineMethod1,
-            WriteLineMethod writeLineMethod
+            ReadTextLine readTextLineDelegate,
+            WriteTextLine writeTextLineDelegate
             )
         {
-            DammyConsole.defaultDammyConsole = new DammyConsole(readLineMethod1, writeLineMethod);
+            DammyConsole.defaultDammyConsole = new DammyConsole(readTextLineDelegate, writeTextLineDelegate);
         }
         private static DammyConsole defaultDammyConsole;
 
@@ -56,14 +56,14 @@
         /// 入力先１です。　引数を受け取らず、１行の文字列を返すだけのメソッド型メンバーです。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        private ReadLineMethod readLineMethod1;
+        private ReadTextLine readTextLineDelegate;
 
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
         /// 出力先です。　引数として１行のテキストを１つ受け取り、何も返さないメソッド型メンバーです。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        private WriteLineMethod writeLineMethod;
+        private WriteTextLine writeTextLineDelegate;
 
         #endregion
 
@@ -74,12 +74,12 @@
         /// ************************************************************************************************************************
         /// </summary>
         public DammyConsole(
-            ReadLineMethod readLineMethod1,
-            WriteLineMethod writeLineMethod
+            ReadTextLine readTextLineDelegate,
+            WriteTextLine writeTextLineDelegate
             )
         {
-            this.readLineMethod1 = readLineMethod1;
-            this.writeLineMethod = writeLineMethod;
+            this.readTextLineDelegate = readTextLineDelegate;
+            this.writeTextLineDelegate = writeTextLineDelegate;
         }
 
 
@@ -93,7 +93,7 @@
         {
             string value;
 
-            if (null == this.readLineMethod1)
+            if (null == this.readTextLineDelegate)
             {
                 // 入力先が設定されていませんでした。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -102,7 +102,7 @@
                 goto gt_EndMethod;
             }
 
-            value = this.readLineMethod1();
+            value = this.readTextLineDelegate();
 
         gt_EndMethod:
             return value;
@@ -113,9 +113,9 @@
         /// 出力欄（上段）に１行のテキストをセットします。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public void WriteLine(string text)
+        public void WriteTextLine(string text)
         {
-            if (null == this.writeLineMethod)
+            if (null == this.writeTextLineDelegate)
             {
                 // 出力先１が設定されていませんでした。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -123,7 +123,7 @@
                 goto gt_EndMethod;
             }
 
-            this.writeLineMethod(text);
+            this.writeTextLineDelegate(text);
 
         gt_EndMethod:
             ;

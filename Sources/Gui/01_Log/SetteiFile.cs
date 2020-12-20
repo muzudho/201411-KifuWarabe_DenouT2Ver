@@ -109,7 +109,7 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
         }
 
 
-        public bool Write()
+        public bool WriteFile()
         {
             bool successfule = true;
 

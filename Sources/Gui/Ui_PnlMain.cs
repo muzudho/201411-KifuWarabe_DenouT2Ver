@@ -23,9 +23,6 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
     [Serializable]
     public partial class Ui_PnlMain : UserControl
     {
-
-        #region プロパティー類
-
         public SetteiFile SetteiFile
         {
             get
@@ -104,18 +101,13 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         }
         private TreeDocument kifu_Document;
 
-        #endregion
-
-
-        #region ゲームエンジンの振りをするメソッド
-
         /// <summary>
         /// ************************************************************************************************************************
         /// 入力欄のテキストを取得します。
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public string ReadLine1()
+        public string ReadTextLine1()
         {
             return this.txtInput1.Text;
         }
@@ -334,14 +326,10 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// ************************************************************************************************************************
         /// </summary>
         /// <returns></returns>
-        public void WriteLine(string text)
+        public void WriteTextLine(string text)
         {
             this.txtOutput1.Text = text;
         }
-
-        #endregion
-
-
 
         /// <summary>
         /// ************************************************************************************************************************
@@ -408,7 +396,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 // ファイルが存在しませんでした。
 
                 // 作ります。
-                this.SetteiFile.Write();
+                this.SetteiFile.WriteFile();
             }
 
             if (!this.SetteiFile.Read())
@@ -470,7 +458,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //      このメインパネルに、コンソールの振りをさせます。
             //      将棋エンジンがあれば、将棋エンジンの入出力を返すように内部を改造してください。
             //
-            DammyConsole.SetShogiEngine(this.ReadLine1, this.WriteLine);
+            DammyConsole.SetShogiEngine(this.ReadTextLine1, this.WriteTextLine);
 
 
             //----------
@@ -479,7 +467,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //
             //      出力欄（上下段）を空っぽにします。
             //
-            this.WriteLine("");
+            this.WriteTextLine("");
 
 
 
@@ -685,13 +673,13 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 switch (this.Shape_PnlTaikyoku.SyuturyokuKirikae)
                 {
                     case SyuturyokuKirikae.Japanese:
-                        this.WriteLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document));
+                        this.WriteTextLine(KirokuGakari.ToJapaneseKifuText(this.Kifu_Document));
                         break;
                     case SyuturyokuKirikae.Sfen:
-                        this.WriteLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));
+                        this.WriteTextLine(KirokuGakari.ToSfenKifuText(this.Kifu_Document));
                         break;
                     case SyuturyokuKirikae.Html:
-                        this.WriteLine(Ui_01Menu.CreateHtml(this.Kifu_Document));
+                        this.WriteTextLine(Ui_01Menu.CreateHtml(this.Kifu_Document));
                         break;
                 }
 
@@ -701,7 +689,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             else if (requestForMain.RequestClearTxtOutput)
             {
                 // 出力欄（上下段）を空っぽにします。
-                this.WriteLine("");
+                this.WriteTextLine("");
 
                 // ログ
                 Logger.Trace( "");
