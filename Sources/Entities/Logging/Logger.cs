@@ -1,14 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-using Nett;
-
-namespace Grayscale.Kifuwarane.Entities.Logging
+﻿namespace Grayscale.Kifuwarane.Entities.Logging
 {
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Text;
+    using Nett;
+
     /// <summary>
-    /// TODO 非同期で書き込むと、同じファイルに同時に書き込もうとするはず。対応できないか？ 現状何も考えていない。
-    /// TODO 非同期処理もやりたいので、 static 型を止めたい。
+    /// * Panic( ) に相当するものは無いので、throw new Exception("") で代替してください。
     /// </summary>
     public static class Logger
     {
@@ -206,29 +205,37 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         }
 
         /// <summary>
-        /// ログ・ディレクトリー直下の *.log ファイルを削除します。
+        /// ログ・ディレクトリー直下の ログファイルを削除します。
+        /// 
+        /// Example:
+        /// [GUID]name.log
+        /// name.log.png
+        /// ...
+        ///
+        /// * 将棋エンジン起動後、ログが少し取られ始めたあとに削除を開始するようなところで実行しないでください。
+        /// * TODO usinewgame のタイミングでログを削除したい。
         /// </summary>
-        public static void RemoveAllLogFile()
+        public static void RemoveAllLogFiles()
         {
-            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-            var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-            var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
-            // Console.WriteLine($"logDirectory={logDirectory}");
-
-            // [GUID]name.log
-            // var re = new Regex("^(\\[[0-9A-Fa-f-]+\\])?.+\\.log$");
-
-            DirectoryInfo dir = new System.IO.DirectoryInfo(logDirectory);
-            FileInfo[] files = dir.GetFiles("*.log");
-            foreach (FileInfo f in files)
+            try
             {
-                // Console.WriteLine($"f-full-name={f.FullName}");
-                //正規表現のパターンを使用して一つずつファイルを調べる
-                // if (re.IsMatch(f.Name))
-                // {
-                    // Console.WriteLine($"Remove={f.FullName}");
-                    File.Delete(f.FullName);
-                // }
+                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
+                var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+                string logsDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
+
+                string[] paths = Directory.GetFiles(logsDirectory);
+                foreach (string path in paths)
+                {
+                    string name = Path.GetFileName(path);
+                    if (name.EndsWith(".log") || name.Contains(".log."))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // ログ・ファイルの削除に失敗しても無視します。
             }
         }
     }
