@@ -12,7 +12,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
     /// </summary>
     public abstract class TuginoItte_Sfen
     {
-        static readonly Regex positionRegex = new Regex(
+        static readonly Regex regexOfPosition = new Regex(
             @"^\s*" +
             @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//1段目
             @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//2段目
@@ -43,7 +43,11 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             @"(?:p(\d+))?" +//△歩
             @" (\d+)" +//手目
             @"",
-            RegexOptions.Singleline
+            RegexOptions.Singleline | RegexOptions.Compiled
+        );
+        static readonly Regex regexOfSfen = new Regex(
+            @"^\s*([123456789PLNSGKRB])([abcdefghi\*])([123456789])([abcdefghi])(\+)?",
+            RegexOptions.Singleline | RegexOptions.Compiled
         );
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             // リスト作成
             //------------------------------------------------------------
 
-            MatchCollection mc = positionRegex.Matches(text);
+            MatchCollection mc = regexOfPosition.Matches(text);
             foreach (Match m in mc)
             {
                 if (0 < m.Groups.Count)
@@ -134,12 +138,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             //Console.WriteLine($"TuginoItte_Sfen.GetData_FromText:text=[{ text }]");
 
             // Sfenの指し手解析
-            Regex regex = new Regex(
-                @"^\s*([123456789PLNSGKRB])([abcdefghi\*])([123456789])([abcdefghi])(\+)?",
-                RegexOptions.Singleline
-            );
-
-            MatchCollection mc = regex.Matches(text);
+            MatchCollection mc = regexOfSfen.Matches(text);
             foreach (Match m in mc)
             {
                 if (0 < m.Groups.Count)

@@ -14,6 +14,12 @@
 
     class Program
     {
+        static readonly Regex regexOfSetOption = new Regex(@"setoption name ([^ ]+)(?: value (.*))?", RegexOptions.Singleline | RegexOptions.Compiled);
+        static readonly Regex regexOfGoMate = new Regex(@"go mate (.+)", RegexOptions.Singleline | RegexOptions.Compiled);
+        static readonly Regex regexOfGo = new Regex(@"go btime (\d+) wtime (\d+) byoyomi (\d+)", RegexOptions.Singleline | RegexOptions.Compiled);
+        static readonly Regex regexOfGoFisherClock = new Regex(@"go btime (\d+) wtime (\d+) binc (\d+) winc (\d+)", RegexOptions.Singleline | RegexOptions.Compiled);
+        static readonly Regex regexOfGameover = new Regex(@"gameover (.)", RegexOptions.Singleline | RegexOptions.Compiled);
+
         /// <summary>
         /// Ｃ＃のプログラムは、この Main 関数から始まり、 Main 関数の中で終わります。
         /// </summary>
@@ -136,8 +142,7 @@
                         }
                         else if (line.StartsWith("setoption"))
                         {
-                            Regex regex = new Regex(@"setoption name ([^ ]+)(?: value (.*))?", RegexOptions.Singleline);
-                            Match m = regex.Match(line);
+                            Match m = regexOfSetOption.Match(line);
 
                             if (m.Success)
                             {
@@ -254,8 +259,7 @@
                         }
                         else if (line.StartsWith("go mate"))
                         {
-                            Regex regex = new Regex(@"go mate (.+)", RegexOptions.Singleline);
-                            Match m = regex.Match(line);
+                            Match m = regexOfGoMate.Match(line);
 
                             if (m.Success)
                             {
@@ -308,8 +312,7 @@
                             //      └──────┴──────┘
                             //      単位はミリ秒ですので、599000 は 59.9秒 です。
                             //
-                            Regex regex = new Regex(@"go btime (\d+) wtime (\d+) byoyomi (\d+)", RegexOptions.Singleline);
-                            Match m = regex.Match(line);
+                            Match m = regexOfGo.Match(line);
                             if (m.Success)
                             {
                                 playing.Go((string)m.Groups[1].Value, (string)m.Groups[2].Value, (string)m.Groups[3].Value, "", "");
@@ -317,8 +320,7 @@
                             else
                             {
                                 // (2020-12-16 wed) フィッシャー・クロック・ルールに対応☆（＾～＾）
-                                regex = new Regex(@"go btime (\d+) wtime (\d+) binc (\d+) winc (\d+)", RegexOptions.Singleline);
-                                m = regex.Match(line);
+                                m = regexOfGoFisherClock.Match(line);
 
                                 playing.Go((string)m.Groups[1].Value, (string)m.Groups[2].Value, "", (string)m.Groups[3].Value, (string)m.Groups[4].Value);
                             }
@@ -333,8 +335,7 @@
                         }
                         else if (line.StartsWith("gameover"))
                         {
-                            Regex regex = new Regex(@"gameover (.)", RegexOptions.Singleline);
-                            Match m = regex.Match(line);
+                            Match m = regexOfGameover.Match(line);
 
                             if (m.Success)
                             {
