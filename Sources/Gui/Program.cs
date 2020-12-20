@@ -34,9 +34,9 @@ namespace Grayscale.Kifuwarane.Gui
             {
                 // 駒配役を生成した後で。
 
-                Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Logger.Trace("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputForcePromotionFileName = toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion");
-                Console.WriteLine(inputForcePromotionFileName);
+                Logger.Trace(inputForcePromotionFileName);
                 var inputForcePromotion = Path.Combine(profilePath, inputForcePromotionFileName);
                 List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
@@ -49,9 +49,9 @@ namespace Grayscale.Kifuwarane.Gui
             // 配役転換表
             //------------------------------
             {
-                Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Logger.Trace("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
                 var inputPieceTypeToHaiyakuFileName = toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku");
-                Console.WriteLine(inputPieceTypeToHaiyakuFileName);
+                Logger.Trace(inputPieceTypeToHaiyakuFileName);
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 

@@ -230,7 +230,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
 
                         //if (w == 0 || h == 0)
                         //{
-                        //    Console.WriteLine($"moji=[{moji}]");
+                        //    Logger.Trace($"moji=[{moji}]");
                         //}
 
                         //if (w < 1)

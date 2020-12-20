@@ -170,7 +170,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //------------------------------
             for (int dan = 1; dan <= 9; dan++)
             {
-                //Console.WriteLine($"strDanArr[{ dan }]={ strDanArr[dan]}");
+                //Logger.Trace($"strDanArr[{ dan }]={ strDanArr[dan]}");
                 int suji = 9;
 
                 while (suji >= 1)
@@ -198,14 +198,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         strDanArr[dan] = strDanArr[dan].Substring(1, strDanArr[dan].Length - 1);
                     }
 
-                    Console.WriteLine($"　　　　moji={ moji}");
+                    Logger.Trace($"　　　　moji={ moji}");
 
                     if (int.TryParse(moji, out spaceCount))
                     {
                         // スペースの個数です。
                         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                        Console.WriteLine($"　　　　spaceCount={ spaceCount}");
+                        Logger.Trace($"　　　　spaceCount={ spaceCount}");
                         suji -= spaceCount;
                     }
                     else
@@ -215,8 +215,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                         GameTranslator.SfenSyokihaichi_ToSyurui(moji, out sengo, out syurui);
 
-                        //Console.WriteLine($"　　　　sengo={ sengo.ToString()}");
-                        //Console.WriteLine($"　　　　syurui={ syurui.ToString()}");
+                        //Logger.Trace($"　　　　sengo={ sengo.ToString()}");
+                        //Logger.Trace($"　　　　syurui={ syurui.ToString()}");
 
                         List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(
                             kifuD,
@@ -224,7 +224,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                             sengo,
                             KomaSyurui14Array.FunariCaseHandle(syurui)
                             );
-                        Console.WriteLine($"　　　　hKomas.Count={ komas.Count}");
+                        Logger.Trace($"　　　　hKomas.Count={ komas.Count}");
 
                         // それぞれの駒に適用
                         foreach (K40 koma in komas)
@@ -242,7 +242,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                             //Ui_04SubAction.RefreshKomaLocation(btnKoma.Handle, shape_PnlTaikyoku, kifu.Kyokumen);
 
-                            //Console.WriteLine($@"　　　　suji={ suji }　dan={ dan}
+                            //Logger.Trace($@"　　　　suji={ suji }　dan={ dan}
                             //　　　　koma.Masu.Sengo={ koma.Masu.Sengo}
                             //　　　　koma.Masu.Okiba={ koma.Masu.Okiba}
                             //　　　　koma.Masu.Suji={ koma.Masu.Suji}
@@ -260,7 +260,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //------------------------------
             // 先後
             //------------------------------
-            Console.WriteLine($"strSengo={ sfenStartpos.StrSengo}");
+            Logger.Trace($"strSengo={ sfenStartpos.StrSengo}");
             if ("w" == sfenStartpos.StrSengo)
             {
                 // １手目の手番を後手にしたいので、初期局面の手番は先手にします。
@@ -276,7 +276,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //------------------------------
             // 手目
             //------------------------------
-            Console.WriteLine($"teme={ sfenStartpos.Teme}");
+            Logger.Trace($"teme={ sfenStartpos.Teme}");
         }
     }
 }

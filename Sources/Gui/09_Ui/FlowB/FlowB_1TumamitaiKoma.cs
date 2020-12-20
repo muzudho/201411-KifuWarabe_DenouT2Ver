@@ -345,7 +345,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     {
                         //>>>>>>>>>> 既に選択されている駒があります。
 
-                        Console.WriteLine("★成ろうとしたとき、取られる相手の駒かも。");
+                        Logger.Trace("★成ろうとしたとき、取られる相手の駒かも。");
                     }
                     else
                     {
@@ -363,7 +363,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
                         if (btnKoma.HitByMouse(e.Location.X, e.Location.Y)) //>>>>> 駒をつまみました。
                         {
-                            Console.WriteLine("駒をつまみます。(2)");
+                            Logger.Trace("駒をつまみます。(2)");
                             shape_PnlTaikyoku.SetHTumandeiruKoma((int)btnKoma.Koma);
                             shape_PnlTaikyoku.SelectFirstTouch = true;
 
@@ -468,7 +468,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 if (btnKoma.HitByMouse(e.Location.X, e.Location.Y))
                 {
                     //>>>>> つまみたい駒から、指を放しました
-                    Console.WriteLine("つまんでいる駒を放します。(3)");
+                    Logger.Trace("つまんでいる駒を放します。(3)");
                     shape_PnlTaikyoku.SetHTumandeiruKoma(-1);
 
                     IKifuElement dammyNode7 = kifuD.ElementAt8(lastTeme);
@@ -544,7 +544,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                         //------------------------------
                         if (!shape_PnlTaikyoku.Requested_NaruDialogToShow)
                         {
-                            Console.WriteLine("マウス左ボタンを放したのでチェンジターンします。");
+                            Logger.Trace("マウス左ボタンを放したのでチェンジターンします。");
                             //RO_TeProcess last = kifuD.Current8_Te;
                             ShogiEngineService.Message_ChangeTurn(kifuD);//マウス左ボタンを放したのでチェンジターンします。
                         }

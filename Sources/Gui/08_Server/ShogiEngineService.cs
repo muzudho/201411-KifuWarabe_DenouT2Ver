@@ -36,7 +36,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         {
             if (ShogiEngineService.IsLiveShogiEngine())
             {
-                Console.WriteLine("将棋エンジンサービスは終了していません。");
+                Logger.Trace("将棋エンジンサービスは終了していません。");
                 goto gt_EndMethod;
             }
 
@@ -162,7 +162,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         public static void ReceivedData_FromShogiEngine_Async(object sender, System.Diagnostics.DataReceivedEventArgs e)
         {
             string line = e.Data;
-            //Console.WriteLine("Ｓ：非同期："+line);
+            //Logger.Trace("Ｓ：非同期："+line);
 
             if (null == line)
             {

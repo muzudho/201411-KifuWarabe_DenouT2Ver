@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Gui.L09_Ui
 {
@@ -85,7 +86,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 this.canAppendInputTextFlag = true;
             }
 
-            Console.WriteLine($"☆セットアペンド({memberName})：{value}");
+            Logger.Trace($"☆セットアペンド({memberName})：{value}");
             this.requestAppendInputTextString = value;
         }
         private string requestAppendInputTextString;

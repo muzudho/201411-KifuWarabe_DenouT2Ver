@@ -232,7 +232,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         {
             this.lblFugo.Text = fugo;
 
-            //Console.WriteLine($"符号：{fugo}：{memberName}");
+            //Logger.Trace($"符号：{fugo}：{memberName}");
         }
         private Shape_LblBox lblFugo;
 
@@ -927,7 +927,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         public Shape_PnlTaikyoku()
         {
             // 初期化
-            Console.WriteLine("つまんでいる駒を放します。(1)");
+            Logger.Trace("つまんでいる駒を放します。(1)");
             this.SetHTumandeiruKoma(-1);
             this.SetHMovedKoma(K40.Error);
 

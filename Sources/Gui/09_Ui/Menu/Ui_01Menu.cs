@@ -34,7 +34,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // 棋譜から１手削ります
             //------------------------------
-            //Console.WriteLine($"ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
+            //Logger.Trace($"ポップカレントする前　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
             IKifuElement removeeLeaf = kifuD.Current8;
 
             if (removeeLeaf is TreeRoot6)
@@ -82,7 +82,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 );
 
             //IKifuElement removedLeaf = kifuD.PopCurrent1();
-            ////Console.WriteLine($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
+            ////Logger.Trace($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
 
             Shape_BtnKoma btn_movedKoma = Converter09.KomaToBtn(movedKoma, shape_PnlTaikyoku);
             //Shape_BtnKoma btn_tottaKoma = Converter09.KomaToBtn(tottaKoma, shape_PnlTaikyoku);

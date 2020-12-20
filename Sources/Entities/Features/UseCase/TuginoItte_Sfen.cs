@@ -56,7 +56,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
         /// <returns></returns>
         public static bool GetDataStartpos_FromText(string text, out string restText, out SfenStartpos sfenStartpos)
         {
-            Console.WriteLine($"TranslateSfenStartpos: text={ text}");
+            Logger.Trace($"TranslateSfenStartpos: text={ text}");
 
             bool successful = false;
             sfenStartpos = null;
@@ -135,7 +135,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             move = null;
             restText = text;
 
-            //Console.WriteLine($"TuginoItte_Sfen.GetData_FromText:text=[{ text }]");
+            //Logger.Trace($"TuginoItte_Sfen.GetData_FromText:text=[{ text }]");
 
             // Sfenの指し手解析
             MatchCollection mc = regexOfSfen.Matches(text);

@@ -74,7 +74,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             if (isBack)
             {
                 IKifuElement removedLeaf = kifuD.PopCurrent1();
-                //Console.WriteLine($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
+                //Logger.Trace($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
             }
 
             Logging.Logger.Trace( "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　", logFile);
@@ -313,14 +313,14 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     //>>>>> 指した先に駒があったなら
 
                     //MessageBox.Show("☆指した先に駒がありました。", "デバッグ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    //Console.WriteLine("☆指した先に駒がありました。");
+                    //Logger.Trace("☆指した先に駒がありました。");
 
                     IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house1 = dammyNode2.KomaHouse;
 
                     IKomaPos tottaKomaP = house1.KomaPosAt(underKoma);
                     tottaKomaSyurui = Haiyaku184Array.Syurui(tottaKomaP.Star.Haiyaku);
-                    Console.WriteLine($"☆tottaKoma={ tottaKomaSyurui}");
+                    Logger.Trace($"☆tottaKoma={ tottaKomaSyurui}");
 
                     // その駒は、駒置き場の空きマスに移動させます。
                     M201 akiMasu;
@@ -333,8 +333,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                                 {
                                     // 駒台に空きスペースがありました。
                                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                                    Console.WriteLine($"☆hUnderKoma={ underKoma}");
-                                    Console.WriteLine($"☆後手akiMasuHandle={ akiMasu}");
+                                    Logger.Trace($"☆hUnderKoma={ underKoma}");
+                                    Logger.Trace($"☆後手akiMasuHandle={ akiMasu}");
 
                                     // 取られる動き
                                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
@@ -374,8 +374,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                                 {
                                     // 駒台に空きスペースがありました。
                                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                                    Console.WriteLine($"☆hUnderKoma={ underKoma}");
-                                    Console.WriteLine($"☆先手akiMasuHandle={ akiMasu}");
+                                    Logger.Trace($"☆hUnderKoma={ underKoma}");
+                                    Logger.Trace($"☆先手akiMasuHandle={ akiMasu}");
 
                                     // 取られる動き
                                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
@@ -581,7 +581,7 @@ dst.Sengo={dst.Star.Sengo}");
 
         gt_EndMethod:
 
-            Console.WriteLine($"ゲット駒台駒袋スペース＝{ akiMasu}");
+            Logger.Trace($"ゲット駒台駒袋スペース＝{ akiMasu}");
 
             return akiMasu;
         }

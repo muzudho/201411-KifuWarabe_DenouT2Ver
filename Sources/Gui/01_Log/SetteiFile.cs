@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Xml;
+using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Gui.L01_Log
 {
@@ -101,7 +102,7 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             {
                 // エラー
                 successfule = false;
-                Console.WriteLine($"Error: {ex}");
+                Logger.Error($"Error: {ex}");
             }
 
             return successfule;

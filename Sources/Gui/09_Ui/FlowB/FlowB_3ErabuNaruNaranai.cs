@@ -135,14 +135,14 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                     //------------------------------
                     if (!shape_PnlTaikyoku.Requested_NaruDialogToShow)
                     {
-                        Console.WriteLine("マウス左ボタンを押したのでチェンジターンします。");
+                        Logger.Trace("マウス左ボタンを押したのでチェンジターンします。");
                         ShogiEngineService.Message_ChangeTurn(kifuD);
                     }
                 }
 
 
                 Ui_02Action.Refresh_KomaLocation(K40Array.Items_All[(int)btnKoma_Selected.Koma], shape_PnlTaikyoku, kifuD);
-                Console.WriteLine("つまんでいる駒を放します。(6)");
+                Logger.Trace("つまんでいる駒を放します。(6)");
                 shape_PnlTaikyoku.SetHTumandeiruKoma(-1);//駒を放した扱いです。
 
                 shape_PnlTaikyoku.SetNaruMasu(null);
