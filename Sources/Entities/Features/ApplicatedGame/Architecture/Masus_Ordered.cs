@@ -398,10 +398,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             // まず自分の要素
             foreach (M201 hMasu1 in this.elements_)
             {
-                sb.Append("["
-                    + Mh201Util.MasuToSuji(hMasu1).ToString()
-                    + Mh201Util.MasuToDan(hMasu1).ToString()
-                    + "]");
+                sb.Append($"[{Mh201Util.MasuToSuji(hMasu1)}{Mh201Util.MasuToDan(hMasu1)}]");
             }
 
             // 次に親集合
@@ -420,10 +417,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             // まず自分の要素
             foreach (M201 hMasu1 in this.elements_)
             {
-                sb.Append("["
-                    + Mh201Util.MasuToSuji(hMasu1).ToString()
-                    + Mh201Util.MasuToDan(hMasu1).ToString()
-                    + "]");
+                sb.Append($"[{Mh201Util.MasuToSuji(hMasu1)}{Mh201Util.MasuToDan(hMasu1)}]");
             }
 
             // 次に親集合

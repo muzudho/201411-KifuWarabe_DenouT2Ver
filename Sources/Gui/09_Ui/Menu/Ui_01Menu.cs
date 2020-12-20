@@ -156,7 +156,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             bool toBreak = false;
 
             Logger.Trace( $"[コマ送り]ボタンが押されて　一手進む　実行☆　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{ sourceLineNumber }");
-            bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, hint+":コマ送りGUI");
+            bool successful = ui_01MenuB.ReadLine_TuginoItteSusumu(kifuD, ref toBreak, $"{hint}:コマ送りGUI");
 
             // 再描画1
             delegate_DrawKomaokuri1(ref requestForMain, shape_PnlTaikyoku, kifuD);

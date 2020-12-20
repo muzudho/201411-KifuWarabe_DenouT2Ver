@@ -618,7 +618,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            this.AppendChild_Main(this, newNode, hint + "：Kifu_Document.cs_Kifu_Document#Add_Old3a");
+            this.AppendChild_Main(this, newNode, $"{hint}：Kifu_Document.cs_Kifu_Document#Add_Old3a");
 
             Logging.Logger.Trace( $"リンクトリストに、ノードは追加された hint=[{ hint }] te=[{ newNode.TeProcess.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", SpecifyLogFiles.LinkedList);
         }

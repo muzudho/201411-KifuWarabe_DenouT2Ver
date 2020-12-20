@@ -90,7 +90,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 
             IKifuParserAState nextState;
             inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref isBreak,
-                hint + ":KifuParserA_Impl#Execute_Step");
+                $"{hint}:KifuParserA_Impl#Execute_Step");
             this.State = nextState;
 
             return inputLine;
@@ -122,7 +122,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             while (!toBreak)
             {
                 inputLine = this.State.Execute(inputLine, kifuD, out nextState, this, ref toBreak,
-                    hint + ":KifuParserA_Impl#Execute_All");
+                    $"{hint}:KifuParserA_Impl#Execute_All");
                 this.State = nextState;
             }
         }

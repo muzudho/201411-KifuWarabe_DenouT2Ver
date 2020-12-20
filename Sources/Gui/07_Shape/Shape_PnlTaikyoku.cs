@@ -232,7 +232,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         {
             this.lblFugo.Text = fugo;
 
-            //Console.WriteLine("符号："+fugo+"："+memberName);
+            //Console.WriteLine($"符号：{fugo}：{memberName}");
         }
         private Shape_LblBox lblFugo;
 

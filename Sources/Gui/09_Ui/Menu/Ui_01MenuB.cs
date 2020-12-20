@@ -56,7 +56,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
                 Logger.Trace( "... ...");
                 Logger.Trace( $"ｻｲｼｮﾊｺｺ☆　：　{ memberName }.{ sourceFilePath }.{ sourceLineNumber}");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":Ui_01MenuB#ReadLine_TuginoItteSusumu");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, $"{hint}:Ui_01MenuB#ReadLine_TuginoItteSusumu");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -76,7 +76,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 // 
 
                 Logger.Trace( "ﾂｷﾞﾊ　ﾋﾗﾃ　ﾏﾀﾊ　ｼﾃｲｷｮｸﾒﾝ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":平手等解析したい");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, $"{hint}:平手等解析したい");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -85,7 +85,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
 
                 Logger.Trace( "ﾂｷﾞﾊ　ﾑｰﾌﾞｽ　ｦ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":ﾑｰﾌﾞｽ等解析したい");
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, $"{hint}:ﾑｰﾌﾞｽ等解析したい");
                 if (toBreak)
                 {
                     goto gt_EndMethod;
@@ -101,7 +101,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             if (kifuParserA_Impl.State is KifuParserA_StateA2_SfenMoves)
             {
                 Logger.Trace( "ﾂｷﾞﾊ　ｲｯﾃ　ｼｮﾘｼﾀｲ☆");
-                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, hint + ":一手処理したい");//, LarabeLogger.INSTANCE
+                inputLine = kifuParserA_Impl.Execute_Step(inputLine, kifuD, ref toBreak, $"{hint}:一手処理したい");//, LarabeLogger.INSTANCE
                 if (toBreak)
                 {
                     goto gt_EndMethod;

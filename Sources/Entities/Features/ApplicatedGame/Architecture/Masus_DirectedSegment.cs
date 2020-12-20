@@ -375,10 +375,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             foreach (M201 hMasu1 in this.Elements)
             {
-                sb.Append(
-                    Mh201Util.MasuToSuji(hMasu1).ToString()
-                    + Mh201Util.MasuToDan(hMasu1).ToString()
-                    + "→");
+                sb.Append($"{Mh201Util.MasuToSuji(hMasu1)}{Mh201Util.MasuToDan(hMasu1)}→");
             }
 
             // 最後の矢印は削除します。
@@ -400,10 +397,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             foreach (M201 hMasu1 in this.Elements)
             {
-                sb.Append(
-                    Mh201Util.MasuToSuji(hMasu1).ToString()
-                    + Mh201Util.MasuToDan(hMasu1).ToString()
-                    + "→");
+                sb.Append($"{Mh201Util.MasuToSuji(hMasu1)}{Mh201Util.MasuToDan(hMasu1)}→");
             }
 
             // 最後の矢印は削除します。

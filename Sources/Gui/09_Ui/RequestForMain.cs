@@ -85,7 +85,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 this.canAppendInputTextFlag = true;
             }
 
-            Console.WriteLine("☆セットアペンド("+memberName+")："+value);
+            Console.WriteLine($"☆セットアペンド({memberName})：{value}");
             this.requestAppendInputTextString = value;
         }
         private string requestAppendInputTextString;

@@ -134,7 +134,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     );
                 kifuD.AppendChildA_New(
                     newNode,
-                    memberName +"."+sourceFilePath+"."+sourceLineNumber+"：KifuIO_Kifusasi25"
+                    $"{memberName}.{sourceFilePath}.{sourceLineNumber}：KifuIO_Kifusasi25"
                 );
 
                 if (teProcess.IsDaAction)

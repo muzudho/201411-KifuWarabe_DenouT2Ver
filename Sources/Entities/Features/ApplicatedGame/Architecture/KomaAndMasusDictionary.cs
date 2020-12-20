@@ -191,8 +191,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 K40 koma = entry.Key;
                 IMasus masus = entry.Value;
 
-                sb.AppendLine("駒＝["+koma+"]");
-                sb.AppendLine(masus.LogString_Concrete());
+                sb.AppendLine($@"駒＝[{koma}]
+{masus.LogString_Concrete()}");
             });
 
             return sb.ToString();
