@@ -13,13 +13,13 @@
         /// </summary>
         public string Name { get; private set; }
 
-        public static ILogFile AsData(string logDirectory, string fileName)
+        public static ILogFile AsData(string logDirectory, string basename)
         {
-            return new LogFile(Path.Combine(logDirectory, $"{fileName}"));
+            return new LogFile(Path.Combine(logDirectory, $"{basename}"));
         }
-        public static ILogFile AsLog(string logDirectory, string fileStem)
+        public static ILogFile AsLog(string logDirectory, string basename)
         {
-            return new LogFile(Path.Combine(logDirectory, $"[{Logger.Unique}]{fileStem}.log"));
+            return new LogFile(Path.Combine(logDirectory, $"[{Logger.Unique}]{basename}"));
         }
 
         LogFile(string name)

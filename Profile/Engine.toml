@@ -50,22 +50,23 @@ HaichiTenkanHyoOnlyDataLog = "../Logs/Debug_配役転換表Load(1)_データ行�
 HaichiTenkanHyoAllLog = "../Logs/Debug_配役転換表Load(2)"
 
 #
-# Resources.LogDirectory からの相対パスだぜ☆（＾～＾） 拡張子は付けるなだぜ☆（＾～＾）
+# Resources.LogDirectory からの相対パスだぜ☆（＾～＾）
+# ファイル名には `.log.` を含むか、または末尾を `.log` としろだぜ☆（＾～＾） 削除対象の目印とするぜ☆（＾～＾）
 #
 [Logs]
 
-GuiRecordLog = "将棋GUI_棋譜読取"
-LinkedListLog = "LinkedList"
-EngineRecordLog = "将棋エンジン_棋譜読取"
-GuiPaint = "将棋GUI_ペイント"
-LegalMoveLog = "合法手"
-LegalMoveEvasionLog = "リーガルムーブ(被王手時)"
-GenMoveLog = "指し手生成ルーチン"
+GuiRecordLog = "将棋GUI_棋譜読取.log"
+LinkedListLog = "LinkedList.log"
+EngineRecordLog = "将棋エンジン_棋譜読取.log"
+GuiPaint = "将棋GUI_ペイント.log"
+LegalMoveLog = "合法手.log"
+LegalMoveEvasionLog = "リーガルムーブ(被王手時).log"
+GenMoveLog = "指し手生成ルーチン.log"
 
-Trace = "Trace"
-Debug = "Debug"
-Info = "Info"
-Notice = "Notice"
-Warn = "Warn"
-Error = "Error"
-Fatal = "Fatal"
+Trace = "Trace.log"
+Debug = "Debug.log"
+Info = "Info.log"
+Notice = "Notice.log"
+Warn = "Warn.log"
+Error = "Error.log"
+Fatal = "Fatal.log"

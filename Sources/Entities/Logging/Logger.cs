@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -61,6 +62,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// トレース・レベル。
         /// </summary>
         /// <param name="line"></param>
+        [Conditional("DEBUG")]
         public static void Trace(string line, ILogFile targetOrNull = null)
         {
             Logger.XLine(TraceRecord, "Trace", line, targetOrNull);
@@ -70,6 +72,7 @@ namespace Grayscale.Kifuwarane.Entities.Logging
         /// デバッグ・レベル。
         /// </summary>
         /// <param name="line"></param>
+        [Conditional("DEBUG")]
         public static void Debug(string line, ILogFile targetOrNull = null)
         {
             Logger.XLine(DebugRecord, "Debug", line, targetOrNull);
