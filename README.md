@@ -2,17 +2,17 @@
 
 2020年11月の 電竜戦から きふわらね(Kifuwarane)にリネームして開発再開だぜ☆（＾～＾）  
 
-## Dev and Config
+## Deploy
 
 |               | ファイル                                                                                     |
 | ------------- | -------------------------------------------------------------------------------------------- |
 | ソース        | `Kifuwarabe_DenouT2/Kifuwarane.sln`                                            |
-| 将棋エンジン ランタイム | Kifuwarabe_DenouT2/Builds/Release/Grayscale.Kifuwarane.Engine.exe |
-| 設定ファイル1 | `Kifuwarabe_DenouT2/Biulds/Release/Grayscale.Kifuwarane.Engine.exe.config` |
+| 将棋エンジン ランタイム | Kifuwarabe_DenouT2/Builds_x64/Release/Grayscale.Kifuwarane.Engine.exe |
+| 設定ファイル1 | `Kifuwarabe_DenouT2/Biulds_x64/Release/Grayscale.Kifuwarane.Engine.exe.config` |
 | 設定ファイル2 | `Kifuwarabe_DenouT2/Profile/Engine.toml`                                                     |
 
 * `Kifuwarabe_DenouT2` のトップ・ディレクトリーに `Logs` ディレクトリーを作成してください。
-* `Kifuwarane.sln` を `Release` モードで ビルドしてください。
+* `Kifuwarane.sln` を `Release, x64` モードで ビルドしてください。
 * 設定ファイル1 の中にある `Profile` のパスを、 設定ファイル2 の親ディレクトリー `Profile` に合わせてください。  
 
 ## Manual
