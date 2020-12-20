@@ -12,6 +12,40 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
     /// </summary>
     public abstract class TuginoItte_Sfen
     {
+        static readonly Regex positionRegex = new Regex(
+            @"^\s*" +
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//1段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//2段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//3段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//4段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//5段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//6段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//7段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//8段目
+            @"([123456789KRBGSNLPkrbgsnlp\+]+) " +//9段目
+            @"(b|w) " +//先後
+            @"\-?" +
+            @"(?:K(\d+))?" +//▲王
+            @"(?:R(\d+))?" +//▲飛
+            @"(?:B(\d+))?" +//▲角
+            @"(?:G(\d+))?" +//▲金
+            @"(?:S(\d+))?" +//▲銀
+            @"(?:N(\d+))?" +//▲桂
+            @"(?:L(\d+))?" +//▲香
+            @"(?:P(\d+))?" +//▲歩
+            @"(?:k(\d+))?" +//△王
+            @"(?:r(\d+))?" +//△飛
+            @"(?:b(\d+))?" +//△角
+            @"(?:g(\d+))?" +//△金
+            @"(?:s(\d+))?" +//△銀
+            @"(?:n(\d+))?" +//△桂
+            @"(?:l(\d+))?" +//△香
+            @"(?:p(\d+))?" +//△歩
+            @" (\d+)" +//手目
+            @"",
+            RegexOptions.Singleline
+        );
+
         /// <summary>
         /// 「lnsgkgsn1/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL w - 1」といった記述を解析します。
         /// </summary>
@@ -28,41 +62,8 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             //------------------------------------------------------------
             // リスト作成
             //------------------------------------------------------------
-            Regex regex = new Regex(
-                @"^\s*" +
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//1段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//2段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//3段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//4段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//5段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//6段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//7段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+)/" +//8段目
-                @"([123456789KRBGSNLPkrbgsnlp\+]+) " +//9段目
-                @"(b|w) " +//先後
-                @"\-?" +
-                @"(?:K(\d+))?" +//▲王
-                @"(?:R(\d+))?" +//▲飛
-                @"(?:B(\d+))?" +//▲角
-                @"(?:G(\d+))?" +//▲金
-                @"(?:S(\d+))?" +//▲銀
-                @"(?:N(\d+))?" +//▲桂
-                @"(?:L(\d+))?" +//▲香
-                @"(?:P(\d+))?" +//▲歩
-                @"(?:k(\d+))?" +//△王
-                @"(?:r(\d+))?" +//△飛
-                @"(?:b(\d+))?" +//△角
-                @"(?:g(\d+))?" +//△金
-                @"(?:s(\d+))?" +//△銀
-                @"(?:n(\d+))?" +//△桂
-                @"(?:l(\d+))?" +//△香
-                @"(?:p(\d+))?" +//△歩
-                @" (\d+)" +//手目
-                @"",
-                RegexOptions.Singleline
-            );
 
-            MatchCollection mc = regex.Matches(text);
+            MatchCollection mc = positionRegex.Matches(text);
             foreach (Match m in mc)
             {
                 if (0 < m.Groups.Count)
@@ -130,7 +131,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             move = null;
             restText = text;
 
-            //Console.WriteLine("TuginoItte_Sfen.GetData_FromText:text=[" + text + "]");
+            //Console.WriteLine($"TuginoItte_Sfen.GetData_FromText:text=[{ text }]");
 
             // Sfenの指し手解析
             Regex regex = new Regex(

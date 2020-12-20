@@ -101,7 +101,7 @@ namespace Grayscale.Kifuwarane.Gui.L01_Log
             {
                 // エラー
                 successfule = false;
-                Console.WriteLine(ex.GetType().Name + "　" + ex.Message);
+                Console.WriteLine($"Error: {ex}");
             }
 
             return successfule;
