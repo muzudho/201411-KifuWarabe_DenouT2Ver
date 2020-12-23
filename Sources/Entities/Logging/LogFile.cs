@@ -15,7 +15,7 @@
 
         public static ILogFile AsData(string logDirectory, string basename)
         {
-            return new LogFile(Path.Combine(logDirectory, $"{basename}"));
+            return new LogFile(Path.Combine(logDirectory, basename));
         }
         public static ILogFile AsLog(string logDirectory, string basename)
         {

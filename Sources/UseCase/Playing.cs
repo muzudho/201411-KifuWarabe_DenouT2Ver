@@ -747,7 +747,7 @@ usiok
             Playing.Send("bestmove resign");
         }
 
-        public void GameOver(string value)
+        public void GameOver(string result)
         {
             //------------------------------------------------------------
             // 対局が終わりました

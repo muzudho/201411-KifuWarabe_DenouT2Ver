@@ -20,13 +20,13 @@
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
             var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
 
-            TraceRecord = LogEntry(logDirectory, toml, "Trace", true, true);
-            DebugRecord =  LogEntry(logDirectory, toml, "Debug", true, true);
-            InfoRecord = LogEntry(logDirectory, toml, "Info", true, true);
-            NoticeRecord = LogEntry(logDirectory, toml, "Notice", true, true);
-            WarnRecord = LogEntry(logDirectory, toml, "Warn", true, true);
-            ErrorRecord = LogEntry(logDirectory, toml, "Error", true, true);
-            FatalRecord = LogEntry(logDirectory, toml, "Fatal", true, true);
+            TraceRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Trace, true, true);
+            DebugRecord =  LogEntry(logDirectory, toml, SpecifiedFiles.Debug, true, true);
+            InfoRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Info, true, true);
+            NoticeRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Notice, true, true);
+            WarnRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Warn, true, true);
+            ErrorRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Error, true, true);
+            FatalRecord = LogEntry(logDirectory, toml, SpecifiedFiles.Fatal, true, true);
         }
 
         static ILogRecord LogEntry(string logDirectory, TomlTable toml, string resourceKey, bool enabled, bool timeStampPrintable)
