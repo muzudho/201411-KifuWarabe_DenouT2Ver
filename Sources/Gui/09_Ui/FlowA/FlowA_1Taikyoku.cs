@@ -200,7 +200,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
                 var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
                 var enginePath = toml.Get<TomlTable>("Resources").Get<string>("Engine");
-                ShogiEngineService.StartShogiEngine(enginePath);
+                ShogiEngineService.StartShogiEngine(ui_PnlMain.EngineConf, enginePath);
             }
 
             //----------

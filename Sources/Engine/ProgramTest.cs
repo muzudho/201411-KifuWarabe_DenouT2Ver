@@ -1,11 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Text;
+using Grayscale.Kifuwarane.Engine.Configuration;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
-using Nett;
 
 namespace Grayscale.Kifuwarane.Entities
 {
@@ -18,24 +17,23 @@ namespace Grayscale.Kifuwarane.Entities
         /// <returns></returns>
         public static int Test(string[] args)
         {
-            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-            var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
+            var engineConf = new EngineConf();
 
             // 道１８７
-            var michi187 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Michi187"));
+            var michi187 = engineConf.GetResourceFullPath("Michi187");
             Michi187Array.Load(michi187);
 
             // 配役
-            var haiyaku181 = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("Haiyaku181"));
+            var haiyaku181 = engineConf.GetResourceFullPath("Haiyaku181");
             Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
             // 駒配役を生成した後で。
-            var inputForcePromotion = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
+            var inputForcePromotion = engineConf.GetResourceFullPath("InputForcePromotion");
             ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
             Logging.Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
             // 配役転換表
-            var inputPieceTypeToHaiyaku = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
+            var inputPieceTypeToHaiyaku = engineConf.GetResourceFullPath("InputPieceTypeToHaiyaku");
             Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
             Logging.Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 

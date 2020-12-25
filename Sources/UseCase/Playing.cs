@@ -3,9 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Text;
+    using Grayscale.Kifuwarane.Entities;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+    using Grayscale.Kifuwarane.Entities.Configuration;
     using Grayscale.Kifuwarane.Entities.Logging;
     using Grayscale.Kifuwarane.Entities.UseCase;
     using Grayscale.Kifuwarane.UseCases.Think;
@@ -14,9 +15,9 @@
     /// <summary>
     /// 指し将棋☆（＾～＾）
     /// </summary>
-    public class Playing
+    public class Playing : IPlaying
     {
-        public TomlTable TomlTable { get; set; }
+        public IEngineConf EngineConf { get; private set; }
         public Dictionary<string, string> SetoptionDictionary { get; private set; } = new Dictionary<string, string>();
         public Dictionary<string, string> GoDictionary { get; private set; } = new Dictionary<string, string>();
         /// <summary>
@@ -29,8 +30,9 @@
         /// </summary>
         public bool GoPonderNow { get; private set; } = false;
 
-        public Playing()
+        public Playing(IEngineConf engineConf)
         {
+            this.EngineConf = engineConf;
         }
 
         /// <summary>

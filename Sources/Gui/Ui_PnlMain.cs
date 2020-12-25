@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Grayscale.Kifuwarane.Engine.Configuration;
 using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Grayscale.Kifuwarane.Entities.UseCase;
@@ -23,6 +25,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
     [Serializable]
     public partial class Ui_PnlMain : UserControl
     {
+        public IEngineConf EngineConf { get; set; }
+
         public SetteiFile SetteiFile
         {
             get
@@ -390,6 +394,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="e"></param>
         private void Ui_PnlMain_Load(object sender, EventArgs e)
         {
+            this.EngineConf = new EngineConf();
+
             this.setteiFile = new SetteiFile();
             if (!this.SetteiFile.Exists())
             {

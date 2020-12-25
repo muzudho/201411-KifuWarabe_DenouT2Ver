@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
@@ -32,7 +33,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
         /// <summary>
         /// 将棋エンジンを起動します。
         /// </summary>
-        public static void StartShogiEngine(string shogiEngineFileName)
+        public static void StartShogiEngine(IEngineConf engineConf, string shogiEngineFileName)
         {
             if (ShogiEngineService.IsLiveShogiEngine())
             {
@@ -43,7 +44,7 @@ namespace Grayscale.Kifuwarane.Gui.L08_Server
             //------------------------------
             // ログファイルを削除します。
             //------------------------------
-            Logger.RemoveAllLogFiles();
+            Logger.RemoveAllLogFiles(engineConf);
 
 
             ProcessStartInfo startInfo = new ProcessStartInfo();

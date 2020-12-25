@@ -5,6 +5,7 @@
     using System.IO;
     using System.Text;
     using System.Text.RegularExpressions;
+    using Grayscale.Kifuwarane.Engine.Configuration;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
     using Grayscale.Kifuwarane.Entities.Logging;
@@ -28,8 +29,11 @@
         {
             try
             {
+                var engineConf = new EngineConf();
+                Logger.Init(engineConf);
+
                 // まだ指し将棋をすると決まったわけではないが、とりあえず今は Playing という名前で☆（＾～＾）
-                var playing = new Playing();
+                var playing = new Playing(engineConf);
 
                 //-------------------+----------------------------------------------------------------------------------------------------
                 // ログファイル削除  |
@@ -41,7 +45,7 @@
                 //          ├─ Engine.KifuWarabe.exe
                 //          └─ log.txt               ←これを削除
                 //
-                Logger.RemoveAllLogFiles();
+                Logger.RemoveAllLogFiles(engineConf);
 
                 // 
                 // 図.
@@ -57,23 +61,21 @@
                 //------+-----------------------------------------------------------------------------------------------------------------
 
                 // 道１８７
-                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-                playing.TomlTable = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-                var michi187 = Path.Combine(profilePath, playing.TomlTable.Get<TomlTable>("Resources").Get<string>("Michi187"));
+                var michi187 = engineConf.GetResourceFullPath("Michi187");
                 Michi187Array.Load(michi187);
 
                 // 駒の配役１８１
-                var haiyaku181 = Path.Combine(profilePath, playing.TomlTable.Get<TomlTable>("Resources").Get<string>("Haiyaku181"));
+                var haiyaku181 = engineConf.GetResourceFullPath("Haiyaku181");
                 Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
 
                 // ※駒配役を生成した後で。
-                var inputForcePromotion = Path.Combine(profilePath, playing.TomlTable.Get<TomlTable>("Resources").Get<string>("InputForcePromotion"));
+                var inputForcePromotion = engineConf.GetResourceFullPath("InputForcePromotion");
                 ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
                 Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
-                var inputPieceTypeToHaiyaku = Path.Combine(profilePath, playing.TomlTable.Get<TomlTable>("Resources").Get<string>("InputPieceTypeToHaiyaku"));
+                var inputPieceTypeToHaiyaku = engineConf.GetResourceFullPath("InputPieceTypeToHaiyaku");
                 Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
                 Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
@@ -129,9 +131,9 @@
 
                         if ("usi" == line)
                         {
-                            string engineName = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Name");
+                            string engineName = playing.EngineConf.GetEngine("Name");
                             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                            string engineAuthor = playing.TomlTable.Get<TomlTable>("Engine").Get<string>("Author");
+                            string engineAuthor = playing.EngineConf.GetEngine("Author");
                             // 製品名
                             // seihinName = ((System.Reflection.AssemblyProductAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(System.Reflection.AssemblyProductAttribute))).Product;
 

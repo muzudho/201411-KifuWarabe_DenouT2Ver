@@ -8,6 +8,7 @@ using Grayscale.Kifuwarane.Entities.Misc;
 using Nett;
 using System.Windows.Forms;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
+using Grayscale.Kifuwarane.Engine.Configuration;
 
 namespace Grayscale.Kifuwarane.Gui
 {
@@ -19,6 +20,9 @@ namespace Grayscale.Kifuwarane.Gui
         [STAThread]
         static void Main()
         {
+            var engineConf = new EngineConf();
+            Logger.Init(engineConf);
+
             Logger.Trace( $"乱数のたね＝[{ RandomLib.Seed }]");
 
             // 道１８７
