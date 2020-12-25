@@ -1,36 +1,32 @@
 ﻿namespace Grayscale.Kifuwarane.Entities.Configuration
 {
-    using System.IO;
-    using Nett;
-
     public static class SpecifyFiles
     {
-        static SpecifyFiles()
+        /// <summary>
+        /// このクラスを使う前にセットしてください。
+        /// </summary>
+        public static void Init(IEngineConf engineConf)
         {
-            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-            var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-            var logDirectory = Path.Combine(profilePath, toml.Get<TomlTable>("Resources").Get<string>("LogDirectory"));
+            OutputForcePromotion = DataEntry(engineConf, "OutputForcePromotion");
+            OutputPieceTypeToHaiyaku = DataEntry(engineConf, "OutputPieceTypeToHaiyaku");
+            HaichiTenkanHyoOnlyDataLog = DataEntry(engineConf, "HaichiTenkanHyoOnlyDataLog");
+            HaichiTenkanHyoAllLog = DataEntry(engineConf, "HaichiTenkanHyoAllLog");
 
-            OutputForcePromotion = DataEntry(profilePath, toml, "OutputForcePromotion");
-            OutputPieceTypeToHaiyaku = DataEntry(profilePath, toml, "OutputPieceTypeToHaiyaku");
-            HaichiTenkanHyoOnlyDataLog = DataEntry(profilePath, toml, "HaichiTenkanHyoOnlyDataLog");
-            HaichiTenkanHyoAllLog = DataEntry(profilePath, toml, "HaichiTenkanHyoAllLog");
-
-            GuiDefault = LogEntry(logDirectory, toml, "GuiRecordLog");
-            LinkedList = LogEntry(logDirectory, toml, "LinkedListLog");
-            GuiPaint = LogEntry(logDirectory, toml, "GuiPaint");
-            LegalMove = LogEntry(logDirectory, toml, "LegalMoveLog");
-            LegalMoveEvasion = LogEntry(logDirectory, toml, "LegalMoveEvasionLog");
-            GenMove = LogEntry(logDirectory, toml, "GenMoveLog");
+            GuiDefault = LogEntry(engineConf, "GuiRecordLog");
+            LinkedList = LogEntry(engineConf, "LinkedListLog");
+            GuiPaint = LogEntry(engineConf, "GuiPaint");
+            LegalMove = LogEntry(engineConf, "LegalMoveLog");
+            LegalMoveEvasion = LogEntry(engineConf, "LegalMoveEvasionLog");
+            GenMove = LogEntry(engineConf, "GenMoveLog");
         }
 
-        static IResFile LogEntry(string logDirectory, TomlTable toml, string resourceKey)
+        static IResFile LogEntry(IEngineConf engineConf, string resourceKey)
         {
-            return ResFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
+            return ResFile.AsLog(engineConf.LogDirectory, engineConf.GetLogBasename(resourceKey));
         }
-        static IResFile DataEntry(string profilePath, TomlTable toml, string resourceKey)
+        static IResFile DataEntry(IEngineConf engineConf, string resourceKey)
         {
-            return ResFile.AsData(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey));
+            return ResFile.AsData(engineConf.GetResourceFullPath(resourceKey));
         }
 
         public static IResFile OutputForcePromotion { get; private set; }

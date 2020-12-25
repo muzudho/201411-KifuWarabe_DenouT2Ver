@@ -11,6 +11,7 @@ namespace Grayscale.Kifuwarane.Entities
 
         public static void Implement(IEngineConf engineConf)
         {
+            SpecifyFiles.Init(engineConf);
             Logger.Init(engineConf);
         }
     }
