@@ -28,20 +28,16 @@ namespace Grayscale.Kifuwarane.Gui
             Logger.Trace( $"乱数のたね＝[{ RandomLib.Seed }]");
 
             // 道１８７
-            var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-            var michi187 = engineConf.GetResourceFullPath("Michi187");
-            Michi187Array.Load(michi187);
+            Michi187Array.Load(engineConf.GetResourceFullPath("Michi187"));
 
             // 駒の配役１８１
-            var haiyaku181 = engineConf.GetResourceFullPath("Haiyaku181");
-            Haiyaku184Array.Load(haiyaku181, Encoding.UTF8);
+            Haiyaku184Array.Load(engineConf.GetResourceFullPath("Haiyaku181"), Encoding.UTF8);
 
             {
                 // 駒配役を生成した後で。
 
                 Logger.Trace("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                var inputForcePromotion = engineConf.GetResourceFullPath("InputForcePromotion");
-                List<List<string>> rows = ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
+                List<List<string>> rows = ForcePromotionArray.Load(engineConf.GetResourceFullPath("InputForcePromotion"), Encoding.UTF8);
 
                 //Logger.Trace(ForcePromotionArray.DebugString());
 
@@ -53,8 +49,7 @@ namespace Grayscale.Kifuwarane.Gui
             //------------------------------
             {
                 Logger.Trace("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                var inputPieceTypeToHaiyaku = engineConf.GetResourceFullPath("InputPieceTypeToHaiyaku");
-                List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
+                List<List<string>> rows = Data_HaiyakuTransition.Load(engineConf.GetResourceFullPath("InputPieceTypeToHaiyaku"), Encoding.UTF8);
 
                 Logger.WriteFile(SpecifyFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }

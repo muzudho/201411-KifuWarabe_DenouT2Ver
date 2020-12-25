@@ -197,10 +197,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             if (shape_PnlTaikyoku.BtnShogiEngineKido.HitByMouse(e.Location.X, e.Location.Y))
             {
-                var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
-                var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
-                var enginePath = toml.Get<TomlTable>("Resources").Get<string>("Engine");
-                ShogiEngineService.StartShogiEngine(ui_PnlMain.EngineConf, enginePath);
+                ShogiEngineService.StartShogiEngine(ui_PnlMain.EngineConf, ui_PnlMain.EngineConf.GetResourceFullPath("Engine"));
             }
 
             //----------
