@@ -27,9 +27,9 @@
             FatalRecord = LogEntry( SpecifiedFiles.Fatal, true, true);
         }
 
-        static ILogRecord LogEntry(string resourceKey, bool enabled, bool timeStampPrintable)
+        static ILogRecord LogEntry(string key, bool enabled, bool timeStampPrintable)
         {
-            var logFile = ResFile.AsLog(EngineConf.LogDirectory, EngineConf.GetLogBasename(resourceKey));
+            var logFile = ResFile.AsLog(EngineConf.LogDirectory, EngineConf.GetLogBasename(key));
             return new LogRecord(logFile, enabled, timeStampPrintable);
         }
 
