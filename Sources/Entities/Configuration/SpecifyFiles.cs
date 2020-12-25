@@ -7,28 +7,30 @@
         /// </summary>
         public static void Init(IEngineConf engineConf)
         {
-            OutputForcePromotion = DataEntry(engineConf, "OutputForcePromotion");
-            OutputPieceTypeToHaiyaku = DataEntry(engineConf, "OutputPieceTypeToHaiyaku");
-            HaichiTenkanHyoOnlyDataLog = DataEntry(engineConf, "HaichiTenkanHyoOnlyDataLog");
-            HaichiTenkanHyoAllLog = DataEntry(engineConf, "HaichiTenkanHyoAllLog");
+            EngineConf = engineConf;
+            OutputForcePromotion = DataEntry( "OutputForcePromotion");
+            OutputPieceTypeToHaiyaku = DataEntry( "OutputPieceTypeToHaiyaku");
+            HaichiTenkanHyoOnlyDataLog = DataEntry( "HaichiTenkanHyoOnlyDataLog");
+            HaichiTenkanHyoAllLog = DataEntry( "HaichiTenkanHyoAllLog");
 
-            GuiDefault = LogEntry(engineConf, "GuiRecordLog");
-            LinkedList = LogEntry(engineConf, "LinkedListLog");
-            GuiPaint = LogEntry(engineConf, "GuiPaint");
-            LegalMove = LogEntry(engineConf, "LegalMoveLog");
-            LegalMoveEvasion = LogEntry(engineConf, "LegalMoveEvasionLog");
-            GenMove = LogEntry(engineConf, "GenMoveLog");
+            GuiDefault = LogEntry( "GuiRecordLog");
+            LinkedList = LogEntry( "LinkedListLog");
+            GuiPaint = LogEntry( "GuiPaint");
+            LegalMove = LogEntry( "LegalMoveLog");
+            LegalMoveEvasion = LogEntry( "LegalMoveEvasionLog");
+            GenMove = LogEntry( "GenMoveLog");
         }
 
-        static IResFile LogEntry(IEngineConf engineConf, string resourceKey)
+        static IResFile LogEntry(string resourceKey)
         {
-            return ResFile.AsLog(engineConf.LogDirectory, engineConf.GetLogBasename(resourceKey));
+            return ResFile.AsLog(EngineConf.LogDirectory, EngineConf.GetLogBasename(resourceKey));
         }
-        static IResFile DataEntry(IEngineConf engineConf, string resourceKey)
+        static IResFile DataEntry(string resourceKey)
         {
-            return ResFile.AsData(engineConf.GetResourceFullPath(resourceKey));
+            return ResFile.AsData(EngineConf.GetResourceFullPath(resourceKey));
         }
 
+        static IEngineConf EngineConf { get; set; }
         public static IResFile OutputForcePromotion { get; private set; }
         public static IResFile OutputPieceTypeToHaiyaku { get; private set; }
         public static IResFile HaichiTenkanHyoOnlyDataLog { get; private set; }

@@ -47,7 +47,7 @@
                 //          ├─ Engine.KifuWarabe.exe
                 //          └─ log.txt               ←これを削除
                 //
-                Logger.RemoveAllLogFiles(engineConf);
+                Logger.RemoveAllLogFiles();
 
                 // 
                 // 図.

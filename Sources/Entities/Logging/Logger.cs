@@ -17,21 +17,23 @@
         /// </summary>
         public static void Init(IEngineConf engineConf)
         {
-            TraceRecord = LogEntry(engineConf, SpecifiedFiles.Trace, true, true);
-            DebugRecord = LogEntry(engineConf, SpecifiedFiles.Debug, true, true);
-            InfoRecord = LogEntry(engineConf, SpecifiedFiles.Info, true, true);
-            NoticeRecord = LogEntry(engineConf, SpecifiedFiles.Notice, true, true);
-            WarnRecord = LogEntry(engineConf, SpecifiedFiles.Warn, true, true);
-            ErrorRecord = LogEntry(engineConf, SpecifiedFiles.Error, true, true);
-            FatalRecord = LogEntry(engineConf, SpecifiedFiles.Fatal, true, true);
+            EngineConf = engineConf;
+            TraceRecord = LogEntry( SpecifiedFiles.Trace, true, true);
+            DebugRecord = LogEntry( SpecifiedFiles.Debug, true, true);
+            InfoRecord = LogEntry( SpecifiedFiles.Info, true, true);
+            NoticeRecord = LogEntry( SpecifiedFiles.Notice, true, true);
+            WarnRecord = LogEntry( SpecifiedFiles.Warn, true, true);
+            ErrorRecord = LogEntry( SpecifiedFiles.Error, true, true);
+            FatalRecord = LogEntry( SpecifiedFiles.Fatal, true, true);
         }
 
-        static ILogRecord LogEntry(IEngineConf engineConf, string resourceKey, bool enabled, bool timeStampPrintable)
+        static ILogRecord LogEntry(string resourceKey, bool enabled, bool timeStampPrintable)
         {
-            var logFile = ResFile.AsLog(engineConf.LogDirectory, engineConf.GetLogBasename(resourceKey));
+            var logFile = ResFile.AsLog(EngineConf.LogDirectory, EngineConf.GetLogBasename(resourceKey));
             return new LogRecord(logFile, enabled, timeStampPrintable);
         }
 
+        static IEngineConf EngineConf { get; set; }
         public static ILogRecord TraceRecord { get; private set; }
         public static ILogRecord DebugRecord { get; private set; }
         public static ILogRecord InfoRecord { get; private set; }
@@ -213,11 +215,11 @@
         /// * 将棋エンジン起動後、ログが少し取られ始めたあとに削除を開始するようなところで実行しないでください。
         /// * TODO usinewgame のタイミングでログを削除したい。
         /// </summary>
-        public static void RemoveAllLogFiles(IEngineConf engineConf)
+        public static void RemoveAllLogFiles()
         {
             try
             {
-                string logsDirectory = engineConf.LogDirectory;
+                string logsDirectory = EngineConf.LogDirectory;
 
                 string[] paths = Directory.GetFiles(logsDirectory);
                 foreach (string path in paths)
