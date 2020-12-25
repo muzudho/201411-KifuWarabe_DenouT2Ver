@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 
@@ -151,7 +152,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     sb.AppendLine();
                 }
 
-                Logging.Logger.WriteFile(SpecifyLogFiles.HaichiTenkanHyoOnlyDataLog, sb.ToString());
+                Logging.Logger.WriteFile(SpecifyFiles.HaichiTenkanHyoOnlyDataLog, sb.ToString());
             }
 
 
@@ -216,7 +217,7 @@ columnCount=[{columnCount}]");
             }
 
         gt_EndMethod:
-            Logging.Logger.WriteFile(SpecifyLogFiles.HaichiTenkanHyoAllLog, sbDebug.ToString());
+            Logging.Logger.WriteFile(SpecifyFiles.HaichiTenkanHyoAllLog, sbDebug.ToString());
 
             return rows;
         }

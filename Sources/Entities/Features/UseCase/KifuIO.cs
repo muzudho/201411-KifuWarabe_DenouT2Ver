@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
@@ -23,8 +24,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             TreeDocument kifuD,
             bool isBack,
             out K40 movedKoma,
-            out K40 underKoma,
-            ILogFile logFile = null
+            out K40 underKoma
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -38,8 +38,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 out movedKoma,
                 teProcess,
                 kifuD,
-                isBack,
-                logFile
+                isBack
                 );
 
 
@@ -63,8 +62,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 out underKoma,
                 teProcess, 
                 kifuD,
-                isBack,
-                logFile
+                isBack
                 );
 
 
@@ -77,7 +75,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                 //Logger.Trace($"ポップカレントした後　：　kifuD.Old_KomaDoors.CountPathNodes()=[{ kifuD.CountTeme(kifuD.Current8) }]");
             }
 
-            Logging.Logger.Trace( "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　", logFile);
+            Logging.Logger.Trace( "一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　");
             //LarabeLogger.GetInstance().WriteLineMemo(kifuD.DebugText_Kyokumen($"一手指しが終わったぜ☆　ノードが追加されているんじゃないか☆？　{ memberName }.{ sourceFilePath }.{ sourceLineNumber }：Ittesasi"));
         }
 
@@ -93,8 +91,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             out K40 movedKoma,
             IMove teProcess,
             TreeDocument kifuD,
-            bool isBack,
-            ILogFile logFile
+            bool isBack
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -285,8 +282,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
             out K40 underKoma,
             IMove teProcess,
             TreeDocument kifuD,
-            bool back,
-            ILogFile logFile
+            bool back
             )
         {
             underKoma = K40.Error;
@@ -472,8 +468,7 @@ dst.Sengo={dst.Star.Sengo}");
                     kifuD.AppendChildB_Swap(
                         tottaKomaSyurui,
                         house9,
-                        "KifuIO_Kifusasi52",
-                        logFile
+                        "KifuIO_Kifusasi52"
                     );
                     //}
                 }

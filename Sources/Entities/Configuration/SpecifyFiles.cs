@@ -1,11 +1,11 @@
-﻿namespace Grayscale.Kifuwarane.Entities.Logging
+﻿namespace Grayscale.Kifuwarane.Entities.Configuration
 {
     using System.IO;
     using Nett;
 
-    public static class SpecifyLogFiles
+    public static class SpecifyFiles
     {
-        static SpecifyLogFiles()
+        static SpecifyFiles()
         {
             var profilePath = System.Configuration.ConfigurationManager.AppSettings["Profile"];
             var toml = Toml.ReadFile(Path.Combine(profilePath, "Engine.toml"));
@@ -24,29 +24,29 @@
             GenMove = LogEntry(logDirectory, toml, "GenMoveLog");
         }
 
-        static ILogFile LogEntry(string logDirectory, TomlTable toml, string resourceKey)
+        static IResFile LogEntry(string logDirectory, TomlTable toml, string resourceKey)
         {
-            return LogFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
+            return ResFile.AsLog(logDirectory, toml.Get<TomlTable>("Logs").Get<string>(resourceKey));
         }
-        static ILogFile DataEntry(string profilePath, TomlTable toml, string resourceKey)
+        static IResFile DataEntry(string profilePath, TomlTable toml, string resourceKey)
         {
-            return LogFile.AsData(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey));
+            return ResFile.AsData(profilePath, toml.Get<TomlTable>("Resources").Get<string>(resourceKey));
         }
 
-        public static ILogFile OutputForcePromotion { get; private set; }
-        public static ILogFile OutputPieceTypeToHaiyaku { get; private set; }
-        public static ILogFile HaichiTenkanHyoOnlyDataLog { get; private set; }
-        public static ILogFile HaichiTenkanHyoAllLog { get; private set; }
+        public static IResFile OutputForcePromotion { get; private set; }
+        public static IResFile OutputPieceTypeToHaiyaku { get; private set; }
+        public static IResFile HaichiTenkanHyoOnlyDataLog { get; private set; }
+        public static IResFile HaichiTenkanHyoAllLog { get; private set; }
 
         
-        public static ILogFile GuiDefault { get; private set; }
-        public static ILogFile LinkedList { get; private set; }
-        public static ILogFile GuiPaint { get; private set; }
-        public static ILogFile LegalMove { get; private set; }
-        public static ILogFile LegalMoveEvasion { get; private set; }
+        public static IResFile GuiDefault { get; private set; }
+        public static IResFile LinkedList { get; private set; }
+        public static IResFile GuiPaint { get; private set; }
+        public static IResFile LegalMove { get; private set; }
+        public static IResFile LegalMoveEvasion { get; private set; }
         /// <summary>
         /// 指し手生成だけ別ファイルにログを取りたいとき。
         /// </summary>
-        public static ILogFile GenMove { get; private set; }
+        public static IResFile GenMove { get; private set; }
     }
 }

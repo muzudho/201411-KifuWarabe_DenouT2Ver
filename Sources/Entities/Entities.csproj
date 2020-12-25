@@ -136,13 +136,14 @@
     <Compile Include="Features\JapaneseView\MigiHidari.cs" />
     <Compile Include="Features\JapaneseView\NariFunari.cs" />
     <Compile Include="IPlaying.cs" />
-    <Compile Include="Logging\ILogFile.cs" />
+    <Compile Include="Configuration\IResFile.cs" />
+    <Compile Include="EntitiesLayer.cs" />
     <Compile Include="Logging\ILogRecord.cs" />
     <Compile Include="Logging\Logger.cs" />
-    <Compile Include="Logging\LogFile.cs" />
+    <Compile Include="Configuration\ResFile.cs" />
     <Compile Include="Logging\LogRecord.cs" />
     <Compile Include="Logging\SpecifiedFiles.cs" />
-    <Compile Include="Logging\SpecifyLogFiles.cs" />
+    <Compile Include="Configuration\SpecifyFiles.cs" />
     <Compile Include="Features\Misc\CsvLineParserImpl.cs" />
     <Compile Include="Features\Misc\RandomLib.cs" />
     <Compile Include="Features\Misc\ShuffleLib.cs" />

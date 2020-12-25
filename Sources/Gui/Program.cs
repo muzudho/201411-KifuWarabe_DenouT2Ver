@@ -9,6 +9,8 @@ using Nett;
 using System.Windows.Forms;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
 using Grayscale.Kifuwarane.Engine.Configuration;
+using Grayscale.Kifuwarane.Entities.Configuration;
+using Grayscale.Kifuwarane.Entities;
 
 namespace Grayscale.Kifuwarane.Gui
 {
@@ -21,7 +23,7 @@ namespace Grayscale.Kifuwarane.Gui
         static void Main()
         {
             var engineConf = new EngineConf();
-            Logger.Init(engineConf);
+            EntitiesLayer.Implement(engineConf);
 
             Logger.Trace( $"乱数のたね＝[{ RandomLib.Seed }]");
 
@@ -46,7 +48,7 @@ namespace Grayscale.Kifuwarane.Gui
 
                 //Logger.Trace(ForcePromotionArray.DebugString());
 
-                Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(SpecifyFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
             }
 
             //------------------------------
@@ -59,7 +61,7 @@ namespace Grayscale.Kifuwarane.Gui
                 var inputPieceTypeToHaiyaku = Path.Combine(profilePath, inputPieceTypeToHaiyakuFileName);
                 List<List<string>> rows = Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(SpecifyFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
             }
 
 

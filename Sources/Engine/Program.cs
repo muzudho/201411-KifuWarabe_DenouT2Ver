@@ -6,8 +6,10 @@
     using System.Text;
     using System.Text.RegularExpressions;
     using Grayscale.Kifuwarane.Engine.Configuration;
+    using Grayscale.Kifuwarane.Entities;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame;
     using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+    using Grayscale.Kifuwarane.Entities.Configuration;
     using Grayscale.Kifuwarane.Entities.Logging;
     using Grayscale.Kifuwarane.UseCases;
     using Grayscale.Kifuwarane.UseCases.Logging;
@@ -30,7 +32,7 @@
             try
             {
                 var engineConf = new EngineConf();
-                Logger.Init(engineConf);
+                EntitiesLayer.Implement(engineConf);
 
                 // まだ指し将棋をすると決まったわけではないが、とりあえず今は Playing という名前で☆（＾～＾）
                 var playing = new Playing(engineConf);
@@ -72,13 +74,13 @@
                 var inputForcePromotion = engineConf.GetResourceFullPath("InputForcePromotion");
                 ForcePromotionArray.Load(inputForcePromotion, Encoding.UTF8);
 
-                Logger.WriteFile(SpecifyLogFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
+                Logger.WriteFile(SpecifyFiles.OutputForcePromotion, ForcePromotionArray.DebugHtml());
 
                 // 配役転換表
                 var inputPieceTypeToHaiyaku = engineConf.GetResourceFullPath("InputPieceTypeToHaiyaku");
                 Data_HaiyakuTransition.Load(inputPieceTypeToHaiyaku, Encoding.UTF8);
 
-                Logger.WriteFile(SpecifyLogFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
+                Logger.WriteFile(SpecifyFiles.OutputPieceTypeToHaiyaku, Data_HaiyakuTransition.DebugHtml());
 
 
 

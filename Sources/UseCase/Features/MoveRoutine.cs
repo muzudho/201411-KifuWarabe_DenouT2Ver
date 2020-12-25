@@ -2,6 +2,7 @@
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 using Grayscale.Kifuwarane.Entities.UseCase;
@@ -38,7 +39,7 @@ namespace Grayscale.Kifuwarane.UseCases.Think
             Util_LegalMove.GetLegalMove(kifu, out gohosyuList);
 
             // ログ出力
-            Logger.Trace(gohosyuList.Log_AllKomaMasus(kifu), SpecifyLogFiles.GenMove);// ログ出力
+            Logger.Trace(gohosyuList.Log_AllKomaMasus(kifu), SpecifyFiles.GenMove);// ログ出力
 
             // ②ランダムに１手選ぶ
             IMove bestmove = MoveRoutine.Choice_Random(kifu, ref gohosyuList);
@@ -138,7 +139,7 @@ hDst={ GameTranslator.SqToJapanese((int)bestmoveMasuDst) }
 
             }
 
-            Logger.WriteFile(SpecifyLogFiles.LegalMove, sbGohosyu.ToString());
+            Logger.WriteFile(SpecifyFiles.LegalMove, sbGohosyu.ToString());
 
 
 

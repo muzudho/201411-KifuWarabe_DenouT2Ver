@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.UseCase;
 
@@ -23,7 +24,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             this.current8 = new TreeRoot6();
 
-            Logging.Logger.Trace("リンクトリストは作られた"+this.DebugText_Kyokumen7(this, "ルートが追加されたはずだぜ☆"), SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace("リンクトリストは作られた"+this.DebugText_Kyokumen7(this, "ルートが追加されたはずだぜ☆"), SpecifyFiles.LinkedList);
         }
 
 
@@ -65,7 +66,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             this.current8 = deleteeElement.Previous;
 
 
-            Logging.Logger.Trace("リンクトリストの最後の要素が削除された", SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace("リンクトリストの最後の要素が削除された", SpecifyFiles.LinkedList);
 
         // gt_EndMethod:
             return deleteeElement;
@@ -552,7 +553,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //OldLinkedList.logger.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, $"リンクトリストに、ノードは追加された item=[{ item.ToSfenText() }] memberName=[{memberName}] sourceFilePath=[{sourceFilePath}] sourceLineNumber=[{sourceLineNumber}]");
             //Kifu_Document.KOMA_DOORS_LOGGER.WriteLineMemo(LarabeLoggerTag.LINKED_LIST, kifuD.DebugText_Kyokumen($"ノードが追加されたぜ☆ hint=[{ hint }"));
 
-            Logging.Logger.Trace( $"ノードが１つ追加されたぜ☆ｗｗ　：　[{ kifuD.CountTeme(kifuD.Current8) }]手目　：　hint=[{ hint }]", SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace( $"ノードが１つ追加されたぜ☆ｗｗ　：　[{ kifuD.CountTeme(kifuD.Current8) }]手目　：　hint=[{ hint }]", SpecifyFiles.LinkedList);
             //　：　棋譜＝{ KirokuGakari.ToJapaneseKifuText(kifuD) }"
             //　：　呼出箇所＝{ memberName }.{ sourceFilePath }.{ sourceLineNumber }"
         }
@@ -575,7 +576,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
                 newHouse = new PositionKomaHouse(latestHouse.Stars);
 
-                Logging.Logger.Trace( newHouse.Log_Kyokumen(this, this.CountTeme(this.Current8), "増えたニュー局面"), SpecifyLogFiles.LinkedList);
+                Logging.Logger.Trace( newHouse.Log_Kyokumen(this, this.CountTeme(this.Current8), "増えたニュー局面"), SpecifyFiles.LinkedList);
             }
 
 
@@ -620,7 +621,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             this.AppendChild_Main(this, newNode, $"{hint}：Kifu_Document.cs_Kifu_Document#Add_Old3a");
 
-            Logging.Logger.Trace( $"リンクトリストに、ノードは追加された hint=[{ hint }] te=[{ newNode.TeProcess.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace( $"リンクトリストに、ノードは追加された hint=[{ hint }] te=[{ newNode.TeProcess.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", SpecifyFiles.LinkedList);
         }
 
         /// <summary>
@@ -632,9 +633,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         public void AppendChildB_Swap(
             Ks14 tottaSyurui,
             PositionKomaHouse newHouse,
-            string hint,
-            ILogFile logFile
-
+            string hint
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
@@ -664,7 +663,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             this.AppendChild_Main(this, newNode, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
             //this.Add8(this, item, null, "Kifu_Document.cs_Kifu_Document#Add_Old3b_WhenKifuRead");
 
-            Logging.Logger.Trace( $"リンクトリストの、最終ノードは差し替えられた hint=[{ hint }] item=[{ item.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]", logFile);
+            Logging.Logger.Trace( $"リンクトリストの、最終ノードは差し替えられた hint=[{ hint }] item=[{ item.ToSfenText() }] memberName=[{ memberName }] sourceFilePath=[{ sourceFilePath }] sourceLineNumber=[{ sourceLineNumber }]");
 
         gt_EndMethod:
             ;
@@ -684,7 +683,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             // ルートの次の手を全クリアーします。
             this.Current8.Next2.Clear();
 
-            Logging.Logger.Trace( "リンクトリストは、クリアーされた", SpecifyLogFiles.LinkedList);
+            Logging.Logger.Trace( "リンクトリストは、クリアーされた", SpecifyFiles.LinkedList);
         }
 
         public TreeRoot6 GetRoot8()

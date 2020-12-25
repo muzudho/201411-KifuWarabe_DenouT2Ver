@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
+using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 
 namespace Grayscale.Kifuwarane.Entities.UseCase
@@ -258,7 +259,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     sbOhteDebug.AppendLine($"(d){ nextNode.TeProcess.ToSfenText()}");
                 }
 
-                Logging.Logger.WriteFile(SpecifyLogFiles.LegalMoveEvasion, sbOhteDebug.ToString());
+                Logging.Logger.WriteFile(SpecifyFiles.LegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------
