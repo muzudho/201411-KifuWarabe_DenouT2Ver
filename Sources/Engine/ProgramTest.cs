@@ -5,7 +5,7 @@ using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Performer;
 
 namespace Grayscale.Kifuwarane.Entities
 {

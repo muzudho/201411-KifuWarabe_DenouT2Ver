@@ -3,9 +3,8 @@ using System.Text.RegularExpressions;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.JapaneseView;
-using Grayscale.Kifuwarane.Entities.Logging;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.Entities.Sfen
 {
     /// <summary>
     /// 符号(*1)を元に、棋譜データの持ち方に変換します。

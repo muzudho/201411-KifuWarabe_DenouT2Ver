@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Performer;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 
 namespace Grayscale.Kifuwarane.Gui.L09_Ui

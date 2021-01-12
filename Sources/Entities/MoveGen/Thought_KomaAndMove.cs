@@ -3,7 +3,7 @@ using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.Entities.MoveGen
 {
     public abstract class Thought_KomaAndMove
     {

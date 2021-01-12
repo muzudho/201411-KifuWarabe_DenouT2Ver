@@ -1,7 +1,7 @@
 ﻿using System;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Performer;
+using Grayscale.Kifuwarane.Entities.Sfen;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {

@@ -6,7 +6,7 @@ using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Entities.Logging;
 
-namespace Grayscale.Kifuwarane.UseCases.MoveGen
+namespace Grayscale.Kifuwarane.Entities.MoveGen
 {
     public abstract class Util_LegalMove
     {

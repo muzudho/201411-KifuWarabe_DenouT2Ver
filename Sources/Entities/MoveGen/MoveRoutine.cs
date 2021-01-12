@@ -6,7 +6,7 @@ using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
 
-namespace Grayscale.Kifuwarane.UseCases.MoveGen
+namespace Grayscale.Kifuwarane.Entities.MoveGen
 {
 
     /// <summary>

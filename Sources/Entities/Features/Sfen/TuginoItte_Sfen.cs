@@ -5,7 +5,7 @@ using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Sfen;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.Entities.Sfen
 {
     /// <summary>
     /// 「7g7f」といった記述を、棋譜データの持ち方に変換します。

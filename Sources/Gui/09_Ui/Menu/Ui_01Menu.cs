@@ -1,10 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
-using Grayscale.Kifuwarane.Entities;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Performer;
 using Grayscale.Kifuwarane.Gui.L02_DammyConsole;
 using Grayscale.Kifuwarane.Gui.L07_Shape;
 using Grayscale.Kifuwarane.Gui.L08_Server;

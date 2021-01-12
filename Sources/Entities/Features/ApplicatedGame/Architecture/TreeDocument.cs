@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.Configuration;
-using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Performer;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 {
