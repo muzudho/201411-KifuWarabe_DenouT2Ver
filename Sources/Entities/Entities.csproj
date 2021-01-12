@@ -144,7 +144,7 @@
     <Compile Include="Logging\LogRecord.cs" />
     <Compile Include="Logging\SpecifiedFiles.cs" />
     <Compile Include="Configuration\SpecifyFiles.cs" />
-    <Compile Include="Features\Misc\CsvLineParserImpl.cs" />
+    <Compile Include="Format\CsvLineParserImpl.cs" />
     <Compile Include="Features\Misc\RandomLib.cs" />
     <Compile Include="Features\Misc\ShuffleLib.cs" />
     <Compile Include="MoveGen\MoveRoutine.cs" />
@@ -155,8 +155,8 @@
     <Compile Include="Features\Sfen\SfenMoveBuilder.cs" />
     <Compile Include="Features\Sfen\SfenReferences.cs" />
     <Compile Include="Performer\KifuIO.cs" />
-    <Compile Include="Features\UseCase\KirokuGakari.cs" />
-    <Compile Include="Features\UseCase\Thought.cs" />
+    <Compile Include="Presenter\KirokuGakari.cs" />
+    <Compile Include="MoveGen\Thought.cs" />
     <Compile Include="Features\Sfen\TuginoItte_JapanFugo.cs" />
     <Compile Include="Features\Sfen\TuginoItte_Sfen.cs" />
   </ItemGroup>

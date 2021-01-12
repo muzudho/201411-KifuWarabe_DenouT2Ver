@@ -1,9 +1,8 @@
 ﻿using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logging;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.Entities.Presenter
 {
     /// <summary>
     /// 記録係

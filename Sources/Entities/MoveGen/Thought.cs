@@ -3,7 +3,7 @@ using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.Entities.MoveGen
 {
     public abstract class Thought
     {

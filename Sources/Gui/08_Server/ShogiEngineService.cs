@@ -1,10 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
+using Grayscale.Kifuwarane.Entities.Presenter;
 using Grayscale.Kifuwarane.Gui.L09_Ui;
 
 namespace Grayscale.Kifuwarane.Gui.L08_Server

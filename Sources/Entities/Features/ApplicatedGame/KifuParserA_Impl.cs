@@ -1,8 +1,5 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
-using Grayscale.Kifuwarane.Entities.Logging;
-using Grayscale.Kifuwarane.Entities.UseCase;
 
 namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
 {
