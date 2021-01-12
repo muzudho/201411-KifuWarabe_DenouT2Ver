@@ -5,9 +5,8 @@ using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Configuration;
 using Grayscale.Kifuwarane.Entities.Logging;
 using Grayscale.Kifuwarane.Entities.Misc;
-using Grayscale.Kifuwarane.Entities.UseCase;
 
-namespace Grayscale.Kifuwarane.UseCases.Think
+namespace Grayscale.Kifuwarane.UseCases.MoveGen
 {
 
     /// <summary>

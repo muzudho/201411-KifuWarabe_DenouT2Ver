@@ -9,7 +9,7 @@
     using Grayscale.Kifuwarane.Entities.Configuration;
     using Grayscale.Kifuwarane.Entities.Logging;
     using Grayscale.Kifuwarane.Entities.UseCase;
-    using Grayscale.Kifuwarane.UseCases.Think;
+    using Grayscale.Kifuwarane.UseCases.MoveGen;
     using Nett;
 
     /// <summary>

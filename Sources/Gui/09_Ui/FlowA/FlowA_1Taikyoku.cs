@@ -197,7 +197,8 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             if (shape_PnlTaikyoku.BtnShogiEngineKido.HitByMouse(e.Location.X, e.Location.Y))
             {
-                ShogiEngineService.StartShogiEngine(ui_PnlMain.EngineConf, ui_PnlMain.EngineConf.GetResourceFullPath("Engine"));
+                // ui_PnlMain.EngineConf,
+                ShogiEngineService.StartShogiEngine(ui_PnlMain.EngineConf.GetResourceFullPath("Engine"));
             }
 
             //----------

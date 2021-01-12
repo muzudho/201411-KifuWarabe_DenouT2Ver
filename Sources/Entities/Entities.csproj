@@ -157,7 +157,6 @@
     <Compile Include="Features\UseCase\Thought_KomaAndMove.cs" />
     <Compile Include="Features\UseCase\TuginoItte_JapanFugo.cs" />
     <Compile Include="Features\UseCase\TuginoItte_Sfen.cs" />
-    <Compile Include="Features\UseCase\Util_LegalMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -169,7 +168,9 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MoveGen\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

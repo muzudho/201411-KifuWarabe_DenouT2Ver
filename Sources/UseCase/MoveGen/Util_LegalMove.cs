@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame;
 using Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture;
 using Grayscale.Kifuwarane.Entities.Configuration;
+using Grayscale.Kifuwarane.Entities.UseCase;
 using Grayscale.Kifuwarane.Entities.Logging;
 
-namespace Grayscale.Kifuwarane.Entities.UseCase
+namespace Grayscale.Kifuwarane.UseCases.MoveGen
 {
     public abstract class Util_LegalMove
     {
@@ -259,7 +259,7 @@ namespace Grayscale.Kifuwarane.Entities.UseCase
                     sbOhteDebug.AppendLine($"(d){ nextNode.TeProcess.ToSfenText()}");
                 }
 
-                Logging.Logger.WriteFile(SpecifyFiles.LegalMoveEvasion, sbOhteDebug.ToString());
+                Logger.WriteFile(SpecifyFiles.LegalMoveEvasion, sbOhteDebug.ToString());
 
 
                 //------------------------------------------------------------

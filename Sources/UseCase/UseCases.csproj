@@ -68,8 +68,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoveGen\Util_LegalMove.cs" />
     <Compile Include="Playing.cs" />
-    <Compile Include="Features\MoveRoutine.cs" />
+    <Compile Include="MoveGen\MoveRoutine.cs" />
     <Compile Include="Features\PerformanceMetrics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
