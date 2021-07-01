@@ -590,13 +590,13 @@ usiok
             //      将棋ＧＵＩ『きふならべ』用☆　将棋盤上に王さまがいないときに、本将棋で　go　コマンドが送られてくることは無いのでは☆？
             //
             if (
-                M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu) != Okiba.ShogiBan // 先手の王さまが将棋盤上にいないとき☆
-                || M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
+                M201Util.GetOkiba(genKyokumen.KomaPosAt(Piece40.K1).Star.Masu) != Okiba.ShogiBan // 先手の王さまが将棋盤上にいないとき☆
+                || M201Util.GetOkiba(genKyokumen.KomaPosAt(Piece40.K2).Star.Masu) != Okiba.ShogiBan // または、後手の王さまが将棋盤上にいないとき☆
                 )
             {
                 Logger.Trace($@"将棋サーバー「ではここで、王さまがどこにいるか確認してみましょう」
-▲王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.SenteOh).Star.Masu)}
-△王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(K40.GoteOh).Star.Masu)}");
+▲王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(Piece40.K1).Star.Masu)}
+△王の置き場＝{ M201Util.GetOkiba(genKyokumen.KomaPosAt(Piece40.K2).Star.Masu)}");
 
                 //------------------------------------------------------------
                 // 投了

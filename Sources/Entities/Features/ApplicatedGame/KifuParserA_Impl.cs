@@ -8,9 +8,9 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
     public delegate void IttesasiPaintDelegate(
         TreeDocument kifuD,
         string restText,
-        K40 movedKoma,
+        Piece40 movedKoma,
         //K40 tottaKoma,
-        K40 underKoma,
+        Piece40 underKoma,
         IKifuElement node6 //RO_TeProcess teProcess,        //RO_TeProcess previousProcess,
     );
 
@@ -55,9 +55,9 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         private void Dammy_IttesasiPaint(
             TreeDocument kifuD,
             string restText,
-            K40 movedKoma,
+            Piece40 movedKoma,
             //K40 tottaKoma,
-            K40 underKoma,
+            Piece40 underKoma,
             IKifuElement node6 //RO_TeProcess teProcess,            //RO_TeProcess previousProcess,
             )
         {

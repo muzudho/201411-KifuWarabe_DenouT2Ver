@@ -68,7 +68,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
             Kh185 bestmoveHaiyaku = Kh185.n000_未設定;
             M201 bestmoveMasuSrc = M201.Error;
             M201 bestmoveMasuDst = M201.Error;
-            K40 bestmoveKoma = K40.Error;
+            Piece40 bestmoveKoma = Piece40.Error;
 
             // 変換『「駒→手」のコレクション』→『「駒、指し手」のペアのリスト』
             List<KomaAndMasu> kmList = GameTranslator.KmDic_ToKmList(moveList);
@@ -108,7 +108,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
                 sbGohosyu.AppendLine($@"┏━━━━━━━━━━┓選択手
 合法手がなかった☆
 komaAndMove.Entries.Count={ moveList.Count}");
-                if (K40.Error == bestmoveKoma)
+                if (Piece40.Error == bestmoveKoma)
                 {
                     sbGohosyu.AppendLine($@"hMoveKoma=エラー駒
 bestmoveMasuSrc={ bestmoveMasuSrc}
@@ -158,7 +158,7 @@ hDst={ GameTranslator.SqToJapanese((int)bestmoveMasuDst) }
                     bestmoveHaiyaku
                 ),
 
-                Ks14.H00_Null
+                PieceType.None
                 );
 
             return result;

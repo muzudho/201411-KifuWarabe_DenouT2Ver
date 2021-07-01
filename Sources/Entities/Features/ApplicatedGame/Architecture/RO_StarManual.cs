@@ -25,11 +25,11 @@
         /// <summary>
         /// 駒種類１４
         /// </summary>
-        public Ks14 Syurui { get { return this.syurui; } }
-        private Ks14 syurui;
+        public PieceType Syurui { get { return this.syurui; } }
+        private PieceType syurui;
 
 
-        public RO_StarManual(Sengo sengo, M201 masu, Ks14 syurui)
+        public RO_StarManual(Sengo sengo, M201 masu, PieceType syurui)
         {
             this.sengo = sengo;
             this.masu = masu;

@@ -72,9 +72,9 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                 if (null != teProcess)
                 {
                     //RO_TeProcess previousProcess = RO_TeProcess.NULL_OBJECT;
-                    K40 movedKoma = K40.Error;
+                    Piece40 movedKoma = Piece40.Error;
                     //K40 tottaKoma = K40.Error;
-                    K40 underKoma = K40.Error;
+                    Piece40 underKoma = Piece40.Error;
 
                     // Application.DoEvents(); // 時間のかかる処理の間にはこれを挟みます。これは System.Windows.Forms なので .NET5 で廃止されるぜ☆（＾～＾）
 

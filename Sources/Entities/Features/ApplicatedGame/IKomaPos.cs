@@ -20,19 +20,19 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         /// <param name="dstHaiyaku"></param>
         /// <param name="hint"></param>
         /// <returns></returns>
-        IKomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint);
+        IKomaPos Next(Sengo sengo, M201 dstMasu, PieceType currentSyurui, string hint);
 
         /// <summary>
         /// 不成ケース
         /// </summary>
         /// <returns></returns>
-        Ks14 ToFunariCase();
+        PieceType ToFunariCase();
         
         /// <summary>
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        bool NeverOnaji(TreeDocument kifuD, params List<K40>[] komaGroupArgs);
+        bool NeverOnaji(TreeDocument kifuD, params List<Piece40>[] komaGroupArgs);
 
         /// <summary>
         /// 成り

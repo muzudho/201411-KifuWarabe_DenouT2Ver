@@ -111,7 +111,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 棋譜の現局面：競合駒
             //----------
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
 
             if (process.IsDaAction)
             {
@@ -206,7 +206,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
 
             if (process.IsDaAction)
             {
@@ -301,8 +301,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmI = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcI);
-            List<K40> kmJ = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcJ);
+            List<Piece40> kmI = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcI);
+            List<Piece40> kmJ = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcJ);
 
             if (process.IsDaAction)
             {
@@ -404,11 +404,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
+            List<Piece40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<Piece40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<Piece40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
             if (process.IsDaAction)
             {
@@ -587,12 +587,12 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<Piece40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<Piece40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<Piece40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<Piece40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
 
 
             if (process.IsDaAction)
@@ -819,10 +819,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 棋譜の現局面：競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<Piece40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<Piece40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
 
             if (process.IsDaAction)
             {
@@ -978,10 +978,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
+            List<Piece40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<Piece40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<Piece40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<Piece40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
 
             if (process.IsDaAction)
@@ -1139,14 +1139,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
+            List<Piece40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<Piece40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<Piece40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<Piece40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<Piece40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<Piece40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
 
             if (process.IsDaAction)
@@ -1325,14 +1325,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             //----------
             // 競合駒
             //----------
-            List<K40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
-            List<K40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
-            List<K40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
-            List<K40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
-            List<K40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
-            List<K40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
-            List<K40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
-            List<K40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
+            List<Piece40> kmA = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcA);
+            List<Piece40> kmB = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcB);
+            List<Piece40> kmC = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcC);
+            List<Piece40> kmD = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcD);
+            List<Piece40> kmE = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcE);
+            List<Piece40> kmF = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcF);
+            List<Piece40> kmG = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcG);
+            List<Piece40> kmH = Util_KyokumenReader.KomaHandles_EachSrc(kifuD, process.Star.Sengo, process, srcH);
 
             if (process.IsDaAction)
             {

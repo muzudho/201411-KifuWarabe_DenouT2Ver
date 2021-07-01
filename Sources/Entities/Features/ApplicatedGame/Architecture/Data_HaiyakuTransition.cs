@@ -15,14 +15,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <summary>
         /// 種類ハンドル→升ハンドル→次配役ハンドルの連鎖なんだぜ☆
         /// </summary>
-        public static Dictionary<Ks14, Kh185[]> Map
+        public static Dictionary<PieceType, Kh185[]> Map
         {
             get
             {
                 return Data_HaiyakuTransition.map;
             }
         }
-        private static Dictionary<Ks14, Kh185[]> map;
+        private static Dictionary<PieceType, Kh185[]> map;
 
         /// <summary>
         /// 
@@ -30,7 +30,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="syurui"></param>
         /// <param name="masuHandle_shogiban">0～80</param>
         /// <returns></returns>
-        public static Kh185 ToHaiyaku(Ks14 syurui, int masuHandle_shogiban)
+        public static Kh185 ToHaiyaku(PieceType syurui, int masuHandle_shogiban)
         {
             Kh185 result;
 
@@ -42,20 +42,20 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             {
                 switch(syurui)
                 {
-                    case Ks14.H01_Fu: result = Kh185.n164_歩打; break;
-                    case Ks14.H02_Kyo: result = Kh185.n165_香打; break;
-                    case Ks14.H03_Kei: result = Kh185.n166_桂打; break;
-                    case Ks14.H04_Gin: result = Kh185.n167_銀打; break;
-                    case Ks14.H05_Kin: result = Kh185.n168_金打; break;
-                    case Ks14.H06_Oh: result = Kh185.n169_王打; break;
-                    case Ks14.H07_Hisya: result = Kh185.n170_飛打; break;
-                    case Ks14.H08_Kaku: result = Kh185.n171_角打; break;
-                    case Ks14.H09_Ryu: result = Kh185.n170_飛打; break;
-                    case Ks14.H10_Uma: result = Kh185.n171_角打; break;
-                    case Ks14.H11_Tokin: result = Kh185.n164_歩打; break;
-                    case Ks14.H12_NariKyo: result = Kh185.n165_香打; break;
-                    case Ks14.H13_NariKei: result = Kh185.n166_桂打; break;
-                    case Ks14.H14_NariGin: result = Kh185.n167_銀打; break;
+                    case PieceType.P: result = Kh185.n164_歩打; break;
+                    case PieceType.L: result = Kh185.n165_香打; break;
+                    case PieceType.N: result = Kh185.n166_桂打; break;
+                    case PieceType.S: result = Kh185.n167_銀打; break;
+                    case PieceType.G: result = Kh185.n168_金打; break;
+                    case PieceType.K: result = Kh185.n169_王打; break;
+                    case PieceType.R: result = Kh185.n170_飛打; break;
+                    case PieceType.B: result = Kh185.n171_角打; break;
+                    case PieceType.PR: result = Kh185.n170_飛打; break;
+                    case PieceType.PB: result = Kh185.n171_角打; break;
+                    case PieceType.PP: result = Kh185.n164_歩打; break;
+                    case PieceType.PL: result = Kh185.n165_香打; break;
+                    case PieceType.PN: result = Kh185.n166_桂打; break;
+                    case PieceType.PS: result = Kh185.n167_銀打; break;
                     default: result = Kh185.n000_未設定; break;
                 }
             }
@@ -63,20 +63,20 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             {
                 switch (syurui)
                 {
-                    case Ks14.H01_Fu: result = Kh185.n172_駒袋歩; break;
-                    case Ks14.H02_Kyo: result = Kh185.n173_駒袋香; break;
-                    case Ks14.H03_Kei: result = Kh185.n174_駒袋桂; break;
-                    case Ks14.H04_Gin: result = Kh185.n175_駒袋銀; break;
-                    case Ks14.H05_Kin: result = Kh185.n176_駒袋金; break;
-                    case Ks14.H06_Oh: result = Kh185.n177_駒袋王; break;
-                    case Ks14.H07_Hisya: result = Kh185.n178_駒袋飛; break;
-                    case Ks14.H08_Kaku: result = Kh185.n179_駒袋角; break;
-                    case Ks14.H09_Ryu: result = Kh185.n180_駒袋竜; break;
-                    case Ks14.H10_Uma: result = Kh185.n181_駒袋馬; break;
-                    case Ks14.H11_Tokin: result = Kh185.n182_駒袋と金; break;
-                    case Ks14.H12_NariKyo: result = Kh185.n183_駒袋杏; break;
-                    case Ks14.H13_NariKei: result = Kh185.n184_駒袋圭; break;
-                    case Ks14.H14_NariGin: result = Kh185.n185_駒袋全; break;
+                    case PieceType.P: result = Kh185.n172_駒袋歩; break;
+                    case PieceType.L: result = Kh185.n173_駒袋香; break;
+                    case PieceType.N: result = Kh185.n174_駒袋桂; break;
+                    case PieceType.S: result = Kh185.n175_駒袋銀; break;
+                    case PieceType.G: result = Kh185.n176_駒袋金; break;
+                    case PieceType.K: result = Kh185.n177_駒袋王; break;
+                    case PieceType.R: result = Kh185.n178_駒袋飛; break;
+                    case PieceType.B: result = Kh185.n179_駒袋角; break;
+                    case PieceType.PR: result = Kh185.n180_駒袋竜; break;
+                    case PieceType.PB: result = Kh185.n181_駒袋馬; break;
+                    case PieceType.PP: result = Kh185.n182_駒袋と金; break;
+                    case PieceType.PL: result = Kh185.n183_駒袋杏; break;
+                    case PieceType.PN: result = Kh185.n184_駒袋圭; break;
+                    case PieceType.PS: result = Kh185.n185_駒袋全; break;
                     default: result = Kh185.n000_未設定; break;
                 }
             }
@@ -157,7 +157,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
 
 
-            Data_HaiyakuTransition.map = new Dictionary<Ks14, Kh185[]>();
+            Data_HaiyakuTransition.map = new Dictionary<PieceType, Kh185[]>();
 
 
             int rowCount2 = 0;
@@ -248,7 +248,7 @@ columnCount=[{columnCount}]");
             sb.AppendLine("</head>");
             sb.AppendLine("<body>");
 
-            foreach (KeyValuePair<Ks14, Kh185[]> entry1 in Data_HaiyakuTransition.Map)
+            foreach (KeyValuePair<PieceType, Kh185[]> entry1 in Data_HaiyakuTransition.Map)
             {
                 sb.Append("<h1>");
                 sb.Append(entry1.Key);

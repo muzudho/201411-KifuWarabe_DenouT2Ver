@@ -34,12 +34,12 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------------------------------------
             // 取った駒種類を一旦クリアーします。
             //------------------------------------------------------------
-            shape_PnlTaikyoku.MousePos_TottaKomaSyurui = Ks14.H00_Null;
+            shape_PnlTaikyoku.MousePos_TottaKomaSyurui = PieceType.None;
 
 
 
 
-            Ks14 syurui;
+            PieceType syurui;
             if (shape_PnlTaikyoku.Naru)
             {
                 // 成ります
@@ -52,7 +52,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 syurui = Haiyaku184Array.Syurui(shape_PnlTaikyoku.MousePosOrNull2.Star.Haiyaku);
             }
 
-            Ks14 tottaKomaSyurui;
+            PieceType tottaKomaSyurui;
             IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
             PositionKomaHouse house1 = dammyNode1.KomaHouse;
 
@@ -72,7 +72,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //----------
             // 将棋盤上のその場所に駒はあるか
             //----------
-            tottaKomaSyurui = Ks14.H00_Null;
+            tottaKomaSyurui = PieceType.None;
             Shape_BtnKoma btnKoma_Under = Converter09.KomaToBtn(
                 Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu),
                 shape_PnlTaikyoku);//盤上
@@ -195,7 +195,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                         IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
                         PositionKomaHouse house6 = dammyNode5.KomaHouse;
 
-                        Ks14 syurui2 = house6.KomaPosAt(btnKoma_Under.Koma).ToFunariCase();
+                        PieceType syurui2 = house6.KomaPosAt(btnKoma_Under.Koma).ToFunariCase();
 
                         house6.SetKomaPos(kifuD, btnKoma_Under.Koma, house6.KomaPosAt(btnKoma_Under.Koma).Next(
                             house6.KomaPosAt(btnKoma_Under.Koma).Star.Sengo,
@@ -276,7 +276,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
 
-            List<Ks14> syuruiList = new List<Ks14>();
+            List<PieceType> syuruiList = new List<PieceType>();
             List<int> countList = new List<int>();
             List<Sengo> sengoList = new List<Sengo>();
 
@@ -291,7 +291,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MK, out count))
                 {
-                    syuruiList.Add(Ks14.H06_Oh);
+                    syuruiList.Add(PieceType.K);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -305,7 +305,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MR, out count))
                 {
-                    syuruiList.Add(Ks14.H07_Hisya);
+                    syuruiList.Add(PieceType.R);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -319,7 +319,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MB, out count))
                 {
-                    syuruiList.Add(Ks14.H08_Kaku);
+                    syuruiList.Add(PieceType.B);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -333,7 +333,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MG, out count))
                 {
-                    syuruiList.Add(Ks14.H05_Kin);
+                    syuruiList.Add(PieceType.G);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -347,7 +347,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MS, out count))
                 {
-                    syuruiList.Add(Ks14.H04_Gin);
+                    syuruiList.Add(PieceType.S);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -361,7 +361,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MN, out count))
                 {
-                    syuruiList.Add(Ks14.H03_Kei);
+                    syuruiList.Add(PieceType.N);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -375,7 +375,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.ML, out count))
                 {
-                    syuruiList.Add(Ks14.H02_Kyo);
+                    syuruiList.Add(PieceType.L);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -389,7 +389,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.MP, out count))
                 {
-                    syuruiList.Add(Ks14.H01_Fu);
+                    syuruiList.Add(PieceType.P);
                     countList.Add(count);
                     sengoList.Add(Sengo.Sente);
                 }
@@ -403,7 +403,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mk, out count))
                 {
-                    syuruiList.Add(Ks14.H06_Oh);
+                    syuruiList.Add(PieceType.K);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -417,7 +417,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mr, out count))
                 {
-                    syuruiList.Add(Ks14.H07_Hisya);
+                    syuruiList.Add(PieceType.R);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -431,7 +431,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mb, out count))
                 {
-                    syuruiList.Add(Ks14.H08_Kaku);
+                    syuruiList.Add(PieceType.B);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -445,7 +445,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mg, out count))
                 {
-                    syuruiList.Add(Ks14.H05_Kin);
+                    syuruiList.Add(PieceType.G);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -459,7 +459,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Ms, out count))
                 {
-                    syuruiList.Add(Ks14.H04_Gin);
+                    syuruiList.Add(PieceType.S);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -473,7 +473,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mn, out count))
                 {
-                    syuruiList.Add(Ks14.H03_Kei);
+                    syuruiList.Add(PieceType.N);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -487,7 +487,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Ml, out count))
                 {
-                    syuruiList.Add(Ks14.H02_Kyo);
+                    syuruiList.Add(PieceType.L);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -501,7 +501,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 int count;
                 if (int.TryParse(sfenStartpos.Mp, out count))
                 {
-                    syuruiList.Add(Ks14.H01_Fu);
+                    syuruiList.Add(PieceType.P);
                     countList.Add(count);
                     sengoList.Add(Sengo.Gote);
                 }
@@ -534,9 +534,9 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 //------------------------------
                 // 駒を、駒袋から駒台に移動させます。
                 //------------------------------
-                List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSyurui(kifuD, Okiba.KomaBukuro, syuruiList[i]);
+                List<Piece40> komas = Util_KyokumenReader.Komas_ByOkibaSyurui(kifuD, Okiba.KomaBukuro, syuruiList[i]);
                 int moved = 1;
-                foreach (K40 koma in komas)
+                foreach (Piece40 koma in komas)
                 {
                     // 駒台の空いている枡
                     M201 akiMasu = KifuIO.GetKomadaiKomabukuroSpace(itaruOkiba, kifuD);
@@ -578,7 +578,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// </summary>
         /// <param name="btnKoma">駒</param>
         public static void Refresh_KomaLocation(
-            K40 koma,
+            Piece40 koma,
             Shape_PnlTaikyoku shape_PnlTaikyoku,
             TreeDocument kifuD
             )

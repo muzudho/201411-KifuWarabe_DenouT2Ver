@@ -24,15 +24,15 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <summary>
         /// 種類。
         /// </summary>
-        public static Ks14 Syurui(Kh185 haiyaku)
+        public static PieceType Syurui(Kh185 haiyaku)
         {
             return Haiyaku184Array.syurui[(int)haiyaku];
         }
-        public static void AddSyurui(Ks14 syurui)
+        public static void AddSyurui(PieceType syurui)
         {
             Haiyaku184Array.syurui.Add(syurui);
         }
-        private static List<Ks14> syurui;
+        private static List<PieceType> syurui;
 
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         static Haiyaku184Array()
         {
             Haiyaku184Array.kukanMasus = new Dictionary<Kh185, List<IMasus>>();
-            Haiyaku184Array.syurui = new List<Ks14>();
+            Haiyaku184Array.syurui = new List<PieceType>();
             Haiyaku184Array.name = new List<string>();
         }
 

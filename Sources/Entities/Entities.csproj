@@ -80,14 +80,14 @@
     <Compile Include="Features\ApplicatedGame\Architecture\Haiyaku184Array.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\Haiyaku184Util.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\JFugoCreator15Array.cs" />
-    <Compile Include="Features\ApplicatedGame\Architecture\K40.cs" />
+    <Compile Include="Features\ApplicatedGame\Architecture\Piece40.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\K40Util.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\Kh185.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\KomaAndMasu.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\KomaAndMasusDictionary.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\KomanoKidou.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\KomaSyurui14Array.cs" />
-    <Compile Include="Features\ApplicatedGame\Architecture\Ks14.cs" />
+    <Compile Include="Features\ApplicatedGame\Architecture\PieceType.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\Ks14Converter.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\Kuukan24.cs" />
     <Compile Include="Features\ApplicatedGame\Architecture\M201.cs" />

@@ -66,7 +66,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         /// 動かし終わった駒。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public K40 MovedKoma
+        public Piece40 MovedKoma
         {
             get
             {
@@ -74,12 +74,12 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             }
         }
 
-        public void SetHMovedKoma(K40 value)
+        public void SetHMovedKoma(Piece40 value)
         {
             this.movedKoma = value;
         }
 
-        private K40 movedKoma;
+        private Piece40 movedKoma;
 
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         public void SetMousePosOrNull2(IKomaPos mousePos) { this.mousePosOrNull2 = mousePos; }
         private IKomaPos mousePosOrNull2;
 
-        public Ks14 MousePos_TottaKomaSyurui { get; set; }
+        public PieceType MousePos_TottaKomaSyurui { get; set; }
 
         /// <summary>
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -929,7 +929,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             // 初期化
             Logger.Trace("つまんでいる駒を放します。(1)");
             this.SetHTumandeiruKoma(-1);
-            this.SetHMovedKoma(K40.Error);
+            this.SetHMovedKoma(Piece40.Error);
 
             //----------
             // 出力切替
@@ -947,54 +947,54 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
             //----------
             this.SetBtnKomaDoors(new Shape_BtnKoma[]{
 
-                new Shape_BtnKoma(K40.SenteOh),//[0]
-                new Shape_BtnKoma(K40.GoteOh),
+                new Shape_BtnKoma(Piece40.K1),//[0]
+                new Shape_BtnKoma(Piece40.K2),
 
-                new Shape_BtnKoma(K40.Hi1),
-                new Shape_BtnKoma(K40.Hi2),
+                new Shape_BtnKoma(Piece40.R_1),
+                new Shape_BtnKoma(Piece40.R_2),
 
-                new Shape_BtnKoma(K40.Kaku1),
-                new Shape_BtnKoma(K40.Kaku2),//[5]
+                new Shape_BtnKoma(Piece40.B_1),
+                new Shape_BtnKoma(Piece40.B_2),//[5]
 
-                new Shape_BtnKoma(K40.Kin1),
-                new Shape_BtnKoma(K40.Kin2),
-                new Shape_BtnKoma(K40.Kin3),
-                new Shape_BtnKoma(K40.Kin4),
+                new Shape_BtnKoma(Piece40.G_1),
+                new Shape_BtnKoma(Piece40.G_2),
+                new Shape_BtnKoma(Piece40.G_3),
+                new Shape_BtnKoma(Piece40.G_4),
 
-                new Shape_BtnKoma(K40.Gin1),//[10]
-                new Shape_BtnKoma(K40.Gin2),
-                new Shape_BtnKoma(K40.Gin3),
-                new Shape_BtnKoma(K40.Gin4),
+                new Shape_BtnKoma(Piece40.S_1),//[10]
+                new Shape_BtnKoma(Piece40.S_2),
+                new Shape_BtnKoma(Piece40.S_3),
+                new Shape_BtnKoma(Piece40.S_4),
 
-                new Shape_BtnKoma(K40.Kei1),
-                new Shape_BtnKoma(K40.Kei2),//[15]
-                new Shape_BtnKoma(K40.Kei3),
-                new Shape_BtnKoma(K40.Kei4),
+                new Shape_BtnKoma(Piece40.N_1),
+                new Shape_BtnKoma(Piece40.N_2),//[15]
+                new Shape_BtnKoma(Piece40.N_3),
+                new Shape_BtnKoma(Piece40.N_4),
 
-                new Shape_BtnKoma(K40.Kyo1),
-                new Shape_BtnKoma(K40.Kyo2),
-                new Shape_BtnKoma(K40.Kyo3),//[20]
-                new Shape_BtnKoma(K40.Kyo4),
+                new Shape_BtnKoma(Piece40.L_1),
+                new Shape_BtnKoma(Piece40.L_2),
+                new Shape_BtnKoma(Piece40.L_3),//[20]
+                new Shape_BtnKoma(Piece40.L_4),
 
-                new Shape_BtnKoma(K40.Fu1),
-                new Shape_BtnKoma(K40.Fu2),
-                new Shape_BtnKoma(K40.Fu3),
-                new Shape_BtnKoma(K40.Fu4),//[25]
-                new Shape_BtnKoma(K40.Fu5),
-                new Shape_BtnKoma(K40.Fu6),
-                new Shape_BtnKoma(K40.Fu7),
-                new Shape_BtnKoma(K40.Fu8),
-                new Shape_BtnKoma(K40.Fu9),//[30]
+                new Shape_BtnKoma(Piece40.P_1),
+                new Shape_BtnKoma(Piece40.P_2),
+                new Shape_BtnKoma(Piece40.P_3),
+                new Shape_BtnKoma(Piece40.P_4),//[25]
+                new Shape_BtnKoma(Piece40.P_5),
+                new Shape_BtnKoma(Piece40.P_6),
+                new Shape_BtnKoma(Piece40.P_7),
+                new Shape_BtnKoma(Piece40.P_8),
+                new Shape_BtnKoma(Piece40.P_9),//[30]
 
-                new Shape_BtnKoma(K40.Fu10),
-                new Shape_BtnKoma(K40.Fu11),
-                new Shape_BtnKoma(K40.Fu12),
-                new Shape_BtnKoma(K40.Fu13),
-                new Shape_BtnKoma(K40.Fu14),//[35]
-                new Shape_BtnKoma(K40.Fu15),
-                new Shape_BtnKoma(K40.Fu16),
-                new Shape_BtnKoma(K40.Fu17),
-                new Shape_BtnKoma(K40.Fu18)//[39]
+                new Shape_BtnKoma(Piece40.P_10),
+                new Shape_BtnKoma(Piece40.P_11),
+                new Shape_BtnKoma(Piece40.P_12),
+                new Shape_BtnKoma(Piece40.P_13),
+                new Shape_BtnKoma(Piece40.P_14),//[35]
+                new Shape_BtnKoma(Piece40.P_15),
+                new Shape_BtnKoma(Piece40.P_16),
+                new Shape_BtnKoma(Piece40.P_17),
+                new Shape_BtnKoma(Piece40.P_18)//[39]
             });
 
             //----------
@@ -1288,7 +1288,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         {
             Shape_BtnKoma btn = null;
 
-            if (K40.Error != this.MovedKoma)
+            if (Piece40.Error != this.MovedKoma)
             {
                 btn = this.BtnKomaDoors[(int)this.MovedKoma];
             }

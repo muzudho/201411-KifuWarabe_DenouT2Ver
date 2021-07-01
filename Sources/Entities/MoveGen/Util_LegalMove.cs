@@ -32,20 +32,20 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
             if (Sengo.Gote == selfSengo)
             {
                 // 後手
-                kingMasu = node1.KomaHouse.KomaPosAt(K40.GoteOh).Star.Masu;
+                kingMasu = node1.KomaHouse.KomaPosAt(Piece40.K2).Star.Masu;
                 sbGohosyu.AppendLine($"後手王＝[{ kingMasu }]");
             }
             else
             {
                 // 先手
-                kingMasu = node1.KomaHouse.KomaPosAt(K40.SenteOh).Star.Masu;
+                kingMasu = node1.KomaHouse.KomaPosAt(Piece40.K1).Star.Masu;
                 sbGohosyu.AppendLine($"先手王＝[{ kingMasu }]");
             }
 
 
             // 相手の利きに、自分の王がいるかどうか確認します。
             bool mate = false;
-            komaAndMove_Enemy.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
+            komaAndMove_Enemy.Foreach_Entry((KeyValuePair<Piece40, IMasus> entry, ref bool toBreak) =>
             {
                 foreach (int masuHandle in entry.Value.Elements)
                 {
@@ -112,7 +112,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
                 //------------------------------------------------------------
 
                 // 変換「自駒が動ける升」→「自駒が動ける手」
-                Dictionary<K40, List<IMove>> teMap_All = GameTranslator.KmDic_ToKtDic(
+                Dictionary<Piece40, List<IMove>> teMap_All = GameTranslator.KmDic_ToKtDic(
                     kmDic_Self,
                     siteiNode_genzai
                     );
@@ -129,11 +129,11 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 sbOhteDebug.AppendLine("■(a)ひとまず全ての手を、局面に変換します。");
                 sbOhteDebug.AppendLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-                foreach (KeyValuePair<K40, List<IMove>> entry1 in teMap_All)
+                foreach (KeyValuePair<Piece40, List<IMove>> entry1 in teMap_All)
                 {
 
-                    K40 koma = entry1.Key;// 駒
-                    Ks14 syurui = Ks14Converter.FromKoma(koma);// Haiyaku184Array.Syurui(kyokumen.Stars[(int)koma].Star.Haiyaku);//駒の種類
+                    Piece40 koma = entry1.Key;// 駒
+                    PieceType syurui = Ks14Converter.FromKoma(koma);// Haiyaku184Array.Syurui(kyokumen.Stars[(int)koma].Star.Haiyaku);//駒の種類
                     // 駒の動ける升全て
                     foreach (IMove teProcess in entry1.Value)
                     {
@@ -156,11 +156,11 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
 
 
                 // compの移動先リスト
-                Dictionary<K40, IMove> enable_teMap = new Dictionary<K40, IMove>();
+                Dictionary<Piece40, IMove> enable_teMap = new Dictionary<Piece40, IMove>();
                 List<TreeNode6> enable_nextNodes = new List<TreeNode6>();
-                foreach (KeyValuePair<K40, List<IMove>> teEntry in teMap_All)
+                foreach (KeyValuePair<Piece40, List<IMove>> teEntry in teMap_All)
                 {
-                    K40 koma = teEntry.Key;
+                    Piece40 koma = teEntry.Key;
                     List<IMove> teList = teEntry.Value;
 
                     foreach (IMove te in teList)
@@ -203,7 +203,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
 ■デバッグ出力(b)enable_teMap
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(b)
-                foreach (KeyValuePair<K40, IMove> entry1 in enable_teMap)
+                foreach (KeyValuePair<Piece40, IMove> entry1 in enable_teMap)
                 {
                     sbOhteDebug.AppendLine($"(b){ entry1.Key }={ entry1.Value}");
                 }
@@ -222,9 +222,9 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
 
                 // 作り直し
                 kmDic_Self = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
-                foreach (KeyValuePair<K40, IMove> entry in enable_teMap)
+                foreach (KeyValuePair<Piece40, IMove> entry in enable_teMap)
                 {
-                    K40 koma = entry.Key;
+                    Piece40 koma = entry.Key;
                     IMove te = entry.Value;
 
                     // ポテンシャル・ムーブを調べます。
@@ -242,7 +242,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
 ■デバッグ出力(c)作り直しkomaAndMove_Self
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
                 // デバッグ出力(c)
-                kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry2, ref bool toBreak) =>
+                kmDic_Self.Foreach_Entry((KeyValuePair<Piece40, IMasus> entry2, ref bool toBreak) =>
                 {
                     sbOhteDebug.AppendLine($"(c){ entry2.Key }={ entry2.Value}");
                 }
@@ -267,7 +267,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
                 //
                 // どの駒が、どの升へ動いたとき、どのような棋譜になるか☆
                 //
-                Dictionary<K40, Dictionary<M201, TreeDocument>> nextKyokumens = new Dictionary<K40, Dictionary<M201, TreeDocument>>();
+                Dictionary<Piece40, Dictionary<M201, TreeDocument>> nextKyokumens = new Dictionary<Piece40, Dictionary<M201, TreeDocument>>();
 
                 //foreach (string inputLine in sfenList)
                 //{
@@ -297,9 +297,9 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
             )
         {
             // 自駒（将棋盤上）
-            List<K40> jiKomas_OnBan = null;
+            List<Piece40> jiKomas_OnBan = null;
             // 自駒（駒台上）
-            List<K40> jiKomas_OnDai = null;
+            List<Piece40> jiKomas_OnDai = null;
 
             // 自駒（将棋盤上）
             IMasus jiMasus_OnBan = Thought.Masus_BySengoOkiba(siteiNode, selfSengo, Okiba.ShogiBan, sbGohosyu);

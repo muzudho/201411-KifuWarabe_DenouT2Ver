@@ -152,7 +152,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // 持ち駒が動いているので、全駒、再描画
             //------------------------------
-            foreach(K40 koma in K40Array.Items_KomaOnly)
+            foreach(Piece40 koma in K40Array.Items_KomaOnly)
             {
                 Ui_02Action.Refresh_KomaLocation(koma, shape_PnlTaikyoku, kifuD);
             }
@@ -165,9 +165,9 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         public void IttesasiPaint(
             TreeDocument kifuD,
             string restText,
-            K40 movedKoma,
+            Piece40 movedKoma,
             //K40 tottaKoma2,
-            K40 underKoma,
+            Piece40 underKoma,
             IKifuElement node6
             )
         {

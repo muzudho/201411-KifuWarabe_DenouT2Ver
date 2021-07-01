@@ -13,65 +13,65 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// </summary>
         /// <param name="ks14"></param>
         /// <returns></returns>
-        public static Kh185 GetHaiyaku_KomabukuroFunari(Ks14 ks14)
+        public static Kh185 GetHaiyaku_KomabukuroFunari(PieceType ks14)
         {
             Kh185 kh;
 
             switch (ks14)
             {
-                case Ks14.H01_Fu:
+                case PieceType.P:
                     kh = Kh185.n172_駒袋歩;
                     break;
 
-                case Ks14.H02_Kyo:
+                case PieceType.L:
                     kh = Kh185.n173_駒袋香;
                     break;
 
-                case Ks14.H03_Kei:
+                case PieceType.N:
                     kh = Kh185.n174_駒袋桂;
                     break;
 
-                case Ks14.H04_Gin:
+                case PieceType.S:
                     kh = Kh185.n175_駒袋銀;
                     break;
 
-                case Ks14.H05_Kin:
+                case PieceType.G:
                     kh = Kh185.n176_駒袋金;
                     break;
 
-                case Ks14.H06_Oh:
+                case PieceType.K:
                     kh = Kh185.n177_駒袋王;
                     break;
 
-                case Ks14.H07_Hisya:
+                case PieceType.R:
                     kh = Kh185.n178_駒袋飛;
                     break;
 
-                case Ks14.H08_Kaku:
+                case PieceType.B:
                     kh = Kh185.n179_駒袋角;
                     break;
 
-                case Ks14.H09_Ryu:
+                case PieceType.PR:
                     kh = Kh185.n180_駒袋竜;
                     break;
 
-                case Ks14.H10_Uma:
+                case PieceType.PB:
                     kh = Kh185.n181_駒袋馬;
                     break;
 
-                case Ks14.H11_Tokin:
+                case PieceType.PP:
                     kh = Kh185.n182_駒袋と金;
                     break;
 
-                case Ks14.H12_NariKyo:
+                case PieceType.PL:
                     kh = Kh185.n183_駒袋杏;
                     break;
 
-                case Ks14.H13_NariKei:
+                case PieceType.PN:
                     kh = Kh185.n184_駒袋圭;
                     break;
 
-                case Ks14.H14_NariGin:
+                case PieceType.PS:
                     kh = Kh185.n185_駒袋全;
                     break;
 

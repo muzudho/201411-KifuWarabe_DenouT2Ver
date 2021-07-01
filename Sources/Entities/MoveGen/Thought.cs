@@ -9,11 +9,11 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
     {
         public static KomaAndMasusDictionary GetPotentialMovesByKoma(
             IKifuElement siteiNode,//IKifuElement siteiNode = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
-            List<K40> komas)
+            List<Piece40> komas)
         {
             KomaAndMasusDictionary komaAndMove = new KomaAndMasusDictionary();// 「どの駒を、どこに進める」の一覧
 
-            foreach (K40 koma in komas)
+            foreach (Piece40 koma in komas)
             {
                 // ポテンシャル・ムーブを調べます。
                 IMasus masus_PotentialMove = Rule01_PotentialMove_15Array.ItemMethods[
@@ -55,7 +55,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
             //------------------------------------------------------------
             IMasus hMasus_Self = new Masus_Set();
             {
-                foreach (K40 koma in Util_KyokumenReader.Komas_BySengo(siteiNode, selfSengo))// 自分の駒だけを抽出。
+                foreach (Piece40 koma in Util_KyokumenReader.Komas_BySengo(siteiNode, selfSengo))// 自分の駒だけを抽出。
                 {
 
                     if (K40Util.OnKoma((int)koma))//エラーは除外

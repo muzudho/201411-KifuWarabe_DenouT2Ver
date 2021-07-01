@@ -21,15 +21,15 @@ namespace Grayscale.Kifuwarane.Entities.Performer
             IMove teProcess,
             TreeDocument kifuD,
             bool isBack,
-            out K40 movedKoma,
-            out K40 underKoma
+            out Piece40 movedKoma,
+            out Piece40 underKoma
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            underKoma = K40.Error;
+            underKoma = Piece40.Error;
 
 
             KifuIO.Kifusasi25(
@@ -40,13 +40,13 @@ namespace Grayscale.Kifuwarane.Entities.Performer
                 );
 
 
-            if (K40.Error == movedKoma)
+            if (Piece40.Error == movedKoma)
             {
                 goto gt_EndMethod;
             }
 
 
-            Ks14 syurui2 = KifuIO.Kifusasi30(teProcess, isBack);
+            PieceType syurui2 = KifuIO.Kifusasi30(teProcess, isBack);
 
 
             IKomaPos dst = KifuIO.Kifusasi35(syurui2, teProcess, kifuD, isBack);
@@ -86,7 +86,7 @@ namespace Grayscale.Kifuwarane.Entities.Performer
         /// <param name="kifuD"></param>
         /// <param name="isBack"></param>
         private static void Kifusasi25(
-            out K40 movedKoma,
+            out Piece40 movedKoma,
             IMove teProcess,
             TreeDocument kifuD,
             bool isBack
@@ -96,7 +96,7 @@ namespace Grayscale.Kifuwarane.Entities.Performer
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            movedKoma = K40.Error;
+            movedKoma = Piece40.Error;
 
             //------------------------------------------------------------
             // 選択  ：  動かす駒
@@ -166,14 +166,14 @@ namespace Grayscale.Kifuwarane.Entities.Performer
         /// <param name="te">棋譜に記録するために「指す前／指した後」を含めた手。</param>
         /// <param name="back"></param>
         /// <returns></returns>
-        private static Ks14 Kifusasi30(
+        private static PieceType Kifusasi30(
             IMove te,
             bool back)
         {
             //------------------------------------------------------------
             // 確定  ：  移動先升
             //------------------------------------------------------------
-            Ks14 syurui2;
+            PieceType syurui2;
             {
                 //----------
                 // 成るかどうか
@@ -209,7 +209,7 @@ namespace Grayscale.Kifuwarane.Entities.Performer
         /// <param name="back"></param>
         /// <returns></returns>
         private static IKomaPos Kifusasi35(
-            Ks14 syurui2,
+            PieceType syurui2,
             IMove te,
             TreeDocument kifuD, bool back)
         {
@@ -275,15 +275,15 @@ namespace Grayscale.Kifuwarane.Entities.Performer
         /// <param name="back"></param>
         private static void Kifusasi52_WhenKifuRead(
             IKomaPos dst,
-            Ks14 syurui2,
-            ref K40 movedKoma,
-            out K40 underKoma,
+            PieceType syurui2,
+            ref Piece40 movedKoma,
+            out Piece40 underKoma,
             IMove teProcess,
             TreeDocument kifuD,
             bool back
             )
         {
-            underKoma = K40.Error;
+            underKoma = Piece40.Error;
 
 
 
@@ -294,15 +294,15 @@ namespace Grayscale.Kifuwarane.Entities.Performer
             //------------------------------------------------------------
             if (!back)
             {
-                Ks14 tottaKomaSyurui;
+                PieceType tottaKomaSyurui;
 
                 //----------
                 // 将棋盤上のその場所に駒はあるか
                 //----------
-                tottaKomaSyurui = Ks14.H00_Null;//ひとまずクリアー
+                tottaKomaSyurui = PieceType.None;//ひとまずクリアー
                 underKoma = Util_KyokumenReader.Koma_AtMasu(kifuD, dst.Star.Masu);//盤上
 
-                if (K40.Error != underKoma)
+                if (Piece40.Error != underKoma)
                 {
                     //>>>>> 指した先に駒があったなら
 
@@ -495,7 +495,7 @@ dst.Sengo={dst.Star.Sengo}");
             //------------------------------------------------------------
             if (back)
             {
-                if (Ks14.H00_Null!=teProcess.TottaSyurui)
+                if (PieceType.None!=teProcess.TottaSyurui)
                 {
                     // 駒台から、駒を検索します。
                     Okiba okiba;
@@ -509,8 +509,8 @@ dst.Sengo={dst.Star.Sengo}");
                     }
 
                     // 取った駒は、種類が同じなら、駒台のどの駒でも同じです。
-                    K40 tottaKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, okiba, teProcess.TottaSyurui);
-                    if (K40.Error != tottaKoma)
+                    Piece40 tottaKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, okiba, teProcess.TottaSyurui);
+                    if (Piece40.Error != tottaKoma)
                     {
                         kifuD.ElementAt8(lastTeme).KomaHouse.SetKomaPos(
                             kifuD,

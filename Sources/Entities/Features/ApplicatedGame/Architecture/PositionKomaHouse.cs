@@ -37,7 +37,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
         public void SetKomaPos(
             TreeDocument kifuD,
-            K40 koma,
+            Piece40 koma,
             IKomaPos komaP
             ,
             [CallerMemberName] string memberName = "",
@@ -45,7 +45,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             [CallerLineNumber] int sourceLineNumber = 0
         )
         {
-            if (K40.Error == koma)
+            if (Piece40.Error == koma)
             {
                 throw new Exception($"{this.GetType().Name}#SetKomaPos：　駒番号isエラー　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }
@@ -55,14 +55,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
 
         public IKomaPos KomaPosAt(
-            K40 koma
+            Piece40 koma
             ,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string sourceFilePath = "",
             [CallerLineNumber] int sourceLineNumber = 0
             )
         {
-            if (K40.Error == koma)
+            if (Piece40.Error == koma)
             {
                 throw new Exception($"{this.GetType().Name}#KomaPosAt：駒番号isエラー　：　{memberName}.{sourceFilePath}.{sourceLineNumber}");
             }

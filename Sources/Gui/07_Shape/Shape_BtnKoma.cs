@@ -25,7 +25,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         /// 局面の駒リストでの格納位置番号。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public K40 Koma
+        public Piece40 Koma
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace Grayscale.Kifuwarane.Gui.L07_Shape
         /// ************************************************************************************************************************
         /// </summary>
         /// <param name="koma"></param>
-        public Shape_BtnKoma(K40 koma)
+        public Shape_BtnKoma(Piece40 koma)
         {
             this.Koma = koma;
             this.Bounds = new Rectangle(42, 42, 35, 35);

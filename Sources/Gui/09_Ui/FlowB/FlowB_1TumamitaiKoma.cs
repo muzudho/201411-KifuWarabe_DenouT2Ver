@@ -63,7 +63,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                 shape_PnlTaikyoku.Shogiban.ClearHMasu_KikiKomaList();
 
                 // 全駒
-                foreach (K40 koma in K40Array.Items_KomaOnly)
+                foreach (Piece40 koma in K40Array.Items_KomaOnly)
                 {
                     IKifuElement dammyNode1 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house1 = dammyNode1.KomaHouse;
@@ -404,7 +404,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                             ////        //Ks14.H15_ErrorKoma
                             ////    ));
 
-                            shape_PnlTaikyoku.SetHMovedKoma(K40.Error);
+                            shape_PnlTaikyoku.SetHMovedKoma(Piece40.Error);
                             requestForMain.RequestRefresh = true;
                         }
 

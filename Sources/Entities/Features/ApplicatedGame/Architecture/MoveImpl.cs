@@ -46,14 +46,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// あれば、取った駒。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public Ks14 TottaSyurui { get { return this.tottaKoma; } }
-        private Ks14 tottaKoma;
+        public PieceType TottaSyurui { get { return this.tottaKoma; } }
+        private PieceType tottaKoma;
 
         public static MoveImpl New(
             RO_Star srcStar,
             RO_Star dstStar,
 
-            Ks14 tottaKoma
+            PieceType tottaKoma
             )
         {
             return new MoveImpl(srcStar, dstStar, tottaKoma);
@@ -63,7 +63,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             RO_Star srcStarM,//元が配役の場合
             RO_Star dstStarM,//先が配役の場合
 
-            Ks14 tottaKoma
+            PieceType tottaKoma
         )
         {
             return new MoveImpl(
@@ -88,7 +88,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             RO_Star srcStarM,//元が配役の場合
             RO_StarManual dstStarM,//配役ではなくて、種類の場合
 
-            Ks14 tottaKoma
+            PieceType tottaKoma
         )
         {
             return new MoveImpl(
@@ -109,7 +109,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             RO_StarManual srcStarM,//配役ではなくて、種類の場合
             RO_StarManual dstStarM,//配役ではなくて、種類の場合
 
-            Ks14 tottaKoma
+            PieceType tottaKoma
             )
         {
             return new MoveImpl(
@@ -151,7 +151,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             RO_Star dstStar,
 
-            Ks14 tottaKoma
+            PieceType tottaKoma
             )
             : base(dstStar)
         {
@@ -185,7 +185,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                     this.SrcStar.Haiyaku// Kh185.n000_未設定,
                 ),
 
-                Ks14.H00_Null
+                PieceType.None
             );
 
             return src;
@@ -202,7 +202,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this.ToSfenText());
-            if (Ks14.H00_Null!=this.TottaSyurui)
+            if (PieceType.None!=this.TottaSyurui)
             {
                 sb.Append("(");
                 sb.Append(this.TottaSyurui);

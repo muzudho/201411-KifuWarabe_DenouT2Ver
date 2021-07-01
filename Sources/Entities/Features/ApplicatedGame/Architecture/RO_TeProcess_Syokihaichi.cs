@@ -9,7 +9,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             : base(
                 new RO_Star(Sengo.Empty, M201.Error, Kh185.n000_未設定),
                 new RO_Star(Sengo.Empty, M201.Error, Kh185.n000_未設定),
-                Ks14.H00_Null
+                PieceType.None
             )
         {
         }

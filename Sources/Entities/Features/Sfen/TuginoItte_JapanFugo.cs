@@ -103,7 +103,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
             NariFunari nariFunari = GameTranslator.Nari_ToBool(strNariFunari);//成
             DaHyoji daHyoji = GameTranslator.Str_ToDaHyoji(strDaHyoji);             //打
 
-            Ks14 srcSyurui = ApplicatedMove.KomaMoji_ToSyurui(strSrcSyurui);
+            PieceType srcSyurui = ApplicatedMove.KomaMoji_ToSyurui(strSrcSyurui);
 
 
             //------------------------------
@@ -151,7 +151,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
             //    Kh184.n000_未設定
             //    );
 
-            K40 foundKoma = K40.Error;
+            Piece40 foundKoma = Piece40.Error;
 
             //----------
             // 駒台の駒を(明示的に)打つなら
@@ -163,7 +163,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 goto gt_EndShogiban;
             }
 
-            if (Ks14.H01_Fu == srcSyurui)
+            if (PieceType.P == srcSyurui)
             {
                 #region 歩
                 //************************************************************
@@ -192,7 +192,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H07_Hisya == srcSyurui)
+            else if (PieceType.R == srcSyurui)
             {
                 #region 飛
                 //************************************************************
@@ -291,7 +291,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H08_Kaku == srcSyurui)
+            else if (PieceType.B == srcSyurui)
             {
                 #region 角
                 //************************************************************
@@ -390,7 +390,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H02_Kyo == srcSyurui)
+            else if (PieceType.L == srcSyurui)
             {
                 #region 香
                 //************************************************************
@@ -430,7 +430,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H03_Kei == srcSyurui)
+            else if (PieceType.N == srcSyurui)
             {
                 #region 桂
                 //************************************************************
@@ -492,7 +492,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H04_Gin == srcSyurui)
+            else if (PieceType.S == srcSyurui)
             {
                 #region 銀
                 //************************************************************
@@ -569,11 +569,11 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 #endregion
             }
             else if (
-                Ks14.H05_Kin == srcSyurui
-                || Ks14.H11_Tokin == srcSyurui
-                || Ks14.H12_NariKyo == srcSyurui
-                || Ks14.H13_NariKei == srcSyurui
-                || Ks14.H14_NariGin == srcSyurui
+                PieceType.G == srcSyurui
+                || PieceType.PP == srcSyurui
+                || PieceType.PL == srcSyurui
+                || PieceType.PN == srcSyurui
+                || PieceType.PS == srcSyurui
                 )
             {
                 #region △金、△と金、△成香、△成桂、△成銀
@@ -657,7 +657,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H06_Oh == srcSyurui)
+            else if (PieceType.K == srcSyurui)
             {
                 #region 王
                 //************************************************************
@@ -701,7 +701,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H09_Ryu == srcSyurui)
+            else if (PieceType.PR == srcSyurui)
             {
                 #region 竜
                 //************************************************************
@@ -825,7 +825,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                 }
                 #endregion
             }
-            else if (Ks14.H10_Uma == srcSyurui)
+            else if (PieceType.PB == srcSyurui)
             {
                 #region 馬
                 //************************************************************
@@ -960,12 +960,12 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
 
         gt_EndShogiban:
 
-            if (K40.Error == foundKoma && utsu)
+            if (Piece40.Error == foundKoma && utsu)
             {
                 // 駒台の駒を(明示的に)打ちます。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-                List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
+                List<Piece40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
                     srcOkiba1, sengo, srcSyurui);
 
                 if (0 < komas.Count)
@@ -993,7 +993,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
 
             int srcMasuHandle1;
 
-            if (K40.Error != foundKoma)
+            if (Piece40.Error != foundKoma)
             {
                 // 将棋盤の上に駒がありました。
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1023,10 +1023,10 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
 
 
 
-                List<K40> komaHandles = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
+                List<Piece40> komaHandles = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(kifuD,
                     srcOkiba1, sengo, srcSyurui);//(2014-10-04 12:46)変更
                 // 1個はヒットするはず
-                K40 hitKoma = komaHandles[0];//▲！コマ送りボタンを連打すると、エラーになります。
+                Piece40 hitKoma = komaHandles[0];//▲！コマ送りボタンを連打すると、エラーになります。
 
                 IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                 PositionKomaHouse house4 = dammyNode6.KomaHouse;
@@ -1034,7 +1034,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
             }
 
 
-            Ks14 dstSyurui;
+            PieceType dstSyurui;
             if (NariFunari.Nari == nariFunari)
             {
                 // 成ります
@@ -1062,7 +1062,7 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
                     dstSyurui
                 ),
 
-                Ks14.H00_Null // 符号からは、取った駒の種類は分からないんだぜ☆　だがバグではない☆　あとで調べる☆
+                PieceType.None // 符号からは、取った駒の種類は分からないんだぜ☆　だがバグではない☆　あとで調べる☆
             );
         }
 
@@ -1074,16 +1074,16 @@ namespace Grayscale.Kifuwarane.Entities.Sfen
         /// <param name="komas"></param>
         /// <returns></returns>
         private static bool Hit(
-            Sengo sengo, Ks14 syurui, IMasus srcAll, TreeDocument kifuD, out K40 foundKoma)
+            Sengo sengo, PieceType syurui, IMasus srcAll, TreeDocument kifuD, out Piece40 foundKoma)
         {
             bool hit = false;
-            foundKoma = K40.Error;
+            foundKoma = Piece40.Error;
 
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
             foreach (M201 masu1 in srcAll.Elements)//筋・段。（先後、種類は入っていません）
             {
-                foreach (K40 koma in K40Array.Items_KomaOnly)
+                foreach (Piece40 koma in K40Array.Items_KomaOnly)
                 {
                     IKifuElement dammyNode6 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house4 = dammyNode6.KomaHouse;

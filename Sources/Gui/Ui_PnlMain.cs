@@ -171,7 +171,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
 
             TreeNode6 siteiNode = (TreeNode6)this.Kifu_Document.ElementAt8(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8));
 
-            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente))
+            foreach (Piece40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Sente))
             {
                 IKifuElement dammyNode4 = this.Kifu_Document.ElementAt8(lastTeme);
                 PositionKomaHouse house5 = dammyNode4.KomaHouse;
@@ -198,7 +198,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             // 先手駒の利きを表にします。
             bool[] kikiGTable = new bool[Ui_PnlMain.NSQUARE];
 
-            foreach (K40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote))
+            foreach (Piece40 koma in Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, Sengo.Gote))
             {
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 PositionKomaHouse house5 = dammyNode5.KomaHouse;
@@ -219,10 +219,10 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             string tuginoItte = "▲９九王嘘";
 
 
-            List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)));
+            List<Piece40> komas = Util_KyokumenReader.Komas_ByOkibaSengo(siteiNode, Okiba.ShogiBan, this.Kifu_Document.CountSengo(this.Kifu_Document.CountTeme(this.Kifu_Document.Current8)));
             if (0<komas.Count)
             {
-                K40 koma = komas[ RandomLib.Random.Next(komas.Count)];//ランダムに１つ。
+                Piece40 koma = komas[ RandomLib.Random.Next(komas.Count)];//ランダムに１つ。
 
                 IKifuElement dammyNode5 = this.Kifu_Document.ElementAt8(lastTeme);
                 PositionKomaHouse house6 = dammyNode5.KomaHouse;
@@ -263,7 +263,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                                     komaP.Star.Haiyaku
                                 ),
 
-                                Ks14.H00_Null
+                                PieceType.None
                             );
                             break;
                         }
@@ -298,7 +298,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
                                     komaP.Star.Haiyaku
                                 ),
 
-                                Ks14.H00_Null
+                                PieceType.None
                             );
                             break;
                         }

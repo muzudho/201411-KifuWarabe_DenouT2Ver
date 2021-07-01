@@ -2,59 +2,59 @@
 {
     public class Ks14Converter
     {
-        private static Ks14[] fromK40 = new Ks14[]{
-            Ks14.H06_Oh,    //SenteOh = 0,//[0]
-            Ks14.H06_Oh,    //GoteOh,//[1]
+        private static PieceType[] fromK40 = new PieceType[]{
+            PieceType.K,    //SenteOh = 0,//[0]
+            PieceType.K,    //GoteOh,//[1]
 
-            Ks14.H07_Hisya, //Hi1,
-            Ks14.H07_Hisya, //Hi2,
+            PieceType.R, //Hi1,
+            PieceType.R, //Hi2,
 
-            Ks14.H08_Kaku,  //Kaku1,
-            Ks14.H08_Kaku,  //Kaku2,//[5]
+            PieceType.B,  //Kaku1,
+            PieceType.B,  //Kaku2,//[5]
 
-            Ks14.H05_Kin,   //Kin1,
-            Ks14.H05_Kin,   //Kin2,
-            Ks14.H05_Kin,   //Kin3,
-            Ks14.H05_Kin,   //Kin4,
+            PieceType.G,   //Kin1,
+            PieceType.G,   //Kin2,
+            PieceType.G,   //Kin3,
+            PieceType.G,   //Kin4,
 
-            Ks14.H04_Gin,   //Gin1,//[10]
-            Ks14.H04_Gin,   //Gin2,
-            Ks14.H04_Gin,   //Gin3,
-            Ks14.H04_Gin,   //Gin4,
+            PieceType.S,   //Gin1,//[10]
+            PieceType.S,   //Gin2,
+            PieceType.S,   //Gin3,
+            PieceType.S,   //Gin4,
 
-            Ks14.H03_Kei,   //Kei1,
-            Ks14.H03_Kei,   //Kei2,//[15]
-            Ks14.H03_Kei,   //Kei3,
-            Ks14.H03_Kei,   //Kei4,
+            PieceType.N,   //Kei1,
+            PieceType.N,   //Kei2,//[15]
+            PieceType.N,   //Kei3,
+            PieceType.N,   //Kei4,
 
-            Ks14.H02_Kyo,   //Kyo1,
-            Ks14.H02_Kyo,   //Kyo2,
-            Ks14.H02_Kyo,   //Kyo3,//[20]
-            Ks14.H02_Kyo,   //Kyo4,
+            PieceType.L,   //Kyo1,
+            PieceType.L,   //Kyo2,
+            PieceType.L,   //Kyo3,//[20]
+            PieceType.L,   //Kyo4,
 
-            Ks14.H01_Fu,    //Fu1,
-            Ks14.H01_Fu,    //Fu2,
-            Ks14.H01_Fu,    //Fu3,
-            Ks14.H01_Fu,    //Fu4,//[25]
-            Ks14.H01_Fu,    //Fu5,
-            Ks14.H01_Fu,    //Fu6,
-            Ks14.H01_Fu,    //Fu7,
-            Ks14.H01_Fu,    //Fu8,
-            Ks14.H01_Fu,    //Fu9,//[30]
+            PieceType.P,    //Fu1,
+            PieceType.P,    //Fu2,
+            PieceType.P,    //Fu3,
+            PieceType.P,    //Fu4,//[25]
+            PieceType.P,    //Fu5,
+            PieceType.P,    //Fu6,
+            PieceType.P,    //Fu7,
+            PieceType.P,    //Fu8,
+            PieceType.P,    //Fu9,//[30]
 
-            Ks14.H01_Fu,    //Fu10,
-            Ks14.H01_Fu,    //Fu11,
-            Ks14.H01_Fu,    //Fu12,
-            Ks14.H01_Fu,    //Fu13,
-            Ks14.H01_Fu,    //Fu14,//[35]
-            Ks14.H01_Fu,    //Fu15,
-            Ks14.H01_Fu,    //Fu16,
-            Ks14.H01_Fu,    //Fu17,
-            Ks14.H01_Fu,    //Fu18,//[39]
+            PieceType.P,    //Fu10,
+            PieceType.P,    //Fu11,
+            PieceType.P,    //Fu12,
+            PieceType.P,    //Fu13,
+            PieceType.P,    //Fu14,//[35]
+            PieceType.P,    //Fu15,
+            PieceType.P,    //Fu16,
+            PieceType.P,    //Fu17,
+            PieceType.P,    //Fu18,//[39]
 
-            Ks14.H00_Null,  //Error//[40]
+            PieceType.None,  //Error//[40]
         };
-        public static Ks14 FromKoma(K40 k40)
+        public static PieceType FromKoma(Piece40 k40)
         {
             return Ks14Converter.fromK40[(int)k40];
         }

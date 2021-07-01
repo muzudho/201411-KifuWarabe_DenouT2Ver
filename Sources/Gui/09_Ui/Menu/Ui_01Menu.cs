@@ -64,9 +64,9 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------
             // 前の手に戻します
             //------------------------------
-            K40 movedKoma;
+            Piece40 movedKoma;
             //K40 tottaKoma = K40.Error;
-            K40 underKoma = K40.Error;
+            Piece40 underKoma = Piece40.Error;
             bool isBack = true;
 
             //MessageBox.Show($"戻る符号＝{ removeeLeaf.TeProcess.ToSfenText()}", "デバッグ");
@@ -194,97 +194,97 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             IKifuElement dammyNode5 = kifuD.ElementAt8(lastTeme);
             PositionKomaHouse house5 = dammyNode5.KomaHouse;
 
-            K40 k40;
+            Piece40 k40;
 
             // 先手
-            k40 = K40.SenteOh;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen01, Ks14.H06_Oh, "クリアー棋譜")); //先手王
-            k40 = K40.GoteOh;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go01, Ks14.H06_Oh, "クリアー棋譜")); //後手王
+            k40 = Piece40.K1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen01, PieceType.K, "クリアー棋譜")); //先手王
+            k40 = Piece40.K2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go01, PieceType.K, "クリアー棋譜")); //後手王
 
-            k40 = K40.Hi1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen02, Ks14.H07_Hisya, "クリアー棋譜")); //飛
-            k40 = K40.Hi2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go02, Ks14.H07_Hisya, "クリアー棋譜"));
+            k40 = Piece40.R_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen02, PieceType.R, "クリアー棋譜")); //飛
+            k40 = Piece40.R_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go02, PieceType.R, "クリアー棋譜"));
 
-            k40 = K40.Kaku1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen03, Ks14.H08_Kaku, "クリアー棋譜")); //角
-            k40 = K40.Kaku2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go03, Ks14.H08_Kaku, "クリアー棋譜"));
+            k40 = Piece40.B_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen03, PieceType.B, "クリアー棋譜")); //角
+            k40 = Piece40.B_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go03, PieceType.B, "クリアー棋譜"));
 
-            k40 = K40.Kin1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen04, Ks14.H05_Kin, "クリアー棋譜")); //金
-            k40 = K40.Kin2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen05, Ks14.H05_Kin, "クリアー棋譜"));
-            k40 = K40.Kin3;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go04, Ks14.H05_Kin, "クリアー棋譜"));
-            k40 = K40.Kin4;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go05, Ks14.H05_Kin, "クリアー棋譜"));
+            k40 = Piece40.G_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen04, PieceType.G, "クリアー棋譜")); //金
+            k40 = Piece40.G_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen05, PieceType.G, "クリアー棋譜"));
+            k40 = Piece40.G_3;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go04, PieceType.G, "クリアー棋譜"));
+            k40 = Piece40.G_4;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go05, PieceType.G, "クリアー棋譜"));
 
-            k40 = K40.Gin1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen06, Ks14.H04_Gin, "クリアー棋譜")); //銀
-            k40 = K40.Gin2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen07, Ks14.H04_Gin, "クリアー棋譜"));
-            k40 = K40.Gin3;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go06, Ks14.H04_Gin, "クリアー棋譜"));
-            k40 = K40.Gin4;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go07, Ks14.H04_Gin, "クリアー棋譜"));
+            k40 = Piece40.S_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen06, PieceType.S, "クリアー棋譜")); //銀
+            k40 = Piece40.S_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen07, PieceType.S, "クリアー棋譜"));
+            k40 = Piece40.S_3;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go06, PieceType.S, "クリアー棋譜"));
+            k40 = Piece40.S_4;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go07, PieceType.S, "クリアー棋譜"));
 
-            k40 = K40.Kei1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen08, Ks14.H03_Kei, "クリアー棋譜")); //桂
-            k40 = K40.Kei2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen09, Ks14.H03_Kei, "クリアー棋譜"));
-            k40 = K40.Kei3;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go08, Ks14.H03_Kei, "クリアー棋譜"));
-            k40 = K40.Kei4;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go09, Ks14.H03_Kei, "クリアー棋譜"));
+            k40 = Piece40.N_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen08, PieceType.N, "クリアー棋譜")); //桂
+            k40 = Piece40.N_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen09, PieceType.N, "クリアー棋譜"));
+            k40 = Piece40.N_3;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go08, PieceType.N, "クリアー棋譜"));
+            k40 = Piece40.N_4;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go09, PieceType.N, "クリアー棋譜"));
 
-            k40 = K40.Kyo1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen10, Ks14.H02_Kyo, "クリアー棋譜")); //香
-            k40 = K40.Kyo2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen11, Ks14.H02_Kyo, "クリアー棋譜"));
-            k40 = K40.Kyo3;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go10, Ks14.H02_Kyo, "クリアー棋譜"));
-            k40 = K40.Kyo4;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go11, Ks14.H02_Kyo, "クリアー棋譜"));
+            k40 = Piece40.L_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen10, PieceType.L, "クリアー棋譜")); //香
+            k40 = Piece40.L_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen11, PieceType.L, "クリアー棋譜"));
+            k40 = Piece40.L_3;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go10, PieceType.L, "クリアー棋譜"));
+            k40 = Piece40.L_4;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go11, PieceType.L, "クリアー棋譜"));
 
-            k40 = K40.Fu1;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen12, Ks14.H01_Fu, "クリアー棋譜")); //歩
-            k40 = K40.Fu2;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen13, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu3;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen14, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu4;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen15, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu5;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen16, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu6;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen17, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu7;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen18, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu8;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen19, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu9;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen20, Ks14.H01_Fu, "クリアー棋譜"));
+            k40 = Piece40.P_1;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen12, PieceType.P, "クリアー棋譜")); //歩
+            k40 = Piece40.P_2;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen13, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_3;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen14, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_4;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen15, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_5;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen16, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_6;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen17, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_7;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen18, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_8;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen19, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_9;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Sente, M201.sen20, PieceType.P, "クリアー棋譜"));
 
-            k40 = K40.Fu10;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go12, Ks14.H01_Fu, "クリアー棋譜")); //歩
-            k40 = K40.Fu11;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go13, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu12;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go14, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu13;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go15, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu14;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go16, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu15;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go17, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu16;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go18, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu17;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go19, Ks14.H01_Fu, "クリアー棋譜"));
-            k40 = K40.Fu18;
-            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go20, Ks14.H01_Fu, "クリアー棋譜"));
+            k40 = Piece40.P_10;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go12, PieceType.P, "クリアー棋譜")); //歩
+            k40 = Piece40.P_11;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go13, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_12;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go14, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_13;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go15, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_14;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go16, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_15;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go17, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_16;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go18, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_17;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go19, PieceType.P, "クリアー棋譜"));
+            k40 = Piece40.P_18;
+            house5.SetKomaPos(kifuD, k40, house5.KomaPosAt(k40).Next(Sengo.Gote, M201.go20, PieceType.P, "クリアー棋譜"));
 
 
             IKifuElement dammyNode6 = kifuD.ElementAt8(kifuD.Root7_Teme);

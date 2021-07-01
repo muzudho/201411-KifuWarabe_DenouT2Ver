@@ -13,7 +13,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
             //------------------------------------------------------------
             // 駒・再描画
             //------------------------------------------------------------
-            foreach (K40 koma in requestForMain.RequestRefresh_Komas)
+            foreach (Piece40 koma in requestForMain.RequestRefresh_Komas)
             {
                 Shape_BtnKoma btn_koma = Converter09.KomaToBtn(koma, shape_PnlTaikyoku);
 

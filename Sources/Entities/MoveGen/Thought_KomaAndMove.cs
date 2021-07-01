@@ -20,10 +20,10 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
 
-            List<K40> list_koma = c.ToKeyList();//調べたい側の全駒
+            List<Piece40> list_koma = c.ToKeyList();//調べたい側の全駒
 
 
-            foreach (K40 selfKoma in list_koma)
+            foreach (Piece40 selfKoma in list_koma)
             {
                 IMasus srcMasus = c.ElementAt(selfKoma);
 
@@ -49,7 +49,7 @@ namespace Grayscale.Kifuwarane.Entities.MoveGen
         {
             KomaAndMasusDictionary c = new KomaAndMasusDictionary(a1);
 
-            foreach (K40 selfKoma in c.ToKeyList())//調べたい側の全駒
+            foreach (Piece40 selfKoma in c.ToKeyList())//調べたい側の全駒
             {
                 Logger.Trace($@"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 差し替える前

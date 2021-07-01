@@ -13,44 +13,44 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <summary>
         /// エラーも含みます。
         /// </summary>
-        public static K40[] Items_All
+        public static Piece40[] Items_All
         {
             get
             {
                 return K40Array.items_All;
             }
         }
-        private static K40[] items_All;
+        private static Piece40[] items_All;
 
 
         /// <summary>
         /// エラーを含みません。
         /// </summary>
-        public static K40[] Items_KomaOnly
+        public static Piece40[] Items_KomaOnly
         {
             get
             {
                 return K40Array.items_KomaOnly;
             }
         }
-        private static K40[] items_KomaOnly;
+        private static Piece40[] items_KomaOnly;
 
 
         static K40Array()
         {
-            Array array = Enum.GetValues(typeof(K40));
+            Array array = Enum.GetValues(typeof(Piece40));
 
-            K40Array.items_All = new K40[41];
-            K40Array.items_KomaOnly = new K40[40];
+            K40Array.items_All = new Piece40[41];
+            K40Array.items_KomaOnly = new Piece40[40];
 
             for (int i = 0; i < array.Length; i++)
             {
-                K40Array.items_All[i] = (K40)array.GetValue(i);
+                K40Array.items_All[i] = (Piece40)array.GetValue(i);
             }
 
             for (int i = 0; i <= 39; i++)
             {
-                K40Array.items_KomaOnly[i] = (K40)array.GetValue(i);
+                K40Array.items_KomaOnly[i] = (Piece40)array.GetValue(i);
             }
         }
 
@@ -64,57 +64,57 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
     /// Ｋｏｍａ４０の列挙型が、Ｋ４０だぜ☆
     /// 
     /// KomaDoors[n]を直接指定するには良さそう。
+    /// 旧名: K40
     /// </summary>
-    public enum K40
+    public enum Piece40
     {
-        SenteOh = 0,//[0]
-        GoteOh,//[1]
+        K1 = 0,// [0] ▲玉
+        K2,//[1] ▽玉
 
-        Hi1,
-        Hi2,
+        R_1, // [2] 飛車 1,2
+        R_2,
 
-        Kaku1,
-        Kaku2,//[5]
+        B_1, // [4] 角 1,2
+        B_2,
 
-        Kin1,
-        Kin2,
-        Kin3,
-        Kin4,
+        G_1, // [6] 金 1..4
+        G_2,
+        G_3,
+        G_4,
 
-        Gin1,//[10]
-        Gin2,
-        Gin3,
-        Gin4,
+        S_1,// [10] 銀 1..4
+        S_2,
+        S_3,
+        S_4,
 
-        Kei1,
-        Kei2,//[15]
-        Kei3,
-        Kei4,
+        N_1, // [14] 桂 1..4
+        N_2,
+        N_3,
+        N_4,
 
-        Kyo1,
-        Kyo2,
-        Kyo3,//[20]
-        Kyo4,
+        L_1, // [18] 香 1..4
+        L_2,
+        L_3,
+        L_4,
 
-        Fu1,
-        Fu2,
-        Fu3,
-        Fu4,//[25]
-        Fu5,
-        Fu6,
-        Fu7,
-        Fu8,
-        Fu9,//[30]
-
-        Fu10,
-        Fu11,
-        Fu12,
-        Fu13,
-        Fu14,//[35]
-        Fu15,
-        Fu16,
-        Fu17,
-        Fu18,//[39]
+        P_1, // [22] 歩 1..18
+        P_2,
+        P_3,
+        P_4,
+        P_5,
+        P_6,
+        P_7,
+        P_8,
+        P_9,
+        P_10,
+        P_11,
+        P_12,
+        P_13,
+        P_14,
+        P_15,
+        P_16,
+        P_17,
+        P_18,
 
         Error//[40]
     }

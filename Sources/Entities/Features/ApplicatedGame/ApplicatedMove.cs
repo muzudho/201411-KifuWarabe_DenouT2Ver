@@ -37,12 +37,12 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             }
 
             // 打った駒の種類(Piece Type)
-            Ks14 dropPT = GameTranslator.SfenUttaSyurui(sfen.Chars[0]);
+            PieceType dropPT = GameTranslator.SfenUttaSyurui(sfen.Chars[0]);
 
             int dstFile = sfen.DstFile;
             int destRank = sfen.DstRank;
 
-            K40 dropP; // 打った種類の駒(Piece)。
+            Piece40 dropP; // 打った種類の駒(Piece)。
 
             if (sfen.Dropped)
             {
@@ -54,7 +54,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                         kifuD.CountSengo(kifuD.CountTeme(kifuD.Current8))
                     ),//Okiba.Sente_Komadai,//FIXME:
                     dropPT);
-                if (K40.Error == dropP)
+                if (Piece40.Error == dropP)
                 {
                     throw new Exception($"TuginoItte_Sfen#GetData_FromTextSub：駒台から種類[{dropPT}]の駒を掴もうとしましたが、エラーでした。");
                 }
@@ -74,7 +74,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, srcFile, srcRank)
                     );
 
-                if (K40.Error == dropP)
+                if (Piece40.Error == dropP)
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append("TuginoItte_Sfen#GetData_FromTextSub：将棋盤から [");
@@ -98,8 +98,8 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
             }
 
 
-            Ks14 dstPT; // 駒種類(PieceType)
-            Ks14 srcPT;
+            PieceType dstPT; // 駒種類(PieceType)
+            PieceType srcPT;
             Okiba srcOkiba;
             M201 srcSq;
 
@@ -125,7 +125,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                         break;
                 }
 
-                K40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT);
+                Piece40 srcKoma = Util_KyokumenReader.Koma_BySyuruiIgnoreCase(kifuD, srcOkiba, srcPT);
                 srcSq = house2.KomaPosAt(srcKoma).Star.Masu;// M201Util.OkibaSujiDanToMasu(srcOkiba, srcSuji, srcDan);
             }
             else
@@ -167,7 +167,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                     dstPT
                     ),
 
-                Ks14.H00_Null//符号からは、取った駒は分からない
+                PieceType.None//符号からは、取った駒は分からない
             );
         }
 
@@ -176,72 +176,72 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         /// </summary>
         /// <param name="moji"></param>
         /// <returns></returns>
-        public static Ks14 KomaMoji_ToSyurui(string moji)
+        public static PieceType KomaMoji_ToSyurui(string moji)
         {
-            Ks14 syurui;
+            PieceType syurui;
 
             switch (moji)
             {
                 case "歩":
-                    syurui = Ks14.H01_Fu;
+                    syurui = PieceType.P;
                     break;
 
                 case "香":
-                    syurui = Ks14.H02_Kyo;
+                    syurui = PieceType.L;
                     break;
 
                 case "桂":
-                    syurui = Ks14.H03_Kei;
+                    syurui = PieceType.N;
                     break;
 
                 case "銀":
-                    syurui = Ks14.H04_Gin;
+                    syurui = PieceType.S;
                     break;
 
                 case "金":
-                    syurui = Ks14.H05_Kin;
+                    syurui = PieceType.G;
                     break;
 
                 case "飛":
-                    syurui = Ks14.H07_Hisya;
+                    syurui = PieceType.R;
                     break;
 
                 case "角":
-                    syurui = Ks14.H08_Kaku;
+                    syurui = PieceType.B;
                     break;
 
                 case "王"://thru
                 case "玉":
-                    syurui = Ks14.H06_Oh;
+                    syurui = PieceType.K;
                     break;
 
                 case "と":
-                    syurui = Ks14.H11_Tokin;
+                    syurui = PieceType.PP;
                     break;
 
                 case "成香":
-                    syurui = Ks14.H12_NariKyo;
+                    syurui = PieceType.PL;
                     break;
 
                 case "成桂":
-                    syurui = Ks14.H13_NariKei;
+                    syurui = PieceType.PN;
                     break;
 
                 case "成銀":
-                    syurui = Ks14.H14_NariGin;
+                    syurui = PieceType.PS;
                     break;
 
                 case "竜"://thru
                 case "龍":
-                    syurui = Ks14.H09_Ryu;
+                    syurui = PieceType.PR;
                     break;
 
                 case "馬":
-                    syurui = Ks14.H10_Uma;
+                    syurui = PieceType.PB;
                     break;
 
                 default:
-                    syurui = Ks14.H00_Null;
+                    syurui = PieceType.None;
                     break;
             }
 

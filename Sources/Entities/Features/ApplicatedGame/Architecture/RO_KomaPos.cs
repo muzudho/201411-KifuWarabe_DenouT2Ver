@@ -56,7 +56,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// <param name="dstHaiyaku"></param>
         /// <param name="hint"></param>
         /// <returns></returns>
-        public IKomaPos Next(Sengo sengo, M201 dstMasu, Ks14 currentSyurui, string hint)
+        public IKomaPos Next(Sengo sengo, M201 dstMasu, PieceType currentSyurui, string hint)
         {
             Kh185 dstHaiyaku = Data_HaiyakuTransition.ToHaiyaku( currentSyurui, (int)M201Util.BothSenteView(dstMasu, sengo) );
 
@@ -86,14 +86,14 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 不一致判定：　先後、駒種類  が、自分と同じものが　＜ひとつもない＞
         /// </summary>
         /// <returns></returns>
-        public bool NeverOnaji(TreeDocument kifuD, params List<K40>[] komaGroupArgs)
+        public bool NeverOnaji(TreeDocument kifuD, params List<Piece40>[] komaGroupArgs)
         {
             bool unmatched = true;
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
-            foreach (List<K40> komaGroup in komaGroupArgs)
+            foreach (List<Piece40> komaGroup in komaGroupArgs)
             {
-                foreach (K40 koma in komaGroup)
+                foreach (Piece40 koma in komaGroup)
                 {
                     IKifuElement dammyNode2 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house1 = dammyNode2.KomaHouse;
@@ -217,7 +217,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 不成ケース
         /// </summary>
         /// <returns></returns>
-        public Ks14 ToFunariCase()
+        public PieceType ToFunariCase()
         {
             return KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(this.Star.Haiyaku));
         }
@@ -234,10 +234,10 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             foreach (M201 masu in masu2Arr.Elements)
             {
 
-                K40 hKoma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, this.Star.Sengo, masu);
+                Piece40 hKoma = Util_KyokumenReader.Koma_AtMasu_Shogiban(kifuD, this.Star.Sengo, masu);
 
                 if (
-                    hKoma != K40.Error  //2014-07-21 先後も見るように追記。//this.MatchSengo(m)
+                    hKoma != Piece40.Error  //2014-07-21 先後も見るように追記。//this.MatchSengo(m)
                     && this.Star.Masu == masu
                     )
                 {
@@ -266,7 +266,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 成ケース
         /// </summary>
         /// <returns></returns>
-        public Ks14 ToNariCase()
+        public PieceType ToNariCase()
         {
             return KomaSyurui14Array.NariCaseHandle[(int)Haiyaku184Array.Syurui(this.Star.Haiyaku)];
         }

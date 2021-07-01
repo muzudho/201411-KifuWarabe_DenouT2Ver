@@ -66,21 +66,21 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         /// </summary>
         /// <param name="sfen"></param>
         /// <returns>駒種類</returns>
-        public static Ks14 SfenUttaSyurui(char sfen)
+        public static PieceType SfenUttaSyurui(char sfen)
         {
             switch (sfen)
             {
-                case 'P': return Ks14.H01_Fu;
-                case 'L': return Ks14.H02_Kyo;
-                case 'N': return Ks14.H03_Kei;
-                case 'S': return Ks14.H04_Gin;
-                case 'G': return Ks14.H05_Kin;
-                case 'R': return Ks14.H07_Hisya;
-                case 'B': return Ks14.H08_Kaku;
-                case 'K': return Ks14.H06_Oh;
+                case 'P': return PieceType.P;
+                case 'L': return PieceType.L;
+                case 'N': return PieceType.N;
+                case 'S': return PieceType.S;
+                case 'G': return PieceType.G;
+                case 'R': return PieceType.R;
+                case 'B': return PieceType.B;
+                case 'K': return PieceType.K;
                 // SFEN は成り駒を打てない。
                 // エラーにせず 零元を返します。
-                default: return Ks14.H00_Null;
+                default: return PieceType.None;
             }
         }
 
@@ -89,153 +89,153 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         /// </summary>
         /// <param name="syurui"></param>
         /// <returns></returns>
-        public static void SfenSyokihaichi_ToSyurui(string sfen, out Sengo sengo, out Ks14 syurui)
+        public static void SfenSyokihaichi_ToSyurui(string sfen, out Sengo sengo, out PieceType syurui)
         {
             switch (sfen)
             {
                 case "P":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H01_Fu;
+                    syurui = PieceType.P;
                     break;
 
                 case "p":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H01_Fu;
+                    syurui = PieceType.P;
                     break;
 
                 case "L":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H02_Kyo;
+                    syurui = PieceType.L;
                     break;
 
                 case "l":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H02_Kyo;
+                    syurui = PieceType.L;
                     break;
 
                 case "N":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H03_Kei;
+                    syurui = PieceType.N;
                     break;
 
                 case "n":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H03_Kei;
+                    syurui = PieceType.N;
                     break;
 
                 case "S":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H04_Gin;
+                    syurui = PieceType.S;
                     break;
 
                 case "s":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H04_Gin;
+                    syurui = PieceType.S;
                     break;
 
                 case "G":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H05_Kin;
+                    syurui = PieceType.G;
                     break;
 
                 case "g":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H05_Kin;
+                    syurui = PieceType.G;
                     break;
 
                 case "R":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H07_Hisya;
+                    syurui = PieceType.R;
                     break;
 
                 case "r":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H07_Hisya;
+                    syurui = PieceType.R;
                     break;
 
                 case "B":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H08_Kaku;
+                    syurui = PieceType.B;
                     break;
 
                 case "b":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H08_Kaku;
+                    syurui = PieceType.B;
                     break;
 
                 case "K":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H06_Oh;
+                    syurui = PieceType.K;
                     break;
 
                 case "k":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H06_Oh;
+                    syurui = PieceType.K;
                     break;
 
                 case "+P":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H11_Tokin;
+                    syurui = PieceType.PP;
                     break;
 
                 case "+p":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H11_Tokin;
+                    syurui = PieceType.PP;
                     break;
 
                 case "+L":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H12_NariKyo;
+                    syurui = PieceType.PL;
                     break;
 
                 case "+l":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H12_NariKyo;
+                    syurui = PieceType.PL;
                     break;
 
                 case "+N":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H13_NariKei;
+                    syurui = PieceType.PN;
                     break;
 
                 case "+n":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H13_NariKei;
+                    syurui = PieceType.PN;
                     break;
 
                 case "+S":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H14_NariGin;
+                    syurui = PieceType.PS;
                     break;
 
                 case "+s":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H14_NariGin;
+                    syurui = PieceType.PS;
                     break;
 
                 case "+R":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H07_Hisya;
+                    syurui = PieceType.R;
                     break;
 
                 case "+r":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H07_Hisya;
+                    syurui = PieceType.R;
                     break;
 
                 case "+B":
                     sengo = Sengo.Sente;
-                    syurui = Ks14.H08_Kaku;
+                    syurui = PieceType.B;
                     break;
 
                 case "+b":
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H08_Kaku;
+                    syurui = PieceType.B;
                     break;
 
                 default:
                     sengo = Sengo.Gote;
-                    syurui = Ks14.H00_Null;
+                    syurui = PieceType.None;
                     break;
             }
         }
@@ -380,7 +380,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         {
             List<KomaAndMasu> kmList = new List<KomaAndMasu>();
 
-            foreach (K40 koma in kmDic.ToKeyList())
+            foreach (Piece40 koma in kmDic.ToKeyList())
             {
                 IMasus masus = kmDic.ElementAt(koma);
 
@@ -399,18 +399,18 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
         /// </summary>
         /// <param name="kmDic_Self"></param>
         /// <returns></returns>
-        public static Dictionary<K40, List<IMove>> KmDic_ToKtDic(
+        public static Dictionary<Piece40, List<IMove>> KmDic_ToKtDic(
             KomaAndMasusDictionary kmDic_Self,
             TreeNode6 siteiNode_genzai
             )
         {
-            Dictionary<K40, List<IMove>> teMap_All = new Dictionary<K40, List<IMove>>();
+            Dictionary<Piece40, List<IMove>> teMap_All = new Dictionary<Piece40, List<IMove>>();
 
             //
             //
-            kmDic_Self.Foreach_Entry((KeyValuePair<K40, IMasus> entry, ref bool toBreak) =>
+            kmDic_Self.Foreach_Entry((KeyValuePair<Piece40, IMasus> entry, ref bool toBreak) =>
             {
-                K40 koma = entry.Key;
+                Piece40 koma = entry.Key;
 
 
                 foreach (int masuHandle in entry.Value.Elements)
@@ -427,7 +427,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame
                             star.Haiyaku//TODO:成るとか考えたい
                         ),
 
-                        Ks14.H00_Null//取った駒不明
+                        PieceType.None//取った駒不明
                     );
                     //sbSfen.Append(sbSfen.ToString());
 

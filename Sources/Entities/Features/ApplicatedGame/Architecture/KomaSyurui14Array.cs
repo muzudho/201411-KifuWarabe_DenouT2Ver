@@ -57,11 +57,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 駒が成らなかったときの駒ハンドル
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static Ks14 FunariCaseHandle(Ks14 syurui)
+        public static PieceType FunariCaseHandle(PieceType syurui)
         {
             return KomaSyurui14Array.funariCaseHandle[(int)syurui];
         }
-        protected static Ks14[] funariCaseHandle;
+        protected static PieceType[] funariCaseHandle;
 
 
         /// <summary>
@@ -79,30 +79,30 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 駒が成ったときの駒ハンドル
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static Ks14[] NariCaseHandle { get { return KomaSyurui14Array.nariCaseHandle; } }
-        protected static Ks14[] nariCaseHandle;
+        public static PieceType[] NariCaseHandle { get { return KomaSyurui14Array.nariCaseHandle; } }
+        protected static PieceType[] nariCaseHandle;
 
 
 
         static KomaSyurui14Array()
         {
 
-            KomaSyurui14Array.nariCaseHandle = new Ks14[]{
-                Ks14.H00_Null,//[0]ヌル
-                Ks14.H11_Tokin,
-                Ks14.H12_NariKyo,
-                Ks14.H13_NariKei,
-                Ks14.H14_NariGin,
-                Ks14.H05_Kin,
-                Ks14.H06_Oh,
-                Ks14.H09_Ryu,
-                Ks14.H10_Uma,
-                Ks14.H09_Ryu,
-                Ks14.H10_Uma,
-                Ks14.H11_Tokin,
-                Ks14.H12_NariKyo,
-                Ks14.H13_NariKei,
-                Ks14.H14_NariGin,
+            KomaSyurui14Array.nariCaseHandle = new PieceType[]{
+                PieceType.None,//[0]ヌル
+                PieceType.PP,
+                PieceType.PL,
+                PieceType.PN,
+                PieceType.PS,
+                PieceType.G,
+                PieceType.K,
+                PieceType.PR,
+                PieceType.PB,
+                PieceType.PR,
+                PieceType.PB,
+                PieceType.PP,
+                PieceType.PL,
+                PieceType.PN,
+                PieceType.PS,
             };
 
             KomaSyurui14Array.isNari = new bool[]{
@@ -124,22 +124,22 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 false,//[15]エラー
             };
 
-            KomaSyurui14Array.funariCaseHandle = new Ks14[]{
-                Ks14.H00_Null,//[0]ヌル
-                Ks14.H01_Fu,//[1]歩
-                Ks14.H02_Kyo,//[2]香
-                Ks14.H03_Kei,//[3]桂
-                Ks14.H04_Gin,//[4]銀
-                Ks14.H05_Kin,//[5]金
-                Ks14.H06_Oh,//[6]王
-                Ks14.H07_Hisya,//[7]飛車
-                Ks14.H08_Kaku,//[8]角
-                Ks14.H07_Hisya,//[9]竜→飛車
-                Ks14.H08_Kaku,//[10]馬→角
-                Ks14.H01_Fu,//[11]と→歩
-                Ks14.H02_Kyo,//[12]杏→香
-                Ks14.H03_Kei,//[13]圭→桂
-                Ks14.H04_Gin,//[14]全→銀
+            KomaSyurui14Array.funariCaseHandle = new PieceType[]{
+                PieceType.None,//[0]ヌル
+                PieceType.P,//[1]歩
+                PieceType.L,//[2]香
+                PieceType.N,//[3]桂
+                PieceType.S,//[4]銀
+                PieceType.G,//[5]金
+                PieceType.K,//[6]王
+                PieceType.R,//[7]飛車
+                PieceType.B,//[8]角
+                PieceType.R,//[9]竜→飛車
+                PieceType.B,//[10]馬→角
+                PieceType.P,//[11]と→歩
+                PieceType.L,//[12]杏→香
+                PieceType.N,//[13]圭→桂
+                PieceType.S,//[14]全→銀
             };
 
             KomaSyurui14Array.isNareruKoma = new bool[]{
@@ -285,7 +285,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 外字を利用した表示文字。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static char ToGaiji(Ks14 koma, Sengo sengo)
+        public static char ToGaiji(PieceType koma, Sengo sengo)
         {
             char result;
 
@@ -310,7 +310,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 「▲歩」といった、外字を利用しない表示文字。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static string ToNimoji(Ks14 koma, Sengo sengo)
+        public static string ToNimoji(PieceType koma, Sengo sengo)
         {
             string result;
 
@@ -335,7 +335,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// 駒のSFEN符号用の単語。
         /// ------------------------------------------------------------------------------------------------------------------------
         /// </summary>
-        public static string SfenText(Ks14 koma, Sengo sengo)
+        public static string SfenText(PieceType koma, Sengo sengo)
         {
             string str = SfenReferences.Sfen[(int)koma];
 
@@ -348,7 +348,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         }
 
 
-        public static bool Matches(Ks14 koma1, Ks14 koma2)
+        public static bool Matches(PieceType koma1, PieceType koma2)
         {
             return (int)koma2 == (int)koma1;
         }

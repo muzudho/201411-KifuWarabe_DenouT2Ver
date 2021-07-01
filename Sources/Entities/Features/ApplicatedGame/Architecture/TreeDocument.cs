@@ -134,7 +134,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
-            foreach (K40 koma in K40Array.Items_KomaOnly)
+            foreach (Piece40 koma in K40Array.Items_KomaOnly)
             {
                 PositionKomaHouse house1 = kifuD.ElementAt8(lastTeme).KomaHouse;
 
@@ -166,11 +166,11 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 for (int suji = 9; suji >= 1; suji--)
                 {
                     // 将棋盤上のどこかにある駒？
-                    K40 hKoma = Util_KyokumenReader.Koma_AtMasu(kifuD,
+                    Piece40 hKoma = Util_KyokumenReader.Koma_AtMasu(kifuD,
                         M201Util.OkibaSujiDanToMasu(Okiba.ShogiBan, suji, dan)
                         );
 
-                    if (K40.Error != hKoma)
+                    if (Piece40.Error != hKoma)
                     {
                         if (0 < spaceCount)
                         {
@@ -247,43 +247,43 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 int lastTeme = kifuD.CountTeme(kifuD.Current8);
 
                 // 先手
-                List<K40> komasS = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Sente_Komadai);
-                foreach (K40 koma in komasS)
+                List<Piece40> komasS = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Sente_Komadai);
+                foreach (Piece40 koma in komasS)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
-                    Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
+                    PieceType syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
 
-                    if (Ks14.H06_Oh == syurui)
+                    if (PieceType.K == syurui)
                     {
                         mK++;
                     }
-                    else if (Ks14.H07_Hisya == syurui)
+                    else if (PieceType.R == syurui)
                     {
                         mR++;
                     }
-                    else if (Ks14.H08_Kaku == syurui)
+                    else if (PieceType.B == syurui)
                     {
                         mB++;
                     }
-                    else if (Ks14.H05_Kin == syurui)
+                    else if (PieceType.G == syurui)
                     {
                         mG++;
                     }
-                    else if (Ks14.H04_Gin == syurui)
+                    else if (PieceType.S == syurui)
                     {
                         mS++;
                     }
-                    else if (Ks14.H03_Kei == syurui)
+                    else if (PieceType.N == syurui)
                     {
                         mN++;
                     }
-                    else if (Ks14.H02_Kyo == syurui)
+                    else if (PieceType.L == syurui)
                     {
                         mL++;
                     }
-                    else if (Ks14.H01_Fu == syurui)
+                    else if (PieceType.P == syurui)
                     {
                         mP++;
                     }
@@ -293,43 +293,43 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                 }
 
                 // 後手
-                List<K40> komasG = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Gote_Komadai);
-                foreach (K40 koma in komasG)
+                List<Piece40> komasG = Util_KyokumenReader.Komas_ByOkiba(kifuD, Okiba.Gote_Komadai);
+                foreach (Piece40 koma in komasG)
                 {
                     IKifuElement dammyNode3 = kifuD.ElementAt8(lastTeme);
                     PositionKomaHouse house2 = dammyNode3.KomaHouse;
 
-                    Ks14 syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
+                    PieceType syurui = KomaSyurui14Array.FunariCaseHandle(Haiyaku184Array.Syurui(house2.KomaPosAt(koma).Star.Haiyaku));
 
-                    if (Ks14.H06_Oh == syurui)
+                    if (PieceType.K == syurui)
                     {
                         mk++;
                     }
-                    else if (Ks14.H07_Hisya == syurui)
+                    else if (PieceType.R == syurui)
                     {
                         mr++;
                     }
-                    else if (Ks14.H08_Kaku == syurui)
+                    else if (PieceType.B == syurui)
                     {
                         mb++;
                     }
-                    else if (Ks14.H05_Kin == syurui)
+                    else if (PieceType.G == syurui)
                     {
                         mg++;
                     }
-                    else if (Ks14.H04_Gin == syurui)
+                    else if (PieceType.S == syurui)
                     {
                         ms++;
                     }
-                    else if (Ks14.H03_Kei == syurui)
+                    else if (PieceType.N == syurui)
                     {
                         mn++;
                     }
-                    else if (Ks14.H02_Kyo == syurui)
+                    else if (PieceType.L == syurui)
                     {
                         ml++;
                     }
-                    else if (Ks14.H01_Fu == syurui)
+                    else if (PieceType.P == syurui)
                     {
                         mp++;
                     }
@@ -561,7 +561,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         public TreeNode6 CreateNodeA(
             RO_Star srcStar,
             RO_Star dstStar,
-            Ks14 tottaSyurui
+            PieceType tottaSyurui
             )
         {
             // 最後尾をコピーして、最後尾に付け加えます。
@@ -630,7 +630,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
         /// </summary>
         /// <param name="process"></param>
         public void AppendChildB_Swap(
-            Ks14 tottaSyurui,
+            PieceType tottaSyurui,
             PositionKomaHouse newHouse,
             string hint
             ,

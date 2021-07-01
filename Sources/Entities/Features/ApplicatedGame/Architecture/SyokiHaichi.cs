@@ -32,96 +32,96 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
             IKifuElement node2 = kifuD.ElementAt8(lastTeme);
             PositionKomaHouse house1 = node2.KomaHouse;
 
-            K40 k40;
+            Piece40 k40;
 
-            k40 = K40.SenteOh;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 5, 9), Ks14.H06_Oh, "初期配置_ToHirate"));//先手王
-            k40 = K40.GoteOh;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 5, 1), Ks14.H06_Oh, "初期配置_ToHirate"));//後手王
+            k40 = Piece40.K1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 5, 9), PieceType.K, "初期配置_ToHirate"));//先手王
+            k40 = Piece40.K2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 5, 1), PieceType.K, "初期配置_ToHirate"));//後手王
 
-            k40 = K40.Hi1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 8), Ks14.H07_Hisya, "初期配置_ToHirate"));//飛
-            k40 = K40.Hi2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 2), Ks14.H07_Hisya, "初期配置_ToHirate"));
+            k40 = Piece40.R_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 8), PieceType.R, "初期配置_ToHirate"));//飛
+            k40 = Piece40.R_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 2), PieceType.R, "初期配置_ToHirate"));
 
-            k40 = K40.Kaku1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 8), Ks14.H08_Kaku, "初期配置_ToHirate"));//角
-            k40 = K40.Kaku2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 2), Ks14.H08_Kaku, "初期配置_ToHirate"));
+            k40 = Piece40.B_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 8), PieceType.B, "初期配置_ToHirate"));//角
+            k40 = Piece40.B_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 2), PieceType.B, "初期配置_ToHirate"));
 
-            k40 = K40.Kin1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 4, 9), Ks14.H05_Kin, "初期配置_ToHirate"));//金
-            k40 = K40.Kin2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 6, 9), Ks14.H05_Kin, "初期配置_ToHirate"));
-            k40 = K40.Kin3;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 4, 1), Ks14.H05_Kin, "初期配置_ToHirate"));
-            k40 = K40.Kin4;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 6, 1), Ks14.H05_Kin, "初期配置_ToHirate"));
+            k40 = Piece40.G_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 4, 9), PieceType.G, "初期配置_ToHirate"));//金
+            k40 = Piece40.G_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 6, 9), PieceType.G, "初期配置_ToHirate"));
+            k40 = Piece40.G_3;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 4, 1), PieceType.G, "初期配置_ToHirate"));
+            k40 = Piece40.G_4;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 6, 1), PieceType.G, "初期配置_ToHirate"));
 
-            k40 = K40.Gin1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 3, 9), Ks14.H04_Gin, "初期配置_ToHirate"));//銀
-            k40 = K40.Gin2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 7, 9), Ks14.H04_Gin, "初期配置_ToHirate"));
-            k40 = K40.Gin3;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 3, 1), Ks14.H04_Gin, "初期配置_ToHirate"));
-            k40 = K40.Gin4;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 7, 1), Ks14.H04_Gin, "初期配置_ToHirate"));
+            k40 = Piece40.S_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 3, 9), PieceType.S, "初期配置_ToHirate"));//銀
+            k40 = Piece40.S_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 7, 9), PieceType.S, "初期配置_ToHirate"));
+            k40 = Piece40.S_3;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 3, 1), PieceType.S, "初期配置_ToHirate"));
+            k40 = Piece40.S_4;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 7, 1), PieceType.S, "初期配置_ToHirate"));
 
-            k40 = K40.Kei1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 9), Ks14.H03_Kei, "初期配置_ToHirate"));//桂
-            k40 = K40.Kei2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 9), Ks14.H03_Kei, "初期配置_ToHirate"));
-            k40 = K40.Kei3;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 1), Ks14.H03_Kei, "初期配置_ToHirate"));
-            k40 = K40.Kei4;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 1), Ks14.H03_Kei, "初期配置_ToHirate"));
+            k40 = Piece40.N_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 9), PieceType.N, "初期配置_ToHirate"));//桂
+            k40 = Piece40.N_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 9), PieceType.N, "初期配置_ToHirate"));
+            k40 = Piece40.N_3;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 1), PieceType.N, "初期配置_ToHirate"));
+            k40 = Piece40.N_4;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 1), PieceType.N, "初期配置_ToHirate"));
 
-            k40 = K40.Kyo1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 1, 9), Ks14.H02_Kyo, "初期配置_ToHirate"));//香
-            k40 = K40.Kyo2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 9, 9), Ks14.H02_Kyo, "初期配置_ToHirate"));
-            k40 = K40.Kyo3;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 1, 1), Ks14.H02_Kyo, "初期配置_ToHirate"));
-            k40 = K40.Kyo4;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 1), Ks14.H02_Kyo, "初期配置_ToHirate"));
+            k40 = Piece40.L_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 1, 9), PieceType.L, "初期配置_ToHirate"));//香
+            k40 = Piece40.L_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 9, 9), PieceType.L, "初期配置_ToHirate"));
+            k40 = Piece40.L_3;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 1, 1), PieceType.L, "初期配置_ToHirate"));
+            k40 = Piece40.L_4;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 1), PieceType.L, "初期配置_ToHirate"));
 
-            k40 = K40.Fu1;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 1, 7), Ks14.H01_Fu, "初期配置_ToHirate"));//歩
-            k40 = K40.Fu2;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu3;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 3, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu4;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 4, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu5;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 5, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu6;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 6, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu7;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 7, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu8;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu9;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 9, 7), Ks14.H01_Fu, "初期配置_ToHirate"));
+            k40 = Piece40.P_1;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 1, 7), PieceType.P, "初期配置_ToHirate"));//歩
+            k40 = Piece40.P_2;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 2, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_3;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 3, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_4;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 4, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_5;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 5, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_6;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 6, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_7;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 7, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_8;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 8, 7), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_9;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Sente, M201Util.OkibaSujiDanToMasu(okiba, 9, 7), PieceType.P, "初期配置_ToHirate"));
 
-            k40 = K40.Fu10;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 1, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu11;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu12;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 3, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu13;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 4, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu14;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 5, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu15;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 6, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu16;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 7, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu17;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
-            k40 = K40.Fu18;
-            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 3), Ks14.H01_Fu, "初期配置_ToHirate"));
+            k40 = Piece40.P_10;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 1, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_11;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 2, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_12;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 3, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_13;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 4, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_14;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 5, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_15;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 6, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_16;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 7, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_17;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 8, 3), PieceType.P, "初期配置_ToHirate"));
+            k40 = Piece40.P_18;
+            house1.SetKomaPos(kifuD, k40, house1.KomaPosAt(k40).Next(Sengo.Gote, M201Util.OkibaSujiDanToMasu(okiba, 9, 3), PieceType.P, "初期配置_ToHirate"));
 
             Logger.Trace("平手局面にセットしたぜ☆");
         }
@@ -164,7 +164,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
 
             int spaceCount;
             Sengo sengo;
-            Ks14 syurui;
+            PieceType syurui;
             //------------------------------
             // 1段目～9段目
             //------------------------------
@@ -218,7 +218,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         //Logger.Trace($"　　　　sengo={ sengo.ToString()}");
                         //Logger.Trace($"　　　　syurui={ syurui.ToString()}");
 
-                        List<K40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(
+                        List<Piece40> komas = Util_KyokumenReader.Komas_ByOkibaSengoSyurui(
                             kifuD,
                             Okiba.KomaBukuro,
                             sengo,
@@ -227,7 +227,7 @@ namespace Grayscale.Kifuwarane.Entities.ApplicatedGame.Architecture
                         Logger.Trace($"　　　　hKomas.Count={ komas.Count}");
 
                         // それぞれの駒に適用
-                        foreach (K40 koma in komas)
+                        foreach (Piece40 koma in komas)
                         {
                             IKifuElement dammyNode2 = kifuD.ElementAt8(kifuD.CountTeme(kifuD.Current8));
                             PositionKomaHouse house1 = dammyNode2.KomaHouse;

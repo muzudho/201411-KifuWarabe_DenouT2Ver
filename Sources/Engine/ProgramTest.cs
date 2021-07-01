@@ -110,14 +110,14 @@ namespace Grayscale.Kifuwarane.Entities
                 // 先手、飛車先の歩を突く
                 {
                     Logger.Trace("先手、飛車先の歩を突く");
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n27_２七, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), PieceType.None), null);
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
                 }
 
                 // 後手、角頭の歩を突く
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), PieceType.None), null);
                     Logger.Trace("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
@@ -125,7 +125,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 先手、飛車先の歩を突く
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n26_２六, Kh185.n001_歩), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n001_歩), PieceType.None), null);
                     Logger.Trace("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
@@ -133,7 +133,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 後手、飛車先の歩を突く（同歩）
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.n24_２四, Kh185.n001_歩), new RO_Star(Sengo.Gote, M201.n25_２五, Kh185.n001_歩), PieceType.None), null);
                     Logger.Trace("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
@@ -141,7 +141,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 先手、同飛
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Sente, M201.n28_２八, Kh185.n061_飛), new RO_Star(Sengo.Sente, M201.n25_２五, Kh185.n061_飛), PieceType.None), null);
                     Logger.Trace("先手、同飛");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
@@ -149,7 +149,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 後手、２三歩打
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.New(new RO_Star(Sengo.Gote, M201.go01, Kh185.n164_歩打), new RO_Star(Sengo.Gote, M201.n23_２三, Kh185.n001_歩), PieceType.None), null);
                     Logger.Trace("後手、２三歩打");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText()}");
@@ -179,7 +179,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 先手、飛車先の歩を突く
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n27_２七, PieceType.P), new RO_StarManual(Sengo.Sente, M201.n26_２六, PieceType.P), PieceType.None), null);
                     Logger.Trace("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -187,7 +187,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 後手、角頭の歩を突く
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n23_２三, PieceType.P), new RO_StarManual(Sengo.Gote, M201.n24_２四, PieceType.P), PieceType.None), null);
                     Logger.Trace("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -195,7 +195,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 先手、飛車先の歩を突く
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, Ks14.H01_Fu), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n26_２六, PieceType.P), new RO_StarManual(Sengo.Sente, M201.n25_２五, PieceType.P), PieceType.None), null);
                     Logger.Trace("先手、飛車先の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -203,7 +203,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 後手、飛車先の歩を突く（同歩）
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n25_２五, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.n24_２四, PieceType.P), new RO_StarManual(Sengo.Gote, M201.n25_２五, PieceType.P), PieceType.None), null);
                     Logger.Trace("後手、角頭の歩を突く");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -211,7 +211,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 先手、同飛
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, Ks14.H07_Hisya), new RO_StarManual(Sengo.Sente, M201.n25_２五, Ks14.H07_Hisya), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Sente, M201.n28_２八, PieceType.R), new RO_StarManual(Sengo.Sente, M201.n25_２五, PieceType.R), PieceType.None), null);
                     Logger.Trace("先手、同飛");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -219,7 +219,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 // 後手、２三歩打
                 {
-                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, Ks14.H01_Fu), new RO_StarManual(Sengo.Gote, M201.n23_２三, Ks14.H01_Fu), Ks14.H00_Null), null);
+                    TreeNode6 newNode = new TreeNode6(MoveImpl.Next3(new RO_StarManual(Sengo.Gote, M201.go01, PieceType.P), new RO_StarManual(Sengo.Gote, M201.n23_２三, PieceType.P), PieceType.None), null);
                     Logger.Trace("後手、２三歩打");
                     kifuD_dammy.AppendChild_Main(kifuD_dammy, newNode, "デバッグ");
                     Logger.Trace($"高さ={ kifuD_dammy.CountTeme(kifuD_dammy.Current8)}　Last手={ kifuD_dammy.Current8.TeProcess.ToSfenText_TottaKoma()}");
@@ -440,7 +440,7 @@ namespace Grayscale.Kifuwarane.Entities
 
                 const bool isForward = false;
                 const bool isBack = true;
-                K40 dammyKoma;
+                Piece40 dammyKoma;
 
                 // ▲２六歩
                 {
@@ -450,14 +450,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n27_２七,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n26_２六,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -476,14 +476,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n23_２三,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n24_２四,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -502,14 +502,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n26_２六,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n25_２五,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -528,14 +528,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n24_２四,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n25_２五,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -554,14 +554,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n28_２八,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n25_２五,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -580,14 +580,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n31_３一,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Gote,
                                 M201.n32_３二,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -606,14 +606,14 @@ namespace Grayscale.Kifuwarane.Entities
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n25_２五,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
                             new RO_StarManual(
                                 Sengo.Sente,
                                 M201.n22_２二,
-                                Ks14.H01_Fu
+                                PieceType.P
                             ),
-                            Ks14.H00_Null
+                            PieceType.None
                         ),
                         kifuD_dammy,
                         isForward,
@@ -788,7 +788,7 @@ namespace Grayscale.Kifuwarane.Entities
                 _M1.AddElement(M201.n14_１四);
                 Logger.Trace($"①_M1＝{ _M1.LogString_Set()}");
                 KomaAndMasusDictionary dic1 = new KomaAndMasusDictionary();
-                dic1.AddOverwrite(K40.Fu10, _M1);
+                dic1.AddOverwrite(Piece40.P_10, _M1);
                 Logger.Trace($"②dic1＝{ dic1.LogString_Set()}");
 
                 // ２三の歩の動き「２四」
@@ -796,7 +796,7 @@ namespace Grayscale.Kifuwarane.Entities
                 _M2.AddElement(M201.n24_２四);
                 Logger.Trace($"③_M2＝{ _M2.LogString_Set()}");
                 KomaAndMasusDictionary dic2 = new KomaAndMasusDictionary();
-                dic2.AddOverwrite(K40.Fu11, _M2);
+                dic2.AddOverwrite(Piece40.P_11, _M2);
                 Logger.Trace($"④dic2＝{ dic2.LogString_Set()}");
 
                 // マージ

@@ -156,7 +156,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// 要素は駒ハンドル。
         /// 
         /// </summary>
-        public HashSet<K40> RequestRefresh_Komas
+        public HashSet<Piece40> RequestRefresh_Komas
         {
             get;
             set;
@@ -172,7 +172,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// </summary>
         public RequestForMain()
         {
-            this.RequestRefresh_Komas = new HashSet<K40>();
+            this.RequestRefresh_Komas = new HashSet<Piece40>();
         }
 
     }

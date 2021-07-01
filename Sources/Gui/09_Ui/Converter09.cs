@@ -51,7 +51,7 @@ namespace Grayscale.Kifuwarane.Gui.L09_Ui
         /// <param name="hKoma"></param>
         /// <param name="shape_PnlTaikyoku"></param>
         /// <returns>なければヌル</returns>
-        public static Shape_BtnKoma KomaToBtn(K40 koma, Shape_PnlTaikyoku shape_PnlTaikyoku)
+        public static Shape_BtnKoma KomaToBtn(Piece40 koma, Shape_PnlTaikyoku shape_PnlTaikyoku)
         {
             Shape_BtnKoma found = null;
 
